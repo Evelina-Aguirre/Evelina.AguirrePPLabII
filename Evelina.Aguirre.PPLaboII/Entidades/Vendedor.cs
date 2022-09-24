@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Vendedor
+    public class Vendedor : Persona
     {
+        public Vendedor(string nombre, EPersona cargo) : base(nombre, cargo)
+        {
+        }
     }
 }

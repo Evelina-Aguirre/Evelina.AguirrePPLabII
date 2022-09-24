@@ -30,11 +30,7 @@ namespace TiendaElectronica
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogueo));
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.lblErrorMsj = new System.Windows.Forms.Label();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lnklblOlvidasteClave = new System.Windows.Forms.LinkLabel();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -45,38 +41,16 @@ namespace TiendaElectronica
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.llbCerrar = new System.Windows.Forms.LinkLabel();
+            this.llbMinimizar = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel1.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel1.Image")));
-            this.linkLabel1.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Location = new System.Drawing.Point(385, 2);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(42, 28);
-            this.linkLabel1.TabIndex = 103;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "      ";
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Transparent;
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel4.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel4.Image")));
-            this.linkLabel4.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel4.Location = new System.Drawing.Point(359, 2);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(42, 28);
-            this.linkLabel4.TabIndex = 102;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "      ";
-            this.linkLabel4.VisitedLinkColor = System.Drawing.Color.Transparent;
             // 
             // lblErrorMsj
             // 
@@ -88,43 +62,16 @@ namespace TiendaElectronica
             this.lblErrorMsj.Size = new System.Drawing.Size(0, 15);
             this.lblErrorMsj.TabIndex = 101;
             // 
-            // linkLabel3
-            // 
-            this.linkLabel3.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel3.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Location = new System.Drawing.Point(364, 11);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(26, 21);
-            this.linkLabel3.TabIndex = 96;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "    ";
-            this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Transparent;
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel2.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(388, 4);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(31, 30);
-            this.linkLabel2.TabIndex = 98;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "   ";
-            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Transparent;
-            // 
             // lnklblOlvidasteClave
             // 
             this.lnklblOlvidasteClave.ActiveLinkColor = System.Drawing.Color.White;
             this.lnklblOlvidasteClave.AutoSize = true;
+            this.lnklblOlvidasteClave.BackColor = System.Drawing.Color.Transparent;
             this.lnklblOlvidasteClave.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(101)))), ((int)(((byte)(74)))));
-            this.lnklblOlvidasteClave.Location = new System.Drawing.Point(144, 317);
+            this.lnklblOlvidasteClave.Location = new System.Drawing.Point(53, 320);
             this.lnklblOlvidasteClave.Name = "lnklblOlvidasteClave";
             this.lnklblOlvidasteClave.Size = new System.Drawing.Size(141, 15);
-            this.lnklblOlvidasteClave.TabIndex = 95;
+            this.lnklblOlvidasteClave.TabIndex = 4;
             this.lnklblOlvidasteClave.TabStop = true;
             this.lnklblOlvidasteClave.Text = "¿Olvidaste tu contraseña?";
             // 
@@ -137,7 +84,7 @@ namespace TiendaElectronica
             this.txtUsuario.Location = new System.Drawing.Point(71, 105);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(267, 17);
-            this.txtUsuario.TabIndex = 90;
+            this.txtUsuario.TabIndex = 1;
             // 
             // pictureBox2
             // 
@@ -157,7 +104,7 @@ namespace TiendaElectronica
             this.txtClave.Location = new System.Drawing.Point(71, 204);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(267, 17);
-            this.txtClave.TabIndex = 91;
+            this.txtClave.TabIndex = 2;
             this.txtClave.UseSystemPasswordChar = true;
             // 
             // btnInicioSesion
@@ -170,7 +117,7 @@ namespace TiendaElectronica
             this.btnInicioSesion.Location = new System.Drawing.Point(55, 262);
             this.btnInicioSesion.Name = "btnInicioSesion";
             this.btnInicioSesion.Size = new System.Drawing.Size(314, 40);
-            this.btnInicioSesion.TabIndex = 93;
+            this.btnInicioSesion.TabIndex = 3;
             this.btnInicioSesion.UseVisualStyleBackColor = false;
             this.btnInicioSesion.Click += new System.EventHandler(this.btnInicioSesion_Click);
             // 
@@ -222,21 +169,92 @@ namespace TiendaElectronica
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.Location = new System.Drawing.Point(-47, -47);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(186, 177);
+            this.pictureBox4.Size = new System.Drawing.Size(131, 133);
             this.pictureBox4.TabIndex = 104;
             this.pictureBox4.TabStop = false;
             // 
+            // llbCerrar
+            // 
+            this.llbCerrar.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.llbCerrar.AutoSize = true;
+            this.llbCerrar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.llbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("llbCerrar.Image")));
+            this.llbCerrar.LinkColor = System.Drawing.Color.Transparent;
+            this.llbCerrar.Location = new System.Drawing.Point(385, -2);
+            this.llbCerrar.Name = "llbCerrar";
+            this.llbCerrar.Size = new System.Drawing.Size(42, 28);
+            this.llbCerrar.TabIndex = 6;
+            this.llbCerrar.TabStop = true;
+            this.llbCerrar.Text = "      ";
+            this.llbCerrar.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbCerrar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbCerrar_LinkClicked);
+            // 
+            // llbMinimizar
+            // 
+            this.llbMinimizar.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.llbMinimizar.AutoSize = true;
+            this.llbMinimizar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.llbMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("llbMinimizar.Image")));
+            this.llbMinimizar.LinkColor = System.Drawing.Color.Transparent;
+            this.llbMinimizar.Location = new System.Drawing.Point(359, -2);
+            this.llbMinimizar.Name = "llbMinimizar";
+            this.llbMinimizar.Size = new System.Drawing.Size(42, 28);
+            this.llbMinimizar.TabIndex = 5;
+            this.llbMinimizar.TabStop = true;
+            this.llbMinimizar.Text = "      ";
+            this.llbMinimizar.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbMinimizar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbMinimizar_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.ActiveLinkColor = System.Drawing.Color.White;
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabel3.LinkColor = System.Drawing.Color.Transparent;
+            this.linkLabel3.Location = new System.Drawing.Point(364, 7);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(26, 21);
+            this.linkLabel3.TabIndex = 105;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "    ";
+            this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Transparent;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.White;
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabel2.LinkColor = System.Drawing.Color.Transparent;
+            this.linkLabel2.Location = new System.Drawing.Point(388, 0);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(31, 30);
+            this.linkLabel2.TabIndex = 106;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "   ";
+            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Transparent;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(179, -39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(563, 447);
+            this.pictureBox1.TabIndex = 107;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmLogueo
             // 
+            this.AcceptButton = this.btnInicioSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(424, 356);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.linkLabel4);
-            this.Controls.Add(this.lblErrorMsj);
+            this.Controls.Add(this.llbCerrar);
+            this.Controls.Add(this.llbMinimizar);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.lblErrorMsj);
             this.Controls.Add(this.lnklblOlvidasteClave);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.pictureBox2);
@@ -247,13 +265,16 @@ namespace TiendaElectronica
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogueo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logueo";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,8 +282,8 @@ namespace TiendaElectronica
 
         #endregion
 
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.LinkLabel llbCerrar;
+        private System.Windows.Forms.LinkLabel llbMinimizar;
         private System.Windows.Forms.Label lblErrorMsj;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel2;
@@ -276,5 +297,6 @@ namespace TiendaElectronica
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

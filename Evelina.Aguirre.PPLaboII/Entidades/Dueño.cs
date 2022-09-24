@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Dueño
+    public class Dueño : Persona
     {
+        public Dueño(string nombre, EPersona cargo) : base(nombre, cargo)
+        {
 
+        }
     }
 }
