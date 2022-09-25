@@ -21,8 +21,7 @@ namespace Entidades
             this.precio = precio;
             this.descripcion = descripcion;
         }
-        //Se podrá hacer un enumerado de enumerados
-        //o una lista o diccionario o algo dónde poner enumerados
+     
 
 
     }

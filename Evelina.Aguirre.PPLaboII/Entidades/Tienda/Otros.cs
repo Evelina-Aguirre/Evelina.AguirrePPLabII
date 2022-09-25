@@ -8,9 +8,17 @@ namespace Entidades
 {
     public class Otros : Producto
     {
+        private ECategoriasOtros categoria;
         public Otros(string nombre, short id, double precio, string descripcion) 
             : base(nombre, id, precio, descripcion)
         {
         }
+
+        public Otros(string nombre, short id, double precio, string descripcion,ECategoriasOtros categoria)
+           : this(nombre, id, precio, descripcion)
+        {
+        }
+
+
     }
 }

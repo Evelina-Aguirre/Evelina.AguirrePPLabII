@@ -1,6 +1,6 @@
 ﻿public enum ECategoriaElectronico
 {
-    Chips,
+    Leds,
     Bobinas,
     Capacitores,
     Conectores,
