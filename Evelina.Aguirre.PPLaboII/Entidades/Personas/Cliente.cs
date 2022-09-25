@@ -29,7 +29,24 @@ namespace Entidades
         }
 
         public List<Producto> Carrito { get => carrito; set => carrito = value; }
-        public double TotalCompra { get => totalCompra; set => totalCompra = value; }
+        
+        public double TotalCompra
+        {
+            get
+            {
+
+                if(this.MetodoDePago is EMetodosDePago.Credito)
+                {
+                    this.totalCompra -= (this.totalCompra * 10) / 100; 
+                }
+                return this.totalCompra;
+            }
+            set
+            {
+                this.totalCompra = value;
+            }
+        }
+
         public EMetodosDePago MetodoDePago { get => metodoDePago; set => metodoDePago = value; }
         public double AbonaCon { get => abonaCon; set => abonaCon = value; }
         public double Vuelto { get => vuelto; set => vuelto = value; }

@@ -11,18 +11,21 @@ namespace Entidades
 
         private string nombre;
         private short id;
+        private int cantidad;
         private double precio;
         private string descripcion;
 
-        public Producto(string nombre, short id, double precio, string descripcion)
+        public Producto(string nombre, short id, int cantidad, double precio, string descripcion)
         {
             this.nombre = nombre;
             this.id = id;
             this.precio = precio;
             this.descripcion = descripcion;
         }
-     
 
-
+        public string Nombre { get => nombre;}
+        public short Id { get => id;}
+        public double Precio { get => precio;}
+        public string Descripcion { get => descripcion;}
     }
 }
