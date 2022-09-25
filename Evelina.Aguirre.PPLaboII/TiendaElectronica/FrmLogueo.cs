@@ -13,8 +13,7 @@ namespace TiendaElectronica
 {
     public partial class FrmLogueo : Form
     {
-        Vendedor vendedor = new Vendedor("Vendedor", EPersona.Dueño);
-        Dueño duenio = new Dueño("Dueño", EPersona.Dueño);
+      
         public FrmLogueo()
         {
             InitializeComponent();

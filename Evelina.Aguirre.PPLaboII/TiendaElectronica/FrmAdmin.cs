@@ -16,5 +16,15 @@ namespace TiendaElectronica
         {
             InitializeComponent();
         }
+
+        private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

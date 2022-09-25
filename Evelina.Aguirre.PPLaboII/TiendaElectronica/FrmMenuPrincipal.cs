@@ -26,7 +26,7 @@ namespace TiendaElectronica
         {
             FrmVenta frmVenta = new FrmVenta();
             frmVenta.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -41,7 +41,9 @@ namespace TiendaElectronica
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            FrmAdmin frmAdmin = new FrmAdmin();
+            frmAdmin.Show();
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
