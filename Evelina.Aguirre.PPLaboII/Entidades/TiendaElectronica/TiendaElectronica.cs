@@ -19,6 +19,9 @@ namespace Entidades
             CargarProductosEnStock();
         }
 
+        public static Dictionary<int, Producto> InventarioTienda { get => inventarioTienda; set => inventarioTienda = value; }
+        public static double CuentaTienda { get => cuentaTienda; set => cuentaTienda = value; }
+
         public static void CargarProductosEnStock()
         {
             foreach (Producto item in CatalogoProveedor.Catalogo)
@@ -26,6 +29,8 @@ namespace Entidades
                 TiendaElectronica.inventarioTienda.Add(item.Id,item);
             }
         }
+
+
 
 
     }

@@ -27,5 +27,27 @@ namespace Entidades
         public short Id { get => id;}
         public double Precio { get => precio;}
         public string Descripcion { get => descripcion;}
+
+        /// <summary>
+        /// Compara dos productos por Id.
+        /// </summary>
+        /// <param name="p1">Producto 1</param>
+        /// <param name="p2">Producto 2</param>
+        /// <returns>retorna true si los Id de los productos son iguales</returns>
+        public static bool operator ==(Producto p1, Producto p2)
+        {
+            return p1.Id == p2.Id;
+        }
+
+        /// <summary>
+        /// Compara dos productos por Id.
+        /// </summary>
+        /// <param name="p1">Producto 1</param>
+        /// <param name="p2">Producto 2</param>
+        /// <returns>Devuelve true si los productos tienen diferente Id</returns>
+        public static bool operator !=(Producto p1, Producto p2)
+        {
+            return !(p1 == p2);
+        }
     }
 }
