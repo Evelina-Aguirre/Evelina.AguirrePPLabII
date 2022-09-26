@@ -19,5 +19,17 @@ namespace Entidades
         {
             this.categoria = categoria;
         }
+
+        public ECategoriaElectronico Categoria { get => categoria; set => categoria = value; }
+
+        public string MostraProducto(Producto p)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(p.MostrarProducto());
+            sb.AppendLine($"Categoría: {this.categoria}");
+
+            return sb.ToString();
+        }
+
     }
 }

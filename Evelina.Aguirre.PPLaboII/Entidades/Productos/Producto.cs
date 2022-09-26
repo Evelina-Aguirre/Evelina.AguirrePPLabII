@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Producto
+    public abstract class Producto
     {
 
         private string nombre;
@@ -19,12 +19,14 @@ namespace Entidades
         {
             this.nombre = nombre;
             this.id = id;
+            this.cantidad = cantidad;
             this.precio = precio;
             this.descripcion = descripcion;
         }
 
-        public string Nombre { get => nombre;}
         public short Id { get => id;}
+        public string Nombre { get => nombre;}
+        public int Cantidad { get => cantidad; }
         public double Precio { get => precio;}
         public string Descripcion { get => descripcion;}
 
@@ -48,6 +50,22 @@ namespace Entidades
         public static bool operator !=(Producto p1, Producto p2)
         {
             return !(p1 == p2);
+        }
+
+       /// <summary>
+       /// Muestra propiedades del producto.
+       /// </summary>
+       /// <returns>string con la descripción del producto</returns>
+        public string MostrarProducto()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Id:{this.Id}");
+            sb.AppendLine($"Nombre : {this.Nombre}");
+            sb.AppendLine($"Cantidad: {this.cantidad}");
+            sb.AppendLine($"Precio: {this.Precio}");
+
+            return sb.ToString();
         }
     }
 }
