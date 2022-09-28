@@ -141,6 +141,9 @@ namespace UITiendaElectronica
             this.pictureBox1.Size = new System.Drawing.Size(459, 361);
             this.pictureBox1.TabIndex = 113;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // Menú
             // 
@@ -162,6 +165,10 @@ namespace UITiendaElectronica
             this.Name = "Menú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Menú_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

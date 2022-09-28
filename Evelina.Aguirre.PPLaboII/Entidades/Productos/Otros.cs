@@ -20,6 +20,8 @@ namespace Entidades
 
         }
 
+        //para poder implementar esto necesito una variable especírfica de "otro"
+
         //public string MostraProducto(Producto p)
         //{
         //    StringBuilder sb = new StringBuilder();

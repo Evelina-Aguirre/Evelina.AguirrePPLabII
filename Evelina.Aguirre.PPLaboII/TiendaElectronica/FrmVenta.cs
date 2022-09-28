@@ -13,6 +13,7 @@ namespace UITiendaElectronica
 {
     public partial class Venta : Form
     {
+        int m, mx, my;
         public Venta()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace UITiendaElectronica
 
         private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnAgregarAlCarrito_Click(object sender, EventArgs e)
@@ -57,6 +58,26 @@ namespace UITiendaElectronica
         private void btnCircuitosIntegrados_Click(object sender, EventArgs e)
         {
             dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.CircuitosIntegrados);
+        }
+
+        private void Venta_MouseUp(object sender, MouseEventArgs e)
+        {
+            m = 0;
+        }
+
+        private void Venta_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
+        }
+
+        private void Venta_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
         }
 
         private void btnPlaquetas_Click(object sender, EventArgs e)

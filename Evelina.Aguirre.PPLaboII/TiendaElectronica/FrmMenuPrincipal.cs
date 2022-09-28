@@ -12,12 +12,13 @@ namespace UITiendaElectronica
 {
     public partial class Menú : Form
     {
+        int m, mx, my;
         public Menú()
         {
             InitializeComponent();
         }
 
-        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
+        private void Menú_Load(object sender, EventArgs e)
         {
 
         }
@@ -44,6 +45,47 @@ namespace UITiendaElectronica
             FrmAdmin frmAdmin = new FrmAdmin();
             frmAdmin.Show();
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Menú_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            m = 0;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
+
+        }
+
+        private void Menú_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
+        }
+
+        private void Menú_MouseUp(object sender, MouseEventArgs e)
+        {
+            m = 0;
         }
     }
 }

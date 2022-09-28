@@ -11,9 +11,10 @@ using System.Windows.Forms;
 
 namespace UITiendaElectronica
 {
+   
     public partial class Inicio : Form
     {
-      
+        int m, mx, my;
         public Inicio()
         {
             InitializeComponent();
@@ -48,6 +49,52 @@ namespace UITiendaElectronica
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Inicio_MouseUp(object sender, MouseEventArgs e)
+        {
+            m = 0;
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            m = 0;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
+        }
+
+        private void Inicio_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
+
+        }
+
+        private void Inicio_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
         }
     }
 }

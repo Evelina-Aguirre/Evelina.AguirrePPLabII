@@ -127,6 +127,9 @@ namespace UITiendaElectronica
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAdmin";
             this.Text = "FrmAdmin";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmAdmin_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmAdmin_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmAdmin_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

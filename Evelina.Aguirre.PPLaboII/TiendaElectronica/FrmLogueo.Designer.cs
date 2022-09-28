@@ -237,11 +237,14 @@ namespace UITiendaElectronica
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(179, -39);
+            this.pictureBox1.Location = new System.Drawing.Point(168, -39);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(563, 447);
+            this.pictureBox1.Size = new System.Drawing.Size(259, 398);
             this.pictureBox1.TabIndex = 107;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // Inicio
             // 
@@ -271,6 +274,10 @@ namespace UITiendaElectronica
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logueo";
+            this.Load += new System.EventHandler(this.Inicio_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Inicio_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Inicio_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Inicio_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

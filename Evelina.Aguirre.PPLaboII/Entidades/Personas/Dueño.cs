@@ -12,5 +12,11 @@ namespace Entidades
         {
 
         }
+
+        //vende
+        //setea precios
+        //compra stock
+        //cambia categotrias
+
     }
 }

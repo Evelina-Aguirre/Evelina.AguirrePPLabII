@@ -71,11 +71,10 @@ namespace Entidades
         public static List<Producto> CargarDataPorCategoria(ECategoriaElectronico categoria)
         {
             List<Producto> auxListaProductos = new List<Producto>();
-            string aucString = categoria.ToString();
-
+           
             foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
             {
-                if (item.Value.Categoria.ToString() == aucString)
+                if (item.Value.Categoria.ToString() == categoria.ToString())
                 {
                     switch (categoria)
                     {

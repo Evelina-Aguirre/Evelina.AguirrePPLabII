@@ -349,6 +349,9 @@ namespace UITiendaElectronica
             this.Name = "Venta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVenta";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseUp);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).EndInit();
