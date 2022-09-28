@@ -10,25 +10,36 @@ namespace Entidades
     {
 
         private string nombre;
-        private short id;
         private int cantidad;
         private double precio;
+        private short id;
         private string descripcion;
+        private ECategoriaElectronico categoria;
 
-        public Producto(string nombre, short id, int cantidad, double precio, string descripcion)
+
+        public Producto(string nombre, int cantidad, double precio, short id, string descripcion, ECategoriaElectronico categoria)
         {
             this.nombre = nombre;
-            this.id = id;
             this.cantidad = cantidad;
             this.precio = precio;
+            this.id = id;
             this.descripcion = descripcion;
+            this.categoria = categoria;
         }
+
+        //public Producto(string nombre, int cantidad, double precio, short id, string descripcion, ECategoriaElectronico categoria)
+        //    :this(nombre, cantidad, precio, id,descripcion)
+        //{
+        //    this.categoria = categoria;
+        //}
 
         public short Id { get => id;}
         public string Nombre { get => nombre;}
         public int Cantidad { get => cantidad; }
         public double Precio { get => precio;}
         public string Descripcion { get => descripcion;}
+        public ECategoriaElectronico Categoria { get => categoria; /*set => categoria = value; */}
+
 
         /// <summary>
         /// Compara dos productos por Id.
@@ -52,10 +63,66 @@ namespace Entidades
             return !(p1 == p2);
         }
 
-       /// <summary>
-       /// Muestra propiedades del producto.
-       /// </summary>
-       /// <returns>string con la descripción del producto</returns>
+        /// <summary>
+        /// Busca en el inventario de la tienda la categoría que se especifica por parámetro.
+        /// </summary>
+        /// <param name="categoria">categoría/tag que se busca</param>
+        /// <returns>Diccionario cargado con la categoría que se busca</returns>
+        public static List<Producto> CargarDataPorCategoria(ECategoriaElectronico categoria)
+        {
+            List<Producto> auxListaProductos = new List<Producto>();
+            string aucString = categoria.ToString();
+
+            foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
+            {
+                if (item.Value.Categoria.ToString() == aucString)
+                {
+                    switch (categoria)
+                    {
+                        case ECategoriaElectronico.Leds:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.Bobinas:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.Capacitores:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.Conectores:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.CircuitosIntegrados:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.Plaquetas:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.Soldado:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.Limpieza:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.Herramientas:
+                            auxListaProductos.Add(item.Value);
+                            break;
+                        case ECategoriaElectronico.ControlTermico:
+                            auxListaProductos.Add(item.Value);
+                            break;
+
+                    }
+                }
+            }
+
+            return auxListaProductos;
+
+        }
+
+        
+        /// <summary>
+        /// Muestra propiedades del producto.
+        /// </summary>
+        /// <returns>string con la descripción del producto</returns>
         public string MostrarProducto()
         {
             StringBuilder sb = new StringBuilder();
@@ -64,8 +131,12 @@ namespace Entidades
             sb.AppendLine($"Nombre : {this.Nombre}");
             sb.AppendLine($"Cantidad: {this.cantidad}");
             sb.AppendLine($"Precio: {this.Precio}");
+            sb.AppendLine($"Precio: {this.Categoria}");
 
             return sb.ToString();
         }
+
+
+
     }
 }

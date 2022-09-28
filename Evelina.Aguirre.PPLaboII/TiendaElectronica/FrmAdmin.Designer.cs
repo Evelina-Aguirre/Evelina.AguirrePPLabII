@@ -1,5 +1,5 @@
 ﻿
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
     partial class FrmAdmin
     {
@@ -34,6 +34,8 @@ namespace TiendaElectronica
             this.llbMinimizar = new System.Windows.Forms.LinkLabel();
             this.llbCerrar = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -94,16 +96,33 @@ namespace TiendaElectronica
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Categorias";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(394, 12);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(230, 23);
+            this.dateTimePicker1.TabIndex = 116;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(909, 102);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker2.TabIndex = 117;
+            // 
             // FrmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.ClientSize = new System.Drawing.Size(1155, 605);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.llbMinimizar);
             this.Controls.Add(this.llbCerrar);
             this.Controls.Add(this.linkLabel1);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAdmin";
@@ -119,5 +138,7 @@ namespace TiendaElectronica
         private System.Windows.Forms.LinkLabel llbMinimizar;
         private System.Windows.Forms.LinkLabel llbCerrar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

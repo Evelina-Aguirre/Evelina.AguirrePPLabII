@@ -9,27 +9,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
-    public partial class FrmLogueo : Form
+    public partial class Inicio : Form
     {
       
-        public FrmLogueo()
+        public Inicio()
         {
             InitializeComponent();
         }
 
         private void btnInicioSesion_Click(object sender, EventArgs e)
         {
-            if(this.txtUsuario.Text == "vend" && this.txtClave.Text == "vend")
+            if(TiendaElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Vendedor)
             {
-                FrmVenta frmVenta = new FrmVenta();
+                Venta frmVenta = new Venta();
                 frmVenta.Show();
                 this.Hide();
             }
-            else if (this.txtUsuario.Text == "dueño" && this.txtClave.Text == "dueño")
+            else if (TiendaElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Dueño)
             {
-                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();
+                Menú frmMenuPrincipal = new Menú();
                 frmMenuPrincipal.Show();
                 this.Hide();
             }

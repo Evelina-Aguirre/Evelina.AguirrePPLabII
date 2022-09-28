@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Dueño : Persona
     {
-        public Dueño(string nombre, EPersona cargo) : base(nombre, cargo)
+        public Dueño(string usuario,string clave, EPersona cargo) : base(usuario,clave, cargo)
         {
 
         }

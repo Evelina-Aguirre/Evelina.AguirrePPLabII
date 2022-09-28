@@ -6,30 +6,27 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class ComponentesElectronicos : Producto
+    public class ComponentesElectronicos :Producto
     {
-        private ECategoriaElectronico categoria;
-        public ComponentesElectronicos(string nombre, short id, int cantidad, double precio, string descripcion) 
-            : base(nombre, id, cantidad, precio, descripcion)
+        //PARA HEREDAD LE FATA ALGUNA PARTICULARIDAD A LA CLASE
+    
+
+        public ComponentesElectronicos(string nombre, int cantidad, double precio, short id, string descripcion,ECategoriaElectronico categoria)
+            : base(nombre, cantidad, precio, id, descripcion,categoria)
         {
+
         }
 
-        public ComponentesElectronicos(string nombre, short id, double precio, int cantidad, string descripcion, ECategoriaElectronico categoria)
-            : this(nombre, id, cantidad, precio, descripcion)
-        {
-            this.categoria = categoria;
-        }
 
-        public ECategoriaElectronico Categoria { get => categoria; set => categoria = value; }
 
-        public string MostraProducto(Producto p)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(p.MostrarProducto());
-            sb.AppendLine($"Categoría: {this.categoria}");
+        //public string MostraProducto(Producto p)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.Append(p.MostrarProducto());
+        //    sb.AppendLine($"Categoría: {this.categoria.ToString()}");
 
-            return sb.ToString();
-        }
+        //    return sb.ToString();
+        //}
 
     }
 }

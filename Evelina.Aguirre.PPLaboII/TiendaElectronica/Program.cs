@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
     static class Program
     {
@@ -17,7 +17,7 @@ namespace TiendaElectronica
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogueo());
+            Application.Run(new Inicio());
         }
     }
 }

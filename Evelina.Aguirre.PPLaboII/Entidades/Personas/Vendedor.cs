@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Vendedor : Persona
     {
-        public Vendedor(string nombre, EPersona cargo) : base(nombre, cargo)
+        public Vendedor(string usuario,string clave, EPersona cargo) : base(usuario, clave, cargo)
         {
         }
     }

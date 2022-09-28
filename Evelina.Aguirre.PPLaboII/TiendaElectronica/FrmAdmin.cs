@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
     public partial class FrmAdmin : Form
     {

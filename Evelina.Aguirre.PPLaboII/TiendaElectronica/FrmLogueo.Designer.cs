@@ -1,7 +1,7 @@
 ﻿
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
-    partial class FrmLogueo
+    partial class Inicio
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace TiendaElectronica
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogueo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.lblErrorMsj = new System.Windows.Forms.Label();
             this.lnklblOlvidasteClave = new System.Windows.Forms.LinkLabel();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -243,7 +243,7 @@ namespace TiendaElectronica
             this.pictureBox1.TabIndex = 107;
             this.pictureBox1.TabStop = false;
             // 
-            // FrmLogueo
+            // Inicio
             // 
             this.AcceptButton = this.btnInicioSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -268,7 +268,7 @@ namespace TiendaElectronica
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmLogueo";
+            this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logueo";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

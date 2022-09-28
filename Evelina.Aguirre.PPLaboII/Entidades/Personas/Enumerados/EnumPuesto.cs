@@ -1,5 +1,6 @@
 ﻿public enum EPersona
 {
     Dueño,
-    Vendedor
+    Vendedor,
+    Desconocido
 }

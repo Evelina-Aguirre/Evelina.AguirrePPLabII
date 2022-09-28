@@ -1,7 +1,7 @@
 ﻿
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
-    partial class FrmMenuPrincipal
+    partial class Menú
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace TiendaElectronica
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menú));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnVender = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@ namespace TiendaElectronica
             // 
             // btnVender
             // 
-            this.btnVender.Location = new System.Drawing.Point(78, 62);
+            this.btnVender.Location = new System.Drawing.Point(78, 109);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(213, 23);
             this.btnVender.TabIndex = 106;
@@ -64,7 +64,7 @@ namespace TiendaElectronica
             // 
             // btnAdmin
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(78, 111);
+            this.btnAdmin.Location = new System.Drawing.Point(78, 65);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(213, 23);
             this.btnAdmin.TabIndex = 107;
@@ -136,13 +136,13 @@ namespace TiendaElectronica
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(25, -139);
+            this.pictureBox1.Location = new System.Drawing.Point(87, -131);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(459, 361);
             this.pictureBox1.TabIndex = 113;
             this.pictureBox1.TabStop = false;
             // 
-            // FrmMenuPrincipal
+            // Menú
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,7 +159,7 @@ namespace TiendaElectronica
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmMenuPrincipal";
+            this.Name = "Menú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

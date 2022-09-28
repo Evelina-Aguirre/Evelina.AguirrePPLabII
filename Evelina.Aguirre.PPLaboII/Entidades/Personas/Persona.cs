@@ -4,24 +4,33 @@ namespace Entidades
 {
     public abstract class Persona
     {
-        private string nombre;
+        private string usuario;
+        private string clave;
         private EPersona cargo;
 
-        public Persona(string nombre, EPersona cargo)
+        public Persona(string usuario,string clave, EPersona cargo)
         {
-            this.nombre = nombre;
+            this.usuario = usuario;
+            this.clave = clave;
             this.cargo=cargo;
         }
         
 
-        public string Nombre
+        public string Usuario
         {
             get
             {
-                return this.nombre;
+                return this.usuario;
             }
         }
 
+        public string Clave
+        {
+            get
+            {
+                return this.clave;
+            }
+        }
         public EPersona Cargo
         {
             get

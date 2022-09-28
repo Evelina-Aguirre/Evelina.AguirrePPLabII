@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
-    public partial class FrmMenuPrincipal : Form
+    public partial class Menú : Form
     {
-        public FrmMenuPrincipal()
+        public Menú()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace TiendaElectronica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmVenta frmVenta = new FrmVenta();
+            Venta frmVenta = new Venta();
             frmVenta.Show();
             this.WindowState = FormWindowState.Minimized;
         }

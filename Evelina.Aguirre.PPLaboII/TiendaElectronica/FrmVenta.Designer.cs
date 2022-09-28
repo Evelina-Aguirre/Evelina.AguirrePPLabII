@@ -1,7 +1,7 @@
 ﻿
-namespace TiendaElectronica
+namespace UITiendaElectronica
 {
-    partial class FrmVenta
+    partial class Venta
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,11 @@ namespace TiendaElectronica
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVenta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Venta));
             this.llbCerrar = new System.Windows.Forms.LinkLabel();
             this.llbMinimizar = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -42,13 +41,21 @@ namespace TiendaElectronica
             this.lblTotalCarrito = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscat = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvProductosTienda = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDescripcionProducto = new System.Windows.Forms.Label();
             this.btnAgregarAlCarrito = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnLeds = new System.Windows.Forms.Button();
+            this.btnBobinas = new System.Windows.Forms.Button();
+            this.btnCapacitores = new System.Windows.Forms.Button();
+            this.btnConectores = new System.Windows.Forms.Button();
+            this.btnCircuitosIntegrados = new System.Windows.Forms.Button();
+            this.btnPlaquetas = new System.Windows.Forms.Button();
+            this.btnOtros = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).BeginInit();
             this.SuspendLayout();
             // 
             // llbCerrar
@@ -108,17 +115,6 @@ namespace TiendaElectronica
             this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 103;
             this.label2.Text = "Carrito";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(49, 44);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 449);
-            this.groupBox1.TabIndex = 104;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Categorias";
             // 
             // label4
             // 
@@ -191,22 +187,22 @@ namespace TiendaElectronica
             // 
             // txtBuscat
             // 
-            this.txtBuscat.Location = new System.Drawing.Point(394, 45);
+            this.txtBuscat.Location = new System.Drawing.Point(280, 45);
             this.txtBuscat.Name = "txtBuscat";
-            this.txtBuscat.Size = new System.Drawing.Size(555, 23);
+            this.txtBuscat.Size = new System.Drawing.Size(669, 23);
             this.txtBuscat.TabIndex = 109;
             this.txtBuscat.Text = "Buscar";
             // 
-            // dataGridView1
+            // dgvProductosTienda
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
-            this.dataGridView1.Location = new System.Drawing.Point(394, 86);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(591, 290);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvProductosTienda.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
+            this.dgvProductosTienda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductosTienda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.dgvProductosTienda.Location = new System.Drawing.Point(280, 86);
+            this.dgvProductosTienda.Name = "dgvProductosTienda";
+            this.dgvProductosTienda.RowTemplate.Height = 25;
+            this.dgvProductosTienda.Size = new System.Drawing.Size(705, 290);
+            this.dgvProductosTienda.TabIndex = 0;
             // 
             // label3
             // 
@@ -223,11 +219,11 @@ namespace TiendaElectronica
             // 
             this.lblDescripcionProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDescripcionProducto.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblDescripcionProducto.Location = new System.Drawing.Point(494, 422);
+            this.lblDescripcionProducto.Location = new System.Drawing.Point(511, 422);
             this.lblDescripcionProducto.Name = "lblDescripcionProducto";
             this.lblDescripcionProducto.Size = new System.Drawing.Size(472, 53);
             this.lblDescripcionProducto.TabIndex = 109;
-            this.lblDescripcionProducto.Text = "Descripción:";
+            this.lblDescripcionProducto.Text = "...";
             // 
             // btnAgregarAlCarrito
             // 
@@ -239,35 +235,123 @@ namespace TiendaElectronica
             this.btnAgregarAlCarrito.UseVisualStyleBackColor = true;
             this.btnAgregarAlCarrito.Click += new System.EventHandler(this.btnAgregarAlCarrito_Click);
             // 
-            // FrmVenta
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label5.Location = new System.Drawing.Point(27, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 16);
+            this.label5.TabIndex = 112;
+            this.label5.Text = "Categorías";
+            // 
+            // btnLeds
+            // 
+            this.btnLeds.Location = new System.Drawing.Point(35, 66);
+            this.btnLeds.Name = "btnLeds";
+            this.btnLeds.Size = new System.Drawing.Size(180, 24);
+            this.btnLeds.TabIndex = 113;
+            this.btnLeds.Text = "Leds";
+            this.btnLeds.UseVisualStyleBackColor = true;
+            this.btnLeds.Click += new System.EventHandler(this.btnLeds_Click);
+            // 
+            // btnBobinas
+            // 
+            this.btnBobinas.Location = new System.Drawing.Point(35, 106);
+            this.btnBobinas.Name = "btnBobinas";
+            this.btnBobinas.Size = new System.Drawing.Size(180, 24);
+            this.btnBobinas.TabIndex = 114;
+            this.btnBobinas.Text = "Bobinas";
+            this.btnBobinas.UseVisualStyleBackColor = true;
+            this.btnBobinas.Click += new System.EventHandler(this.btnBobinas_Click);
+            // 
+            // btnCapacitores
+            // 
+            this.btnCapacitores.Location = new System.Drawing.Point(35, 149);
+            this.btnCapacitores.Name = "btnCapacitores";
+            this.btnCapacitores.Size = new System.Drawing.Size(180, 24);
+            this.btnCapacitores.TabIndex = 115;
+            this.btnCapacitores.Text = "Capacitores";
+            this.btnCapacitores.UseVisualStyleBackColor = true;
+            this.btnCapacitores.Click += new System.EventHandler(this.btnCapacitores_Click);
+            // 
+            // btnConectores
+            // 
+            this.btnConectores.Location = new System.Drawing.Point(35, 194);
+            this.btnConectores.Name = "btnConectores";
+            this.btnConectores.Size = new System.Drawing.Size(180, 24);
+            this.btnConectores.TabIndex = 116;
+            this.btnConectores.Text = "Conectores";
+            this.btnConectores.UseVisualStyleBackColor = true;
+            this.btnConectores.Click += new System.EventHandler(this.btnConectores_Click);
+            // 
+            // btnCircuitosIntegrados
+            // 
+            this.btnCircuitosIntegrados.Location = new System.Drawing.Point(35, 236);
+            this.btnCircuitosIntegrados.Name = "btnCircuitosIntegrados";
+            this.btnCircuitosIntegrados.Size = new System.Drawing.Size(180, 24);
+            this.btnCircuitosIntegrados.TabIndex = 117;
+            this.btnCircuitosIntegrados.Text = "Circuitos Integrados";
+            this.btnCircuitosIntegrados.UseVisualStyleBackColor = true;
+            this.btnCircuitosIntegrados.Click += new System.EventHandler(this.btnCircuitosIntegrados_Click);
+            // 
+            // btnPlaquetas
+            // 
+            this.btnPlaquetas.Location = new System.Drawing.Point(35, 280);
+            this.btnPlaquetas.Name = "btnPlaquetas";
+            this.btnPlaquetas.Size = new System.Drawing.Size(180, 24);
+            this.btnPlaquetas.TabIndex = 118;
+            this.btnPlaquetas.Text = "Plaquetas";
+            this.btnPlaquetas.UseVisualStyleBackColor = true;
+            this.btnPlaquetas.Click += new System.EventHandler(this.btnPlaquetas_Click);
+            // 
+            // btnOtros
+            // 
+            this.btnOtros.Location = new System.Drawing.Point(35, 326);
+            this.btnOtros.Name = "btnOtros";
+            this.btnOtros.Size = new System.Drawing.Size(180, 24);
+            this.btnOtros.TabIndex = 119;
+            this.btnOtros.Text = "Otros";
+            this.btnOtros.UseVisualStyleBackColor = true;
+            this.btnOtros.Click += new System.EventHandler(this.btnOtros_Click);
+            // 
+            // Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(1428, 756);
+            this.Controls.Add(this.btnOtros);
+            this.Controls.Add(this.btnPlaquetas);
+            this.Controls.Add(this.btnCircuitosIntegrados);
+            this.Controls.Add(this.btnConectores);
+            this.Controls.Add(this.btnCapacitores);
+            this.Controls.Add(this.btnBobinas);
+            this.Controls.Add(this.btnLeds);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnAgregarAlCarrito);
             this.Controls.Add(this.lblDescripcionProducto);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvProductosTienda);
             this.Controls.Add(this.lblTotalCarrito);
             this.Controls.Add(this.txtBuscat);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.llbCerrar);
             this.Controls.Add(this.llbMinimizar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmVenta";
+            this.Name = "Venta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVenta";
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,7 +363,6 @@ namespace TiendaElectronica
         private System.Windows.Forms.LinkLabel llbMinimizar;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
@@ -287,9 +370,17 @@ namespace TiendaElectronica
         public System.Windows.Forms.Button btnBuscar;
         public System.Windows.Forms.TextBox txtBuscat;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProductosTienda;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblDescripcionProducto;
         private System.Windows.Forms.Button btnAgregarAlCarrito;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnLeds;
+        private System.Windows.Forms.Button btnBobinas;
+        private System.Windows.Forms.Button btnCapacitores;
+        private System.Windows.Forms.Button btnConectores;
+        private System.Windows.Forms.Button btnCircuitosIntegrados;
+        private System.Windows.Forms.Button btnPlaquetas;
+        private System.Windows.Forms.Button btnOtros;
     }
 }

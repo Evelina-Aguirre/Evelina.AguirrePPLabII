@@ -5,5 +5,9 @@
     Capacitores,
     Conectores,
     CircuitosIntegrados,
-    Plaquetas
+    Plaquetas,
+    Soldado,
+    Limpieza,
+    Herramientas,
+    ControlTermico
 }

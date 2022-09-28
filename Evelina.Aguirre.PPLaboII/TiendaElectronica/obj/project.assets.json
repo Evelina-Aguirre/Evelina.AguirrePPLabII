@@ -32,9 +32,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\PP\\Evelina.AguirrePPLabII\\Evelina.Aguirre.PPLaboII\\TiendaElectronica\\TiendaElectronica.csproj",
-      "projectName": "TiendaElectronica",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\PP\\Evelina.AguirrePPLabII\\Evelina.Aguirre.PPLaboII\\TiendaElectronica\\TiendaElectronica.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\PP\\Evelina.AguirrePPLabII\\Evelina.Aguirre.PPLaboII\\TiendaElectronica\\UITiendaElectronica.csproj",
+      "projectName": "UITiendaElectronica",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\PP\\Evelina.AguirrePPLabII\\Evelina.Aguirre.PPLaboII\\TiendaElectronica\\UITiendaElectronica.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Usuario\\Desktop\\PP\\Evelina.AguirrePPLabII\\Evelina.Aguirre.PPLaboII\\TiendaElectronica\\obj\\",
       "projectStyle": "PackageReference",

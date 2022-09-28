@@ -11,17 +11,29 @@ namespace Entidades
         private double abonaCon;
         private double vuelto;
 
-        public Cliente(List<Producto> carrito, double totalCompra, EMetodosDePago metodoDePago)
+
+
+        private Cliente()
+        {
+            totalCompra = 0;
+            metodoDePago = EMetodosDePago.efectivo;
+            abonaCon = 0;
+        }
+
+        public Cliente(List<Producto> carrito):this()
         {
             this.carrito = carrito;
-            this.totalCompra = totalCompra;
+        }
+        public Cliente(List<Producto> carrito, EMetodosDePago metodoDePago, double abonaCon) : this(carrito)
+        {
             this.metodoDePago = metodoDePago;
+            this.abonaCon = abonaCon;
         }
 
         public Cliente(List<Producto> carrito, double totalCompra, EMetodosDePago metodoDePago, double abonaCon, double vuelto)
-            : this(carrito, totalCompra, metodoDePago)
+            : this(carrito, metodoDePago, abonaCon)
         {
-            this.abonaCon = abonaCon;
+            this.totalCompra = totalCompra;
             this.vuelto = vuelto;
         }
 
@@ -36,11 +48,11 @@ namespace Entidades
                 {
                     totalCompra -= (totalCompra * 10) / 100;
                 }
-                return totalCompra;
+                return this.totalCompra;
             }
             set
             {
-                totalCompra = value;
+                this.totalCompra = value;
             }
         }
 
@@ -67,11 +79,11 @@ namespace Entidades
         {
             get
             {
-                return this.vuelto;
+                return this.vuelto = TiendaElectronica.CalculoVuelto(this);
             }
             set
             {
-                this.vuelto = CalculaVuelto(this);
+                this.vuelto = value;
             }
         }
 
@@ -122,16 +134,16 @@ namespace Entidades
        /// </summary>
        /// <param name="c"></param>
        /// <returns></returns>
-        public string MostrarCompra(Cliente c)
+        public string MostrarCompra()
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Producto item in c.carrito)
+            foreach (Producto item in this.carrito)
             {
                 sb.AppendLine(item.MostrarProducto());
             }
-            sb.AppendLine($"Total: {c.TotalCompra}");
-            sb.AppendLine($"Metodo de Pago: {c.metodoDePago.ToString()}");
+            sb.AppendLine($"Total: {this.TotalCompra}");
+            sb.AppendLine($"Metodo de Pago: {this.MetodoDePago.ToString()}");
             sb.AppendLine($"Abona con: {this.AbonaCon}");
             sb.AppendLine($"Vuelto{this.Vuelto}");
 
@@ -143,18 +155,7 @@ namespace Entidades
         /// </summary>
         /// <param name="c">cliente</param>
         /// <returns>Valor a entregar en concepto de vuelto.</returns>
-        public static double CalculaVuelto(Cliente c)
-        {
-            double vuelto = 0;
-            if(c.MetodoDePago is EMetodosDePago.efectivo)
-            {
-                if(c.AbonaCon >0 && c.TotalCompra >0 && c.AbonaCon > c.TotalCompra)
-                {
-                    vuelto = c.TotalCompra - c.AbonaCon; 
-                }
-            }
-            return vuelto;
-        }
+        
 
     }
 }
