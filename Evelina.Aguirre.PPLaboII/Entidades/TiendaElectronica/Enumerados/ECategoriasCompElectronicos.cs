@@ -9,5 +9,6 @@
     Soldado,
     Limpieza,
     Herramientas,
-    ControlTermico
+    ControlTermico,
+    SinCategoria
 }

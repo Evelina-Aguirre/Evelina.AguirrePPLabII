@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public abstract class Producto
+    public class Producto
     {
 
         private string nombre;
@@ -16,7 +16,7 @@ namespace Entidades
         private string descripcion;
         private ECategoriaElectronico categoria;
 
-
+       
         public Producto(string nombre, int cantidad, double precio, short id, string descripcion, ECategoriaElectronico categoria)
         {
             this.nombre = nombre;
@@ -63,6 +63,35 @@ namespace Entidades
             return !(p1 == p2);
         }
 
+        /// <summary>
+        /// Método toString sobreescrito, devuelve nombre del producto.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.nombre;
+        }
+
+        /// <summary>
+        /// Busca una categoría (tag) a partir de un string con el nombre de esta.
+        /// </summary>
+        /// <param name="auxString">categoria en formato string que se va a buscar en el enumerado</param>
+        /// <returns>La categoría de encontrarla, caso contrario devolverá "Sincategoria" </returns>
+        public static ECategoriaElectronico ObtenerCategoriaAPartirDeString(string auxString)
+        {
+            ECategoriaElectronico categoria = ECategoriaElectronico.SinCategoria;
+
+            foreach (ECategoriaElectronico item in Enum.GetValues(typeof(ECategoriaElectronico)))
+            {
+                if(auxString.ToLower() == item.ToString().ToLower())
+                {
+                    categoria = item;
+                    break;
+                }
+
+            }
+            return categoria;
+        }
         /// <summary>
         /// Busca en el inventario de la tienda la categoría que se especifica por parámetro.
         /// </summary>

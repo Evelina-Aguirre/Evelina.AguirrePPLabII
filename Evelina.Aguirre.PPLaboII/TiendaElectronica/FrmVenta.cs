@@ -80,6 +80,24 @@ namespace UITiendaElectronica
             }
         }
 
+        
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+            dgvProductosTienda.DataSource = TiendaElectronica.BuscarProductoPorNombre(this.txtBuscat.Text.ToString().ToLower());
+        }
+
+        private void txtBuscat_Click(object sender, EventArgs e)
+        {
+            this.txtBuscat.Text = string.Empty;
+            dgvProductosTienda.DataSource = null;
+        }
+
+        private void txtBuscat_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnPlaquetas_Click(object sender, EventArgs e)
         {
             dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.Plaquetas);

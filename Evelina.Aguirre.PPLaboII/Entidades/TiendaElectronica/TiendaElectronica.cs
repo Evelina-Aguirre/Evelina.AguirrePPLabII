@@ -9,7 +9,7 @@ namespace Entidades
         private static List<Persona> usuariosApp;
         private static Dictionary<int, Producto> inventarioTienda;
         private static double cuentaTienda;
-       
+
 
         static TiendaElectronica()
         {
@@ -19,8 +19,8 @@ namespace Entidades
             CargarUsuariosRegistradosEnApp();
             CargarProductosEnStock();
         }
-        
-        public static Dictionary<int, Producto> InventarioTienda 
+
+        public static Dictionary<int, Producto> InventarioTienda
         {
             get
             {
@@ -43,7 +43,7 @@ namespace Entidades
                 TiendaElectronica.cuentaTienda = value;
             }
         }
-        
+
         /// <summary>
         /// Carga usuarios previamente registrados en la aplicación.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Entidades
         {
             foreach (Producto item in CatalogoProveedor.catalogo)
             {
-                TiendaElectronica.inventarioTienda.Add(item.Id,item);
+                TiendaElectronica.inventarioTienda.Add(item.Id, item);
             }
         }
 
@@ -88,6 +88,37 @@ namespace Entidades
             return EPersona.Desconocido;
         }
 
+        public static List<Producto> BuscarProductoPorNombre(string aux)
+        {
+            List<Producto> auxLista = new List<Producto>();
+            // List<string> auxFormarPalabra = new List<string>();
+
+            foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
+            {
+                //    for (int i = 0; i < aux.Length; i++)
+                //    {
+                //        for (int j = 0; j < item.ToString().Length; j++)
+                //        {
+                //            if (aux[i].ToString() == item.ToString()[j].ToString())//Si el char del string que se busca coincide en esa pocisión con el char del nombre del producto
+                //            {
+                //                auxFormarPalabra.Add(aux[i].ToString());
+                //            }
+                //        }
+
+                //    }
+
+
+                if (item.Value.Categoria == Producto.ObtenerCategoriaAPartirDeString(aux) ||
+                    item.Value.ToString() == aux)
+                {
+                    auxLista.Add(item.Value);
+                }
+
+            }
+            return auxLista;
+
+        }
+
         /// <summary>
         /// Resta el total de la compra del monto con el que el cliente abona.
         /// </summary>
@@ -108,7 +139,7 @@ namespace Entidades
 
 
 
-       
+
 
     }
 }

@@ -184,6 +184,7 @@ namespace UITiendaElectronica
             this.btnBuscar.Size = new System.Drawing.Size(31, 27);
             this.btnBuscar.TabIndex = 110;
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscat
             // 
@@ -192,6 +193,8 @@ namespace UITiendaElectronica
             this.txtBuscat.Size = new System.Drawing.Size(669, 23);
             this.txtBuscat.TabIndex = 109;
             this.txtBuscat.Text = "Buscar";
+            this.txtBuscat.Click += new System.EventHandler(this.txtBuscat_Click);
+            this.txtBuscat.Enter += new System.EventHandler(this.txtBuscat_Enter);
             // 
             // dgvProductosTienda
             // 

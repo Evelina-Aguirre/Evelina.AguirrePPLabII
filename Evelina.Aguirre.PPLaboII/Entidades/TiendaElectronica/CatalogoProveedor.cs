@@ -74,7 +74,7 @@ namespace Entidades.Tienda
 
 
             //Circuitos Integrados
-            ComponentesElectronicos circuito1 = new ComponentesElectronicos("", 00, 0, 140, "", ECategoriaElectronico.CircuitosIntegrados);
+            ComponentesElectronicos circuito1 = new ComponentesElectronicos("arduino", 00, 0, 140, "", ECategoriaElectronico.CircuitosIntegrados);
             ComponentesElectronicos circuito2 = new ComponentesElectronicos("", 00, 0, 141, "", ECategoriaElectronico.CircuitosIntegrados);
             ComponentesElectronicos circuito3 = new ComponentesElectronicos("", 00, 0, 142, "", ECategoriaElectronico.CircuitosIntegrados);
             ComponentesElectronicos circuito4 = new ComponentesElectronicos("", 00, 0, 143, "", ECategoriaElectronico.CircuitosIntegrados);
