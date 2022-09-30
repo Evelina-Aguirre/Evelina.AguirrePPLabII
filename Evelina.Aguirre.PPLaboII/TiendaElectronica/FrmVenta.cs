@@ -98,6 +98,39 @@ namespace UITiendaElectronica
 
         }
 
+        private void dgvProductosTienda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            List<Producto> auxListaCarrito = new List<Producto>();
+            //Producto auxProducto = new Producto(
+            //   this.dgvProductosTienda.CurrentRow.Cells[1].Value.ToString(),
+            //   Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
+            //   Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString()),
+            //   (short)Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[0].Value), "",
+            //   (ECategoriaElectronico)this.dgvProductosTienda.CurrentRow.Cells[5].Value);
+            
+            //auxListaCarrito.Add(auxProducto);
+
+            this.dgvCarritoCliente.ColumnCount = 2;
+            this.dgvCarritoCliente.Columns[0].Name = "Producto";
+            this.dgvCarritoCliente.Columns[1].Name = "Precio";
+
+            dgvCarritoCliente.Rows.Add(this.dgvProductosTienda.CurrentRow.Cells[1].Value, this.dgvProductosTienda.CurrentRow.Cells[3].Value);
+
+            // Cliente auxCliente = new Cliente(auxListaCarrito, );//ME FALTA MÉTODO DE PAGO Y ABONA CON
+
+
+            //dgCarrito.Rows.Add(auxProducto.Nombre, auxProducto.Marca, auxProducto.Categoria, 1, auxProducto.Precio);
+            //listaCarrito.Add(auxProducto);
+            //lblTotal.Text = Tienda.SumarPrecioArticulosAgregados(listaCarrito).ToString();
+
+            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+        }
+
         private void btnPlaquetas_Click(object sender, EventArgs e)
         {
             dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.Plaquetas);

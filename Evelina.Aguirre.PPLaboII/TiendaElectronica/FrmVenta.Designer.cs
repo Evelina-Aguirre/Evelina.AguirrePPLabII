@@ -35,8 +35,6 @@ namespace UITiendaElectronica
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotalCarrito = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -53,9 +51,16 @@ namespace UITiendaElectronica
             this.btnCircuitosIntegrados = new System.Windows.Forms.Button();
             this.btnPlaquetas = new System.Windows.Forms.Button();
             this.btnOtros = new System.Windows.Forms.Button();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.dgvCarritoCliente = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblVuelto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCliente)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // llbCerrar
@@ -110,7 +115,7 @@ namespace UITiendaElectronica
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(1004, 18);
+            this.label2.Location = new System.Drawing.Point(1006, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 103;
@@ -121,35 +126,11 @@ namespace UITiendaElectronica
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(394, 18);
+            this.label4.Location = new System.Drawing.Point(280, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 16);
             this.label4.TabIndex = 100;
             this.label4.Text = "Buscar ";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.dataGridView2);
-            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox3.Location = new System.Drawing.Point(1000, 44);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(412, 392);
-            this.groupBox3.TabIndex = 106;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Carrito";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
-            this.dataGridView2.Location = new System.Drawing.Point(2, 22);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(400, 364);
-            this.dataGridView2.TabIndex = 110;
             // 
             // label1
             // 
@@ -167,7 +148,7 @@ namespace UITiendaElectronica
             this.lblTotalCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotalCarrito.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblTotalCarrito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTotalCarrito.Location = new System.Drawing.Point(1331, 443);
+            this.lblTotalCarrito.Location = new System.Drawing.Point(1315, 439);
             this.lblTotalCarrito.Name = "lblTotalCarrito";
             this.lblTotalCarrito.Size = new System.Drawing.Size(79, 16);
             this.lblTotalCarrito.TabIndex = 108;
@@ -179,7 +160,7 @@ namespace UITiendaElectronica
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(954, 44);
+            this.btnBuscar.Location = new System.Drawing.Point(952, 41);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(31, 27);
             this.btnBuscar.TabIndex = 110;
@@ -190,7 +171,7 @@ namespace UITiendaElectronica
             // 
             this.txtBuscat.Location = new System.Drawing.Point(280, 45);
             this.txtBuscat.Name = "txtBuscat";
-            this.txtBuscat.Size = new System.Drawing.Size(669, 23);
+            this.txtBuscat.Size = new System.Drawing.Size(666, 23);
             this.txtBuscat.TabIndex = 109;
             this.txtBuscat.Text = "Buscar";
             this.txtBuscat.Click += new System.EventHandler(this.txtBuscat_Click);
@@ -198,14 +179,18 @@ namespace UITiendaElectronica
             // 
             // dgvProductosTienda
             // 
+            this.dgvProductosTienda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductosTienda.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
             this.dgvProductosTienda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductosTienda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.dgvProductosTienda.Location = new System.Drawing.Point(280, 86);
             this.dgvProductosTienda.Name = "dgvProductosTienda";
             this.dgvProductosTienda.RowTemplate.Height = 25;
-            this.dgvProductosTienda.Size = new System.Drawing.Size(705, 290);
+            this.dgvProductosTienda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProductosTienda.Size = new System.Drawing.Size(703, 290);
             this.dgvProductosTienda.TabIndex = 0;
+            this.dgvProductosTienda.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductosTienda_CellClick);
+            this.dgvProductosTienda.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductosTienda_CellDoubleClick);
             // 
             // label3
             // 
@@ -319,12 +304,97 @@ namespace UITiendaElectronica
             this.btnOtros.UseVisualStyleBackColor = true;
             this.btnOtros.Click += new System.EventHandler(this.btnOtros_Click);
             // 
+            // dgvCarritoCliente
+            // 
+            this.dgvCarritoCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
+            this.dgvCarritoCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoCliente.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.dgvCarritoCliente.Location = new System.Drawing.Point(1006, 45);
+            this.dgvCarritoCliente.Name = "dgvCarritoCliente";
+            this.dgvCarritoCliente.RowTemplate.Height = 25;
+            this.dgvCarritoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoCliente.Size = new System.Drawing.Size(388, 363);
+            this.dgvCarritoCliente.TabIndex = 120;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Location = new System.Drawing.Point(1006, 481);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(388, 118);
+            this.groupBox1.TabIndex = 121;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Formas de pago:";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(21, 26);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(67, 19);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Efectivo";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(21, 51);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(60, 19);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Debito";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(21, 76);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(64, 19);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Credito";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(1008, 617);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 16);
+            this.label6.TabIndex = 122;
+            this.label6.Text = "Total: ";
+            // 
+            // lblVuelto
+            // 
+            this.lblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblVuelto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblVuelto.Location = new System.Drawing.Point(1317, 617);
+            this.lblVuelto.Name = "lblVuelto";
+            this.lblVuelto.Size = new System.Drawing.Size(79, 16);
+            this.lblVuelto.TabIndex = 123;
+            this.lblVuelto.Text = "                  ";
+            // 
             // Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(1428, 756);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblVuelto);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dgvCarritoCliente);
             this.Controls.Add(this.btnOtros);
             this.Controls.Add(this.btnPlaquetas);
             this.Controls.Add(this.btnCircuitosIntegrados);
@@ -341,7 +411,6 @@ namespace UITiendaElectronica
             this.Controls.Add(this.dgvProductosTienda);
             this.Controls.Add(this.lblTotalCarrito);
             this.Controls.Add(this.txtBuscat);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel1);
@@ -355,9 +424,10 @@ namespace UITiendaElectronica
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseUp);
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCliente)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,12 +440,10 @@ namespace UITiendaElectronica
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTotalCarrito;
         public System.Windows.Forms.Button btnBuscar;
         public System.Windows.Forms.TextBox txtBuscat;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dgvProductosTienda;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblDescripcionProducto;
@@ -388,5 +456,12 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Button btnCircuitosIntegrados;
         private System.Windows.Forms.Button btnPlaquetas;
         private System.Windows.Forms.Button btnOtros;
+        private System.Windows.Forms.DataGridView dgvCarritoCliente;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblVuelto;
     }
 }

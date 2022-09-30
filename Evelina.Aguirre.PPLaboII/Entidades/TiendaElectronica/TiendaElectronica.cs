@@ -49,8 +49,8 @@ namespace Entidades
         /// </summary>
         public static void CargarUsuariosRegistradosEnApp()
         {
-            Dueño duenio = new Dueño("dueño", "dueño", EPersona.Dueño);
-            Vendedor vendedor = new Vendedor("vend", "vend", EPersona.Vendedor);
+            Dueño duenio = new Dueño("d", "d", EPersona.Dueño);
+            Vendedor vendedor = new Vendedor("v", "v", EPersona.Vendedor);
             usuariosApp.Add(duenio);
             usuariosApp.Add(vendedor);
         }
@@ -91,23 +91,10 @@ namespace Entidades
         public static List<Producto> BuscarProductoPorNombre(string aux)
         {
             List<Producto> auxLista = new List<Producto>();
-            // List<string> auxFormarPalabra = new List<string>();
-
+            
             foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
             {
-                //    for (int i = 0; i < aux.Length; i++)
-                //    {
-                //        for (int j = 0; j < item.ToString().Length; j++)
-                //        {
-                //            if (aux[i].ToString() == item.ToString()[j].ToString())//Si el char del string que se busca coincide en esa pocisión con el char del nombre del producto
-                //            {
-                //                auxFormarPalabra.Add(aux[i].ToString());
-                //            }
-                //        }
-
-                //    }
-
-
+                
                 if (item.Value.Categoria == Producto.ObtenerCategoriaAPartirDeString(aux) ||
                     item.Value.ToString() == aux)
                 {
@@ -118,13 +105,25 @@ namespace Entidades
             return auxLista;
 
         }
+        public static double CalculaTotal(double monto, char operacion)
+        {
+            double aux = 0;
+            if (operacion == '+')
+            {
+                aux += monto;
+            }
+            else if (operacion == '-')
+                aux -= monto;
+            
+            return aux;
+        }
 
         /// <summary>
         /// Resta el total de la compra del monto con el que el cliente abona.
         /// </summary>
         /// <param name="c">Cliente</param>
         /// <returns>Monto a devolver en concepto de vuelto</returns>
-        public static double CalculoVuelto(Cliente c)
+        public static double CalculoVuelto(Factura c)
         {
             double vuelto = 0;
             if (c.MetodoDePago is EMetodosDePago.efectivo)

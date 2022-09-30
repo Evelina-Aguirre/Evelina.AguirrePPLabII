@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Entidades
 {
-    public class Cliente
+    public class Factura
     {
         private List<Producto> carrito;
         private double totalCompra;
@@ -11,26 +11,24 @@ namespace Entidades
         private double abonaCon;
         private double vuelto;
 
-
-
-        private Cliente()
+        private Factura()
         {
             totalCompra = 0;
             metodoDePago = EMetodosDePago.efectivo;
             abonaCon = 0;
         }
 
-        public Cliente(List<Producto> carrito):this()
+        public Factura(List<Producto> carrito):this()
         {
             this.carrito = carrito;
         }
-        public Cliente(List<Producto> carrito, EMetodosDePago metodoDePago, double abonaCon) : this(carrito)
+        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago, double abonaCon) : this(carrito)
         {
             this.metodoDePago = metodoDePago;
             this.abonaCon = abonaCon;
         }
 
-        public Cliente(List<Producto> carrito, double totalCompra, EMetodosDePago metodoDePago, double abonaCon, double vuelto)
+        public Factura(List<Producto> carrito, double totalCompra, EMetodosDePago metodoDePago, double abonaCon, double vuelto)
             : this(carrito, metodoDePago, abonaCon)
         {
             this.totalCompra = totalCompra;
@@ -94,7 +92,7 @@ namespace Entidades
         /// <param name="c">carrito</param>
         /// <param name="p">producto</param>
         /// <returns>lista carro del cliente con ese producto agregado y suma el valor al total de la compra</returns>
-        public static List<Producto> operator +(Cliente c, Producto p)
+        public static List<Producto> operator +(Factura c, Producto p)
         {
             foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
             {
@@ -113,7 +111,7 @@ namespace Entidades
         /// <param name="c">cliente</param>
         /// <param name="p">producto</param>
         /// <returns>retorna carrito sin ese producto de encontrarlo y resta el valor del mismo al total de la compra</returns>
-        public static List<Producto> operator -(Cliente c, Producto p)
+        public static List<Producto> operator -(Factura c, Producto p)
         {
             if (c.carrito is not null)
             {
