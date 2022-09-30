@@ -105,17 +105,16 @@ namespace Entidades
             return auxLista;
 
         }
-        public static double CalculaTotal(double monto, char operacion)
+        public static double CalculaTotal(double totalActual, double monto, char operacion)
         {
-            double aux = 0;
             if (operacion == '+')
             {
-                aux += monto;
+                totalActual += monto;
             }
             else if (operacion == '-')
-                aux -= monto;
+                totalActual -= monto;
             
-            return aux;
+            return totalActual;
         }
 
         /// <summary>

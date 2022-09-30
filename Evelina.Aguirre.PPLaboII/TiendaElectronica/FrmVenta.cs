@@ -123,12 +123,21 @@ namespace UITiendaElectronica
             //listaCarrito.Add(auxProducto);
             //lblTotal.Text = Tienda.SumarPrecioArticulosAgregados(listaCarrito).ToString();
 
+            //Carga descipción producto
             this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+            //Calcula total a medida que se agregan los productos
+            this.lblTotalCarrito.Text =TiendaElectronica.CalculaTotal((double)Convert.ToInt32(this.lblTotalCarrito.Text),
+                (double)Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[3].Value),'+').ToString();
         }
 
         private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void Venta_Load(object sender, EventArgs e)
+        {
+            this.lblTotalCarrito.Text = "0";
         }
 
         private void btnPlaquetas_Click(object sender, EventArgs e)
