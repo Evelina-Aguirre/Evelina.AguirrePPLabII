@@ -29,9 +29,12 @@ namespace UITiendaElectronica
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Venta));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.llbCerrar = new System.Windows.Forms.LinkLabel();
             this.llbMinimizar = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -51,9 +54,9 @@ namespace UITiendaElectronica
             this.btnConectores = new System.Windows.Forms.Button();
             this.btnCircuitosIntegrados = new System.Windows.Forms.Button();
             this.btnPlaquetas = new System.Windows.Forms.Button();
-            this.dgvCarritoCliente = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.grbFormaDePago = new System.Windows.Forms.GroupBox();
+            this.lblMontoInsuficiente = new System.Windows.Forms.Label();
+            this.btnVerVuelto = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.lblCalculoVuelto = new System.Windows.Forms.Label();
             this.txtAbonacon = new System.Windows.Forms.TextBox();
@@ -64,15 +67,17 @@ namespace UITiendaElectronica
             this.label7 = new System.Windows.Forms.Label();
             this.lblVuelto = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnControlTermico = new System.Windows.Forms.Button();
+            this.btnLimpieza = new System.Windows.Forms.Button();
+            this.btnSoldado = new System.Windows.Forms.Button();
+            this.btnHerramientas = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.dgvCarritoCliente = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).BeginInit();
+            this.grbFormaDePago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCliente)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // llbCerrar
@@ -114,7 +119,7 @@ namespace UITiendaElectronica
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel1.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel1.Image")));
             this.linkLabel1.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Location = new System.Drawing.Point(1181, 322);
+            this.linkLabel1.Location = new System.Drawing.Point(1167, 332);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(72, 28);
             this.linkLabel1.TabIndex = 101;
@@ -163,7 +168,7 @@ namespace UITiendaElectronica
             this.lblTotalCarrito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblTotalCarrito.Location = new System.Drawing.Point(1281, 423);
             this.lblTotalCarrito.Name = "lblTotalCarrito";
-            this.lblTotalCarrito.Size = new System.Drawing.Size(110, 26);
+            this.lblTotalCarrito.Size = new System.Drawing.Size(99, 26);
             this.lblTotalCarrito.TabIndex = 108;
             this.lblTotalCarrito.Text = "                  ";
             this.lblTotalCarrito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -190,29 +195,38 @@ namespace UITiendaElectronica
             this.txtBuscat.Text = "Buscar";
             this.txtBuscat.Click += new System.EventHandler(this.txtBuscat_Click);
             this.txtBuscat.Enter += new System.EventHandler(this.txtBuscat_Enter);
+            this.txtBuscat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscat_KeyPress);
             // 
             // dgvProductosTienda
             // 
+            this.dgvProductosTienda.AllowUserToResizeRows = false;
             this.dgvProductosTienda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductosTienda.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
             this.dgvProductosTienda.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductosTienda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProductosTienda.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvProductosTienda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(48)))), ((int)(((byte)(145)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductosTienda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProductosTienda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductosTienda.EnableHeadersVisualStyles = false;
             this.dgvProductosTienda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.dgvProductosTienda.Location = new System.Drawing.Point(242, 86);
             this.dgvProductosTienda.Name = "dgvProductosTienda";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvProductosTienda.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProductosTienda.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvProductosTienda.RowHeadersVisible = false;
+            this.dgvProductosTienda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(67)))), ((int)(((byte)(97)))));
+            this.dgvProductosTienda.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProductosTienda.RowTemplate.Height = 25;
             this.dgvProductosTienda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductosTienda.Size = new System.Drawing.Size(741, 336);
@@ -311,55 +325,56 @@ namespace UITiendaElectronica
             this.btnPlaquetas.UseVisualStyleBackColor = true;
             this.btnPlaquetas.Click += new System.EventHandler(this.btnPlaquetas_Click);
             // 
-            // dgvCarritoCliente
+            // grbFormaDePago
             // 
-            this.dgvCarritoCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCarritoCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
-            this.dgvCarritoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCarritoCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarritoCliente.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
-            this.dgvCarritoCliente.Location = new System.Drawing.Point(1006, 45);
-            this.dgvCarritoCliente.Name = "dgvCarritoCliente";
-            this.dgvCarritoCliente.RowTemplate.Height = 25;
-            this.dgvCarritoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarritoCliente.Size = new System.Drawing.Size(388, 377);
-            this.dgvCarritoCliente.TabIndex = 120;
+            this.grbFormaDePago.Controls.Add(this.lblMontoInsuficiente);
+            this.grbFormaDePago.Controls.Add(this.btnVerVuelto);
+            this.grbFormaDePago.Controls.Add(this.label11);
+            this.grbFormaDePago.Controls.Add(this.lblCalculoVuelto);
+            this.grbFormaDePago.Controls.Add(this.txtAbonacon);
+            this.grbFormaDePago.Controls.Add(this.label8);
+            this.grbFormaDePago.Controls.Add(this.rdoCredito);
+            this.grbFormaDePago.Controls.Add(this.rdoDebiro);
+            this.grbFormaDePago.Controls.Add(this.rdoEfectivo);
+            this.grbFormaDePago.Controls.Add(this.label7);
+            this.grbFormaDePago.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.grbFormaDePago.Location = new System.Drawing.Point(1006, 454);
+            this.grbFormaDePago.Name = "grbFormaDePago";
+            this.grbFormaDePago.Size = new System.Drawing.Size(374, 125);
+            this.grbFormaDePago.TabIndex = 121;
+            this.grbFormaDePago.TabStop = false;
+            this.grbFormaDePago.Text = "Forma de pago:";
             // 
-            // groupBox1
+            // lblMontoInsuficiente
             // 
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.lblCalculoVuelto);
-            this.groupBox1.Controls.Add(this.txtAbonacon);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.rdoCredito);
-            this.groupBox1.Controls.Add(this.rdoDebiro);
-            this.groupBox1.Controls.Add(this.rdoEfectivo);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(1006, 454);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(374, 118);
-            this.groupBox1.TabIndex = 121;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Formas de pago:";
+            this.lblMontoInsuficiente.BackColor = System.Drawing.Color.Transparent;
+            this.lblMontoInsuficiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblMontoInsuficiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.lblMontoInsuficiente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMontoInsuficiente.Location = new System.Drawing.Point(108, 6);
+            this.lblMontoInsuficiente.Name = "lblMontoInsuficiente";
+            this.lblMontoInsuficiente.Size = new System.Drawing.Size(237, 19);
+            this.lblMontoInsuficiente.TabIndex = 133;
+            this.lblMontoInsuficiente.Text = "                  ";
+            this.lblMontoInsuficiente.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // button6
+            // btnVerVuelto
             // 
-            this.button6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button6.Location = new System.Drawing.Point(244, 49);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(101, 23);
-            this.button6.TabIndex = 132;
-            this.button6.Text = "Ver vuelto";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnVerVuelto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnVerVuelto.Location = new System.Drawing.Point(244, 61);
+            this.btnVerVuelto.Name = "btnVerVuelto";
+            this.btnVerVuelto.Size = new System.Drawing.Size(101, 23);
+            this.btnVerVuelto.TabIndex = 132;
+            this.btnVerVuelto.Text = "Calcular vuelto";
+            this.btnVerVuelto.UseVisualStyleBackColor = true;
+            this.btnVerVuelto.Click += new System.EventHandler(this.btnVerVuelto_Click);
             // 
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label11.Location = new System.Drawing.Point(219, 80);
+            this.label11.Location = new System.Drawing.Point(219, 89);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 26);
             this.label11.TabIndex = 132;
@@ -371,27 +386,29 @@ namespace UITiendaElectronica
             this.lblCalculoVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCalculoVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblCalculoVuelto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblCalculoVuelto.Location = new System.Drawing.Point(244, 80);
+            this.lblCalculoVuelto.Location = new System.Drawing.Point(244, 89);
             this.lblCalculoVuelto.Name = "lblCalculoVuelto";
-            this.lblCalculoVuelto.Size = new System.Drawing.Size(116, 21);
+            this.lblCalculoVuelto.Size = new System.Drawing.Size(101, 21);
             this.lblCalculoVuelto.TabIndex = 131;
             this.lblCalculoVuelto.Text = "                  ";
             this.lblCalculoVuelto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtAbonacon
             // 
-            this.txtAbonacon.Location = new System.Drawing.Point(244, 22);
+            this.txtAbonacon.Location = new System.Drawing.Point(244, 32);
             this.txtAbonacon.Name = "txtAbonacon";
             this.txtAbonacon.Size = new System.Drawing.Size(101, 23);
             this.txtAbonacon.TabIndex = 128;
             this.txtAbonacon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAbonacon.Click += new System.EventHandler(this.txtAbonacon_Click);
+            this.txtAbonacon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAbonacon_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label8.Location = new System.Drawing.Point(153, 80);
+            this.label8.Location = new System.Drawing.Point(153, 89);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 15);
             this.label8.TabIndex = 126;
@@ -407,6 +424,7 @@ namespace UITiendaElectronica
             this.rdoCredito.TabStop = true;
             this.rdoCredito.Text = "Credito";
             this.rdoCredito.UseVisualStyleBackColor = true;
+            this.rdoCredito.CheckedChanged += new System.EventHandler(this.rdoCredito_CheckedChanged);
             // 
             // rdoDebiro
             // 
@@ -418,6 +436,7 @@ namespace UITiendaElectronica
             this.rdoDebiro.TabStop = true;
             this.rdoDebiro.Text = "Debito";
             this.rdoDebiro.UseVisualStyleBackColor = true;
+            this.rdoDebiro.CheckedChanged += new System.EventHandler(this.rdoDebiro_CheckedChanged);
             // 
             // rdoEfectivo
             // 
@@ -429,13 +448,14 @@ namespace UITiendaElectronica
             this.rdoEfectivo.TabStop = true;
             this.rdoEfectivo.Text = "Efectivo";
             this.rdoEfectivo.UseVisualStyleBackColor = true;
+            this.rdoEfectivo.CheckedChanged += new System.EventHandler(this.rdoEfectivo_CheckedChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(133, 26);
+            this.label7.Location = new System.Drawing.Point(133, 36);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 15);
             this.label7.TabIndex = 125;
@@ -460,53 +480,53 @@ namespace UITiendaElectronica
             this.button1.TabIndex = 124;
             this.button1.Text = "Vender";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnControlTermico
             // 
-            this.button2.Location = new System.Drawing.Point(35, 293);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 24);
-            this.button2.TabIndex = 126;
-            this.button2.Text = "Control Térmico";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnControlTermico.Location = new System.Drawing.Point(35, 293);
+            this.btnControlTermico.Name = "btnControlTermico";
+            this.btnControlTermico.Size = new System.Drawing.Size(180, 24);
+            this.btnControlTermico.TabIndex = 126;
+            this.btnControlTermico.Text = "Control Térmico";
+            this.btnControlTermico.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnLimpieza
             // 
-            this.button3.Location = new System.Drawing.Point(35, 336);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 24);
-            this.button3.TabIndex = 127;
-            this.button3.Text = "Limpieza";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnLimpieza.Location = new System.Drawing.Point(35, 336);
+            this.btnLimpieza.Name = "btnLimpieza";
+            this.btnLimpieza.Size = new System.Drawing.Size(180, 24);
+            this.btnLimpieza.TabIndex = 127;
+            this.btnLimpieza.Text = "Limpieza";
+            this.btnLimpieza.UseVisualStyleBackColor = true;
+            this.btnLimpieza.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // btnSoldado
             // 
-            this.button4.Location = new System.Drawing.Point(34, 384);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(180, 24);
-            this.button4.TabIndex = 128;
-            this.button4.Text = "Soldado";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnSoldado.Location = new System.Drawing.Point(34, 384);
+            this.btnSoldado.Name = "btnSoldado";
+            this.btnSoldado.Size = new System.Drawing.Size(180, 24);
+            this.btnSoldado.TabIndex = 128;
+            this.btnSoldado.Text = "Soldado";
+            this.btnSoldado.UseVisualStyleBackColor = true;
+            this.btnSoldado.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // btnHerramientas
             // 
-            this.button5.Location = new System.Drawing.Point(35, 429);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(180, 24);
-            this.button5.TabIndex = 129;
-            this.button5.Text = "Herramientas";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnHerramientas.Location = new System.Drawing.Point(35, 429);
+            this.btnHerramientas.Name = "btnHerramientas";
+            this.btnHerramientas.Size = new System.Drawing.Size(180, 24);
+            this.btnHerramientas.TabIndex = 129;
+            this.btnHerramientas.Text = "Herramientas";
+            this.btnHerramientas.UseVisualStyleBackColor = true;
+            this.btnHerramientas.Click += new System.EventHandler(this.button5_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(1179, 350);
+            this.label6.Location = new System.Drawing.Point(1165, 360);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 15);
             this.label6.TabIndex = 130;
@@ -524,6 +544,46 @@ namespace UITiendaElectronica
             this.label10.Text = "  $            ";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // dgvCarritoCliente
+            // 
+            this.dgvCarritoCliente.AllowUserToResizeRows = false;
+            this.dgvCarritoCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarritoCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
+            this.dgvCarritoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCarritoCliente.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvCarritoCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(48)))), ((int)(((byte)(145)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCarritoCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvCarritoCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarritoCliente.EnableHeadersVisualStyles = false;
+            this.dgvCarritoCliente.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.dgvCarritoCliente.Location = new System.Drawing.Point(1008, 46);
+            this.dgvCarritoCliente.Name = "dgvCarritoCliente";
+            this.dgvCarritoCliente.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvCarritoCliente.RowHeadersVisible = false;
+            this.dgvCarritoCliente.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle8.NullValue = null;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(67)))), ((int)(((byte)(97)))));
+            this.dgvCarritoCliente.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvCarritoCliente.RowTemplate.Height = 25;
+            this.dgvCarritoCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarritoCliente.Size = new System.Drawing.Size(372, 376);
+            this.dgvCarritoCliente.TabIndex = 132;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -533,14 +593,13 @@ namespace UITiendaElectronica
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnHerramientas);
+            this.Controls.Add(this.btnSoldado);
+            this.Controls.Add(this.btnLimpieza);
+            this.Controls.Add(this.btnControlTermico);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblVuelto);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dgvCarritoCliente);
+            this.Controls.Add(this.grbFormaDePago);
             this.Controls.Add(this.btnPlaquetas);
             this.Controls.Add(this.btnCircuitosIntegrados);
             this.Controls.Add(this.btnConectores);
@@ -559,6 +618,7 @@ namespace UITiendaElectronica
             this.Controls.Add(this.label2);
             this.Controls.Add(this.llbCerrar);
             this.Controls.Add(this.llbMinimizar);
+            this.Controls.Add(this.dgvCarritoCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Venta";
@@ -569,9 +629,9 @@ namespace UITiendaElectronica
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).EndInit();
+            this.grbFormaDePago.ResumeLayout(false);
+            this.grbFormaDePago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCliente)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,8 +658,7 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Button btnConectores;
         private System.Windows.Forms.Button btnCircuitosIntegrados;
         private System.Windows.Forms.Button btnPlaquetas;
-        private System.Windows.Forms.DataGridView dgvCarritoCliente;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grbFormaDePago;
         private System.Windows.Forms.RadioButton rdoCredito;
         private System.Windows.Forms.RadioButton rdoDebiro;
         private System.Windows.Forms.RadioButton rdoEfectivo;
@@ -607,15 +666,18 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnControlTermico;
+        private System.Windows.Forms.Button btnLimpieza;
+        private System.Windows.Forms.Button btnSoldado;
+        private System.Windows.Forms.Button btnHerramientas;
         private System.Windows.Forms.TextBox txtAbonacon;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblCalculoVuelto;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnVerVuelto;
+        private System.Windows.Forms.DataGridView dgvCarritoCliente;
+        private System.Windows.Forms.Label lblMontoInsuficiente;
+        private System.Windows.Forms.Timer timer1;
     }
 }

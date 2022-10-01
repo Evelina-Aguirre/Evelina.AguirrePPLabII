@@ -134,7 +134,17 @@ namespace Entidades
             }
             return vuelto;
         }
-
+        public static double CalculoVuelto(double totalCompra, double abonaCon)
+        {
+            double vuelto = 0;
+            
+                if (abonaCon > 0 && totalCompra > 0 && abonaCon >= totalCompra)
+                {
+                    vuelto = abonaCon - totalCompra;
+                }
+            
+            return vuelto;
+        }
 
 
 
