@@ -14,6 +14,7 @@ namespace UITiendaElectronica
     public partial class Venta : Form
     {
         int m, mx, my;
+        List<Producto> auxListaCarrito = new List<Producto>();
         public Venta()
         {
             InitializeComponent();
@@ -100,7 +101,6 @@ namespace UITiendaElectronica
 
         private void dgvProductosTienda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            List<Producto> auxListaCarrito = new List<Producto>();
             //Producto auxProducto = new Producto(
             //   this.dgvProductosTienda.CurrentRow.Cells[1].Value.ToString(),
             //   Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
@@ -138,11 +138,44 @@ namespace UITiendaElectronica
         private void Venta_Load(object sender, EventArgs e)
         {
             this.lblTotalCarrito.Text = "0";
+            this.lblTotalCarrito.Text = "0";
+            this.lblCalculoVuelto.Text = "0";
+            this.rdoEfectivo.Checked = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.Limpieza);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.Soldado);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.Herramientas);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (this.dgvCarritoCliente.Rows.Count>1)
+            {
+                this.lblTotalCarrito.Text = TiendaElectronica.CalculaTotal((double)Convert.ToInt32(this.lblTotalCarrito.Text),
+                    (double)Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[1].Value),'-').ToString();
+                this.dgvCarritoCliente.Rows.RemoveAt(dgvCarritoCliente.CurrentRow.Index);
+            }
         }
 
         private void btnPlaquetas_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.Plaquetas);
+            this.dgvProductosTienda.DataSource = Producto.CargarDataPorCategoria(ECategoriaElectronico.ControlTermico);
         }
 
         private void btnOtros_Click(object sender, EventArgs e)
