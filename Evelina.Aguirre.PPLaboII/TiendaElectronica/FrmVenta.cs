@@ -205,7 +205,7 @@ namespace UITiendaElectronica
             this.txtAbonacon.Text = this.lblTotalCarrito.Text;
 
             this.cmbCuotas.Visible = true;
-            this.cmbCuotas.SelectedItem = 0;
+            this.cmbCuotas.SelectedIndex = 0;
 
         }
 
@@ -281,21 +281,21 @@ namespace UITiendaElectronica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Factura factura;
+            Factura factura = new Factura(auxListaCarrito, EMetodosDePago.Debito,0);
             foreach (Control item in this.grbFormaDePago.Controls)
             {
                 if (item is RadioButton)
                 {
                     if (this.rdoEfectivo.Checked)
                     {
-                        factura = new Factura(auxListaCarrito, EMetodosDePago.efectivo, Convert.ToDouble(this.lblTotalCarrito.Text.ToString()),
-                           Convert.ToDouble(this.txtAbonacon.Text.ToString()), Convert.ToDouble(this.lblVuelto.Text.ToString()));
+                        factura = new Factura(auxListaCarrito, EMetodosDePago.efectivo, Convert.ToDouble(this.lblTotalCarrito.Text),
+                           Convert.ToDouble(this.txtAbonacon.Text), Convert.ToDouble(this.lblCalculoVuelto.Text));
                     }
                     else if (this.rdoCredito.Checked)
                     {
 
                         factura = new Factura(auxListaCarrito, EMetodosDePago.Credito, Convert.ToDouble(this.lblTotalCarrito.Text),
-                            Convert.ToInt32(this.txtAbonacon.Text), Convert.ToInt32(this.cmbCuotas.SelectedValue.ToString()));
+                             Convert.ToInt32(this.cmbCuotas.SelectedItem.ToString()));
                     }
                     else if (this.rdoDebiro.Checked)
                     {
@@ -303,7 +303,7 @@ namespace UITiendaElectronica
                     }
 
                 }
-                //MessageBox.Show();//Y acá tengo que llamar algún método que me muestre los detalles de la compra / factura
+                MessageBox.Show(factura.MostrarCompra());
 
             }
         }

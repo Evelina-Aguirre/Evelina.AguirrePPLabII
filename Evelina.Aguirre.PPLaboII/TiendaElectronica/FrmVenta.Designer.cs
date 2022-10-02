@@ -57,7 +57,6 @@ namespace UITiendaElectronica
             this.grbFormaDePago = new System.Windows.Forms.GroupBox();
             this.cmbCuotas = new System.Windows.Forms.ComboBox();
             this.lblMontoInsuficiente = new System.Windows.Forms.Label();
-            this.btnVerVuelto = new System.Windows.Forms.Button();
             this.lblsimboloPesos = new System.Windows.Forms.Label();
             this.lblCalculoVuelto = new System.Windows.Forms.Label();
             this.txtAbonacon = new System.Windows.Forms.TextBox();
@@ -66,6 +65,7 @@ namespace UITiendaElectronica
             this.rdoDebiro = new System.Windows.Forms.RadioButton();
             this.rdoEfectivo = new System.Windows.Forms.RadioButton();
             this.lblCuotasAbonaCon = new System.Windows.Forms.Label();
+            this.btnVerVuelto = new System.Windows.Forms.Button();
             this.lblVuelto = new System.Windows.Forms.Label();
             this.btnVender = new System.Windows.Forms.Button();
             this.btnControlTermico = new System.Windows.Forms.Button();
@@ -349,14 +349,16 @@ namespace UITiendaElectronica
             // 
             // cmbCuotas
             // 
+            this.cmbCuotas.BackColor = System.Drawing.Color.White;
             this.cmbCuotas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCuotas.FormattingEnabled = true;
             this.cmbCuotas.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cmbCuotas.Location = new System.Drawing.Point(252, 56);
+            this.cmbCuotas.Location = new System.Drawing.Point(304, 56);
             this.cmbCuotas.Name = "cmbCuotas";
-            this.cmbCuotas.Size = new System.Drawing.Size(102, 23);
+            this.cmbCuotas.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbCuotas.Size = new System.Drawing.Size(50, 23);
             this.cmbCuotas.TabIndex = 133;
             this.cmbCuotas.Visible = false;
             // 
@@ -372,21 +374,6 @@ namespace UITiendaElectronica
             this.lblMontoInsuficiente.TabIndex = 133;
             this.lblMontoInsuficiente.Text = "                  ";
             this.lblMontoInsuficiente.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // btnVerVuelto
-            // 
-            this.btnVerVuelto.BackColor = System.Drawing.Color.Transparent;
-            this.btnVerVuelto.FlatAppearance.BorderSize = 0;
-            this.btnVerVuelto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerVuelto.ForeColor = System.Drawing.Color.Transparent;
-            this.btnVerVuelto.Location = new System.Drawing.Point(20, -52);
-            this.btnVerVuelto.Margin = new System.Windows.Forms.Padding(0);
-            this.btnVerVuelto.Name = "btnVerVuelto";
-            this.btnVerVuelto.Size = new System.Drawing.Size(10, 10);
-            this.btnVerVuelto.TabIndex = 132;
-            this.btnVerVuelto.UseVisualStyleBackColor = false;
-            this.btnVerVuelto.Visible = false;
-            this.btnVerVuelto.Click += new System.EventHandler(this.btnVerVuelto_Click);
             // 
             // lblsimboloPesos
             // 
@@ -479,6 +466,21 @@ namespace UITiendaElectronica
             this.lblCuotasAbonaCon.Size = new System.Drawing.Size(74, 15);
             this.lblCuotasAbonaCon.TabIndex = 125;
             this.lblCuotasAbonaCon.Text = "Abona con";
+            // 
+            // btnVerVuelto
+            // 
+            this.btnVerVuelto.BackColor = System.Drawing.Color.Transparent;
+            this.btnVerVuelto.FlatAppearance.BorderSize = 0;
+            this.btnVerVuelto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerVuelto.ForeColor = System.Drawing.Color.Transparent;
+            this.btnVerVuelto.Location = new System.Drawing.Point(20, -52);
+            this.btnVerVuelto.Margin = new System.Windows.Forms.Padding(0);
+            this.btnVerVuelto.Name = "btnVerVuelto";
+            this.btnVerVuelto.Size = new System.Drawing.Size(10, 10);
+            this.btnVerVuelto.TabIndex = 132;
+            this.btnVerVuelto.UseVisualStyleBackColor = false;
+            this.btnVerVuelto.Visible = false;
+            this.btnVerVuelto.Click += new System.EventHandler(this.btnVerVuelto_Click);
             // 
             // lblVuelto
             // 

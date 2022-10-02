@@ -105,6 +105,17 @@ namespace Entidades
             return auxLista;
 
         }
+
+        public static Producto BuscarProductoPorId(int id)
+        {
+            foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
+            {
+                if (id == item.Value.Id)
+                    return item.Value;
+            }
+            return null;
+        }
+
         public static double CalculaTotal(double totalActual, double monto, char operacion)
         {
             if (operacion == '+')

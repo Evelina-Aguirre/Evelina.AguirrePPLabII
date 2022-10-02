@@ -34,8 +34,6 @@ namespace Entidades
         public Factura(List<Producto> carrito, EMetodosDePago metodoDePago, double totalCompra, int cantCuotas) 
             : this(carrito, metodoDePago, totalCompra)
         {
-            this.metodoDePago = metodoDePago;
-            this.totalCompra = totalCompra;
             this.cantCuotas = cantCuotas;
         }
 
