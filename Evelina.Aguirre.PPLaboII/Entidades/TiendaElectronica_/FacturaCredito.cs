@@ -9,8 +9,8 @@ namespace Entidades.TiendaElectronica
     public class FacturaCredito : FacturaDebito
     {
         private int cantCuotas;
-        public FacturaCredito(List<Producto> carrito, EMetodosDePago metodoDePago, double totalCompra, int cantCuotas) 
-            : base(carrito,metodoDePago,totalCompra)
+        public FacturaCredito(EMetodosDePago metodoDePago, double totalCompra, int cantCuotas) 
+            : base(metodoDePago,totalCompra)
         {
             this.cantCuotas = cantCuotas;
         }

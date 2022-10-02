@@ -10,13 +10,43 @@ namespace Entidades.TiendaElectronica
     {
         private double abonaCon;
         private double vuelto;
-        public FacturaEfectivo(List<Producto> carrito, EMetodosDePago metodoDePago, double totalCompra, int cantCuotas,double abonaCon, double vuelto) 
-            : base(carrito, metodoDePago, totalCompra, cantCuotas)
+        public FacturaEfectivo( EMetodosDePago metodoDePago, double totalCompra, int cantCuotas,double abonaCon, double vuelto) 
+            : base(metodoDePago, totalCompra, cantCuotas)
         {
             this.abonaCon = abonaCon;
             this.vuelto = vuelto;
         }
 
+        public double AbonaCon
+        {
+            get
+            {
+                return this.abonaCon;
+            }
+            set
+            {
+                this.abonaCon = value;
+            }
+        }
+
+        public double Vuelto
+        {
+            get
+            {
+                return CalculoVuelto(base.TotalCompra, this.AbonaCon);
+            }
+        }
+        public static double CalculoVuelto(double totalCompra, double abonaCon)
+        {
+            double vuelto = 0;
+
+            if (abonaCon > 0 && totalCompra > 0 && abonaCon >= totalCompra)
+            {
+                vuelto = abonaCon - totalCompra;
+            }
+
+            return vuelto;
+        }
         public override string MostrarCompra()
         {
             StringBuilder sb = new StringBuilder();

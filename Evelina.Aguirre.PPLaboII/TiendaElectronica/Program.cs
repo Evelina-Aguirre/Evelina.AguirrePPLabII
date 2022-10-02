@@ -1,3 +1,4 @@
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace UITiendaElectronica
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Inicio());
-        }
+
+         }
     }
 }

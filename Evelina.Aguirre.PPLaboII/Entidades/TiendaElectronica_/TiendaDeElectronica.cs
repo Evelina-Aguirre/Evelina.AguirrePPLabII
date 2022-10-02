@@ -129,37 +129,6 @@ namespace Entidades
             return totalActual;
         }
 
-        ///// <summary>
-        ///// Resta el total de la compra del monto con el que el cliente abona.
-        ///// </summary>
-        ///// <param name="c">Cliente</param>
-        ///// <returns>Monto a devolver en concepto de vuelto</returns>
-        //public static double CalculoVuelto(Factura c)
-        //{
-        //    double vuelto = 0;
-        //    if (c.MetodoDePago is EMetodosDePago.efectivo)
-        //    {
-        //        if (c.AbonaCon > 0 && c.TotalCompra > 0 && c.AbonaCon > c.TotalCompra)
-        //        {
-        //            vuelto = c.AbonaCon - c.TotalCompra;
-        //        }
-        //    }
-        //    return vuelto;
-        //}
-        public static double CalculoVuelto(double totalCompra, double abonaCon)
-        {
-            double vuelto = 0;
-            
-                if (abonaCon > 0 && totalCompra > 0 && abonaCon >= totalCompra)
-                {
-                    vuelto = abonaCon - totalCompra;
-                }
-            
-            return vuelto;
-        }
-
-
-
 
     }
 }

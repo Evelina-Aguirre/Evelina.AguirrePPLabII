@@ -195,7 +195,7 @@ namespace UITiendaElectronica
             this.txtBuscat.TabIndex = 109;
             this.txtBuscat.Text = "Buscar";
             this.txtBuscat.Click += new System.EventHandler(this.txtBuscat_Click);
-            this.txtBuscat.Enter += new System.EventHandler(this.txtBuscat_Enter);
+            
             this.txtBuscat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscat_KeyPress);
             // 
             // dgvProductosTienda
@@ -380,7 +380,7 @@ namespace UITiendaElectronica
             this.lblsimboloPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblsimboloPesos.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblsimboloPesos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblsimboloPesos.Location = new System.Drawing.Point(219, 79);
+            this.lblsimboloPesos.Location = new System.Drawing.Point(219, 73);
             this.lblsimboloPesos.Name = "lblsimboloPesos";
             this.lblsimboloPesos.Size = new System.Drawing.Size(29, 26);
             this.lblsimboloPesos.TabIndex = 132;
@@ -392,7 +392,7 @@ namespace UITiendaElectronica
             this.lblCalculoVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCalculoVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblCalculoVuelto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblCalculoVuelto.Location = new System.Drawing.Point(249, 79);
+            this.lblCalculoVuelto.Location = new System.Drawing.Point(249, 73);
             this.lblCalculoVuelto.Name = "lblCalculoVuelto";
             this.lblCalculoVuelto.Size = new System.Drawing.Size(101, 21);
             this.lblCalculoVuelto.TabIndex = 131;
@@ -414,7 +414,7 @@ namespace UITiendaElectronica
             this.lblAuxlblVuelto.AutoSize = true;
             this.lblAuxlblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAuxlblVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblAuxlblVuelto.Location = new System.Drawing.Point(168, 80);
+            this.lblAuxlblVuelto.Location = new System.Drawing.Point(168, 77);
             this.lblAuxlblVuelto.Name = "lblAuxlblVuelto";
             this.lblAuxlblVuelto.Size = new System.Drawing.Size(47, 15);
             this.lblAuxlblVuelto.TabIndex = 126;

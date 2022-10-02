@@ -3,22 +3,19 @@ using System.Text;
 
 namespace Entidades
 {
-    public abstract class Factura
+    public class Factura
     {
-        private  List<Producto> carrito;
+        private static List<Producto> carrito;
         private EMetodosDePago metodoDePago;
         private double totalCompra;
-       
-        //private Factura()
-        //{
-        //    //carrito = new List<Producto>(); -->El carrito se instancia y se completa an el form desde ahí se lo pasan
-        //    metodoDePago = EMetodosDePago.efectivo;
-        //    totalCompra = 0;
-        //}
 
-        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago,double totalCompra) 
+        static Factura()
         {
-            this.carrito = carrito;
+            Factura.carrito = new List<Producto>();
+        }
+      
+        public Factura(EMetodosDePago metodoDePago,double totalCompra)
+        {
             this.metodoDePago = metodoDePago;
             this.totalCompra = totalCompra;
         }
@@ -33,7 +30,7 @@ namespace Entidades
 
                 if (MetodoDePago is EMetodosDePago.Credito)
                 {
-                    totalCompra -= (totalCompra * 10) / 100;
+                    this.totalCompra -= (this.totalCompra * 10) / 100;
                 }
                 return this.totalCompra;
             }
@@ -45,24 +42,23 @@ namespace Entidades
 
         public EMetodosDePago MetodoDePago { get => metodoDePago; set => metodoDePago = value; }
        
-
         /// <summary>
-        /// Sobrecarga operador +, suma un producto al carro del cliente.
+        /// Agregar un producto a la lista de ítems de la factura y suma el precio del mismo al total.
         /// </summary>
-        /// <param name="c">carrito</param>
-        /// <param name="p">producto</param>
-        /// <returns>lista carro del cliente con ese producto agregado y suma el valor al total de la compra</returns>
-        public static List<Producto> operator +(Factura c, Producto p)
+        /// <param name="factura">Factura a modificarcarrito</param>
+        /// <param name="p">Producto a agregar</param>
+        /// <returns>Factura con el producto agregado y el precio de este sumado al total.</returns>
+        public static Factura operator +(Factura factura, Producto p)
         {
             foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
-                if (item.Key == p.Id)
+                if (item.Value == p)
                 {
-                    c.carrito.Add(item.Value);
-                    c.TotalCompra += item.Value.Precio;
+                    factura.Carrito.Add(item.Value);
+                    factura.TotalCompra += item.Value.Precio;
                 }
             }
-            return c.carrito;
+            return factura;
         }
 
         /// <summary>
@@ -71,21 +67,21 @@ namespace Entidades
         /// <param name="c">cliente</param>
         /// <param name="p">producto</param>
         /// <returns>retorna carrito sin ese producto de encontrarlo y resta el valor del mismo al total de la compra</returns>
-        public static List<Producto> operator -(Factura c, Producto p)
+        public static Factura operator -(Factura factura, Producto p)
         {
-            if (c.carrito is not null)
+            if (factura.Carrito is not null)
             {
 
-                foreach (Producto item in c.Carrito)
+                foreach (Producto item in factura.Carrito)
                 {
                     if (item.Id == p.Id)
                     {
-                        c.TotalCompra -= item.Precio;
-                        c.Carrito.Remove(item);
+                        factura.TotalCompra -= item.Precio;
+                        factura.Carrito.Remove(item);
                     }
                 }
             }
-            return c.Carrito;
+            return factura;
         }
 
         /// <summary>
@@ -93,10 +89,24 @@ namespace Entidades
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public abstract string MostrarCompra();
-        
+        public virtual string MostrarCompra()
+        {
+            StringBuilder sb = new StringBuilder();
 
- 
+            foreach (Producto item in this.Carrito)
+            {
+                sb.AppendLine(item.MostrarProducto());
+            }
+            sb.AppendLine($"\nTotal: {this.TotalCompra}");
+            sb.AppendLine($"Metodo de Pago: {this.MetodoDePago}");
+
+            return sb.ToString();
+
+        }
+
+
+
+
 
 
     }
