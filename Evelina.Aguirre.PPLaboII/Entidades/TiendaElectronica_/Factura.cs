@@ -9,14 +9,14 @@ namespace Entidades
         private EMetodosDePago metodoDePago;
         private double totalCompra;
        
-        private Factura()
-        {
-            //carrito = new List<Producto>(); -->El carrito se instancia y se completa an el form desde ahí se lo pasan
-            metodoDePago = EMetodosDePago.efectivo;
-            totalCompra = 0;
-        }
+        //private Factura()
+        //{
+        //    //carrito = new List<Producto>(); -->El carrito se instancia y se completa an el form desde ahí se lo pasan
+        //    metodoDePago = EMetodosDePago.efectivo;
+        //    totalCompra = 0;
+        //}
 
-        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago,double totalCompra) : this() 
+        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago,double totalCompra) 
         {
             this.carrito = carrito;
             this.metodoDePago = metodoDePago;

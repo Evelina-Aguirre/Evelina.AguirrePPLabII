@@ -21,8 +21,8 @@ namespace Entidades.TiendaElectronica
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.MostrarCompra());
-            sb.Append($"Abona con:          {this.abonaCon}");
-            sb.Append($"Vuelto:          {this.vuelto}");
+            sb.AppendLine($"Abona con: {this.abonaCon}");
+            sb.AppendLine($"Vuelto: {this.vuelto}");
 
             return sb.ToString();
         }

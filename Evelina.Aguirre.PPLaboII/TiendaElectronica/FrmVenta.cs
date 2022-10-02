@@ -282,12 +282,14 @@ namespace UITiendaElectronica
 
         private void button1_Click(object sender, EventArgs e)
         {
+            FacturaDebito auxFactura = new FacturaDebito(auxListaCarrito, EMetodosDePago.efectivo,0);
             
             foreach (Control item in this.grbFormaDePago.Controls)
             {
                 if (item is RadioButton)
                 {
-                    FacturaDebito auxFactura = new FacturaDebito(auxListaCarrito, EMetodosDePago.efectivo,0);
+                    RadioButton radio = item as RadioButton;
+
                     if (this.rdoEfectivo.Checked)
                     {
                         auxFactura = new FacturaEfectivo(auxListaCarrito, EMetodosDePago.efectivo, Convert.ToDouble(this.lblTotalCarrito.Text),0,
@@ -305,9 +307,9 @@ namespace UITiendaElectronica
                     }
 
                 }
-                MessageBox.Show(factura.MostrarCompra());
 
             }
+                MessageBox.Show(auxFactura.MostrarCompra());
         }
 
         private void txtAbonacon_KeyPress(object sender, KeyPressEventArgs e)

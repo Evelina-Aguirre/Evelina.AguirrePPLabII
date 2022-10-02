@@ -18,7 +18,9 @@ namespace Entidades.TiendaElectronica
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.MostrarCompra());
-            sb.Append($"Cuotas:          {this.cantCuotas}");
+            sb.AppendLine($"Cuotas:{this.cantCuotas}");
+            
+            //Todavía no me pide set porque hasta ahora no necesito geetear las cuotas desde ningun lado solo desde acá
 
             return sb.ToString();
         }

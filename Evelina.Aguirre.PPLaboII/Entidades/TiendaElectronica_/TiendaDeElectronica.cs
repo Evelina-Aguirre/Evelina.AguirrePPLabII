@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Entidades
 {
-    public class TiendaElectronica
+    public class TiendaDeElectronica
     {
 
         private static List<Persona> usuariosApp;
@@ -11,24 +11,25 @@ namespace Entidades
         private static double cuentaTienda;
 
 
-        static TiendaElectronica()
+        static TiendaDeElectronica()
         {
             usuariosApp = new List<Persona>();
-            TiendaElectronica.inventarioTienda = new Dictionary<int, Producto>();
-            TiendaElectronica.cuentaTienda = 10000000;
+            TiendaDeElectronica.inventarioTienda = new Dictionary<int, Producto>();
+            TiendaDeElectronica.cuentaTienda = 10000000;
             CargarUsuariosRegistradosEnApp();
             CargarProductosEnStock();
         }
+
 
         public static Dictionary<int, Producto> InventarioTienda
         {
             get
             {
-                return TiendaElectronica.inventarioTienda;
+                return TiendaDeElectronica.inventarioTienda;
             }
             set
             {
-                TiendaElectronica.inventarioTienda = value;
+                TiendaDeElectronica.inventarioTienda = value;
             }
         }
 
@@ -36,11 +37,11 @@ namespace Entidades
         {
             get
             {
-                return TiendaElectronica.cuentaTienda;
+                return TiendaDeElectronica.cuentaTienda;
             }
             set
             {
-                TiendaElectronica.cuentaTienda = value;
+                TiendaDeElectronica.cuentaTienda = value;
             }
         }
 
@@ -62,7 +63,7 @@ namespace Entidades
         {
             foreach (Producto item in CatalogoProveedor.catalogo)
             {
-                TiendaElectronica.inventarioTienda.Add(item.Id, item);
+                TiendaDeElectronica.inventarioTienda.Add(item.Id, item);
             }
         }
 
@@ -92,7 +93,7 @@ namespace Entidades
         {
             List<Producto> auxLista = new List<Producto>();
             
-            foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
                 
                 if (item.Value.Categoria == Producto.ObtenerCategoriaAPartirDeString(aux) ||
@@ -108,7 +109,7 @@ namespace Entidades
 
         public static Producto BuscarProductoPorId(int id)
         {
-            foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
                 if (id == item.Value.Id)
                     return item.Value;
@@ -128,23 +129,23 @@ namespace Entidades
             return totalActual;
         }
 
-        /// <summary>
-        /// Resta el total de la compra del monto con el que el cliente abona.
-        /// </summary>
-        /// <param name="c">Cliente</param>
-        /// <returns>Monto a devolver en concepto de vuelto</returns>
-        public static double CalculoVuelto(Factura c)
-        {
-            double vuelto = 0;
-            if (c.MetodoDePago is EMetodosDePago.efectivo)
-            {
-                if (c.AbonaCon > 0 && c.TotalCompra > 0 && c.AbonaCon > c.TotalCompra)
-                {
-                    vuelto = c.AbonaCon - c.TotalCompra;
-                }
-            }
-            return vuelto;
-        }
+        ///// <summary>
+        ///// Resta el total de la compra del monto con el que el cliente abona.
+        ///// </summary>
+        ///// <param name="c">Cliente</param>
+        ///// <returns>Monto a devolver en concepto de vuelto</returns>
+        //public static double CalculoVuelto(Factura c)
+        //{
+        //    double vuelto = 0;
+        //    if (c.MetodoDePago is EMetodosDePago.efectivo)
+        //    {
+        //        if (c.AbonaCon > 0 && c.TotalCompra > 0 && c.AbonaCon > c.TotalCompra)
+        //        {
+        //            vuelto = c.AbonaCon - c.TotalCompra;
+        //        }
+        //    }
+        //    return vuelto;
+        //}
         public static double CalculoVuelto(double totalCompra, double abonaCon)
         {
             double vuelto = 0;

@@ -101,7 +101,7 @@ namespace Entidades
         {
             List<Producto> auxListaProductos = new List<Producto>();
            
-            foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
                 if (item.Value.Categoria.ToString() == categoria.ToString())
                 {
@@ -155,10 +155,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Id:{this.Id}");
-            sb.AppendLine($"Tag: {this.Categoria}");
-            sb.AppendLine($"{this.Nombre}     Cant.: {this.cantidad}");
-            sb.Append($"                  Precio: {this.Precio}");
+            sb.AppendLine($"Tag: {this.Categoria} -- Id: {this.Id}");
+            sb.AppendLine($"{this.Nombre}  - Cant.: {this.cantidad}");
+
+            sb.AppendLine($"Precio: {this.Precio}");
 
             return sb.ToString();
         }
