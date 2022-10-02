@@ -10,11 +10,12 @@ namespace Entidades.TiendaElectronica
     {
         private double abonaCon;
         private double vuelto;
-        public FacturaEfectivo( EMetodosDePago metodoDePago, double totalCompra, int cantCuotas,double abonaCon, double vuelto) 
+        public FacturaEfectivo( EMetodosDePago metodoDePago, double totalCompra, int cantCuotas,double abonaCon) 
             : base(metodoDePago, totalCompra, cantCuotas)
         {
             this.abonaCon = abonaCon;
-            this.vuelto = vuelto;
+            this.vuelto = this.Vuelto;
+           
         }
 
         public double AbonaCon

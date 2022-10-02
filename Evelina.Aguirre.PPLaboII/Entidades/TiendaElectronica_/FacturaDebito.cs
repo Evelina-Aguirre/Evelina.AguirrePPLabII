@@ -15,45 +15,41 @@ namespace Entidades.TiendaElectronica
             
         }
 
-        public override string MostrarCompra()
-        {
-            return base.ToString();
-        }
 
         public override string ToString()
         {
             return this.MostrarCompra();
         }
 
-        public static FacturaDebito operator +(FacturaDebito factura, Producto p)
-        {
-            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
-            {
-                if (item.Value == p)
-                {
-                    factura.Carrito.Add(item.Value);
-                    factura.TotalCompra += item.Value.Precio;
-                }
-            }
-            return factura;
-        }
+        //public static FacturaDebito operator +(FacturaDebito factura, Producto p)
+        //{
+        //    foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+        //    {
+        //        if (item.Value == p)
+        //        {
+        //            Factura.Carrito.Add(item.Value);
+        //            factura.TotalCompra += item.Value.Precio;
+        //        }
+        //    }
+        //    return factura;
+        //}
 
-        public static FacturaDebito operator -(FacturaDebito factura, Producto p)
-        {
-            if (factura.Carrito is not null)
-            {
+        //public static FacturaDebito operator -(FacturaDebito factura, Producto p)
+        //{
+        //    if (Factura.Carrito is not null)
+        //    {
 
-                foreach (Producto item in factura.Carrito)
-                {
-                    if (item.Id == p.Id)
-                    {
-                        factura.TotalCompra -= item.Precio;
-                        factura.Carrito.Remove(item);
-                    }
-                }
-            }
-            return factura;
-        }
+        //        foreach (Producto item in Factura.Carrito)
+        //        {
+        //            if (item.Id == p.Id)
+        //            {
+        //                factura.TotalCompra -= item.Precio;
+        //                Factura.Carrito.Remove(item);
+        //            }
+        //        }
+        //    }
+        //    return factura;
+        //}
 
 
 

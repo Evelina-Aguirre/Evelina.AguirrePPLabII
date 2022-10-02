@@ -16,8 +16,15 @@ namespace Entidades
         private string descripcion;
         private ECategoriaElectronico categoria;
 
-       
+        public Producto(string nombre, int cantidad, double precio, short id)
+        {
+            this.nombre = nombre;
+            this.cantidad = cantidad;
+            this.precio = precio;
+            this.id = id;
+        }
         public Producto(string nombre, int cantidad, double precio, short id, string descripcion, ECategoriaElectronico categoria)
+            :this(nombre, cantidad,precio,id)
         {
             this.nombre = nombre;
             this.cantidad = cantidad;

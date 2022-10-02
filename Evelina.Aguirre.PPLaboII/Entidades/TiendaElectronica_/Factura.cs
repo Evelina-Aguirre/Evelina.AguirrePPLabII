@@ -21,7 +21,7 @@ namespace Entidades
         }
         
 
-        public List<Producto> Carrito { get => carrito; set => carrito = value; }
+        public static List<Producto> Carrito { get => carrito; set => carrito = value; }
 
         public double TotalCompra
         {
@@ -54,7 +54,7 @@ namespace Entidades
             {
                 if (item.Value == p)
                 {
-                    factura.Carrito.Add(item.Value);
+                    Factura.Carrito.Add(item.Value);
                     factura.TotalCompra += item.Value.Precio;
                 }
             }
@@ -67,21 +67,25 @@ namespace Entidades
         /// <param name="c">cliente</param>
         /// <param name="p">producto</param>
         /// <returns>retorna carrito sin ese producto de encontrarlo y resta el valor del mismo al total de la compra</returns>
-        public static Factura operator -(Factura factura, Producto p)
+        public static bool operator -(Factura factura, int id)
         {
-            if (factura.Carrito is not null)
+            bool resultado = false;
+            if (Factura.Carrito is not null)
             {
 
-                foreach (Producto item in factura.Carrito)
+                foreach (Producto item in Factura.Carrito)
                 {
-                    if (item.Id == p.Id)
+                    if (item.Id == id)
                     {
+                        Factura.Carrito.Remove(item);
                         factura.TotalCompra -= item.Precio;
-                        factura.Carrito.Remove(item);
+                        resultado = true;
+                        break;
                     }
                 }
             }
-            return factura;
+            return resultado;
+        
         }
 
         /// <summary>
@@ -93,7 +97,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Producto item in this.Carrito)
+            foreach (Producto item in Factura.Carrito)
             {
                 sb.AppendLine(item.MostrarProducto());
             }

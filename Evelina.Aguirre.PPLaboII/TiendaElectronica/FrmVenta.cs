@@ -10,45 +10,30 @@ namespace UITiendaElectronica
     public partial class Venta : Form
     {
         int m, mx, my;
-        
-        private Factura auxFactura = new Factura(EMetodosDePago.efectivo,0);
-       
 
+        //Factura auxiliar a partir de la cual se instanciará una Factura-Efectivo/Debito/Crédito una vez elegido el método de pago.
+        private Factura auxFactura = new Factura(EMetodosDePago.efectivo,0);
+        
         public Venta()
         {
             InitializeComponent();
         }
+        private void Venta_Load(object sender, EventArgs e)
+        {
+            dgvCarritoCliente.ColumnCount = 3;
+            dgvCarritoCliente.Columns[0].Name = "ID";
+            dgvCarritoCliente.Columns[1].Name = "Producto";
+            dgvCarritoCliente.Columns[2].Name = "Precio";
 
-        //public Venta(List<Producto> lista, Factura auxFactura ):this()
-        //{
-        //    this.auxListaCarrito = lista;
-        //    this.auxFactura = auxFactura;
-        //}
-
-        //public List<Producto> AuxListaCarrito
-        //{
-        //    get
-        //    {
-        //        return this.auxListaCarrito;
-        //    }
-        //    set
-        //    {
-        //        this.auxListaCarrito = value;
-        //    }
-        //}
-        //public Factura AuxFactura
-        //{
-        //    get
-        //    {
-        //        return this.auxFactura;
-        //    }
-        //    set
-        //    {
-        //        this.auxFactura = value;
-        //    }
-
-        //}
-
+            List<Producto> auxLista = new List<Producto>();
+            //Asigno una lista de Productos vacía para que el form inicie con las columnas correspondientes a un producto pero sin datos.
+            dgvProductosTienda.DataSource = auxLista;
+            lblTotalCarrito.Text = "0";
+            lblTotalCarrito.Text = "0";
+            lblCalculoVuelto.Text = "0";
+            rdoEfectivo.Checked = true;
+            cmbCuotas.Visible = false;
+        }
 
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -76,98 +61,6 @@ namespace UITiendaElectronica
         {
             dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Capacitores);
         }
-
-        private void btnConectores_Click(object sender, EventArgs e)
-        {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Conectores);
-        }
-
-        private void btnCircuitosIntegrados_Click(object sender, EventArgs e)
-        {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados);
-        }
-
-        private void Venta_MouseUp(object sender, MouseEventArgs e)
-        {
-            m = 0;
-        }
-
-        private void Venta_MouseDown(object sender, MouseEventArgs e)
-        {
-            m = 1;
-            mx = e.X;
-            my = e.Y;
-        }
-
-        private void Venta_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (m == 1)
-            {
-                SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
-            }
-        }
-
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
-            dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProductoPorNombre(txtBuscat.Text.ToString().ToLower());
-        }
-
-        private void txtBuscat_Click(object sender, EventArgs e)
-        {
-            List<Producto> auxLista = new List<Producto>();
-            //Asigno una lista de Productos vacía para que el form inicie con las columnas correspondientes a un producto pero sin datos.
-            dgvProductosTienda.DataSource = auxLista;
-            txtBuscat.Text = string.Empty;
-            dgvProductosTienda.DataSource = null;
-        }
-
-
-        
-        private void dgvProductosTienda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //Instancia un producto a agregarlo a la factura
-            Producto auxProducto = new Producto(
-               dgvProductosTienda.CurrentRow.Cells[1].Value.ToString(),
-               Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
-               Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[3].Value.ToString()),
-               (short)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[0].Value), "",
-               (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[5].Value);
-
-            //vista previa del producto agregador al dgv de los productos a vender
-            dgvCarritoCliente.Rows.Add(dgvProductosTienda.CurrentRow.Cells[1].Value, dgvProductosTienda.CurrentRow.Cells[3].Value);
-
-            //Muestra descrición del producto en el label de detalles
-            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
-           
-            //Agrega el producto de la linea seleccionada a la lista de la factura y sumo el precio del mismo al total.
-            this.auxFactura += auxProducto; //En la sobrecarga del más ya suma el monto de ese producto al total
-            //Muestra el total actual de la factura
-            lblTotalCarrito.Text = this.auxFactura.TotalCompra.ToString();
-        }
-
-        private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
-        }
-
-        private void Venta_Load(object sender, EventArgs e)
-        {
-            dgvCarritoCliente.ColumnCount = 2;
-            dgvCarritoCliente.Columns[0].Name = "Producto";
-            dgvCarritoCliente.Columns[1].Name = "Precio";
-            List<Producto> auxLista = new List<Producto>();
-            //Asigno una lista de Productos vacía para que el form inicie con las columnas correspondientes a un producto pero sin datos.
-            dgvProductosTienda.DataSource = auxLista;
-            lblTotalCarrito.Text = "0";
-            lblTotalCarrito.Text = "0";
-            lblCalculoVuelto.Text = "0";
-            rdoEfectivo.Checked = true;
-            cmbCuotas.Visible = false;
-        }
-
-
         private void button3_Click(object sender, EventArgs e)
         {
             dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Limpieza);
@@ -182,17 +75,80 @@ namespace UITiendaElectronica
         {
             dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Herramientas);
         }
+        private void btnPlaquetas_Click(object sender, EventArgs e)
+        {
+            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas);
+        }
+
+        private void btnConectores_Click(object sender, EventArgs e)
+        {
+            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Conectores);
+        }
+
+        private void btnCircuitosIntegrados_Click(object sender, EventArgs e)
+        {
+            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+            dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProductoPorNombre(txtBuscat.Text.ToString().ToLower());
+        }
+
+        private void txtBuscat_Click(object sender, EventArgs e)
+        {
+            List<Producto> auxLista = new List<Producto>();
+            //Asigno una lista de Productos vacía para que se carguen las columnas correspondientes a un producto pero sin datos.
+            dgvProductosTienda.DataSource = auxLista;
+            txtBuscat.Text = string.Empty;
+            dgvProductosTienda.DataSource = null;
+        }
+
+
+        
+        private void dgvProductosTienda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Instancia un producto para poder agregarlo a la factura.
+            Producto auxProducto = new Producto(
+               dgvProductosTienda.CurrentRow.Cells[1].Value.ToString(),
+               Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
+               Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[3].Value.ToString()),
+               (short)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[0].Value), "",
+               (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[5].Value);
+
+            //Vista previa del producto agregador al dgv de los productos a vender.
+            dgvCarritoCliente.Rows.Add(dgvProductosTienda.CurrentRow.Cells[0].Value, dgvProductosTienda.CurrentRow.Cells[1].Value,
+                dgvProductosTienda.CurrentRow.Cells[3].Value);
+
+            //Muestra descrición del producto en el label de detalles.
+            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+
+            //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
+            this.auxFactura += auxProducto;
+
+            //Muestra el total actual de la factura auxiliar con el producto agregado.
+            lblTotalCarrito.Text = this.auxFactura.TotalCompra.ToString();
+        }
+
+        private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+        }
+
+
+
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //Producto auxProducto = new Producto() /////////////////////////////
-            if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
-            {
-                lblTotalCarrito.Text = TiendaDeElectronica.CalculaTotal((double)Convert.ToInt32(lblTotalCarrito.Text),
-                    (double)Convert.ToInt32(dgvCarritoCliente.CurrentRow.Cells[1].Value), '-').ToString();
+            
+            if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
+             {
+                int id = Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[0].Value);
+               // Producto auxPorducto = TiendaDeElectronica.BuscarProductoPorId(id, Factura.Carrito);
+                _ = auxFactura - id;
+                this.lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
                 dgvCarritoCliente.Rows.RemoveAt(dgvCarritoCliente.CurrentRow.Index);
-                auxFactura = new FacturaDebito( EMetodosDePago.efectivo, 0);
-               // auxFactura -= auxProducto;
             }
         }
 
@@ -308,35 +264,65 @@ namespace UITiendaElectronica
         private void button1_Click(object sender, EventArgs e)
         {
             
-
             if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
             {
-
+                Factura facturaFinal;
                 foreach (Control item in grbFormaDePago.Controls)
                 {
                     if (item is RadioButton)
                     {
                         if (rdoEfectivo.Checked)
                         {
-                            auxFactura = new FacturaEfectivo(EMetodosDePago.efectivo, Convert.ToDouble(lblTotalCarrito.Text), 0,
-                               Convert.ToDouble(txtAbonacon.Text), Convert.ToDouble(lblCalculoVuelto.Text));
+                            double abonaCon;
+                            bool esNumero = double.TryParse(txtAbonacon.Text, out abonaCon);
+
+                            if (txtAbonacon.Text != null && esNumero && Convert.ToInt32(lblTotalCarrito.Text) < Convert.ToInt32(txtAbonacon.Text))
+                            {
+                                facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
+                               Convert.ToDouble(txtAbonacon.Text));
+                                MessageBox.Show(facturaFinal.ToString());
+                                //Resetea la lista de la factura de la venta concretada y limpia dgv y labels.
+                                Factura.Carrito.Clear();
+                                this.lblTotalCarrito.Text = string.Empty;
+                                this.dgvCarritoCliente.Rows.Clear();
+                                this.rdoEfectivo.Checked = true;
+
+                            }
+                            else
+                            {   //El Botón ver vuelto ya setea qué acciones tomar en caso de que el monto sea insuficiente o inválido.
+                                btnVerVuelto.PerformClick();
+                            }
+                           
+
                         }
                         else if (rdoCredito.Checked)
                         {
-
-                            auxFactura = new FacturaCredito( EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
+                            facturaFinal = new FacturaCredito( EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
                                  Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
+                            MessageBox.Show(facturaFinal.ToString());
+                            //Resetea la lista de la factura de la venta concretada y limpia dgv y labels.
+                            Factura.Carrito.Clear();
+                            this.lblTotalCarrito.Text = string.Empty;
+                            this.dgvCarritoCliente.Rows.Clear();
+                            this.rdoEfectivo.Checked = true;
                         }
                         else if (rdoDebiro.Checked)
                         {
-                            auxFactura = new FacturaDebito( EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
+                            facturaFinal = new FacturaDebito( EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
+                            MessageBox.Show(facturaFinal.ToString());
+                            //Resetea la lista de la factura de la venta concretada y limpia dgv y labels. 
+                            Factura.Carrito.Clear();
+                            this.lblTotalCarrito.Text = string.Empty;
+                            this.dgvCarritoCliente.Rows.Clear();
+                            this.rdoEfectivo.Checked = true;
                         }
+                        break;
 
                     }
 
                 }
             }
-            MessageBox.Show(auxFactura.MostrarCompra());
+            
         }
 
 
@@ -349,9 +335,25 @@ namespace UITiendaElectronica
             }
         }
 
-        private void btnPlaquetas_Click(object sender, EventArgs e)
+
+        private void Venta_MouseUp(object sender, MouseEventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas);
+            m = 0;
+        }
+
+        private void Venta_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
+        }
+
+        private void Venta_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
         }
 
 
