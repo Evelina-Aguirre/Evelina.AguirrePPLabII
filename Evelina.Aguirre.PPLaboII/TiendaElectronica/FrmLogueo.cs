@@ -22,13 +22,13 @@ namespace UITiendaElectronica
 
         private void btnInicioSesion_Click(object sender, EventArgs e)
         {
-            if(TiendaElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Vendedor)
+            if(TiendaDeElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Vendedor)
             {
                 Venta frmVenta = new Venta();
                 frmVenta.Show();
                 this.Hide();
             }
-            else if (TiendaElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Dueño)
+            else if (TiendaDeElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Dueño)
             {
                 Menú frmMenuPrincipal = new Menú();
                 frmMenuPrincipal.Show();

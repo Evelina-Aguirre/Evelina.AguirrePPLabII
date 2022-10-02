@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using Entidades.TiendaElectronica;
 
 namespace UITiendaElectronica
 {
@@ -85,7 +86,7 @@ namespace UITiendaElectronica
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
-            dgvProductosTienda.DataSource = TiendaElectronica.BuscarProductoPorNombre(this.txtBuscat.Text.ToString().ToLower());
+            dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProductoPorNombre(this.txtBuscat.Text.ToString().ToLower());
         }
 
         private void txtBuscat_Click(object sender, EventArgs e)
@@ -112,7 +113,7 @@ namespace UITiendaElectronica
             //Carga descipción producto
             this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
             //Calcula total a medida que se agregan los productos
-            this.lblTotalCarrito.Text =TiendaElectronica.CalculaTotal((double)Convert.ToInt32(this.lblTotalCarrito.Text),
+            this.lblTotalCarrito.Text =TiendaDeElectronica.CalculaTotal((double)Convert.ToInt32(this.lblTotalCarrito.Text),
                 (double)Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[3].Value),'+').ToString();
 
             
@@ -166,7 +167,7 @@ namespace UITiendaElectronica
         {
             if (this.dgvCarritoCliente.Rows.Count>1 && this.dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
             {
-                this.lblTotalCarrito.Text = TiendaElectronica.CalculaTotal((double)Convert.ToInt32(this.lblTotalCarrito.Text),
+                this.lblTotalCarrito.Text = TiendaDeElectronica.CalculaTotal((double)Convert.ToInt32(this.lblTotalCarrito.Text),
                     (double)Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[1].Value),'-').ToString();
                 this.dgvCarritoCliente.Rows.RemoveAt(dgvCarritoCliente.CurrentRow.Index);
             }
@@ -216,7 +217,7 @@ namespace UITiendaElectronica
          
             if(this.txtAbonacon.Text != null && esNumero)
             {
-                this.lblCalculoVuelto.Text = TiendaElectronica.CalculoVuelto((double)Convert.ToInt32(this.lblTotalCarrito.Text),
+                this.lblCalculoVuelto.Text = TiendaDeElectronica.CalculoVuelto((double)Convert.ToInt32(this.lblTotalCarrito.Text),
                     (double)Convert.ToInt32(this.txtAbonacon.Text)).ToString();
                 if(Convert.ToInt32(this.lblTotalCarrito.Text) > Convert.ToInt32(this.txtAbonacon.Text))
                 {
@@ -281,25 +282,26 @@ namespace UITiendaElectronica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Factura factura = new Factura(auxListaCarrito, EMetodosDePago.Debito,0);
+            
             foreach (Control item in this.grbFormaDePago.Controls)
             {
                 if (item is RadioButton)
                 {
+                    FacturaDebito auxFactura = new FacturaDebito(auxListaCarrito, EMetodosDePago.efectivo,0);
                     if (this.rdoEfectivo.Checked)
                     {
-                        factura = new Factura(auxListaCarrito, EMetodosDePago.efectivo, Convert.ToDouble(this.lblTotalCarrito.Text),
+                        auxFactura = new FacturaEfectivo(auxListaCarrito, EMetodosDePago.efectivo, Convert.ToDouble(this.lblTotalCarrito.Text),0,
                            Convert.ToDouble(this.txtAbonacon.Text), Convert.ToDouble(this.lblCalculoVuelto.Text));
                     }
                     else if (this.rdoCredito.Checked)
                     {
 
-                        factura = new Factura(auxListaCarrito, EMetodosDePago.Credito, Convert.ToDouble(this.lblTotalCarrito.Text),
+                        auxFactura = new FacturaCredito(auxListaCarrito, EMetodosDePago.Credito, Convert.ToDouble(this.lblTotalCarrito.Text),
                              Convert.ToInt32(this.cmbCuotas.SelectedItem.ToString()));
                     }
                     else if (this.rdoDebiro.Checked)
                     {
-                        factura = new Factura(auxListaCarrito, EMetodosDePago.Debito, Convert.ToDouble(this.lblTotalCarrito.Text));
+                        auxFactura = new FacturaDebito(auxListaCarrito, EMetodosDePago.Debito, Convert.ToDouble(this.lblTotalCarrito.Text));
                     }
 
                 }

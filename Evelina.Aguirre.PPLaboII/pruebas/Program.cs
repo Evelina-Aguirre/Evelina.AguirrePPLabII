@@ -12,7 +12,7 @@ namespace pruebas
            
             int aux =0;
 
-            foreach (KeyValuePair<int, Producto> item in TiendaElectronica.InventarioTienda)
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
                 aux++;
                 //TiendaElectronica.CarritoCliente = TiendaElectronica.Cliente + item.Value;
