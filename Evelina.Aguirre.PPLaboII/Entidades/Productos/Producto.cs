@@ -97,7 +97,7 @@ namespace Entidades
         /// </summary>
         /// <param name="categoria">categoría/tag que se busca</param>
         /// <returns>Diccionario cargado con la categoría que se busca</returns>
-        public static List<Producto> CargarDataPorCategoria(ECategoriaElectronico categoria)
+        public static List<Producto> CargarProductosPorCategoria(ECategoriaElectronico categoria)
         {
             List<Producto> auxListaProductos = new List<Producto>();
            

@@ -6,32 +6,43 @@ namespace Entidades
     public class Factura
     {
         private List<Producto> carrito;
-        private double totalCompra;
         private EMetodosDePago metodoDePago;
+        private int cantCuotas;
+        private double totalCompra;
         private double abonaCon;
         private double vuelto;
 
         private Factura()
         {
+            carrito = new List<Producto>();
             totalCompra = 0;
             metodoDePago = EMetodosDePago.efectivo;
             abonaCon = 0;
         }
 
+        
         public Factura(List<Producto> carrito):this()
         {
             this.carrito = carrito;
         }
-        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago, double abonaCon) : this(carrito)
+        //Contructor casos en debito y crédito
+        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago,double totalCompra) : this(carrito) 
         {
             this.metodoDePago = metodoDePago;
-            this.abonaCon = abonaCon;
+            this.totalCompra = totalCompra;
+        }
+        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago, double totalCompra, int cantCuotas) 
+            : this(carrito, metodoDePago, totalCompra)
+        {
+            this.metodoDePago = metodoDePago;
+            this.totalCompra = totalCompra;
+            this.cantCuotas = cantCuotas;
         }
 
-        public Factura(List<Producto> carrito, double totalCompra, EMetodosDePago metodoDePago, double abonaCon, double vuelto)
-            : this(carrito, metodoDePago, abonaCon)
+        public Factura(List<Producto> carrito, EMetodosDePago metodoDePago, double totalCompra, double abonaCon, double vuelto)
+            : this(carrito, metodoDePago, totalCompra, 0)
         {
-            this.totalCompra = totalCompra;
+            this.abonaCon = abonaCon;
             this.vuelto = vuelto;
         }
 
@@ -127,6 +138,7 @@ namespace Entidades
             }
             return c.Carrito;
         }
+        
        /// <summary>
        /// 
        /// </summary>
