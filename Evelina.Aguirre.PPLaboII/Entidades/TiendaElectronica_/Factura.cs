@@ -21,7 +21,7 @@ namespace Entidades
         }
         
 
-        public static List<Producto> Carrito { get => carrito; set => carrito = value; }
+       public static List<Producto> Carrito { get => carrito; set => carrito = value; }
 
         public double TotalCompra
         {

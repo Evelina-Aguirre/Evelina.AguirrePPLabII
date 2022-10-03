@@ -22,7 +22,7 @@ namespace Entidades.TiendaElectronica
             }
             else
             {
-                sb.AppendLine($"Cuotas:{cantCuotas}");
+                sb.AppendLine($"Cuotas:{this.cantCuotas}");
             }
 
             return sb.ToString();

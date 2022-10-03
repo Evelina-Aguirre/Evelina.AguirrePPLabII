@@ -89,6 +89,11 @@ namespace Entidades
             return EPersona.Desconocido;
         }
 
+        /// <summary>
+        /// Busca un producto por su nombre en el inventario de la tienda.
+        /// </summary>
+        /// <param name="aux">Palabra a buscar.</param>
+        /// <returns>Lista con los productos encontrados.</returns>
         public static List<Producto> BuscarProductoPorNombre(string aux)
         {
             List<Producto> auxLista = new List<Producto>();
@@ -107,36 +112,6 @@ namespace Entidades
 
         }
 
-        //public static Producto BuscarProductoPorId(int id, Dictionary<int, Producto> diccionario)
-        //{
-        //    foreach (KeyValuePair<int, Producto> item in diccionario)
-        //    {
-        //        if (id == item.Value.Id)
-        //            return item.Value;
-        //    }
-        //    return null;
-        //}
-        //public static Producto BuscarProductoPorId(int id, List<Producto> listaProductos)
-        //{
-        //    foreach (Producto item in listaProductos )
-        //    {
-        //        if (id == item.Id)
-        //            return item;
-        //    }
-        //    return null;
-        //}
-
-        public static double CalculaTotal(double totalActual, double monto, char operacion)
-        {
-            if (operacion == '+')
-            {
-                totalActual += monto;
-            }
-            else if (operacion == '-')
-                totalActual -= monto;
-            
-            return totalActual;
-        }
 
 
     }

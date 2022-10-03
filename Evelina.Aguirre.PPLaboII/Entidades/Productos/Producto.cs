@@ -34,11 +34,6 @@ namespace Entidades
             this.categoria = categoria;
         }
 
-        //public Producto(string nombre, int cantidad, double precio, short id, string descripcion, ECategoriaElectronico categoria)
-        //    :this(nombre, cantidad, precio, id,descripcion)
-        //{
-        //    this.categoria = categoria;
-        //}
 
         public short Id { get => id;}
         public string Nombre { get => nombre;}

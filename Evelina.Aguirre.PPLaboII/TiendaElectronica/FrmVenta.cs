@@ -139,13 +139,12 @@ namespace UITiendaElectronica
 
 
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void llbBorrarProductoDeLista_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             
             if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
              {
                 int id = Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[0].Value);
-               // Producto auxPorducto = TiendaDeElectronica.BuscarProductoPorId(id, Factura.Carrito);
                 _ = auxFactura - id;
                 this.lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
                 dgvCarritoCliente.Rows.RemoveAt(dgvCarritoCliente.CurrentRow.Index);
@@ -191,16 +190,16 @@ namespace UITiendaElectronica
 
         private void btnVerVuelto_Click(object sender, EventArgs e)
         {
-            double abonaCon;
-            bool esNumero = double.TryParse(txtAbonacon.Text, out abonaCon);
+            float abonaCon;
+            bool esNumero = float.TryParse(txtAbonacon.Text, out abonaCon);
 
             if (txtAbonacon.Text != null && esNumero)
             {
-                //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al terminar la venta,
+                //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al al elegir el método de pago,
                 //Uso el método de esta clase (facturaEfectivo) para poder mostrarlo en el form de manera orientativa para el usuario.
-                lblCalculoVuelto.Text = FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, Convert.ToDouble(this.txtAbonacon.Text)).ToString();
+                lblCalculoVuelto.Text = FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, float.Parse(this.txtAbonacon.Text)).ToString();
                   
-                if (Convert.ToInt32(lblTotalCarrito.Text) > Convert.ToInt32(txtAbonacon.Text))
+                if (float.Parse(lblTotalCarrito.Text) > float.Parse(txtAbonacon.Text))
                 {
                     lblMontoInsuficiente.Text = "Monto insuficiente";
                     timer1.Interval = 3000;
@@ -228,7 +227,6 @@ namespace UITiendaElectronica
             txtAbonacon.Text = "";
             txtAbonacon.BackColor = Color.White;
             txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
-
             cmbCuotas.Visible = false;
             lblAuxlblVuelto.Visible = true;
             lblsimboloPesos.Visible = true;
@@ -273,15 +271,15 @@ namespace UITiendaElectronica
                     {
                         if (rdoEfectivo.Checked)
                         {
-                            double abonaCon;
-                            bool esNumero = double.TryParse(txtAbonacon.Text, out abonaCon);
+                            int abonaCon;
+                            bool esNumero = int.TryParse(txtAbonacon.Text, out abonaCon);
 
                             if (txtAbonacon.Text != null && esNumero && Convert.ToInt32(lblTotalCarrito.Text) < Convert.ToInt32(txtAbonacon.Text))
                             {
                                 facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
                                Convert.ToDouble(txtAbonacon.Text));
                                 MessageBox.Show(facturaFinal.ToString());
-                                //Resetea la lista de la factura de la venta concretada y limpia dgv y labels.
+                                //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
                                 Factura.Carrito.Clear();
                                 this.lblTotalCarrito.Text = string.Empty;
                                 this.dgvCarritoCliente.Rows.Clear();
