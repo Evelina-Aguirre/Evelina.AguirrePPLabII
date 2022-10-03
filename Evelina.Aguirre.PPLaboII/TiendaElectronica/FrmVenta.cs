@@ -20,19 +20,18 @@ namespace UITiendaElectronica
         }
         private void Venta_Load(object sender, EventArgs e)
         {
-            dgvCarritoCliente.ColumnCount = 3;
-            dgvCarritoCliente.Columns[0].Name = "ID";
-            dgvCarritoCliente.Columns[1].Name = "Producto";
-            dgvCarritoCliente.Columns[2].Name = "Precio";
+            this.dgvCarritoCliente.ColumnCount = 3;
+            this.dgvCarritoCliente.Columns[0].Name = "ID";
+            this.dgvCarritoCliente.Columns[1].Name = "Producto";
+            this.dgvCarritoCliente.Columns[2].Name = "Precio";
 
             List<Producto> auxLista = new List<Producto>();
             //Asigno una lista de Productos vacía para que el form inicie con las columnas correspondientes a un producto pero sin datos.
-            dgvProductosTienda.DataSource = auxLista;
-            lblTotalCarrito.Text = "0";
-            lblTotalCarrito.Text = "0";
-            lblCalculoVuelto.Text = "0";
-            rdoEfectivo.Checked = true;
-            cmbCuotas.Visible = false;
+            this.dgvProductosTienda.DataSource = auxLista;
+            this.lblTotalCarrito.Text = "0";
+            this.lblCalculoVuelto.Text = "-";
+            this.rdoEfectivo.Checked = true;
+            this.cmbCuotas.Visible = false;
         }
 
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -49,60 +48,60 @@ namespace UITiendaElectronica
         private void btnLeds_Click(object sender, EventArgs e)
         {
 
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Leds);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Leds, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnBobinas_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Bobinas);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Bobinas, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnCapacitores_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Capacitores);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Capacitores, TiendaDeElectronica.InventarioTienda);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Limpieza);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Limpieza, TiendaDeElectronica.InventarioTienda);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Soldado);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Soldado, TiendaDeElectronica.InventarioTienda);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Herramientas);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Herramientas, TiendaDeElectronica.InventarioTienda);
         }
         private void btnPlaquetas_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnConectores_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Conectores);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Conectores, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnCircuitosIntegrados_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados);
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
-            dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProductoPorNombre(txtBuscat.Text.ToString().ToLower());
+            this.dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProductoPorNombre(txtBuscat.Text.ToString().ToLower());
         }
 
         private void txtBuscat_Click(object sender, EventArgs e)
         {
             List<Producto> auxLista = new List<Producto>();
             //Asigno una lista de Productos vacía para que se carguen las columnas correspondientes a un producto pero sin datos.
-            dgvProductosTienda.DataSource = auxLista;
-            txtBuscat.Text = string.Empty;
-            dgvProductosTienda.DataSource = null;
+            this.dgvProductosTienda.DataSource = auxLista;
+            this.txtBuscat.Text = string.Empty;
+            this.dgvProductosTienda.DataSource = null;
         }
 
 
@@ -111,29 +110,29 @@ namespace UITiendaElectronica
         {
             //Instancia un producto para poder agregarlo a la factura.
             Producto auxProducto = new Producto(
-               dgvProductosTienda.CurrentRow.Cells[1].Value.ToString(),
-               Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
-               Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[3].Value.ToString()),
-               (short)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[0].Value), "",
-               (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[5].Value);
+              this.dgvProductosTienda.CurrentRow.Cells[1].Value.ToString(),
+               Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
+               Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString()),
+               (short)Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[0].Value), "",
+               (ECategoriaElectronico)this.dgvProductosTienda.CurrentRow.Cells[5].Value);
 
             //Vista previa del producto agregador al dgv de los productos a vender.
-            dgvCarritoCliente.Rows.Add(dgvProductosTienda.CurrentRow.Cells[0].Value, dgvProductosTienda.CurrentRow.Cells[1].Value,
+            this.dgvCarritoCliente.Rows.Add(this.dgvProductosTienda.CurrentRow.Cells[0].Value, this.dgvProductosTienda.CurrentRow.Cells[1].Value,
                 dgvProductosTienda.CurrentRow.Cells[3].Value);
 
             //Muestra descrición del producto en el label de detalles.
-            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
 
             //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
             this.auxFactura += auxProducto;
 
             //Muestra el total actual de la factura auxiliar con el producto agregado.
-            lblTotalCarrito.Text = this.auxFactura.TotalCompra.ToString();
+            this.lblTotalCarrito.Text = this.auxFactura.TotalCompra.ToString();
         }
 
         private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
         }
 
 
@@ -153,65 +152,65 @@ namespace UITiendaElectronica
 
         private void rdoDebiro_CheckedChanged(object sender, EventArgs e)
         {
-            lblCuotasAbonaCon.Text = "Abona con";
-            lblCuotasAbonaCon.Location = new System.Drawing.Point(156, 25);
-            lblMontoInsuficiente.Visible = false;
-            lblAuxlblVuelto.Visible = false;
-            btnVerVuelto.Visible = false;
-            lblsimboloPesos.Visible = false;
-            lblCalculoVuelto.Visible = false;
+            this.lblCuotasAbonaCon.Text = "Abona con";
+            this.lblCuotasAbonaCon.Location = new System.Drawing.Point(156, 25);
+            this.lblMontoInsuficiente.Visible = false;
+            this.lblAuxlblVuelto.Visible = false;
+            this.btnVerVuelto.Visible = false;
+            this.lblsimboloPesos.Visible = false;
+            this.lblCalculoVuelto.Visible = false;
 
-            txtAbonacon.Enabled = false;
-            txtAbonacon.BackColor = Color.FromArgb(185, 185, 185);
-            txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
-            txtAbonacon.Text = lblTotalCarrito.Text;
+            this.txtAbonacon.Enabled = false;
+            this.txtAbonacon.BackColor = Color.FromArgb(185, 185, 185);
+            this.txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
+            this.txtAbonacon.Text = lblTotalCarrito.Text;
 
         }
 
         private void rdoCredito_CheckedChanged(object sender, EventArgs e)
         {
-            lblCuotasAbonaCon.Location = new System.Drawing.Point(156, 60);
-            lblMontoInsuficiente.Visible = false;
-            lblCuotasAbonaCon.Text = "Cant. Cuotas";
-            lblAuxlblVuelto.Visible = false;
-            btnVerVuelto.Visible = false;
-            lblsimboloPesos.Visible = false;
-            lblCalculoVuelto.Visible = false;
+            this.lblCuotasAbonaCon.Location = new System.Drawing.Point(156, 60);
+            this.lblMontoInsuficiente.Visible = false;
+            this.lblCuotasAbonaCon.Text = "Cant. Cuotas";
+            this.lblAuxlblVuelto.Visible = false;
+            this.btnVerVuelto.Visible = false;
+            this.lblsimboloPesos.Visible = false;
+            this.lblCalculoVuelto.Visible = false;
 
-            txtAbonacon.Enabled = false;
-            txtAbonacon.BackColor = Color.FromArgb(185, 185, 185);
-            txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
-            txtAbonacon.Text = lblTotalCarrito.Text;
+            this.txtAbonacon.Enabled = false;
+            this.txtAbonacon.BackColor = Color.FromArgb(185, 185, 185);
+            this.txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
+            this.txtAbonacon.Text = lblTotalCarrito.Text;
 
-            cmbCuotas.Visible = true;
-            cmbCuotas.SelectedIndex = 0;
+            this.cmbCuotas.Visible = true;
+            this.cmbCuotas.SelectedIndex = 0;
 
         }
 
         private void btnVerVuelto_Click(object sender, EventArgs e)
         {
             float abonaCon;
-            bool esNumero = float.TryParse(txtAbonacon.Text, out abonaCon);
+            bool esNumero = float.TryParse(this.txtAbonacon.Text, out abonaCon);
 
-            if (txtAbonacon.Text != null && esNumero)
+            if (this.txtAbonacon.Text != null && esNumero)
             {
                 //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al al elegir el método de pago,
                 //Uso el método de esta clase (facturaEfectivo) para poder mostrarlo en el form de manera orientativa para el usuario.
                 lblCalculoVuelto.Text = FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, float.Parse(this.txtAbonacon.Text)).ToString();
                   
-                if (float.Parse(lblTotalCarrito.Text) > float.Parse(txtAbonacon.Text))
+                if (float.Parse(this.lblTotalCarrito.Text) > float.Parse(this.txtAbonacon.Text))
                 {
-                    lblMontoInsuficiente.Text = "Monto insuficiente";
-                    timer1.Interval = 3000;
-                    timer1.Start();
+                    this.lblMontoInsuficiente.Text = "Monto insuficiente";
+                    this.timer1.Interval = 3000;
+                    this.timer1.Start();
                 }
             }
             else if (txtAbonacon.Text == null || !esNumero)
             {
-                lblCalculoVuelto.Text = "-";
-                lblMontoInsuficiente.Text = "Debe ingresar un valor numérico";
-                timer1.Interval = 3000;
-                timer1.Start();
+                this.lblCalculoVuelto.Text = "-";
+                this.lblMontoInsuficiente.Text = "Debe ingresar un valor numérico";
+                this.timer1.Interval = 3000;
+                this.timer1.Start();
             }
 
 
@@ -219,33 +218,33 @@ namespace UITiendaElectronica
 
         private void rdoEfectivo_CheckedChanged(object sender, EventArgs e)
         {
-            lblCuotasAbonaCon.Location = new System.Drawing.Point(156, 25);
-            lblCuotasAbonaCon.Text = "Abona con";
-            btnVerVuelto.Visible = true;
-            btnVerVuelto.Enabled = true;
-            lblMontoInsuficiente.Visible = true;
-            txtAbonacon.Text = "";
-            txtAbonacon.BackColor = Color.White;
-            txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
-            cmbCuotas.Visible = false;
-            lblAuxlblVuelto.Visible = true;
-            lblsimboloPesos.Visible = true;
-            lblCalculoVuelto.Visible = true;
-            txtAbonacon.Enabled = true;
+            this.lblCuotasAbonaCon.Location = new System.Drawing.Point(156, 25);
+            this.lblCuotasAbonaCon.Text = "Abona con";
+            this.btnVerVuelto.Visible = true;
+            this.btnVerVuelto.Enabled = true;
+            this.lblMontoInsuficiente.Visible = true;
+            this.txtAbonacon.Text = "";
+            this.txtAbonacon.BackColor = Color.White;
+            this.txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
+            this.cmbCuotas.Visible = false;
+            this.lblAuxlblVuelto.Visible = true;
+            this.lblsimboloPesos.Visible = true;
+            this.lblCalculoVuelto.Visible = true;
+            this.txtAbonacon.Enabled = true;
 
 
         }
 
         private void txtAbonacon_Click(object sender, EventArgs e)
         {
-            txtAbonacon.Text = string.Empty;
+            this.txtAbonacon.Text = string.Empty;
         }
 
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblMontoInsuficiente.Text = "";
-            timer1.Stop();
+            this.lblMontoInsuficiente.Text = "";
+            this.timer1.Stop();
         }
 
         private void txtBuscat_KeyPress(object sender, KeyPressEventArgs e)
@@ -255,26 +254,26 @@ namespace UITiendaElectronica
                 //le informo que el evento (hacer sonido por no poder dar un salto de linea en un textBox)
                 //ya fue manejado para que no lo reproduzca.
                 e.Handled = true;
-                btnBuscar.PerformClick();
+                this.btnBuscar.PerformClick();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             
-            if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
+            if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
             {
                 Factura facturaFinal;
-                foreach (Control item in grbFormaDePago.Controls)
+                foreach (Control item in this.grbFormaDePago.Controls)
                 {
                     if (item is RadioButton)
                     {
                         if (rdoEfectivo.Checked)
                         {
                             int abonaCon;
-                            bool esNumero = int.TryParse(txtAbonacon.Text, out abonaCon);
+                            bool esNumero = int.TryParse(this.txtAbonacon.Text, out abonaCon);
 
-                            if (txtAbonacon.Text != null && esNumero && Convert.ToInt32(lblTotalCarrito.Text) < Convert.ToInt32(txtAbonacon.Text))
+                            if (this.txtAbonacon.Text != null && esNumero && Convert.ToInt32(this.lblTotalCarrito.Text) < Convert.ToInt32(this.txtAbonacon.Text))
                             {
                                 facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
                                Convert.ToDouble(txtAbonacon.Text));
@@ -329,7 +328,7 @@ namespace UITiendaElectronica
             if (e.KeyChar == 13)
             {
                 e.Handled = true;
-                btnVerVuelto.PerformClick();
+                this.btnVerVuelto.PerformClick();
             }
         }
 

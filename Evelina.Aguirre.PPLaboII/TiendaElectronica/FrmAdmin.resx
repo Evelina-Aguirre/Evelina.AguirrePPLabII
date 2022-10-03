@@ -58,7 +58,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="linkLabel1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="llbVolver.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAyAAAAMgCAYAAADbcAZoAAAABGdBTUEAALGPC/xhBQAACuNJREFUeF7t
         28ExBEEUBuANQQhCkAEZEIIMyIAMyIAMyGBlQAZkwGW6mVU1+s32ji3KWqyD9X1V7zDd0+/+1+seAQAA
@@ -112,17 +112,17 @@
   </data>
   <data name="llbMinimizar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABUAAAAZCAYAAADe1WXtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAE5JREFUSEu1yzEKACAQA0H//+lTrKcQFgPTLGSdzQeMFWPFWDFWjBVjxVgxVowV
-        Y8VYMV4v0+9grBgrxoqxYqwYK8aKsWKsGCvGijFYswEwRCX3NY33AwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAADdJREFUSEtj0NS3/E9PPGoh1fGohVTHoxZSHY9aiIKJAdj0IePRIKU6HrWQ6njU
+        Qqrj4W6h5X8A5LswCZiWwbYAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="llbCerrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAGlJREFUOE+tzAkKwCAMRUHvf2m7oCJ0qtDfwIC8YMo59WeMCcYEY4IxwZhgTDzj
-        NeqX1a5h5Ec1YLzNB+b3BuPQR7sXjEMf7V4w3uZD83uDkQfU4BlXH1e7hjHBmGBMMCYYE4wJxo9KPQCF
-        QOYoQ1iv2AAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAAGBJREFUSEtj0NS3/E8PPGoR2XjUIrIxURaBADZxEMYnh4yJ9hE2A7GJ4cIkBR2y
+        wchsYjDJcQQD2OTw4cFpEbIFyGxi8OBKDPgMxCeHjEmOI3LxqEVk41GLyMbDzSLL/wCaffXubcOY5wAA
+        AABJRU5ErkJggg==
 </value>
   </data>
   <data name="llbRemover.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

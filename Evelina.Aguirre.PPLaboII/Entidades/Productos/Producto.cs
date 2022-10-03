@@ -95,52 +95,19 @@ namespace Entidades
             return categoria;
         }
         /// <summary>
-        /// Busca en el inventario de la tienda la categoría que se especifica por parámetro.
+        /// Busca en una colección Diccionario la categoría que se especifica por parámetro.
         /// </summary>
         /// <param name="categoria">categoría/tag que se busca</param>
         /// <returns>Diccionario cargado con la categoría que se busca</returns>
-        public static List<Producto> CargarProductosPorCategoria(ECategoriaElectronico categoria)
+        public static List<Producto> CargarProductosPorCategoria(ECategoriaElectronico categoria, Dictionary<int,Producto> diccionario)
         {
             List<Producto> auxListaProductos = new List<Producto>();
            
-            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+            foreach (KeyValuePair<int, Producto> item in diccionario)
             {
                 if (item.Value.Categoria.ToString() == categoria.ToString())
                 {
-                    switch (categoria)
-                    {
-                        case ECategoriaElectronico.Leds:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.Bobinas:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.Capacitores:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.Conectores:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.CircuitosIntegrados:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.Plaquetas:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.Soldado:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.Limpieza:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.Herramientas:
-                            auxListaProductos.Add(item.Value);
-                            break;
-                        case ECategoriaElectronico.ControlTermico:
-                            auxListaProductos.Add(item.Value);
-                            break;
-
-                    }
+                    Producto.CargarProductosPorCategoria(categoria, auxListaProductos, item.Value);
                 }
             }
 
@@ -148,11 +115,79 @@ namespace Entidades
 
         }
 
-        
+        /// <summary>
+        /// Busca en una colección de tipo lista una categoría.
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <param name="lista"></param>
+        /// <returns>Lista con todos los elementos encontrados con esa categoría.</returns>
+        public static List<Producto> CargarProductosPorCategoria(ECategoriaElectronico categoria, List<Producto> lista)
+        {
+            List<Producto> auxListaProductos = new List<Producto>();
+
+            foreach (Producto item in lista)
+            {
+                if (item.Categoria.ToString() == categoria.ToString())
+                {
+                    Producto.CargarProductosPorCategoria(categoria, auxListaProductos, item);
+                }
+            }
+
+            return auxListaProductos;
+
+        }
+
+        /// <summary>
+        /// Carga un Porductos a una lista según la categoría.
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <param name="lista"></param>
+        /// <param name="item"></param>
+        /// <returns>Lista cargada con los productos que se encontraron de esa categoría.</returns>
+        private static List<Producto> CargarProductosPorCategoria(ECategoriaElectronico categoria, List<Producto> lista, Producto item)
+        {
+            switch (categoria)
+            {
+                case ECategoriaElectronico.Leds:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.Bobinas:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.Capacitores:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.Conectores:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.CircuitosIntegrados:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.Plaquetas:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.Soldado:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.Limpieza:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.Herramientas:
+                    lista.Add(item);
+                    break;
+                case ECategoriaElectronico.ControlTermico:
+                    lista.Add(item);
+                    break;
+
+            }
+            return lista;
+        }
+
+
         /// <summary>
         /// Muestra propiedades del producto.
         /// </summary>
-        /// <returns>string con la descripción del producto</returns>
+        /// <returns>String con la descripción del producto</returns>
         public string MostrarProducto()
         {
             StringBuilder sb = new StringBuilder();
