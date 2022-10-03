@@ -113,14 +113,14 @@
   <data name="llbMinimizar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAADdJREFUSEtj0NS3/E9PPGoh1fGohVTHoxZSHY9aiIKJAdj0IePRIKU6HrWQ6njU
+        vAAADrwBlbxySQAAADdJREFUSEtj0NS3/E9PPGoh1fGohVTHoxZSHY9aiIKJAdj0IePRIKU6HrWQ6njU
         Qqrj4W6h5X8A5LswCZiWwbYAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="llbCerrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAGBJREFUSEtj0NS3/E8PPGoR2XjUIrIxURaBADZxEMYnh4yJ9hE2A7GJ4cIkBR2y
+        vAAADrwBlbxySQAAAGBJREFUSEtj0NS3/E8PPGoR2XjUIrIxURaBADZxEMYnh4yJ9hE2A7GJ4cIkBR2y
         wchsYjDJcQQD2OTw4cFpEbIFyGxi8OBKDPgMxCeHjEmOI3LxqEVk41GLyMbDzSLL/wCaffXubcOY5wAA
         AABJRU5ErkJggg==
 </value>
@@ -3190,6 +3190,9 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAtbUAAAEAIAAEEQIAFgAAACgAAAC1AAAAagEAAAEAIAAAAAAA5P8BAMMOAADDDgAAAAAAAAAA

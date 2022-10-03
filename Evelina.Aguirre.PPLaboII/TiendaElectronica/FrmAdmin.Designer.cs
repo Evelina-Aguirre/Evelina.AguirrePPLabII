@@ -29,13 +29,13 @@ namespace UITiendaElectronica
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAdmin));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.llbVolver = new System.Windows.Forms.LinkLabel();
             this.llbMinimizar = new System.Windows.Forms.LinkLabel();
             this.llbCerrar = new System.Windows.Forms.LinkLabel();
@@ -84,6 +84,7 @@ namespace UITiendaElectronica
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogoProveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.grbFormaDePago.SuspendLayout();
@@ -151,7 +152,7 @@ namespace UITiendaElectronica
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(81)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(1156, 338);
+            this.label6.Location = new System.Drawing.Point(989, 303);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 15);
             this.label6.TabIndex = 151;
@@ -165,13 +166,14 @@ namespace UITiendaElectronica
             this.llbRemover.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.llbRemover.Image = ((System.Drawing.Image)(resources.GetObject("llbRemover.Image")));
             this.llbRemover.LinkColor = System.Drawing.Color.Transparent;
-            this.llbRemover.Location = new System.Drawing.Point(1158, 310);
+            this.llbRemover.Location = new System.Drawing.Point(991, 275);
             this.llbRemover.Name = "llbRemover";
             this.llbRemover.Size = new System.Drawing.Size(72, 28);
             this.llbRemover.TabIndex = 135;
             this.llbRemover.TabStop = true;
             this.llbRemover.Text = "            ";
             this.llbRemover.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbRemover.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbRemover_LinkClicked);
             // 
             // btnHerramientas
             // 
@@ -304,14 +306,14 @@ namespace UITiendaElectronica
             this.dgvCatalogoProveedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCatalogoProveedor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvCatalogoProveedor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(48)))), ((int)(((byte)(145)))));
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCatalogoProveedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCatalogoProveedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCatalogoProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCatalogoProveedor.EnableHeadersVisualStyles = false;
             this.dgvCatalogoProveedor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
@@ -320,16 +322,17 @@ namespace UITiendaElectronica
             this.dgvCatalogoProveedor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvCatalogoProveedor.RowHeadersVisible = false;
             this.dgvCatalogoProveedor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle50.NullValue = null;
-            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(67)))), ((int)(((byte)(97)))));
-            this.dgvCatalogoProveedor.RowsDefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(81)))));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle7.NullValue = null;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(67)))), ((int)(((byte)(97)))));
+            this.dgvCatalogoProveedor.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCatalogoProveedor.RowTemplate.Height = 25;
             this.dgvCatalogoProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCatalogoProveedor.Size = new System.Drawing.Size(741, 230);
             this.dgvCatalogoProveedor.TabIndex = 133;
+            this.dgvCatalogoProveedor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCatalogoProveedor_CellDoubleClick);
             // 
             // txtBuscarEnProveedor
             // 
@@ -358,14 +361,14 @@ namespace UITiendaElectronica
             this.dgvCarrito.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCarrito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvCarrito.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(48)))), ((int)(((byte)(145)))));
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCarrito.EnableHeadersVisualStyles = false;
             this.dgvCarrito.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
@@ -374,12 +377,12 @@ namespace UITiendaElectronica
             this.dgvCarrito.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvCarrito.RowHeadersVisible = false;
             this.dgvCarrito.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle52.NullValue = null;
-            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(67)))), ((int)(((byte)(97)))));
-            this.dgvCarrito.RowsDefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(81)))));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle9.NullValue = null;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(67)))), ((int)(((byte)(97)))));
+            this.dgvCarrito.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvCarrito.RowTemplate.Height = 25;
             this.dgvCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarrito.Size = new System.Drawing.Size(385, 360);
@@ -390,7 +393,7 @@ namespace UITiendaElectronica
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label10.Location = new System.Drawing.Point(1249, 427);
+            this.label10.Location = new System.Drawing.Point(1249, 425);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 26);
             this.label10.TabIndex = 159;
@@ -405,6 +408,7 @@ namespace UITiendaElectronica
             this.btnVender.TabIndex = 158;
             this.btnVender.Text = "Comprar";
             this.btnVender.UseVisualStyleBackColor = true;
+            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
             // 
             // grbFormaDePago
             // 
@@ -447,7 +451,7 @@ namespace UITiendaElectronica
             this.lblSaldoTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblSaldoTienda.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblSaldoTienda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblSaldoTienda.Location = new System.Drawing.Point(196, 25);
+            this.lblSaldoTienda.Location = new System.Drawing.Point(197, 25);
             this.lblSaldoTienda.Name = "lblSaldoTienda";
             this.lblSaldoTienda.Size = new System.Drawing.Size(101, 21);
             this.lblSaldoTienda.TabIndex = 168;
@@ -498,7 +502,7 @@ namespace UITiendaElectronica
             this.lblsimboloPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblsimboloPesos.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblsimboloPesos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblsimboloPesos.Location = new System.Drawing.Point(223, 118);
+            this.lblsimboloPesos.Location = new System.Drawing.Point(221, 117);
             this.lblsimboloPesos.Name = "lblsimboloPesos";
             this.lblsimboloPesos.Size = new System.Drawing.Size(29, 26);
             this.lblsimboloPesos.TabIndex = 132;
@@ -524,6 +528,8 @@ namespace UITiendaElectronica
             this.txtAbonacon.Size = new System.Drawing.Size(101, 23);
             this.txtAbonacon.TabIndex = 128;
             this.txtAbonacon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAbonacon.Click += new System.EventHandler(this.txtAbonacon_Click);
+            this.txtAbonacon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAbonacon_KeyPress);
             // 
             // lblAuxlblVuelto
             // 
@@ -602,18 +608,18 @@ namespace UITiendaElectronica
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(1007, 431);
+            this.label1.Location = new System.Drawing.Point(1007, 427);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
+            this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 155;
-            this.label1.Text = "Total: ";
+            this.label1.Text = "Total";
             // 
             // lblTotalCarrito
             // 
             this.lblTotalCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotalCarrito.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblTotalCarrito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTotalCarrito.Location = new System.Drawing.Point(1280, 425);
+            this.lblTotalCarrito.Location = new System.Drawing.Point(1280, 422);
             this.lblTotalCarrito.Name = "lblTotalCarrito";
             this.lblTotalCarrito.Size = new System.Drawing.Size(99, 26);
             this.lblTotalCarrito.TabIndex = 156;
@@ -640,14 +646,14 @@ namespace UITiendaElectronica
             this.dgvInventarioTienda.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInventarioTienda.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvInventarioTienda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(48)))), ((int)(((byte)(145)))));
-            dataGridViewCellStyle53.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTienda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTienda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvInventarioTienda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInventarioTienda.EnableHeadersVisualStyles = false;
             this.dgvInventarioTienda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
@@ -656,12 +662,7 @@ namespace UITiendaElectronica
             this.dgvInventarioTienda.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvInventarioTienda.RowHeadersVisible = false;
             this.dgvInventarioTienda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle54.NullValue = null;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(67)))), ((int)(((byte)(97)))));
-            this.dgvInventarioTienda.RowsDefaultCellStyle = dataGridViewCellStyle54;
+            this.dgvInventarioTienda.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvInventarioTienda.RowTemplate.Height = 25;
             this.dgvInventarioTienda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioTienda.Size = new System.Drawing.Size(741, 223);
@@ -716,6 +717,11 @@ namespace UITiendaElectronica
             this.pictureBox1.TabIndex = 166;
             this.pictureBox1.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FrmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -760,6 +766,7 @@ namespace UITiendaElectronica
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAdmin";
             this.Load += new System.EventHandler(this.FrmAdmin_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmAdmin_MouseDown);
@@ -828,5 +835,6 @@ namespace UITiendaElectronica
         public System.Windows.Forms.Button btnBuscarEnInventarioTienda;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel llbVolver;
+        private System.Windows.Forms.Timer timer1;
     }
 }

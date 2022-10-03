@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Entidades
 {
-    public class TiendaDeElectronica
+    public static class TiendaDeElectronica
     {
 
         private static List<Persona> usuariosApp;

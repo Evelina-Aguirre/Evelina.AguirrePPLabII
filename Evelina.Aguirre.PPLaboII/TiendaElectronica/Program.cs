@@ -18,7 +18,7 @@ namespace UITiendaElectronica
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inicio());
+            Application.Run(new FrmAdmin());
 
          }
     }
