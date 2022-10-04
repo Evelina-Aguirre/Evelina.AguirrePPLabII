@@ -13,35 +13,35 @@ namespace Entidades
         {
             Factura.carrito = new List<Producto>();
         }
-      
-        public Factura(EMetodosDePago metodoDePago,double totalCompra)
+
+        public Factura(EMetodosDePago metodoDePago, double totalCompra)
         {
             this.metodoDePago = metodoDePago;
             this.totalCompra = totalCompra;
         }
-        
 
-       public static List<Producto> Carrito { get => carrito; set => carrito = value; }
+
+        public static List<Producto> Carrito { get => carrito; set => carrito = value; }
 
         public double TotalCompra
         {
             get
             {
-
+                // this.totalCompra = CalcularTotal();
                 if (MetodoDePago is EMetodosDePago.Credito)
                 {
-                    this.totalCompra -= (this.totalCompra * 10) / 100;
+                    totalCompra -= (totalCompra * 10) / 100;
                 }
-                return this.totalCompra;
+                return totalCompra;
             }
             set
             {
-                this.totalCompra = value;
+                totalCompra = value;
             }
         }
 
         public EMetodosDePago MetodoDePago { get => metodoDePago; set => metodoDePago = value; }
-       
+
         /// <summary>
         /// Agregar un producto a la lista de ítems de la factura y suma el precio del mismo al total.
         /// </summary>
@@ -50,68 +50,108 @@ namespace Entidades
         /// <returns>Factura con el producto agregado y el precio de este sumado al total.</returns>
         public static Factura operator +(Factura factura, Producto p)
         {
+            if (Factura.Carrito is null || Factura.Carrito.Count == 0)
+            {
+                Factura.Carrito.Add(p);
+                return factura;
+            }
+
             foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
                 if (item.Value == p)
                 {
-                    Factura.Carrito.Add(item.Value);
-                    factura.TotalCompra += item.Value.Precio;
+                    foreach (Producto aux in Factura.Carrito)
+                    {
+                        if (aux == p)
+                        {
+                            aux.Cantidad++;
+                        }
+                        else
+                        {
+                            Factura.Carrito.Add(item.Value);
+                        }
+                    }
                 }
+                factura.TotalCompra += item.Value.Precio;
+                break;
             }
+        
             return factura;
         }
 
-        /// <summary>
-        /// Sobrecarga de operador -, resta un producto del carro del cliente que se está atendiendo.
-        /// </summary>
-        /// <param name="c">cliente</param>
-        /// <param name="p">producto</param>
-        /// <returns>retorna carrito sin ese producto de encontrarlo y resta el valor del mismo al total de la compra</returns>
-        public static bool operator -(Factura factura, int id)
+    /// <summary>
+    /// Sobrecarga de operador -, resta un producto del carro del cliente que se está atendiendo.
+    /// </summary>
+    /// <param name="c">cliente</param>
+    /// <param name="p">producto</param>
+    /// <returns>retorna carrito sin ese producto de encontrarlo y resta el valor del mismo al total de la compra</returns>
+    public static bool operator -(Factura factura, int id)
+    {
+        bool resultado = false;
+        if (Factura.Carrito is not null)
         {
-            bool resultado = false;
-            if (Factura.Carrito is not null)
-            {
-
-                foreach (Producto item in Factura.Carrito)
-                {
-                    if (item.Id == id)
-                    {
-                        Factura.Carrito.Remove(item);
-                        factura.TotalCompra -= item.Precio;
-                        resultado = true;
-                        break;
-                    }
-                }
-            }
-            return resultado;
-        
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public virtual string MostrarCompra()
-        {
-            StringBuilder sb = new StringBuilder();
-
             foreach (Producto item in Factura.Carrito)
             {
-                sb.AppendLine(item.MostrarProducto());
+                if (item.Id == id)
+                {
+                    factura.TotalCompra -= item.Precio;
+                    if (item.Cantidad == 1)
+                    {
+                        Factura.Carrito.Remove(item);
+                    }
+                    else
+                    {
+                        item.Cantidad--;
+                    }
+                    resultado = true;
+                    break;
+                }
             }
-            sb.AppendLine($"\nTotal: {this.TotalCompra}");
-            sb.AppendLine($"Metodo de Pago: {this.MetodoDePago}");
-
-            return sb.ToString();
-
         }
-
-
-
-
-
+        return resultado;
 
     }
+
+    //private float CalcularTotal()
+    //{
+    //    float resultado = 0;
+    //    if (Factura.Carrito is not null)
+    //    {
+    //        foreach (Producto item in Factura.Carrito)
+    //        {
+    //            resultado += (float)item.Precio * (float)item.Cantidad;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        resultado = 0;
+    //    }
+    //    return resultado;
+    //}
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public virtual string MostrarCompra()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (Producto item in Factura.Carrito)
+        {
+            sb.AppendLine(item.MostrarProducto());
+        }
+        sb.AppendLine($"\nTotal: {this.TotalCompra}");
+        sb.AppendLine($"Metodo de Pago: {this.MetodoDePago}");
+
+        return sb.ToString();
+
+    }
+
+
+
+
+
+
+}
 }

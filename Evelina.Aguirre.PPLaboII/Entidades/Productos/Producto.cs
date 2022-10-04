@@ -12,19 +12,11 @@ namespace Entidades
         private string nombre;
         private int cantidad;
         private double precio;
-        private short id;
+       private int id;
         private string descripcion;
         private ECategoriaElectronico categoria;
 
-        public Producto(string nombre, int cantidad, double precio, short id)
-        {
-            this.nombre = nombre;
-            this.cantidad = cantidad;
-            this.precio = precio;
-            this.id = id;
-        }
-        public Producto(string nombre, int cantidad, double precio, short id, string descripcion, ECategoriaElectronico categoria)
-            :this(nombre, cantidad,precio,id)
+        public Producto(string nombre, int cantidad, double precio,int id,string descripcion, ECategoriaElectronico categoria)
         {
             this.nombre = nombre;
             this.cantidad = cantidad;
@@ -35,14 +27,14 @@ namespace Entidades
         }
 
 
-        public short Id { get => id;}
         public string Nombre { get => nombre;}
-        public int Cantidad { get => cantidad; }
+        public int Cantidad { get => cantidad; set => cantidad = value;} 
         public double Precio { get => precio;}
         public string Descripcion { get => descripcion;}
         public ECategoriaElectronico Categoria { get => categoria; /*set => categoria = value; */}
+       public int Id { get => id; set => id = value; }
 
-
+        
         /// <summary>
         /// Compara dos productos por Id.
         /// </summary>
@@ -192,7 +184,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Tag: {this.Categoria} -- Id: {this.Id}");
+            sb.AppendLine($"Tag: {this.Categoria} ");
             sb.AppendLine($"{this.Nombre}  - Cant.: {this.cantidad}");
 
             sb.AppendLine($"Precio: {this.Precio}");

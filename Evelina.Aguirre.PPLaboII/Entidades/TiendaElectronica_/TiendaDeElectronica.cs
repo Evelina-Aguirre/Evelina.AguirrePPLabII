@@ -1,9 +1,10 @@
 ﻿using Entidades.Tienda;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Entidades
 {
-    public static class TiendaDeElectronica
+    public class TiendaDeElectronica
     {
 
         private static List<Persona> usuariosApp;
@@ -15,7 +16,7 @@ namespace Entidades
         {
             usuariosApp = new List<Persona>();
             TiendaDeElectronica.inventarioTienda = new Dictionary<int, Producto>();
-            TiendaDeElectronica.cuentaTienda = 10000000;
+            TiendaDeElectronica.cuentaTienda = 2500000;
             CargarUsuariosRegistradosEnApp();
             CargarProductosEnStock();
         }
@@ -45,6 +46,55 @@ namespace Entidades
             }
         }
 
+        //public static bool operator +(TiendaDeElectronica tienda, int id)
+        //{
+        //    bool resultado = false;
+        //    if (TiendaDeElectronica.InventarioTienda is not null)
+        //    {
+
+        //        foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+        //        {
+        //            if (item.Value.Id == id)
+        //            {
+        //                item.Value.Cantidad++;
+        //                resultado = true;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return resultado;
+
+        // }
+
+
+        public static bool operator -(TiendaDeElectronica tienda, int id)
+        {
+            bool resultado = false;
+            if (TiendaDeElectronica.InventarioTienda is not null)
+            {
+                foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+                {
+                    if (item.Value.Id == id)
+                    {
+                        if (item.Value.Cantidad > 0)
+                        {
+                            item.Value.Cantidad--;
+                            resultado = true;
+                            break;
+                        }
+                        else
+                        {
+                            TiendaDeElectronica.InventarioTienda.Remove(item.Key);
+                            resultado = true;
+                            break;
+                        }
+                    }
+
+                }
+            }
+            return resultado;
+        }
+
         /// <summary>
         /// Carga usuarios previamente registrados en la aplicación.
         /// </summary>
@@ -61,10 +111,24 @@ namespace Entidades
         /// </summary>
         public static void CargarProductosEnStock()
         {
-            foreach (Producto item in CatalogoProveedor.catalogo)
+            int nuevaKey = 2000;
+            //Carga la lista de inventario desde el catálogo del proveedor
+            foreach (KeyValuePair<int, Producto> item in CatalogoProveedor.catalogo)
             {
-                TiendaDeElectronica.inventarioTienda.Add(item.Id, item);
+                Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Cantidad,item.Value.Precio, item.Value.Id,
+                    item.Value.Descripcion, item.Value.Categoria);
+                TiendaDeElectronica.inventarioTienda.Add(nuevaKey++, auxProducto);
+                
+                    foreach (KeyValuePair<int, Producto> aux in TiendaDeElectronica.inventarioTienda)
+                    {
+                        if(item.Value == aux.Value)
+                        {
+                            aux.Value.Cantidad = 10;
+                        }
+                    }
+                
             }
+            
         }
 
         /// <summary>
@@ -97,10 +161,10 @@ namespace Entidades
         public static List<Producto> BuscarProductoPorNombre(string aux)
         {
             List<Producto> auxLista = new List<Producto>();
-            
+
             foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
-                
+
                 if (item.Value.Categoria == Producto.ObtenerCategoriaAPartirDeString(aux) ||
                     item.Value.ToString() == aux)
                 {

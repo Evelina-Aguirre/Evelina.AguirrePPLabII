@@ -110,18 +110,17 @@ namespace UITiendaElectronica
         {
             //Instancia un producto para poder agregarlo a la factura.
             Producto auxProducto = new Producto(
-              this.dgvProductosTienda.CurrentRow.Cells[1].Value.ToString(),
-               Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
-               Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString()),
-               (short)Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[0].Value), "",
-               (ECategoriaElectronico)this.dgvProductosTienda.CurrentRow.Cells[5].Value);
+              dgvProductosTienda.CurrentRow.Cells[0].Value.ToString(),
+               1, Convert.ToDouble(dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
+               (int)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value), "",
+               (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[4].Value);
 
             //Vista previa del producto agregador al dgv de los productos a vender.
-            this.dgvCarritoCliente.Rows.Add(this.dgvProductosTienda.CurrentRow.Cells[0].Value, this.dgvProductosTienda.CurrentRow.Cells[1].Value,
-                dgvProductosTienda.CurrentRow.Cells[3].Value);
+            this.dgvCarritoCliente.Rows.Add(this.dgvProductosTienda.CurrentRow.Cells[5].Value, this.dgvProductosTienda.CurrentRow.Cells[0].Value,
+                dgvProductosTienda.CurrentRow.Cells[2].Value);
 
             //Muestra descrición del producto en el label de detalles.
-            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
 
             //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
             this.auxFactura += auxProducto;
@@ -260,8 +259,8 @@ namespace UITiendaElectronica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
+            TiendaDeElectronica tienda = new TiendaDeElectronica();
+            if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.Rows[0].Cells[0].Value is not null)
             {
                 Factura facturaFinal;
                 foreach (Control item in this.grbFormaDePago.Controls)
@@ -273,12 +272,13 @@ namespace UITiendaElectronica
                             int abonaCon;
                             bool esNumero = int.TryParse(this.txtAbonacon.Text, out abonaCon);
 
-                            if (this.txtAbonacon.Text != null && esNumero && Convert.ToInt32(this.lblTotalCarrito.Text) < Convert.ToInt32(this.txtAbonacon.Text))
+                            if (this.txtAbonacon.Text != null && esNumero &&this.auxFactura.TotalCompra < Convert.ToInt32(this.txtAbonacon.Text))
                             {
                                 facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
-                               Convert.ToDouble(txtAbonacon.Text));
+                                Convert.ToDouble(txtAbonacon.Text));
                                 MessageBox.Show(facturaFinal.ToString());
                                 //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
+                                
                                 Factura.Carrito.Clear();
                                 this.lblTotalCarrito.Text = string.Empty;
                                 this.dgvCarritoCliente.Rows.Clear();
@@ -289,12 +289,12 @@ namespace UITiendaElectronica
                             {   //El Botón ver vuelto ya setea qué acciones tomar en caso de que el monto sea insuficiente o inválido.
                                 btnVerVuelto.PerformClick();
                             }
-                           
+
 
                         }
                         else if (rdoCredito.Checked)
                         {
-                            facturaFinal = new FacturaCredito( EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
+                            facturaFinal = new FacturaCredito(EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
                                  Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
                             MessageBox.Show(facturaFinal.ToString());
                             //Resetea la lista de la factura de la venta concretada y limpia dgv y labels.
@@ -305,7 +305,7 @@ namespace UITiendaElectronica
                         }
                         else if (rdoDebiro.Checked)
                         {
-                            facturaFinal = new FacturaDebito( EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
+                            facturaFinal = new FacturaDebito(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
                             MessageBox.Show(facturaFinal.ToString());
                             //Resetea la lista de la factura de la venta concretada y limpia dgv y labels. 
                             Factura.Carrito.Clear();
@@ -319,7 +319,7 @@ namespace UITiendaElectronica
 
                 }
             }
-            
+
         }
 
 
