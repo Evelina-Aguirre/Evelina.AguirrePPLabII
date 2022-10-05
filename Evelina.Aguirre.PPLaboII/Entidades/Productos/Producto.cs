@@ -16,14 +16,19 @@ namespace Entidades
         private string descripcion;
         private ECategoriaElectronico categoria;
 
-        public Producto(string nombre, int cantidad, double precio,int id,string descripcion, ECategoriaElectronico categoria)
+        public Producto(string nombre, double precio, int id, string descripcion, ECategoriaElectronico categoria)
         {
             this.nombre = nombre;
-            this.cantidad = cantidad;
             this.precio = precio;
             this.id = id;
             this.descripcion = descripcion;
             this.categoria = categoria;
+        }
+
+        public Producto(string nombre, double precio, int id, string descripcion, ECategoriaElectronico categoria, int cantidad) 
+            : this(nombre,precio,id,descripcion,categoria)
+        {
+            this.cantidad = cantidad;
         }
 
 

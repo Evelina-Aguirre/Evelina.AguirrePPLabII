@@ -138,10 +138,9 @@ namespace UITiendaElectronica
         {
             //Instancia un producto para poder agregarlo a la factura.
             Producto auxProducto = new Producto(
-              dgvCatalogoProveedor.CurrentRow.Cells[0].Value.ToString(),
-               1, Convert.ToDouble(dgvCatalogoProveedor.CurrentRow.Cells[2].Value.ToString()),
+              dgvCatalogoProveedor.CurrentRow.Cells[0].Value.ToString(),Convert.ToDouble(dgvCatalogoProveedor.CurrentRow.Cells[2].Value.ToString()),
                (int)Convert.ToInt32(dgvCatalogoProveedor.CurrentRow.Cells[4].Value), "",
-               (ECategoriaElectronico)dgvCatalogoProveedor.CurrentRow.Cells[3].Value);
+               (ECategoriaElectronico)dgvCatalogoProveedor.CurrentRow.Cells[3].Value,1);
 
             //Vista previa del producto agregador al dgv de los productos a vender.
             int cantidad = 1;
@@ -236,9 +235,11 @@ namespace UITiendaElectronica
                             }
                         }
                     }
+                    TiendaDeElectronica.CuentaTienda -= facturaFinal.TotalCompra;
                     //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
                     Factura.Carrito.Clear();
                     auxFactura.TotalCompra = 0;
+                    this.lblSaldoTienda.Text = TiendaDeElectronica.CuentaTienda.ToString();
                     lblTotalCarrito.Text = string.Empty;
                     dgvCarrito.Rows.Clear();
                     rdoEfectivo.Checked = true;

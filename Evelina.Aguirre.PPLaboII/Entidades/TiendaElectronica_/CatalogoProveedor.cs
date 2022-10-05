@@ -25,12 +25,12 @@ namespace Entidades.Tienda
         private static void CargarCatalogo()
         {
             //Leds - voltaje - potencia -watts - metros tienen algunos
-            ComponentesElectronicos led1 = new ComponentesElectronicos("Tira Led 15w", 1, 1225,100,  "Perfil Aluminio 1 Metro Con luces Led 5630," +
+            Producto led1 = new Producto("Tira Led 15w", 1225,100,  "Perfil Aluminio 1 Metro Con luces Led 5630," +
                 " \nDirecto A 220V\n,15 W Alta Potencia, conector en la punta para unir uno a otro perfil.\nColor: Blanco Frío con 144 leds o Blanco Cálido con 72 leds"
                 , ECategoriaElectronico.Leds);
-            ComponentesElectronicos led2 = new ComponentesElectronicos("Tira Led 9w", 1, 1100,101, "Perfil Aluminio 50 Cm C/36LED 5630, Directo A 220V Alta" +
+            Producto led2 = new Producto("Tira Led 9w", 1100,101, "Perfil Aluminio 50 Cm C/36LED 5630, Directo A 220V Alta" +
                 " Potencia, viene conector en la punta para unir uno a otro perfil.Color: Blanco frío – Blanco Calido", ECategoriaElectronico.Leds);
-            ComponentesElectronicos led3 = new ComponentesElectronicos("Led 1w", 1, 3500,102,"Led Blanco Frio Backlight 3030 3v 1w Centro Chico" +
+            Producto led3 = new Producto("Led 1w", 3500,102,"Led Blanco Frio Backlight 3030 3v 1w Centro Chico" +
                 " X 100 U", ECategoriaElectronico.Leds);
             //ComponentesElectronicos led4 = new ComponentesElectronicos("Led 1w", 100, 1250,103,"Led Blanco Frio Backlight 3528 3v 1w Tv LG " +
             //    "X 50 Unidades", ECategoriaElectronico.Leds);

@@ -16,7 +16,7 @@ namespace Entidades
         {
             usuariosApp = new List<Persona>();
             TiendaDeElectronica.inventarioTienda = new Dictionary<int, Producto>();
-            TiendaDeElectronica.cuentaTienda = 2500000;
+            TiendaDeElectronica.cuentaTienda = 5000000;
             CargarUsuariosRegistradosEnApp();
             CargarProductosEnStock();
         }
@@ -115,17 +115,17 @@ namespace Entidades
             //Carga la lista de inventario desde el catálogo del proveedor
             foreach (KeyValuePair<int, Producto> item in CatalogoProveedor.catalogo)
             {
-                Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Cantidad,item.Value.Precio, item.Value.Id,
-                    item.Value.Descripcion, item.Value.Categoria);
+                Producto auxProducto = new Producto(item.Value.Nombre,item.Value.Precio, item.Value.Id,
+                    item.Value.Descripcion, item.Value.Categoria,10);
                 TiendaDeElectronica.inventarioTienda.Add(nuevaKey++, auxProducto);
                 
-                    foreach (KeyValuePair<int, Producto> aux in TiendaDeElectronica.inventarioTienda)
-                    {
-                        if(item.Value == aux.Value)
-                        {
-                            aux.Value.Cantidad = 10;
-                        }
-                    }
+                    //foreach (KeyValuePair<int, Producto> aux in TiendaDeElectronica.inventarioTienda)
+                    //{
+                    //    if(item.Value == aux.Value)
+                    //    {
+                    //        aux.Value.Cantidad = 10;
+                    //    }
+                    //}
                 
             }
             

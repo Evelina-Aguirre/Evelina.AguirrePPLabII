@@ -50,9 +50,11 @@ namespace Entidades
         /// <returns>Factura con el producto agregado y el precio de este sumado al total.</returns>
         public static Factura operator +(Factura factura, Producto p)
         {
+            int existe = 0;
             if (Factura.Carrito is null || Factura.Carrito.Count == 0)
             {
                 Factura.Carrito.Add(p);
+                factura.TotalCompra += p.Precio;
                 return factura;
             }
 
@@ -65,93 +67,98 @@ namespace Entidades
                         if (aux == p)
                         {
                             aux.Cantidad++;
+                            factura.TotalCompra += p.Precio;
                         }
                         else
                         {
-                            Factura.Carrito.Add(item.Value);
+                            existe = 0;//No existe en el carrito se agrega fuera de la iteración.
                         }
                     }
+                    if (existe == 0)
+                    {
+                       Factura.Carrito.Add(p);
+                       factura.TotalCompra += p.Precio;
+                    }
                 }
-                factura.TotalCompra += item.Value.Precio;
-                break;
+
             }
-        
+
             return factura;
         }
 
-    /// <summary>
-    /// Sobrecarga de operador -, resta un producto del carro del cliente que se está atendiendo.
-    /// </summary>
-    /// <param name="c">cliente</param>
-    /// <param name="p">producto</param>
-    /// <returns>retorna carrito sin ese producto de encontrarlo y resta el valor del mismo al total de la compra</returns>
-    public static bool operator -(Factura factura, int id)
-    {
-        bool resultado = false;
-        if (Factura.Carrito is not null)
+        /// <summary>
+        /// Sobrecarga de operador -, resta un producto del carro del cliente que se está atendiendo.
+        /// </summary>
+        /// <param name="c">cliente</param>
+        /// <param name="p">producto</param>
+        /// <returns>retorna carrito sin ese producto de encontrarlo y resta el valor del mismo al total de la compra</returns>
+        public static bool operator -(Factura factura, int id)
         {
-            foreach (Producto item in Factura.Carrito)
+            bool resultado = false;
+            if (Factura.Carrito is not null)
             {
-                if (item.Id == id)
+                foreach (Producto item in Factura.Carrito)
                 {
-                    factura.TotalCompra -= item.Precio;
-                    if (item.Cantidad == 1)
+                    if (item.Id == id)
                     {
-                        Factura.Carrito.Remove(item);
+                        factura.TotalCompra -= item.Precio;
+                        if (item.Cantidad == 1)
+                        {
+                            Factura.Carrito.Remove(item);
+                        }
+                        else
+                        {
+                            item.Cantidad--;
+                        }
+                        resultado = true;
+                        break;
                     }
-                    else
-                    {
-                        item.Cantidad--;
-                    }
-                    resultado = true;
-                    break;
                 }
             }
+            return resultado;
+
         }
-        return resultado;
 
-    }
-
-    //private float CalcularTotal()
-    //{
-    //    float resultado = 0;
-    //    if (Factura.Carrito is not null)
-    //    {
-    //        foreach (Producto item in Factura.Carrito)
-    //        {
-    //            resultado += (float)item.Precio * (float)item.Cantidad;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        resultado = 0;
-    //    }
-    //    return resultado;
-    //}
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="c"></param>
-    /// <returns></returns>
-    public virtual string MostrarCompra()
-    {
-        StringBuilder sb = new StringBuilder();
-
-        foreach (Producto item in Factura.Carrito)
+        //private float CalcularTotal()
+        //{
+        //    float resultado = 0;
+        //    if (Factura.Carrito is not null)
+        //    {
+        //        foreach (Producto item in Factura.Carrito)
+        //        {
+        //            resultado += (float)item.Precio * (float)item.Cantidad;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        resultado = 0;
+        //    }
+        //    return resultado;
+        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public virtual string MostrarCompra()
         {
-            sb.AppendLine(item.MostrarProducto());
-        }
-        sb.AppendLine($"\nTotal: {this.TotalCompra}");
-        sb.AppendLine($"Metodo de Pago: {this.MetodoDePago}");
+            StringBuilder sb = new StringBuilder();
 
-        return sb.ToString();
+            foreach (Producto item in Factura.Carrito)
+            {
+                sb.AppendLine(item.MostrarProducto());
+            }
+            sb.AppendLine($"\nTotal: {TotalCompra}");
+            sb.AppendLine($"Metodo de Pago: {MetodoDePago}");
+
+            return sb.ToString();
+
+        }
+
+
+
+
+
 
     }
-
-
-
-
-
-
-}
 }
