@@ -65,7 +65,7 @@ namespace UITiendaElectronica
             auxLista = Producto.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
             dgvCatalogoProveedor.Rows.Clear();
 
-            if (this.dgvCatalogoProveedor.Rows[0].Cells[0].Value is null)
+            if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null)
             {
 
                 dgvCatalogoProveedor.ColumnCount = 5;
@@ -156,9 +156,9 @@ namespace UITiendaElectronica
         {
             //Instancia un producto para poder agregarlo a la factura.
             Producto auxProducto = new Producto(
-              dgvCatalogoProveedor.CurrentRow.Cells[0].Value.ToString(),Convert.ToDouble(dgvCatalogoProveedor.CurrentRow.Cells[2].Value.ToString()),
+              dgvCatalogoProveedor.CurrentRow.Cells[0].Value.ToString(), Convert.ToDouble(dgvCatalogoProveedor.CurrentRow.Cells[2].Value.ToString()),
                (int)Convert.ToInt32(dgvCatalogoProveedor.CurrentRow.Cells[4].Value), "",
-               (ECategoriaElectronico)dgvCatalogoProveedor.CurrentRow.Cells[3].Value,1);
+               (ECategoriaElectronico)dgvCatalogoProveedor.CurrentRow.Cells[3].Value, 1);
 
             //Vista previa del producto agregador al dgv de los productos a vender.
             int cantidad = 1;
@@ -214,10 +214,10 @@ namespace UITiendaElectronica
                     aux--;
                     dgvCarrito.CurrentRow.Cells[3].Value = aux;
                 }
-                
+
                 categoria = Producto.ObtenerCategoria(id);
             }
-                dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
 
         }
 
@@ -263,12 +263,12 @@ namespace UITiendaElectronica
                     //Resto el total de la factura del saldo de la tienda.
                     TiendaDeElectronica.CuentaTienda -= facturaFinal.TotalCompra;
 
-                    ECategoriaElectronico categoria = Producto.ObtenerCategoria(this.dgvInventarioTienda.Rows[0].Cells[4].Value.ToString());
+                    ECategoriaElectronico categoria = Producto.ObtenerCategoria(dgvInventarioTienda.Rows[0].Cells[4].Value.ToString());
                     dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
                     //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
                     Factura.Carrito.Clear();
                     auxFactura.TotalCompra = 0;
-                    this.lblSaldoTienda.Text = TiendaDeElectronica.CuentaTienda.ToString();
+                    lblSaldoTienda.Text = TiendaDeElectronica.CuentaTienda.ToString();
                     lblTotalCarrito.Text = string.Empty;
                     dgvCarrito.Rows.Clear();
                     rdoEfectivo.Checked = true;
@@ -336,15 +336,20 @@ namespace UITiendaElectronica
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(this.dgvInventarioTienda.CurrentRow.Cells[5].Value);
-
-            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+            int id = 0;
+                string nombre = "";
+            string categoria = "";
+            double precio = 0;
+            if (dgvInventarioTienda.CurrentRow.Cells[0].Value is not null)
             {
-                if(id = item.Value.Id)
-                {
-
-                }
+                id = Convert.ToInt32(dgvInventarioTienda.CurrentRow.Cells[5].Value);
+                nombre = dgvInventarioTienda.CurrentRow.Cells[0].Value.ToString();
+                categoria = dgvInventarioTienda.CurrentRow.Cells[4].Value.ToString();
+                precio = Convert.ToDouble(dgvInventarioTienda.CurrentRow.Cells[2].Value);
             }
+
+            Modificar modificar = new Modificar(id, nombre, categoria, precio);
+            modificar.Show();
         }
 
         private void FrmAdmin_MouseUp(object sender, MouseEventArgs e)

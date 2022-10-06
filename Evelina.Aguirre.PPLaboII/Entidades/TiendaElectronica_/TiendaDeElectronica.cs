@@ -175,7 +175,32 @@ namespace Entidades
 
         }
 
-       
+        /// <summary>
+        /// Busca un producto en el inveentario de la tienda por id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>El producot de encontrarlo de lo contrario devuelve null.</returns>
+        public static Producto BuscarProducto(int id)
+        {
+            Producto auxProducto = null;
+
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+            {
+
+                if (item.Value.Id == id)
+                {
+                    auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
+                        item.Value.Descripcion, item.Value.Categoria, item.Value.Cantidad);
+                }
+
+            }
+            return auxProducto;
+
+        }
+
+
+
+
 
 
     }
