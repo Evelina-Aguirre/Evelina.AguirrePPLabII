@@ -62,17 +62,19 @@ namespace Entidades
             {
                 if (item.Value == p)
                 {
-                    foreach (Producto aux in Factura.Carrito)
+                    foreach (Producto aux in  Factura.Carrito)
                     {
                         if (aux == p)
                         {
                             aux.Cantidad++;
                             factura.TotalCompra += p.Precio;
+                            existe = 1;
                         }
                         else
                         {
-                            existe = 0;//No existe en el carrito se agrega fuera de la iteración.
+                            existe = 0;
                         }
+                        
                     }
                     if (existe == 0)
                     {

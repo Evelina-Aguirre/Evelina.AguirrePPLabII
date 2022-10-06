@@ -115,6 +115,14 @@ namespace UITiendaElectronica
                (int)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value), "",
                (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[4].Value,1);
 
+            //resto el producto de la tienda
+            int id = Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[5].Value);
+            _ = tienda - id;
+            //Actualiza dgvProductos en tienda
+            ECategoriaElectronico categoria = Producto.ObtenerCategoriaAPartirDeString(this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+
+
             //Vista previa del producto agregador al dgv de los productos a vender.
             int cantidad = 1;
             int existe = -1;
@@ -145,25 +153,16 @@ namespace UITiendaElectronica
 
             //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
             auxFactura += auxProducto;
-            int id = Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[0].Value);
-            //resto el producto de la tienda
-            _ = tienda - id;
+
 
             //Muestra el total actual de la factura auxiliar con el producto agregado.
             lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
-            //ANTES
-            ////Vista previa del producto agregador al dgv de los productos a vender.
-            //this.dgvCarritoCliente.Rows.Add(this.dgvProductosTienda.CurrentRow.Cells[5].Value, this.dgvProductosTienda.CurrentRow.Cells[0].Value,
-            //    dgvProductosTienda.CurrentRow.Cells[2].Value);
 
-            ////Muestra descrición del producto en el label de detalles.
-            //this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
+            //Muestra descrición del producto en el label de detalles.
+            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
 
-            ////Agrega el producto a la lista de la factura y suma el precio del mismo al total.
-            //this.auxFactura += auxProducto;
 
-            ////Muestra el total actual de la factura auxiliar con el producto agregado.
-            //this.lblTotalCarrito.Text = this.auxFactura.TotalCompra.ToString();
+
         }
 
         private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -316,8 +315,8 @@ namespace UITiendaElectronica
                                 MessageBox.Show(facturaFinal.ToString());
 
                                 //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
-                                
                                 Factura.Carrito.Clear();
+                                auxFactura.TotalCompra = 0;
                                 this.lblTotalCarrito.Text = string.Empty;
                                 this.dgvCarritoCliente.Rows.Clear();
                                 this.rdoEfectivo.Checked = true;
