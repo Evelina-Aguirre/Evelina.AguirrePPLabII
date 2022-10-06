@@ -55,13 +55,18 @@ namespace UITiendaElectronica
             txtAbonacon.Enabled = true;
         }
 
-
-        private void btnLeds_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Vuelve a cargar dgvCatalogoPorveeedor según categoría.
+        /// </summary>
+        /// <param name="categoria">Categoría con la que desea que se cargue</param>
+        private void ActualizarDGVCatalago(ECategoriaElectronico categoria)
         {
+            List<Producto> auxLista = new List<Producto>();
+            auxLista = Producto.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
+            dgvCatalogoProveedor.Rows.Clear();
+
             if (this.dgvCatalogoProveedor.Rows[0].Cells[0].Value is null)
             {
-                List<Producto> auxLista = new List<Producto>();
-                auxLista = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Leds, CatalogoProveedor.Catalogo);
 
                 dgvCatalogoProveedor.ColumnCount = 5;
                 dgvCatalogoProveedor.Columns[0].Name = "Nombre";
@@ -74,63 +79,83 @@ namespace UITiendaElectronica
                 {
                     dgvCatalogoProveedor.Rows.Add(item.Nombre, item.Descripcion, item.Precio, item.Categoria, item.Id);
                 }
-
             }
+            else
+            {
+                dgvCatalogoProveedor.ColumnCount = 5;
+                dgvCatalogoProveedor.Columns[0].Name = "Nombre";
+                dgvCatalogoProveedor.Columns[1].Name = "Descripción";
+                dgvCatalogoProveedor.Columns[2].Name = "Precio";
+                dgvCatalogoProveedor.Columns[3].Name = "Categoria";
+                dgvCatalogoProveedor.Columns[3].Name = "Id";
+
+                foreach (Producto item in auxLista)
+                {
+                    dgvCatalogoProveedor.Rows.Add(item.Nombre, item.Descripcion, item.Precio, item.Categoria, item.Id);
+                }
+            }
+
+
+        }
+
+        private void btnLeds_Click(object sender, EventArgs e)
+        {
+            ActualizarDGVCatalago(ECategoriaElectronico.Leds);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Leds, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnBobinas_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Bobinas, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.Bobinas);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Bobinas, TiendaDeElectronica.InventarioTienda);
 
         }
 
         private void btnCapacitores_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Capacitores, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.Capacitores);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Capacitores, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnConectores_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Conectores, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.Conectores);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Conectores, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnCircuitosIntegrados_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.CircuitosIntegrados);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnPlaquetas_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.Plaquetas);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnControlTermico_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.ControlTermico, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.ControlTermico);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.ControlTermico, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnLimpieza_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Limpieza, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.Limpieza);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Limpieza, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnSoldado_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Soldado, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.Soldado);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Soldado, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnHerramientas_Click(object sender, EventArgs e)
         {
-            dgvCatalogoProveedor.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Herramientas, CatalogoProveedor.Catalogo);
+            ActualizarDGVCatalago(ECategoriaElectronico.Herramientas);
             dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Herramientas, TiendaDeElectronica.InventarioTienda);
         }
 
@@ -179,6 +204,8 @@ namespace UITiendaElectronica
 
         private void llbRemover_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            ECategoriaElectronico categoria = ECategoriaElectronico.SinCategoria;
+
             if (dgvCarrito.Rows.Count > 1 && dgvCarrito.CurrentRow.Cells[0].Value is not null)
             {
                 int id = Convert.ToInt32(dgvCarrito.CurrentRow.Cells[0].Value);
@@ -194,7 +221,11 @@ namespace UITiendaElectronica
                     aux--;
                     dgvCarrito.CurrentRow.Cells[3].Value = aux;
                 }
+                
+                categoria = Producto.ObtenerCategoria(id);
             }
+                dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+
         }
 
         private void txtAbonacon_Click(object sender, EventArgs e)
@@ -235,7 +266,12 @@ namespace UITiendaElectronica
                             }
                         }
                     }
+
+                    //Resto el total de la factura del saldo de la tienda.
                     TiendaDeElectronica.CuentaTienda -= facturaFinal.TotalCompra;
+
+                    ECategoriaElectronico categoria = Producto.ObtenerCategoria(this.dgvInventarioTienda.Rows[0].Cells[4].Value.ToString());
+                    dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
                     //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
                     Factura.Carrito.Clear();
                     auxFactura.TotalCompra = 0;

@@ -162,12 +162,11 @@ namespace UITiendaElectronica
             this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
 
 
-
         }
 
         private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString();
+            this.lblDescripcionProducto.Text = this.dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
         }
 
 
