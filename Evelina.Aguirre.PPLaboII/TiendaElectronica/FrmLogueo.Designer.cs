@@ -45,11 +45,9 @@ namespace UITiendaElectronica
             this.llbMinimizar = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblErrorMsj
@@ -67,13 +65,14 @@ namespace UITiendaElectronica
             this.lnklblOlvidasteClave.ActiveLinkColor = System.Drawing.Color.White;
             this.lnklblOlvidasteClave.AutoSize = true;
             this.lnklblOlvidasteClave.BackColor = System.Drawing.Color.Transparent;
-            this.lnklblOlvidasteClave.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(101)))), ((int)(((byte)(74)))));
-            this.lnklblOlvidasteClave.Location = new System.Drawing.Point(53, 320);
+            this.lnklblOlvidasteClave.LinkColor = System.Drawing.Color.Silver;
+            this.lnklblOlvidasteClave.Location = new System.Drawing.Point(144, 323);
             this.lnklblOlvidasteClave.Name = "lnklblOlvidasteClave";
             this.lnklblOlvidasteClave.Size = new System.Drawing.Size(141, 15);
             this.lnklblOlvidasteClave.TabIndex = 4;
             this.lnklblOlvidasteClave.TabStop = true;
             this.lnklblOlvidasteClave.Text = "¿Olvidaste tu contraseña?";
+            this.lnklblOlvidasteClave.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblOlvidasteClave_LinkClicked);
             // 
             // txtUsuario
             // 
@@ -167,9 +166,9 @@ namespace UITiendaElectronica
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(-47, -47);
+            this.pictureBox4.Location = new System.Drawing.Point(-48, -48);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(131, 133);
+            this.pictureBox4.Size = new System.Drawing.Size(135, 147);
             this.pictureBox4.TabIndex = 104;
             this.pictureBox4.TabStop = false;
             // 
@@ -233,20 +232,6 @@ namespace UITiendaElectronica
             this.linkLabel2.Text = "   ";
             this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Transparent;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(-105, 105);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(740, 327);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 107;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
-            // 
             // Inicio
             // 
             this.AcceptButton = this.btnInicioSesion;
@@ -269,7 +254,6 @@ namespace UITiendaElectronica
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inicio";
@@ -282,7 +266,6 @@ namespace UITiendaElectronica
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,6 +288,5 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

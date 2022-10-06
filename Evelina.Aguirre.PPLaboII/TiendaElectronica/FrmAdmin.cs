@@ -82,13 +82,6 @@ namespace UITiendaElectronica
             }
             else
             {
-                dgvCatalogoProveedor.ColumnCount = 5;
-                dgvCatalogoProveedor.Columns[0].Name = "Nombre";
-                dgvCatalogoProveedor.Columns[1].Name = "Descripción";
-                dgvCatalogoProveedor.Columns[2].Name = "Precio";
-                dgvCatalogoProveedor.Columns[3].Name = "Categoria";
-                dgvCatalogoProveedor.Columns[3].Name = "Id";
-
                 foreach (Producto item in auxLista)
                 {
                     dgvCatalogoProveedor.Rows.Add(item.Nombre, item.Descripcion, item.Precio, item.Categoria, item.Id);

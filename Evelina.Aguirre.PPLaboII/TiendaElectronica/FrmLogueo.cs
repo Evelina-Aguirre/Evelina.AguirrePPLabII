@@ -81,6 +81,13 @@ namespace UITiendaElectronica
             }
         }
 
+        private void lnklblOlvidasteClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmHarcodeoLogin frmHarcodeo = new FrmHarcodeoLogin();
+            this.Hide();
+            frmHarcodeo.Show();
+        }
+
         private void Inicio_MouseMove(object sender, MouseEventArgs e)
         {
             if (m == 1)
