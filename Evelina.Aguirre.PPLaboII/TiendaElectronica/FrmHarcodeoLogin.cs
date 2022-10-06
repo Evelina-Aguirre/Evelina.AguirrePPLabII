@@ -42,5 +42,13 @@ namespace UITiendaElectronica
         {
             Application.Exit();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Inicio.cargo = 3;
+            FrmEstadisticas frmEst = new FrmEstadisticas();
+            this.Close();
+            frmEst.Show();
+        }
     }
 }

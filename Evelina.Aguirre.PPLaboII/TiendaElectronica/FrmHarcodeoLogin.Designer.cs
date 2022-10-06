@@ -38,6 +38,7 @@ namespace UITiendaElectronica
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@ namespace UITiendaElectronica
             this.lblOlvidoClave.AutoSize = true;
             this.lblOlvidoClave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblOlvidoClave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblOlvidoClave.Location = new System.Drawing.Point(56, 33);
+            this.lblOlvidoClave.Location = new System.Drawing.Point(128, 41);
             this.lblOlvidoClave.Name = "lblOlvidoClave";
             this.lblOlvidoClave.Size = new System.Drawing.Size(308, 17);
             this.lblOlvidoClave.TabIndex = 0;
@@ -87,7 +88,7 @@ namespace UITiendaElectronica
             this.llbCerrar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.llbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("llbCerrar.Image")));
             this.llbCerrar.LinkColor = System.Drawing.Color.Transparent;
-            this.llbCerrar.Location = new System.Drawing.Point(367, -3);
+            this.llbCerrar.Location = new System.Drawing.Point(545, 0);
             this.llbCerrar.Name = "llbCerrar";
             this.llbCerrar.Size = new System.Drawing.Size(42, 28);
             this.llbCerrar.TabIndex = 108;
@@ -103,7 +104,7 @@ namespace UITiendaElectronica
             this.llbMinimizar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.llbMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("llbMinimizar.Image")));
             this.llbMinimizar.LinkColor = System.Drawing.Color.Transparent;
-            this.llbMinimizar.Location = new System.Drawing.Point(337, -4);
+            this.llbMinimizar.Location = new System.Drawing.Point(515, -1);
             this.llbMinimizar.Name = "llbMinimizar";
             this.llbMinimizar.Size = new System.Drawing.Size(42, 28);
             this.llbMinimizar.TabIndex = 107;
@@ -118,7 +119,7 @@ namespace UITiendaElectronica
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel3.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Location = new System.Drawing.Point(343, 2);
+            this.linkLabel3.Location = new System.Drawing.Point(521, 5);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(26, 21);
             this.linkLabel3.TabIndex = 109;
@@ -132,7 +133,7 @@ namespace UITiendaElectronica
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel2.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(367, -5);
+            this.linkLabel2.Location = new System.Drawing.Point(545, -2);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(31, 30);
             this.linkLabel2.TabIndex = 110;
@@ -150,12 +151,27 @@ namespace UITiendaElectronica
             this.pictureBox4.TabIndex = 111;
             this.pictureBox4.TabStop = false;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(404, 72);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(136, 120);
+            this.button3.TabIndex = 112;
+            this.button3.Text = "Contador";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Prueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.ClientSize = new System.Drawing.Size(407, 221);
+            this.ClientSize = new System.Drawing.Size(589, 221);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.llbCerrar);
             this.Controls.Add(this.llbMinimizar);
             this.Controls.Add(this.linkLabel3);
@@ -185,5 +201,6 @@ namespace UITiendaElectronica
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Button button3;
     }
 }

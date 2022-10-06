@@ -2,5 +2,6 @@
 {
     Dueño,
     Vendedor,
+    Contador,
     Desconocido
 }

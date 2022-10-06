@@ -11,7 +11,6 @@ namespace Entidades
         private static Dictionary<int, Producto> inventarioTienda;
         private static double cuentaTienda;
 
-
         static TiendaDeElectronica()
         {
             usuariosApp = new List<Persona>();
@@ -46,6 +45,12 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Incrementa la cantidad de un producto en el inventario de la tienda.
+        /// </summary>
+        /// <param name="tienda"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static bool operator +(TiendaDeElectronica tienda, int id)
         {
             bool resultado = false;
@@ -65,7 +70,12 @@ namespace Entidades
 
         }
 
-
+        /// <summary>
+        /// Disminuye la cantidad de un producto en el inventario de la tienda.
+        /// </summary>
+        /// <param name="tienda"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static bool operator -(TiendaDeElectronica tienda, int id)
         {
             bool resultado = false;
@@ -101,8 +111,10 @@ namespace Entidades
         {
             Persona duenio = new Persona("Dueño", "Dueño", EPersona.Dueño);
             Persona vendedor = new Persona ("Vendedor", "Vendedor", EPersona.Vendedor);
+            Persona contador = new Persona("contador", "contador", EPersona.Contador);
             usuariosApp.Add(duenio);
             usuariosApp.Add(vendedor);
+            usuariosApp.Add(contador);
         }
 
         /// <summary>

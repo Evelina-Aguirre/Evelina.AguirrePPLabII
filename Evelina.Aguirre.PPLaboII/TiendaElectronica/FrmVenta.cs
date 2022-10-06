@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Entidades.Productos;
+using Entidades.Tienda;
 using Entidades.TiendaElectronica;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace UITiendaElectronica
 
         //Factura auxiliar a partir de la cual se instanciará una Factura-Efectivo/Debito/Crédito una vez elegido el método de pago.
         private FacturaDebito auxFactura = new FacturaDebito(EMetodosDePago.efectivo,0);
-        
+        private Estadisticas auxEstadistica = new Estadisticas();
+
         public Venta()
         {
             InitializeComponent();
@@ -110,12 +112,12 @@ namespace UITiendaElectronica
         private void dgvProductosTienda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             TiendaDeElectronica tienda = new TiendaDeElectronica();
+
             //Instancia un producto para poder agregarlo a la factura.
             Producto auxProducto = new Producto(
               dgvProductosTienda.CurrentRow.Cells[0].Value.ToString(),Convert.ToDouble(dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
                (int)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value), "",
                (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[4].Value,1);
-
 
 
             //Vista previa del producto agregador al dgv de los productos a vender.
@@ -147,9 +149,11 @@ namespace UITiendaElectronica
                 this.dgvProductosTienda.CurrentRow.Cells[2].Value, cantidad);
             }
 
-            //resto el producto de la tienda
             int id = Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[5].Value);
+            //resto el producto de la tienda
             _ = tienda - id;
+            //Lo sumo a la lista de productos para estadísticas
+            _ = auxEstadistica + id;
             //Actualiza dgvProductos en tienda
             ECategoriaElectronico categoria = Producto.ObtenerCategoria(this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
             this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
@@ -178,6 +182,8 @@ namespace UITiendaElectronica
         {
             TiendaDeElectronica tienda = new TiendaDeElectronica();
             
+
+
             if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
              {
                 int id = Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[0].Value);
@@ -190,6 +196,7 @@ namespace UITiendaElectronica
                 if (Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[3].Value) == 1)
                 {
                     this.dgvCarritoCliente.Rows.RemoveAt(this.dgvCarritoCliente.CurrentRow.Index);
+                    _ = auxEstadistica - id;
 
                 }
                 else
@@ -324,7 +331,7 @@ namespace UITiendaElectronica
             TiendaDeElectronica tienda = new TiendaDeElectronica();
             if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.Rows[0].Cells[0].Value is not null)
             {
-                Factura facturaFinal;
+                FacturaDebito facturaFinal;
                 foreach (Control item in this.grbFormaDePago.Controls)
                 {
                     if (item is RadioButton)
@@ -338,6 +345,11 @@ namespace UITiendaElectronica
                             {
                                 facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
                                 Convert.ToDouble(txtAbonacon.Text));
+
+                                //Se agrega la venta a las estadísticas de la tienda
+                                Estadisticas.ListaFacturas.Add(facturaFinal);
+                                Estadisticas.CantidadVentas++;
+
                                 MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
                                 TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
                                 //Resetea la lista de la factura de la venta ya concretada y limpia form.
@@ -368,6 +380,10 @@ namespace UITiendaElectronica
                             
                             TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
 
+                            //Se agrega la venta a las estadísticas de la tienda
+                            Estadisticas.ListaFacturas.Add(facturaFinal);
+                            Estadisticas.CantidadVentas++;
+
                             //Resetea la lista de la factura de la venta concretada y limpia form.
                             Factura.Carrito.Clear();
                             this.lblTotalCarrito.Text = string.Empty;
@@ -379,6 +395,11 @@ namespace UITiendaElectronica
                             facturaFinal = new FacturaDebito(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
                             MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
                             TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
+
+                            //Se agrega la venta a las estadísticas de la tienda
+                            Estadisticas.ListaFacturas.Add(facturaFinal);
+                            Estadisticas.CantidadVentas++;
+
                             Factura.Carrito.Clear();
                             this.lblTotalCarrito.Text = string.Empty;
                             this.dgvCarritoCliente.Rows.Clear();

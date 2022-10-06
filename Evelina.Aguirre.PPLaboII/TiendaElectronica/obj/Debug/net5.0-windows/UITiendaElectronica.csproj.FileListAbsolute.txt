@@ -25,3 +25,4 @@ C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\Tien
 C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.Venta.resources
 C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.Prueba.resources
 C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.Modificar.resources
+C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.FrmEstadisticas.resources
