@@ -27,7 +27,7 @@ namespace UITiendaElectronica
         {
             Venta frmVenta = new Venta();
             frmVenta.Show();
-            this.WindowState = FormWindowState.Minimized;
+            this.Close();
         }
 
         private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -44,7 +44,7 @@ namespace UITiendaElectronica
         {
             FrmAdmin frmAdmin = new FrmAdmin();
             frmAdmin.Show();
-            this.WindowState = FormWindowState.Minimized;
+            this.Close();
         }
 
         private void Menú_MouseDown(object sender, MouseEventArgs e)

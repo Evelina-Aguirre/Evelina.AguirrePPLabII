@@ -81,6 +81,7 @@ namespace UITiendaElectronica
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(107, 23);
             this.cmbCategoria.TabIndex = 5;
+            this.cmbCategoria.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbCategoria_KeyPress);
             // 
             // txtPrecio
             // 
@@ -89,6 +90,7 @@ namespace UITiendaElectronica
             this.txtPrecio.Size = new System.Drawing.Size(80, 23);
             this.txtPrecio.TabIndex = 6;
             this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // lblNombreProductp
             // 
@@ -299,6 +301,10 @@ namespace UITiendaElectronica
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar";
             this.Load += new System.EventHandler(this.FrmModificar_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Modificar_KeyPress);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Modificar_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Modificar_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Modificar_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

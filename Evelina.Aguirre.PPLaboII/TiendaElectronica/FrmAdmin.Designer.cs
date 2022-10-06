@@ -62,14 +62,14 @@ namespace UITiendaElectronica
             this.label10 = new System.Windows.Forms.Label();
             this.btnVender = new System.Windows.Forms.Button();
             this.grbFormaDePago = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblSaldoTienda = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblMontoInsuficiente = new System.Windows.Forms.Label();
-            this.txtAbonacon = new System.Windows.Forms.TextBox();
-            this.rdoEfectivo = new System.Windows.Forms.RadioButton();
-            this.lblCuotasAbonaCon = new System.Windows.Forms.Label();
+            this.lblSaldoTienda = new System.Windows.Forms.Label();
             this.btnVerVuelto = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtAbonacon = new System.Windows.Forms.TextBox();
+            this.lblCuotasAbonaCon = new System.Windows.Forms.Label();
+            this.rdoEfectivo = new System.Windows.Forms.RadioButton();
+            this.lblMontoInsuficiente = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotalCarrito = new System.Windows.Forms.Label();
             this.btnBuscarEnInventarioTienda = new System.Windows.Forms.Button();
@@ -77,7 +77,7 @@ namespace UITiendaElectronica
             this.txtBuscarInventarioTienda = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogoProveedor)).BeginInit();
@@ -101,6 +101,7 @@ namespace UITiendaElectronica
             this.llbVolver.TabStop = true;
             this.llbVolver.Text = "            ";
             this.llbVolver.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbVolver.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbVolver_LinkClicked);
             // 
             // llbMinimizar
             // 
@@ -314,6 +315,7 @@ namespace UITiendaElectronica
             this.dgvCatalogoProveedor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.dgvCatalogoProveedor.Location = new System.Drawing.Point(225, 92);
             this.dgvCatalogoProveedor.Name = "dgvCatalogoProveedor";
+            this.dgvCatalogoProveedor.ReadOnly = true;
             this.dgvCatalogoProveedor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvCatalogoProveedor.RowHeadersVisible = false;
             this.dgvCatalogoProveedor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -369,6 +371,7 @@ namespace UITiendaElectronica
             this.dgvCarrito.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.dgvCarrito.Location = new System.Drawing.Point(991, 53);
             this.dgvCarrito.Name = "dgvCarrito";
+            this.dgvCarrito.ReadOnly = true;
             this.dgvCarrito.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvCarrito.RowHeadersVisible = false;
             this.dgvCarrito.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -407,102 +410,44 @@ namespace UITiendaElectronica
             // 
             // grbFormaDePago
             // 
-            this.grbFormaDePago.Controls.Add(this.label8);
-            this.grbFormaDePago.Controls.Add(this.lblSaldoTienda);
             this.grbFormaDePago.Controls.Add(this.label7);
-            this.grbFormaDePago.Controls.Add(this.lblMontoInsuficiente);
-            this.grbFormaDePago.Controls.Add(this.txtAbonacon);
-            this.grbFormaDePago.Controls.Add(this.rdoEfectivo);
-            this.grbFormaDePago.Controls.Add(this.lblCuotasAbonaCon);
+            this.grbFormaDePago.Controls.Add(this.lblSaldoTienda);
             this.grbFormaDePago.Controls.Add(this.btnVerVuelto);
+            this.grbFormaDePago.Controls.Add(this.label8);
+            this.grbFormaDePago.Controls.Add(this.txtAbonacon);
+            this.grbFormaDePago.Controls.Add(this.lblCuotasAbonaCon);
+            this.grbFormaDePago.Controls.Add(this.rdoEfectivo);
+            this.grbFormaDePago.Controls.Add(this.lblMontoInsuficiente);
             this.grbFormaDePago.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.grbFormaDePago.Location = new System.Drawing.Point(1000, 456);
+            this.grbFormaDePago.Location = new System.Drawing.Point(997, 454);
             this.grbFormaDePago.Name = "grbFormaDePago";
             this.grbFormaDePago.Size = new System.Drawing.Size(374, 147);
             this.grbFormaDePago.TabIndex = 157;
             this.grbFormaDePago.TabStop = false;
             this.grbFormaDePago.Text = "Forma de pago:";
             // 
-            // label8
+            // label7
             // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label8.Location = new System.Drawing.Point(163, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 26);
-            this.label8.TabIndex = 169;
-            this.label8.Text = "  $            ";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label7.Location = new System.Drawing.Point(70, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 16);
+            this.label7.TabIndex = 166;
+            this.label7.Text = "Saldo tienda";
             // 
             // lblSaldoTienda
             // 
             this.lblSaldoTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblSaldoTienda.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblSaldoTienda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblSaldoTienda.Location = new System.Drawing.Point(195, 25);
+            this.lblSaldoTienda.Location = new System.Drawing.Point(187, 25);
             this.lblSaldoTienda.Name = "lblSaldoTienda";
-            this.lblSaldoTienda.Size = new System.Drawing.Size(107, 21);
+            this.lblSaldoTienda.Size = new System.Drawing.Size(132, 21);
             this.lblSaldoTienda.TabIndex = 168;
             this.lblSaldoTienda.Text = "                  ";
             this.lblSaldoTienda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(67, 25);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 16);
-            this.label7.TabIndex = 166;
-            this.label7.Text = "Saldo tienda";
-            // 
-            // lblMontoInsuficiente
-            // 
-            this.lblMontoInsuficiente.BackColor = System.Drawing.Color.Transparent;
-            this.lblMontoInsuficiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.lblMontoInsuficiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.lblMontoInsuficiente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMontoInsuficiente.Location = new System.Drawing.Point(118, 100);
-            this.lblMontoInsuficiente.Name = "lblMontoInsuficiente";
-            this.lblMontoInsuficiente.Size = new System.Drawing.Size(237, 19);
-            this.lblMontoInsuficiente.TabIndex = 133;
-            this.lblMontoInsuficiente.Text = "                  ";
-            this.lblMontoInsuficiente.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // txtAbonacon
-            // 
-            this.txtAbonacon.Location = new System.Drawing.Point(249, 61);
-            this.txtAbonacon.Name = "txtAbonacon";
-            this.txtAbonacon.Size = new System.Drawing.Size(106, 23);
-            this.txtAbonacon.TabIndex = 128;
-            this.txtAbonacon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtAbonacon.Click += new System.EventHandler(this.txtAbonacon_Click);
-            this.txtAbonacon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAbonacon_KeyPress);
-            // 
-            // rdoEfectivo
-            // 
-            this.rdoEfectivo.AutoSize = true;
-            this.rdoEfectivo.Location = new System.Drawing.Point(24, 65);
-            this.rdoEfectivo.Name = "rdoEfectivo";
-            this.rdoEfectivo.Size = new System.Drawing.Size(63, 19);
-            this.rdoEfectivo.TabIndex = 0;
-            this.rdoEfectivo.TabStop = true;
-            this.rdoEfectivo.Text = "Cuenta";
-            this.rdoEfectivo.UseVisualStyleBackColor = true;
-            this.rdoEfectivo.CheckedChanged += new System.EventHandler(this.rdoEfectivo_CheckedChanged);
-            // 
-            // lblCuotasAbonaCon
-            // 
-            this.lblCuotasAbonaCon.AutoSize = true;
-            this.lblCuotasAbonaCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCuotasAbonaCon.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCuotasAbonaCon.Location = new System.Drawing.Point(158, 65);
-            this.lblCuotasAbonaCon.Name = "lblCuotasAbonaCon";
-            this.lblCuotasAbonaCon.Size = new System.Drawing.Size(74, 15);
-            this.lblCuotasAbonaCon.TabIndex = 125;
-            this.lblCuotasAbonaCon.Text = "Abona con";
             // 
             // btnVerVuelto
             // 
@@ -517,6 +462,64 @@ namespace UITiendaElectronica
             this.btnVerVuelto.TabIndex = 132;
             this.btnVerVuelto.UseVisualStyleBackColor = false;
             this.btnVerVuelto.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label8.Location = new System.Drawing.Point(159, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 26);
+            this.label8.TabIndex = 169;
+            this.label8.Text = "  $            ";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtAbonacon
+            // 
+            this.txtAbonacon.Location = new System.Drawing.Point(252, 71);
+            this.txtAbonacon.Name = "txtAbonacon";
+            this.txtAbonacon.Size = new System.Drawing.Size(106, 23);
+            this.txtAbonacon.TabIndex = 128;
+            this.txtAbonacon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAbonacon.Click += new System.EventHandler(this.txtAbonacon_Click);
+            this.txtAbonacon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAbonacon_KeyPress);
+            // 
+            // lblCuotasAbonaCon
+            // 
+            this.lblCuotasAbonaCon.AutoSize = true;
+            this.lblCuotasAbonaCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCuotasAbonaCon.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCuotasAbonaCon.Location = new System.Drawing.Point(161, 75);
+            this.lblCuotasAbonaCon.Name = "lblCuotasAbonaCon";
+            this.lblCuotasAbonaCon.Size = new System.Drawing.Size(74, 15);
+            this.lblCuotasAbonaCon.TabIndex = 125;
+            this.lblCuotasAbonaCon.Text = "Abona con";
+            // 
+            // rdoEfectivo
+            // 
+            this.rdoEfectivo.AutoSize = true;
+            this.rdoEfectivo.Location = new System.Drawing.Point(27, 75);
+            this.rdoEfectivo.Name = "rdoEfectivo";
+            this.rdoEfectivo.Size = new System.Drawing.Size(63, 19);
+            this.rdoEfectivo.TabIndex = 0;
+            this.rdoEfectivo.TabStop = true;
+            this.rdoEfectivo.Text = "Cuenta";
+            this.rdoEfectivo.UseVisualStyleBackColor = true;
+            this.rdoEfectivo.CheckedChanged += new System.EventHandler(this.rdoEfectivo_CheckedChanged);
+            // 
+            // lblMontoInsuficiente
+            // 
+            this.lblMontoInsuficiente.BackColor = System.Drawing.Color.Transparent;
+            this.lblMontoInsuficiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblMontoInsuficiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.lblMontoInsuficiente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMontoInsuficiente.Location = new System.Drawing.Point(119, 100);
+            this.lblMontoInsuficiente.Name = "lblMontoInsuficiente";
+            this.lblMontoInsuficiente.Size = new System.Drawing.Size(237, 19);
+            this.lblMontoInsuficiente.TabIndex = 133;
+            this.lblMontoInsuficiente.Text = "                  ";
+            this.lblMontoInsuficiente.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // label1
             // 
@@ -574,6 +577,7 @@ namespace UITiendaElectronica
             this.dgvInventarioTienda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
             this.dgvInventarioTienda.Location = new System.Drawing.Point(223, 401);
             this.dgvInventarioTienda.Name = "dgvInventarioTienda";
+            this.dgvInventarioTienda.ReadOnly = true;
             this.dgvInventarioTienda.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvInventarioTienda.RowHeadersVisible = false;
             this.dgvInventarioTienda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -587,6 +591,7 @@ namespace UITiendaElectronica
             this.dgvInventarioTienda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioTienda.Size = new System.Drawing.Size(741, 223);
             this.dgvInventarioTienda.TabIndex = 160;
+            this.dgvInventarioTienda.DoubleClick += new System.EventHandler(this.dgvInventarioTienda_DoubleClick);
             // 
             // txtBuscarInventarioTienda
             // 
@@ -618,15 +623,15 @@ namespace UITiendaElectronica
             this.label4.TabIndex = 164;
             this.label4.Text = "Carrito";
             // 
-            // button3
+            // btnModificar
             // 
-            this.button3.Location = new System.Drawing.Point(852, 630);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 23);
-            this.button3.TabIndex = 165;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnModificar.Location = new System.Drawing.Point(852, 630);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(112, 23);
+            this.btnModificar.TabIndex = 165;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.button3_Click);
             // 
             // pictureBox1
             // 
@@ -649,7 +654,7 @@ namespace UITiendaElectronica
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.ClientSize = new System.Drawing.Size(1400, 691);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBuscarEnInventarioTienda);
@@ -657,7 +662,6 @@ namespace UITiendaElectronica
             this.Controls.Add(this.txtBuscarInventarioTienda);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnVender);
-            this.Controls.Add(this.grbFormaDePago);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTotalCarrito);
             this.Controls.Add(this.label6);
@@ -683,6 +687,7 @@ namespace UITiendaElectronica
             this.Controls.Add(this.llbCerrar);
             this.Controls.Add(this.llbVolver);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.grbFormaDePago);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -746,7 +751,7 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Label lblSaldoTienda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnModificar;
         public System.Windows.Forms.Button btnBuscarEnInventarioTienda;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel llbVolver;

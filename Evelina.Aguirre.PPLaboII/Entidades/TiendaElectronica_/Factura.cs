@@ -27,7 +27,6 @@ namespace Entidades
         {
             get
             {
-                // this.totalCompra = CalcularTotal();
                 if (MetodoDePago is EMetodosDePago.Credito)
                 {
                     totalCompra -= (totalCompra * 10) / 100;
@@ -121,22 +120,6 @@ namespace Entidades
 
         }
 
-        //private float CalcularTotal()
-        //{
-        //    float resultado = 0;
-        //    if (Factura.Carrito is not null)
-        //    {
-        //        foreach (Producto item in Factura.Carrito)
-        //        {
-        //            resultado += (float)item.Precio * (float)item.Cantidad;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        resultado = 0;
-        //    }
-        //    return resultado;
-        //}
         /// <summary>
         /// 
         /// </summary>

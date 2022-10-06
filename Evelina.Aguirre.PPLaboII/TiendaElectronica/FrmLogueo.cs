@@ -26,13 +26,13 @@ namespace UITiendaElectronica
             {
                 Venta frmVenta = new Venta();
                 frmVenta.Show();
-                this.Hide();
+                this.Close();
             }
             else if (TiendaDeElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Dueño)
             {
                 Menú frmMenuPrincipal = new Menú();
                 frmMenuPrincipal.Show();
-                this.Hide();
+                this.Close();
             }
             else
             {

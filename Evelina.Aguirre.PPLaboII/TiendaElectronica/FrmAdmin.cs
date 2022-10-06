@@ -39,6 +39,8 @@ namespace UITiendaElectronica
             rdoEfectivo.Checked = true;
             txtAbonacon.Text = TiendaDeElectronica.CuentaTienda.ToString();
             lblSaldoTienda.Text = TiendaDeElectronica.CuentaTienda.ToString();
+            this.txtAbonacon.Text = TiendaDeElectronica.CuentaTienda.ToString();
+            this.txtAbonacon.Enabled = false;
         }
 
 
@@ -288,7 +290,7 @@ namespace UITiendaElectronica
 
         private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Close();
+            Application.Exit();
         }
         private void FrmAdmin_MouseMove(object sender, MouseEventArgs e)
         {
@@ -340,16 +342,29 @@ namespace UITiendaElectronica
                 string nombre = "";
             string categoria = "";
             double precio = 0;
-            if (dgvInventarioTienda.CurrentRow.Cells[0].Value is not null)
+            if (dgvInventarioTienda.Rows.Count > 0)
             {
                 id = Convert.ToInt32(dgvInventarioTienda.CurrentRow.Cells[5].Value);
                 nombre = dgvInventarioTienda.CurrentRow.Cells[0].Value.ToString();
                 categoria = dgvInventarioTienda.CurrentRow.Cells[4].Value.ToString();
                 precio = Convert.ToDouble(dgvInventarioTienda.CurrentRow.Cells[2].Value);
+                Modificar modificar = new Modificar(id, nombre, categoria, precio);
+                modificar.Show();
             }
 
-            Modificar modificar = new Modificar(id, nombre, categoria, precio);
-            modificar.Show();
+        }
+
+        private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Venta frmVenta = new Venta();
+            frmVenta.ShowDialog();
+            this.Hide();
+
+        }
+
+        private void dgvInventarioTienda_DoubleClick(object sender, EventArgs e)
+        {
+            this.btnModificar.PerformClick();
         }
 
         private void FrmAdmin_MouseUp(object sender, MouseEventArgs e)
