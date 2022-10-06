@@ -26,6 +26,7 @@ namespace UITiendaElectronica
             this.lblCategoriaActual.Text = categoria;
             this.lblPrecio.Text = precio.ToString();
             this.txtPrecio.Text = precio.ToString();
+            this.cmbCategoria.SelectedIndex = -1;
         }
 
 
@@ -38,11 +39,7 @@ namespace UITiendaElectronica
             this.cmbCategoria.DataSource = System.Enum.GetValues(typeof(ECategoriaElectronico));
         }
 
-        private void lblProducto_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -63,24 +60,65 @@ namespace UITiendaElectronica
             int abonaCon;
             bool esNumero = int.TryParse(txtPrecio.Text, out abonaCon);
 
-            if (txtPrecio.Text != null && esNumero && Convert.ToInt32(txtPrecio.Text) > Convert.ToInt32(lblPrecio.Text))
-            {
 
+            //Cambio Precio
+            if (txtPrecio.Text != null && esNumero)
+            {
+                int id = Convert.ToInt32(this.lblId.Text);
+
+                foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+                {
+                    if (id == item.Value.Id)
+                    {
+                        item.Value.Precio = Convert.ToDouble(this.txtPrecio.Text);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                this.lblError.Text = "Monto inválido";
+                this.timerError.Interval = 3000;
+                this.timerError.Start();
             }
 
+            if(cmbCategoria.SelectedIndex == -1)
+            {
+                this.lblError.Text = "Debe elegir una categoría";
+                this.timerError.Interval = 3000;
+                this.timerError.Start();
+            }
+            else
+            {
+                foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+                {
+                    if (Convert.ToInt32(this.lblId.Text) == item.Value.Id)
+                    {
+                        item.Value.Categoria = Producto.StringAECategoriaElectronico(this.cmbCategoria.Text);
+                        break;
+                    }
+                }
+            }
 
-            //int id = Convert.ToInt32(this.dgvInventarioTienda.CurrentRow.Cells[5].Value);
+            DialogResult resultado = MessageBox.Show($"Item:{this.lblNombreProductp.Text} Id: {this.lblId.Text} \n\n Nuevo Precio: " +
+                $"{this.txtPrecio.Text}\nNueva Categoría: {this.cmbCategoria.SelectedItem.ToString()}", "Desdea Guardar los cambios ?"
+                , MessageBoxButtons.YesNo);
+            if(resultado == DialogResult.No)
+            {
+                Producto auxProducto = TiendaDeElectronica.BuscarProducto(Convert.ToInt32(this.lblId.Text));
+                auxProducto.Precio = Convert.ToDouble(this.lblPrecio.Text);
+                auxProducto.Categoria = Producto.StringAECategoriaElectronico(this.lblCategoriaActual.Text);
+            }
 
-            //    foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
-            //    {
-            //        if(id = item.Value.Id)
-            //        {
+            
+            
 
-            //        }
-            //    }
+        }
 
-
-
+        private void timerError_Tick(object sender, EventArgs e)
+        {
+            this.lblError.Text = "";
+            this.timerError.Stop();
         }
     }
 }

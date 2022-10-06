@@ -34,7 +34,7 @@ namespace Entidades
 
         public string Nombre { get => nombre;}
         public int Cantidad { get => cantidad; set => cantidad = value;} 
-        public double Precio { get => precio;}
+        public double Precio { get => precio; set => precio = value; }
         public string Descripcion { get => descripcion;}
         public ECategoriaElectronico Categoria { get => categoria; set => categoria = value; }
        public int Id { get => id; set => id = value; }
@@ -199,6 +199,48 @@ namespace Entidades
 
             }
             return lista;
+        }
+
+
+        public static ECategoriaElectronico StringAECategoriaElectronico(string categoria)
+        {
+            ECategoriaElectronico resultadoCategoria = ECategoriaElectronico.SinCategoria;
+            switch (categoria)
+            {
+                case "Leds":
+                    resultadoCategoria = ECategoriaElectronico.Leds;
+                    break;
+                case "Bobinas":
+                    resultadoCategoria = ECategoriaElectronico.Bobinas;
+                    break;
+                case "Capacitores":
+                    resultadoCategoria = ECategoriaElectronico.Capacitores;
+                    break;
+                case "Conectores":
+                    resultadoCategoria = ECategoriaElectronico.Conectores;
+                    break;
+                case "CircuitosIntegrados":
+                    resultadoCategoria = ECategoriaElectronico.CircuitosIntegrados;
+                    break;
+                case "Plaquetas":
+                    resultadoCategoria = ECategoriaElectronico.Plaquetas;
+                    break;
+                case "Soldado":
+                    resultadoCategoria = ECategoriaElectronico.Soldado;
+                    break;
+                case "Limpieza":
+                    resultadoCategoria = ECategoriaElectronico.Limpieza;
+                    break;
+                case "Herramientas":
+                    resultadoCategoria = ECategoriaElectronico.Herramientas;
+                    break;
+                case "ControlTermico":
+                    resultadoCategoria = ECategoriaElectronico.ControlTermico;
+                    break;
+
+            }
+
+            return resultadoCategoria;
         }
 
 

@@ -29,6 +29,7 @@ namespace UITiendaElectronica
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Modificar));
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,6 +48,8 @@ namespace UITiendaElectronica
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblCategoriaActual = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
+            this.timerError = new System.Windows.Forms.Timer(this.components);
+            this.lblError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
@@ -174,7 +177,6 @@ namespace UITiendaElectronica
             this.lblProducto.TabIndex = 1;
             this.lblProducto.Text = "Producto";
             this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblProducto.Click += new System.EventHandler(this.lblProducto_Click);
             // 
             // label2
             // 
@@ -248,12 +250,31 @@ namespace UITiendaElectronica
             this.lblId.Text = "Producto";
             this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // timerError
+            // 
+            this.timerError.Interval = 3000;
+            this.timerError.Tick += new System.EventHandler(this.timerError_Tick);
+            // 
+            // lblError
+            // 
+            this.lblError.BackColor = System.Drawing.Color.Transparent;
+            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.lblError.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblError.Location = new System.Drawing.Point(26, 236);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(237, 19);
+            this.lblError.TabIndex = 134;
+            this.lblError.Text = "                  ";
+            this.lblError.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
             // Modificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.ClientSize = new System.Drawing.Size(292, 319);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblCategoriaActual);
             this.Controls.Add(this.lblPrecio);
@@ -301,5 +322,7 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblCategoriaActual;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Timer timerError;
+        private System.Windows.Forms.Label lblError;
     }
 }
