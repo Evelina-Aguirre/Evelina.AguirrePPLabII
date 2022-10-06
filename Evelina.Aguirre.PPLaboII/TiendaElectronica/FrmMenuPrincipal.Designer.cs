@@ -37,9 +37,7 @@ namespace UITiendaElectronica
             this.llbMinimizar = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox4
@@ -54,7 +52,7 @@ namespace UITiendaElectronica
             // 
             // btnVender
             // 
-            this.btnVender.Location = new System.Drawing.Point(78, 137);
+            this.btnVender.Location = new System.Drawing.Point(78, 119);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(213, 41);
             this.btnVender.TabIndex = 106;
@@ -64,7 +62,7 @@ namespace UITiendaElectronica
             // 
             // btnAdmin
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(78, 63);
+            this.btnAdmin.Location = new System.Drawing.Point(78, 44);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(213, 40);
             this.btnAdmin.TabIndex = 107;
@@ -132,19 +130,6 @@ namespace UITiendaElectronica
             this.linkLabel2.Text = "   ";
             this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Transparent;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(56, -33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(459, 361);
-            this.pictureBox1.TabIndex = 113;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
-            // 
             // Menú
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -158,7 +143,6 @@ namespace UITiendaElectronica
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.btnVender);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -170,7 +154,6 @@ namespace UITiendaElectronica
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,6 +170,5 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.LinkLabel llbCerrar;
         private System.Windows.Forms.LinkLabel llbMinimizar;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

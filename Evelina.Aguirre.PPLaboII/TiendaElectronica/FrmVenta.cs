@@ -9,10 +9,11 @@ namespace UITiendaElectronica
 {
     public partial class Venta : Form
     {
+        //variables para tomar pocisión del puntero si se intenta mover el formulario.
         int m, mx, my;
 
         //Factura auxiliar a partir de la cual se instanciará una Factura-Efectivo/Debito/Crédito una vez elegido el método de pago.
-        private Factura auxFactura = new Factura(EMetodosDePago.efectivo,0);
+        private FacturaDebito auxFactura = new FacturaDebito(EMetodosDePago.efectivo,0);
         
         public Venta()
         {
@@ -98,7 +99,6 @@ namespace UITiendaElectronica
         private void txtBuscat_Click(object sender, EventArgs e)
         {
             List<Producto> auxLista = new List<Producto>();
-            //Asigno una lista de Productos vacía para que se carguen las columnas correspondientes a un producto pero sin datos.
             this.dgvProductosTienda.DataSource = auxLista;
             this.txtBuscat.Text = string.Empty;
             this.dgvProductosTienda.DataSource = null;
@@ -183,7 +183,7 @@ namespace UITiendaElectronica
                 _ = auxFactura - id;
                 this.lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
 
-                //tiene que quitar cantidad de acá y agregarla  denuevo a la tienda
+                //resta cantidad del actual y la restituye a la tienda
                 int cantidadActual = Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[3].Value);
 
                 if (Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[3].Value) == 1)
@@ -196,9 +196,10 @@ namespace UITiendaElectronica
                     cantidadActual--;
                     this.dgvCarritoCliente.CurrentRow.Cells[3].Value = cantidadActual;
                 }
+
                 //Sumo la cantidad del inventario de la tienda
                 _ = tienda + id;
-                //Ya tengo el id tengo que buscarlo en la tienda 
+
                 //Actualiza dgvProductos en tienda
                 ECategoriaElectronico categoria = Producto.ObtenerCategoria(id);
                 this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
@@ -335,7 +336,6 @@ namespace UITiendaElectronica
                                 MessageBox.Show(facturaFinal.ToString());
 
                                 //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
-                                
                                 Factura.Carrito.Clear();
                                 auxFactura.TotalCompra = 0;
                                 this.lblTotalCarrito.Text = string.Empty;
@@ -355,6 +355,7 @@ namespace UITiendaElectronica
                             facturaFinal = new FacturaCredito(EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
                                  Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
                             MessageBox.Show(facturaFinal.ToString());
+
                             //Resetea la lista de la factura de la venta concretada y limpia dgv y labels.
                             Factura.Carrito.Clear();
                             this.lblTotalCarrito.Text = string.Empty;
@@ -365,6 +366,7 @@ namespace UITiendaElectronica
                         {
                             facturaFinal = new FacturaDebito(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
                             MessageBox.Show(facturaFinal.ToString());
+
                             //Resetea la lista de la factura de la venta concretada y limpia dgv y labels. 
                             Factura.Carrito.Clear();
                             this.lblTotalCarrito.Text = string.Empty;

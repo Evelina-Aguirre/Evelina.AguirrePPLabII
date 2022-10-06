@@ -12,7 +12,7 @@ namespace UITiendaElectronica
     {
         int m, mx, my;
         //Factura auxiliar a partir de la cual se instanciará una Factura-Efectivo/Debito/Crédito una vez elegido el método de pago.
-        private Factura auxFactura = new Factura(EMetodosDePago.efectivo, 0);
+        private FacturaDebito auxFactura = new FacturaDebito(EMetodosDePago.efectivo, 0);
         public FrmAdmin()
         {
             InitializeComponent();
