@@ -18,11 +18,6 @@ namespace UITiendaElectronica
             InitializeComponent();
         }
 
-        private void Menú_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Venta frmVenta = new Venta();

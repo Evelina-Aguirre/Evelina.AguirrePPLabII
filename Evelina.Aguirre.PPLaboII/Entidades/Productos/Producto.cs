@@ -133,27 +133,6 @@ namespace Entidades
 
         }
 
-        /// <summary>
-        /// Busca en una colección de tipo lista una categoría.
-        /// </summary>
-        /// <param name="categoria"></param>
-        /// <param name="lista"></param>
-        /// <returns>Lista con todos los elementos encontrados con esa categoría.</returns>
-        public static List<Producto> CargarProductosPorCategoria(ECategoriaElectronico categoria, List<Producto> lista)
-        {
-            List<Producto> auxListaProductos = new List<Producto>();
-
-            foreach (Producto item in lista)
-            {
-                if (item.Categoria.ToString() == categoria.ToString())
-                {
-                    Producto.CargarProductosPorCategoria(categoria, auxListaProductos, item);
-                }
-            }
-
-            return auxListaProductos;
-
-        }
 
         /// <summary>
         /// Carga un Porductos a una lista según la categoría.
@@ -202,6 +181,11 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// Busca unaa categoría comparándola con la palabra que se le brinda por parámetro.
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns>categoría del Enumerado ECategoriaElectronico</returns>
         public static ECategoriaElectronico StringAECategoriaElectronico(string categoria)
         {
             ECategoriaElectronico resultadoCategoria = ECategoriaElectronico.SinCategoria;
@@ -253,8 +237,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Tag: {this.Categoria} ");
-            sb.AppendLine($"{this.Nombre}  - Cant.: {this.cantidad}");
-
+            sb.AppendLine($"{this.Nombre} - Cant.: {this.cantidad}");
             sb.AppendLine($"Precio: {this.Precio}");
 
             return sb.ToString();

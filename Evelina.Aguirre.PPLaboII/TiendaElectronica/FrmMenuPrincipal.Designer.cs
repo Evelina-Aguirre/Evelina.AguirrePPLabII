@@ -135,7 +135,7 @@ namespace UITiendaElectronica
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(364, 217);
+            this.ClientSize = new System.Drawing.Size(364, 200);
             this.Controls.Add(this.llbMinimizar);
             this.Controls.Add(this.llbCerrar);
             this.Controls.Add(this.linkLabel3);
@@ -149,7 +149,6 @@ namespace UITiendaElectronica
             this.Name = "Menú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
-            this.Load += new System.EventHandler(this.Menú_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseUp);

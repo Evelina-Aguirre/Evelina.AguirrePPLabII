@@ -66,7 +66,7 @@ namespace UITiendaElectronica
             this.lnklblOlvidasteClave.AutoSize = true;
             this.lnklblOlvidasteClave.BackColor = System.Drawing.Color.Transparent;
             this.lnklblOlvidasteClave.LinkColor = System.Drawing.Color.Silver;
-            this.lnklblOlvidasteClave.Location = new System.Drawing.Point(129, 320);
+            this.lnklblOlvidasteClave.Location = new System.Drawing.Point(130, 320);
             this.lnklblOlvidasteClave.Name = "lnklblOlvidasteClave";
             this.lnklblOlvidasteClave.Size = new System.Drawing.Size(141, 15);
             this.lnklblOlvidasteClave.TabIndex = 4;

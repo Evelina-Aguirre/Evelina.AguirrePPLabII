@@ -26,13 +26,13 @@ namespace UITiendaElectronica
             {
                 Venta frmVenta = new Venta();
                 frmVenta.Show();
-                this.Close();
+                this.Hide();
             }
             else if (TiendaDeElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Dueño)
             {
                 Menú frmMenuPrincipal = new Menú();
                 frmMenuPrincipal.Show();
-                this.Close();
+               this.Hide();
             }
             else
             {
@@ -84,8 +84,8 @@ namespace UITiendaElectronica
         private void lnklblOlvidasteClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Prueba frmHarcodeo = new Prueba();
-            this.Hide();
             frmHarcodeo.Show();
+            this.Hide();
         }
 
         private void Inicio_MouseMove(object sender, MouseEventArgs e)

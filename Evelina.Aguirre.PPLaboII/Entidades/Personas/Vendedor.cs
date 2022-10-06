@@ -11,8 +11,5 @@ namespace Entidades
         public Vendedor(string usuario,string clave, EPersona cargo) : base(usuario, clave, cargo)
         {
         }
-
-
-        //vende
     }
 }

@@ -55,6 +55,7 @@ namespace UITiendaElectronica
             this.btnCircuitosIntegrados = new System.Windows.Forms.Button();
             this.btnPlaquetas = new System.Windows.Forms.Button();
             this.grbFormaDePago = new System.Windows.Forms.GroupBox();
+            this.lblVentaCredito = new System.Windows.Forms.Label();
             this.cmbCuotas = new System.Windows.Forms.ComboBox();
             this.lblMontoInsuficiente = new System.Windows.Forms.Label();
             this.lblsimboloPesos = new System.Windows.Forms.Label();
@@ -332,12 +333,13 @@ namespace UITiendaElectronica
             // 
             // grbFormaDePago
             // 
-            this.grbFormaDePago.Controls.Add(this.cmbCuotas);
-            this.grbFormaDePago.Controls.Add(this.lblMontoInsuficiente);
             this.grbFormaDePago.Controls.Add(this.lblsimboloPesos);
             this.grbFormaDePago.Controls.Add(this.lblCalculoVuelto);
-            this.grbFormaDePago.Controls.Add(this.txtAbonacon);
             this.grbFormaDePago.Controls.Add(this.lblAuxlblVuelto);
+            this.grbFormaDePago.Controls.Add(this.lblVentaCredito);
+            this.grbFormaDePago.Controls.Add(this.cmbCuotas);
+            this.grbFormaDePago.Controls.Add(this.lblMontoInsuficiente);
+            this.grbFormaDePago.Controls.Add(this.txtAbonacon);
             this.grbFormaDePago.Controls.Add(this.rdoCredito);
             this.grbFormaDePago.Controls.Add(this.rdoDebiro);
             this.grbFormaDePago.Controls.Add(this.rdoEfectivo);
@@ -350,6 +352,18 @@ namespace UITiendaElectronica
             this.grbFormaDePago.TabIndex = 121;
             this.grbFormaDePago.TabStop = false;
             this.grbFormaDePago.Text = "Forma de pago:";
+            // 
+            // lblVentaCredito
+            // 
+            this.lblVentaCredito.BackColor = System.Drawing.Color.Transparent;
+            this.lblVentaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblVentaCredito.ForeColor = System.Drawing.Color.Lime;
+            this.lblVentaCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblVentaCredito.Location = new System.Drawing.Point(117, 79);
+            this.lblVentaCredito.Name = "lblVentaCredito";
+            this.lblVentaCredito.Size = new System.Drawing.Size(237, 19);
+            this.lblVentaCredito.TabIndex = 134;
+            this.lblVentaCredito.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // cmbCuotas
             // 
@@ -729,5 +743,6 @@ namespace UITiendaElectronica
         private System.Windows.Forms.ComboBox cmbCuotas;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblVentaCredito;
     }
 }

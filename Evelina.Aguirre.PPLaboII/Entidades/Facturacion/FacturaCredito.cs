@@ -18,7 +18,7 @@ namespace Entidades.TiendaElectronica
             {
                 if (base.MetodoDePago is EMetodosDePago.Credito)
                 {
-                    base.TotalCompra -= (base.TotalCompra * 10) / 100;
+                    base.TotalCompra += (base.TotalCompra * 10) / 100;
                 }
                 return base.TotalCompra;
             }

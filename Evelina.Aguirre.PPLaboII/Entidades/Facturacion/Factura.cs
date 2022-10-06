@@ -11,7 +11,7 @@ namespace Entidades
 
         static Factura()
         {
-            Factura.carrito = new List<Producto>();
+            carrito = new List<Producto>();
         }
 
         public Factura(EMetodosDePago metodoDePago, double totalCompra)
@@ -21,23 +21,23 @@ namespace Entidades
         }
 
 
-        public static List<Producto> Carrito
+        public  static List<Producto> Carrito
         {
             get
             {
-                return Factura.Carrito;
+                return carrito;
             }
             set
             {
-                Factura.Carrito = value;
+                Factura.carrito = value;
             }
         }
-
 
         public virtual double TotalCompra
         {
             get
             {
+               
                 return totalCompra;
             }
             set
@@ -46,19 +46,16 @@ namespace Entidades
             }
         }
 
-        public EMetodosDePago MetodoDePago 
-        {
-            get
-            {
-                return this.metodoDePago;
-            }
-            set
-            {
-                this.metodoDePago = value;
-            }
-        }
+        public EMetodosDePago MetodoDePago { get => metodoDePago; set => metodoDePago = value; }
+
 
         public abstract string MostrarCompra();
+
+
+
+
+
+
 
 
     }

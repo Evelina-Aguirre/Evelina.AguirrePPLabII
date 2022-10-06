@@ -34,6 +34,7 @@ namespace UITiendaElectronica
             this.lblCalculoVuelto.Text = "-";
             this.rdoEfectivo.Checked = true;
             this.cmbCuotas.Visible = false;
+            this.lblVentaCredito.Visible = false;
         }
 
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -220,6 +221,7 @@ namespace UITiendaElectronica
             this.txtAbonacon.BackColor = Color.FromArgb(185, 185, 185);
             this.txtAbonacon.BorderStyle = BorderStyle.FixedSingle;
             this.txtAbonacon.Text = lblTotalCarrito.Text;
+            this.lblVentaCredito.Visible = false;
 
         }
 
@@ -240,6 +242,8 @@ namespace UITiendaElectronica
 
             this.cmbCuotas.Visible = true;
             this.cmbCuotas.SelectedIndex = 0;
+            this.lblVentaCredito.Visible = true;
+            this.lblVentaCredito.Text = "Se aplicará 10% de recargo";
 
         }
 
@@ -287,6 +291,7 @@ namespace UITiendaElectronica
             this.lblsimboloPesos.Visible = true;
             this.lblCalculoVuelto.Visible = true;
             this.txtAbonacon.Enabled = true;
+            this.lblVentaCredito.Visible = false;
 
 
         }
@@ -333,9 +338,9 @@ namespace UITiendaElectronica
                             {
                                 facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
                                 Convert.ToDouble(txtAbonacon.Text));
-                                MessageBox.Show(facturaFinal.ToString());
+                                MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
 
-                                //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
+                                //Resetea la lista de la factura de la venta ya concretada y limpia form.
                                 Factura.Carrito.Clear();
                                 auxFactura.TotalCompra = 0;
                                 this.lblTotalCarrito.Text = string.Empty;
@@ -352,11 +357,16 @@ namespace UITiendaElectronica
                         }
                         else if (rdoCredito.Checked)
                         {
+                            
                             facturaFinal = new FacturaCredito(EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
                                  Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
-                            MessageBox.Show(facturaFinal.ToString());
+                            MessageBox.Show("Factura:\n\n"+ 
+                                facturaFinal.ToString() +
+                                "\n Recuerde que se aplica\n" +
+                                " un 10 % de recargo a las\n" +
+                                " compras en crédito.");
 
-                            //Resetea la lista de la factura de la venta concretada y limpia dgv y labels.
+                            //Resetea la lista de la factura de la venta concretada y limpia form.
                             Factura.Carrito.Clear();
                             this.lblTotalCarrito.Text = string.Empty;
                             this.dgvCarritoCliente.Rows.Clear();
@@ -365,9 +375,8 @@ namespace UITiendaElectronica
                         else if (rdoDebiro.Checked)
                         {
                             facturaFinal = new FacturaDebito(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
-                            MessageBox.Show(facturaFinal.ToString());
+                            MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
 
-                            //Resetea la lista de la factura de la venta concretada y limpia dgv y labels. 
                             Factura.Carrito.Clear();
                             this.lblTotalCarrito.Text = string.Empty;
                             this.dgvCarritoCliente.Rows.Clear();
