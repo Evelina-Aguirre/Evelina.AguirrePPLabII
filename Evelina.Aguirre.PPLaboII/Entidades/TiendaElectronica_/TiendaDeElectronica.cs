@@ -46,25 +46,24 @@ namespace Entidades
             }
         }
 
-        //public static bool operator +(TiendaDeElectronica tienda, int id)
-        //{
-        //    bool resultado = false;
-        //    if (TiendaDeElectronica.InventarioTienda is not null)
-        //    {
+        public static bool operator +(TiendaDeElectronica tienda, int id)
+        {
+            bool resultado = false;
+            if (TiendaDeElectronica.InventarioTienda is not null)
+            {
+                foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+                {
+                    if (item.Value.Id == id)
+                    {
+                        item.Value.Cantidad++;
+                        resultado = true;
+                        break;
+                    }
+                }
+            }
+            return resultado;
 
-        //        foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
-        //        {
-        //            if (item.Value.Id == id)
-        //            {
-        //                item.Value.Cantidad++;
-        //                resultado = true;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return resultado;
-
-        // }
+        }
 
 
         public static bool operator -(TiendaDeElectronica tienda, int id)
@@ -158,14 +157,14 @@ namespace Entidades
         /// </summary>
         /// <param name="aux">Palabra a buscar.</param>
         /// <returns>Lista con los productos encontrados.</returns>
-        public static List<Producto> BuscarProductoPorNombre(string aux)
+        public static List<Producto> BuscarProducto(string aux)
         {
             List<Producto> auxLista = new List<Producto>();
 
             foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
 
-                if (item.Value.Categoria == Producto.ObtenerCategoriaAPartirDeString(aux) ||
+                if (item.Value.Categoria == Producto.ObtenerCategoria(aux) ||
                     item.Value.ToString() == aux)
                 {
                     auxLista.Add(item.Value);
@@ -176,6 +175,7 @@ namespace Entidades
 
         }
 
+       
 
 
     }

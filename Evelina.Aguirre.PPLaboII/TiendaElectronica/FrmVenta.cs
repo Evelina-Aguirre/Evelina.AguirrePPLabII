@@ -92,7 +92,7 @@ namespace UITiendaElectronica
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
-            this.dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProductoPorNombre(txtBuscat.Text.ToString().ToLower());
+            this.dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProducto(txtBuscat.Text.ToString().ToLower());
         }
 
         private void txtBuscat_Click(object sender, EventArgs e)
@@ -115,12 +115,6 @@ namespace UITiendaElectronica
                (int)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value), "",
                (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[4].Value,1);
 
-            //resto el producto de la tienda
-            int id = Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[5].Value);
-            _ = tienda - id;
-            //Actualiza dgvProductos en tienda
-            ECategoriaElectronico categoria = Producto.ObtenerCategoriaAPartirDeString(this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
-            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
 
 
             //Vista previa del producto agregador al dgv de los productos a vender.
@@ -151,6 +145,12 @@ namespace UITiendaElectronica
                 this.dgvProductosTienda.CurrentRow.Cells[2].Value, cantidad);
             }
 
+            //resto el producto de la tienda
+            int id = Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[5].Value);
+            _ = tienda - id;
+            //Actualiza dgvProductos en tienda
+            ECategoriaElectronico categoria = Producto.ObtenerCategoria(this.dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
+            this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
             //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
             auxFactura += auxProducto;
 
@@ -175,13 +175,33 @@ namespace UITiendaElectronica
 
         private void llbBorrarProductoDeLista_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            TiendaDeElectronica tienda = new TiendaDeElectronica();
             
             if (this.dgvCarritoCliente.Rows.Count > 1 && this.dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
              {
                 int id = Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[0].Value);
                 _ = auxFactura - id;
                 this.lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
-                dgvCarritoCliente.Rows.RemoveAt(dgvCarritoCliente.CurrentRow.Index);
+
+                //tiene que quitar cantidad de acá y agregarla  denuevo a la tienda
+                int cantidadActual = Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[3].Value);
+
+                if (Convert.ToInt32(this.dgvCarritoCliente.CurrentRow.Cells[3].Value) == 1)
+                {
+                    this.dgvCarritoCliente.Rows.RemoveAt(this.dgvCarritoCliente.CurrentRow.Index);
+
+                }
+                else
+                {
+                    cantidadActual--;
+                    this.dgvCarritoCliente.CurrentRow.Cells[3].Value = cantidadActual;
+                }
+                //Sumo la cantidad del inventario de la tienda
+                _ = tienda + id;
+                //Ya tengo el id tengo que buscarlo en la tienda 
+                //Actualiza dgvProductos en tienda
+                ECategoriaElectronico categoria = Producto.ObtenerCategoria(id);
+                this.dgvProductosTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
             }
         }
 

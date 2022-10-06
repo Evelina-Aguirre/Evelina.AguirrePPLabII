@@ -76,7 +76,7 @@ namespace Entidades
         /// </summary>
         /// <param name="auxString">categoria en formato string que se va a buscar en el enumerado</param>
         /// <returns>La categoría de encontrarla, caso contrario devolverá "Sincategoria" </returns>
-        public static ECategoriaElectronico ObtenerCategoriaAPartirDeString(string auxString)
+        public static ECategoriaElectronico ObtenerCategoria(string auxString)
         {
             ECategoriaElectronico categoria = ECategoriaElectronico.SinCategoria;
 
@@ -85,6 +85,27 @@ namespace Entidades
                 if(auxString.ToLower() == item.ToString().ToLower())
                 {
                     categoria = item;
+                    break;
+                }
+
+            }
+            return categoria;
+        }
+
+        /// <summary>
+        /// Informa la categoría de un producto a partir de su ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Categoría buscada o "sin categoría de no encontrar el ID"</returns>
+        public static ECategoriaElectronico ObtenerCategoria(int id)
+        {
+            ECategoriaElectronico categoria = ECategoriaElectronico.SinCategoria;
+
+            foreach (KeyValuePair<int,Producto> item in TiendaDeElectronica.InventarioTienda)
+            {
+                if (item.Value.Id == id)
+                {
+                    categoria = item.Value.Categoria;
                     break;
                 }
 
