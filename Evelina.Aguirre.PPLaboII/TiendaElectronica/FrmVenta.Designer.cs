@@ -55,13 +55,13 @@ namespace UITiendaElectronica
             this.btnCircuitosIntegrados = new System.Windows.Forms.Button();
             this.btnPlaquetas = new System.Windows.Forms.Button();
             this.grbFormaDePago = new System.Windows.Forms.GroupBox();
+            this.lblsimboloPesos = new System.Windows.Forms.Label();
+            this.lblCalculoVuelto = new System.Windows.Forms.Label();
+            this.lblAuxlblVuelto = new System.Windows.Forms.Label();
             this.lblVentaCredito = new System.Windows.Forms.Label();
             this.cmbCuotas = new System.Windows.Forms.ComboBox();
             this.lblMontoInsuficiente = new System.Windows.Forms.Label();
-            this.lblsimboloPesos = new System.Windows.Forms.Label();
-            this.lblCalculoVuelto = new System.Windows.Forms.Label();
             this.txtAbonacon = new System.Windows.Forms.TextBox();
-            this.lblAuxlblVuelto = new System.Windows.Forms.Label();
             this.rdoCredito = new System.Windows.Forms.RadioButton();
             this.rdoDebiro = new System.Windows.Forms.RadioButton();
             this.rdoEfectivo = new System.Windows.Forms.RadioButton();
@@ -353,6 +353,41 @@ namespace UITiendaElectronica
             this.grbFormaDePago.TabStop = false;
             this.grbFormaDePago.Text = "Forma de pago:";
             // 
+            // lblsimboloPesos
+            // 
+            this.lblsimboloPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblsimboloPesos.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblsimboloPesos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblsimboloPesos.Location = new System.Drawing.Point(219, 73);
+            this.lblsimboloPesos.Name = "lblsimboloPesos";
+            this.lblsimboloPesos.Size = new System.Drawing.Size(29, 26);
+            this.lblsimboloPesos.TabIndex = 132;
+            this.lblsimboloPesos.Text = "  $            ";
+            this.lblsimboloPesos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCalculoVuelto
+            // 
+            this.lblCalculoVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCalculoVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCalculoVuelto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCalculoVuelto.Location = new System.Drawing.Point(249, 73);
+            this.lblCalculoVuelto.Name = "lblCalculoVuelto";
+            this.lblCalculoVuelto.Size = new System.Drawing.Size(101, 21);
+            this.lblCalculoVuelto.TabIndex = 131;
+            this.lblCalculoVuelto.Text = "                  ";
+            this.lblCalculoVuelto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblAuxlblVuelto
+            // 
+            this.lblAuxlblVuelto.AutoSize = true;
+            this.lblAuxlblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAuxlblVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblAuxlblVuelto.Location = new System.Drawing.Point(168, 77);
+            this.lblAuxlblVuelto.Name = "lblAuxlblVuelto";
+            this.lblAuxlblVuelto.Size = new System.Drawing.Size(47, 15);
+            this.lblAuxlblVuelto.TabIndex = 126;
+            this.lblAuxlblVuelto.Text = "Vuelto";
+            // 
             // lblVentaCredito
             // 
             this.lblVentaCredito.BackColor = System.Drawing.Color.Transparent;
@@ -393,30 +428,6 @@ namespace UITiendaElectronica
             this.lblMontoInsuficiente.Text = "                  ";
             this.lblMontoInsuficiente.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // lblsimboloPesos
-            // 
-            this.lblsimboloPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblsimboloPesos.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblsimboloPesos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblsimboloPesos.Location = new System.Drawing.Point(219, 73);
-            this.lblsimboloPesos.Name = "lblsimboloPesos";
-            this.lblsimboloPesos.Size = new System.Drawing.Size(29, 26);
-            this.lblsimboloPesos.TabIndex = 132;
-            this.lblsimboloPesos.Text = "  $            ";
-            this.lblsimboloPesos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblCalculoVuelto
-            // 
-            this.lblCalculoVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCalculoVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCalculoVuelto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblCalculoVuelto.Location = new System.Drawing.Point(249, 73);
-            this.lblCalculoVuelto.Name = "lblCalculoVuelto";
-            this.lblCalculoVuelto.Size = new System.Drawing.Size(101, 21);
-            this.lblCalculoVuelto.TabIndex = 131;
-            this.lblCalculoVuelto.Text = "                  ";
-            this.lblCalculoVuelto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // txtAbonacon
             // 
             this.txtAbonacon.Location = new System.Drawing.Point(252, 23);
@@ -426,17 +437,6 @@ namespace UITiendaElectronica
             this.txtAbonacon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAbonacon.Click += new System.EventHandler(this.txtAbonacon_Click);
             this.txtAbonacon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAbonacon_KeyPress);
-            // 
-            // lblAuxlblVuelto
-            // 
-            this.lblAuxlblVuelto.AutoSize = true;
-            this.lblAuxlblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAuxlblVuelto.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblAuxlblVuelto.Location = new System.Drawing.Point(168, 77);
-            this.lblAuxlblVuelto.Name = "lblAuxlblVuelto";
-            this.lblAuxlblVuelto.Size = new System.Drawing.Size(47, 15);
-            this.lblAuxlblVuelto.TabIndex = 126;
-            this.lblAuxlblVuelto.Text = "Vuelto";
             // 
             // rdoCredito
             // 

@@ -93,7 +93,6 @@ namespace UITiendaElectronica
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
             this.dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProducto(txtBuscat.Text.ToString().ToLower());
         }
 
@@ -406,6 +405,7 @@ namespace UITiendaElectronica
         {
             m = 0;
         }
+
 
         private void Venta_MouseDown(object sender, MouseEventArgs e)
         {

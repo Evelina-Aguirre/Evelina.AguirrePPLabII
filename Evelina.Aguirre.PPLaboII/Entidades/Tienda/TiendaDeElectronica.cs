@@ -99,33 +99,24 @@ namespace Entidades
         /// </summary>
         public static void CargarUsuariosRegistradosEnApp()
         {
-            Dueño duenio = new Dueño("d", "d", EPersona.Dueño);
-            Vendedor vendedor = new Vendedor("v", "v", EPersona.Vendedor);
+            Persona duenio = new Persona("Dueño", "Dueño", EPersona.Dueño);
+            Persona vendedor = new Persona ("Vendedor", "Vendedor", EPersona.Vendedor);
             usuariosApp.Add(duenio);
             usuariosApp.Add(vendedor);
         }
 
         /// <summary>
-        /// Carga los productos con los que cuanta la tienda.
+        /// Carga la lista de inventario desde el catálogo del proveedor.
         /// </summary>
         public static void CargarProductosEnStock()
         {
             int nuevaKey = 2000;
-            //Carga la lista de inventario desde el catálogo del proveedor
+            
             foreach (KeyValuePair<int, Producto> item in CatalogoProveedor.catalogo)
             {
                 Producto auxProducto = new Producto(item.Value.Nombre,item.Value.Precio, item.Value.Id,
                     item.Value.Descripcion, item.Value.Categoria,10);
-                TiendaDeElectronica.inventarioTienda.Add(nuevaKey++, auxProducto);
-                
-                    //foreach (KeyValuePair<int, Producto> aux in TiendaDeElectronica.inventarioTienda)
-                    //{
-                    //    if(item.Value == aux.Value)
-                    //    {
-                    //        aux.Value.Cantidad = 10;
-                    //    }
-                    //}
-                
+                TiendaDeElectronica.inventarioTienda.Add(nuevaKey++, auxProducto);   
             }
             
         }
@@ -169,6 +160,25 @@ namespace Entidades
                 {
                     auxLista.Add(item.Value);
                 }
+
+            }
+            return auxLista;
+
+        }
+
+
+        public static List<Producto> BuscarProducto(string aux, Dictionary<int,Producto> diccionario)
+        {
+            List<Producto> auxLista = new List<Producto>();
+
+            foreach (KeyValuePair<int, Producto> item in diccionario)
+            {
+
+                if (item.Value.ToString() == aux || item.Value.Categoria == Producto.ObtenerCategoria(aux))
+                {
+                    auxLista.Add(item.Value);
+                }
+
 
             }
             return auxLista;

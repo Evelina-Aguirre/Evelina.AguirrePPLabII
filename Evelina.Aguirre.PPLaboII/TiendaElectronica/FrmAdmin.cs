@@ -65,9 +65,10 @@ namespace UITiendaElectronica
         {
             List<Producto> auxLista = new List<Producto>();
             auxLista = Producto.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
-            dgvCatalogoProveedor.Rows.Clear();
+            if (dgvCatalogoProveedor.Rows.Count>1)
+                dgvCatalogoProveedor.Rows.Clear();
 
-            if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null)
+            if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null  || dgvCatalogoProveedor.Rows.Count==0)
             {
 
                 dgvCatalogoProveedor.ColumnCount = 5;
@@ -356,15 +357,87 @@ namespace UITiendaElectronica
 
         private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Venta frmVenta = new Venta();
-            frmVenta.ShowDialog();
+            Menú frmMenu = new Menú();
             this.Hide();
+            frmMenu.ShowDialog();
 
         }
 
         private void dgvInventarioTienda_DoubleClick(object sender, EventArgs e)
         {
             this.btnModificar.PerformClick();
+        }
+
+        private void btnBuscarEnProveedor_Click(object sender, EventArgs e)
+        {
+            List<Producto> auxLista = new List<Producto>();
+            auxLista = TiendaDeElectronica.BuscarProducto(this.txtBuscarEnProveedor.Text.ToString().ToLower(), CatalogoProveedor.Catalogo);
+            if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null || dgvCatalogoProveedor is null)
+            {
+
+                dgvCatalogoProveedor.ColumnCount = 5;
+                dgvCatalogoProveedor.Columns[0].Name = "Nombre";
+                dgvCatalogoProveedor.Columns[1].Name = "Descripción";
+                dgvCatalogoProveedor.Columns[2].Name = "Precio";
+                dgvCatalogoProveedor.Columns[3].Name = "Categoria";
+                dgvCatalogoProveedor.Columns[3].Name = "Id";
+
+                foreach (Producto item in auxLista)
+                {
+                    dgvCatalogoProveedor.Rows.Add(item.Nombre, item.Descripcion, item.Precio, item.Categoria, item.Id);
+                }
+            }
+            else
+            {
+                this.dgvCatalogoProveedor.Rows.Clear();
+                dgvCatalogoProveedor.ColumnCount = 5;
+                dgvCatalogoProveedor.Columns[0].Name = "Nombre";
+                dgvCatalogoProveedor.Columns[1].Name = "Descripción";
+                dgvCatalogoProveedor.Columns[2].Name = "Precio";
+                dgvCatalogoProveedor.Columns[3].Name = "Categoria";
+                dgvCatalogoProveedor.Columns[3].Name = "Id";
+                foreach (Producto item in auxLista)
+                {
+                    dgvCatalogoProveedor.Rows.Add(item.Nombre, item.Descripcion, item.Precio, item.Categoria, item.Id);
+                }
+            }
+
+        }
+
+        private void btnBuscarEnInventarioTienda_Click(object sender, EventArgs e)
+        {
+           this.dgvCatalogoProveedor.DataSource = TiendaDeElectronica.BuscarProducto(this.txtBuscarInventarioTienda.Text.ToString().ToLower(), TiendaDeElectronica.InventarioTienda);
+        }
+
+        private void txtBuscarEnProveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)//13 es el ASCII para la tecla Enter
+            {
+                //le informo que el evento (hacer sonido por no poder dar un salto de linea en un textBox)
+                //ya fue manejado para que no lo reproduzca.
+                e.Handled = true;
+                this.btnBuscarEnProveedor.PerformClick();
+            }
+        }
+
+        private void txtBuscarInventarioTienda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                e.Handled = true;
+                this.btnBuscarEnInventarioTienda.PerformClick();
+            }
+
+        }
+
+        private void txtBuscarEnProveedor_Click(object sender, EventArgs e)
+        {
+            this.txtBuscarEnProveedor.Text = string.Empty;
+        }
+
+        private void txtBuscarInventarioTienda_Click(object sender, EventArgs e)
+        {
+            this.txtBuscarInventarioTienda.Text = string.Empty;
         }
 
         private void FrmAdmin_MouseUp(object sender, MouseEventArgs e)

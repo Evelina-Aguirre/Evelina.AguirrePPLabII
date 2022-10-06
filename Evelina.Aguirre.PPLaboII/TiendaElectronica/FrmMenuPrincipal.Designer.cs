@@ -149,6 +149,7 @@ namespace UITiendaElectronica
             this.Name = "Menú";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
+            this.Load += new System.EventHandler(this.Menú_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Menú_MouseUp);

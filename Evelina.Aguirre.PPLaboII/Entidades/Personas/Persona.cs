@@ -2,7 +2,7 @@
 
 namespace Entidades
 {
-    public abstract class Persona
+    public class Persona
     {
         private string usuario;
         private string clave;

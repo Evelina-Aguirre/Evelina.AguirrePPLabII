@@ -68,6 +68,11 @@ namespace UITiendaElectronica
 
         }
 
+        private void Menú_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void Menú_MouseMove(object sender, MouseEventArgs e)
         {
             if (m == 1)
