@@ -102,16 +102,19 @@ namespace Entidades.TiendaElectronica
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Producto item in FacturaDebito.Carrito)
+            foreach (Producto item in Factura.Carrito)
             {
                 sb.AppendLine(item.MostrarProducto());
             }
-            sb.AppendLine($"\nTotal: {TotalCompra}");
-            sb.AppendLine($"Metodo de Pago: {MetodoDePago}");
+            sb.AppendLine($"\nTotal: {base.TotalCompra}");
+            sb.AppendLine($"Metodo de Pago: {base.MetodoDePago}");
 
             return sb.ToString();
         }
-
+        public override string ToString()
+        {
+            return this.MostrarCompra();
+        }
 
     }
 }

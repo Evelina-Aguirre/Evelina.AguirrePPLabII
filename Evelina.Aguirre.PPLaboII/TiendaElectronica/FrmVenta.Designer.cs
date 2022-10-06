@@ -79,6 +79,7 @@ namespace UITiendaElectronica
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.llbVolver = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductosTienda)).BeginInit();
             this.grbFormaDePago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarritoCliente)).BeginInit();
@@ -108,7 +109,7 @@ namespace UITiendaElectronica
             this.llbMinimizar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.llbMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("llbMinimizar.Image")));
             this.llbMinimizar.LinkColor = System.Drawing.Color.Transparent;
-            this.llbMinimizar.Location = new System.Drawing.Point(1362, 6);
+            this.llbMinimizar.Location = new System.Drawing.Point(1354, 6);
             this.llbMinimizar.Name = "llbMinimizar";
             this.llbMinimizar.Size = new System.Drawing.Size(42, 28);
             this.llbMinimizar.TabIndex = 7;
@@ -125,7 +126,7 @@ namespace UITiendaElectronica
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel1.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel1.Image")));
             this.linkLabel1.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Location = new System.Drawing.Point(1167, 332);
+            this.linkLabel1.Location = new System.Drawing.Point(1167, 346);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(72, 28);
             this.linkLabel1.TabIndex = 101;
@@ -139,7 +140,7 @@ namespace UITiendaElectronica
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(1006, 18);
+            this.label2.Location = new System.Drawing.Point(1006, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 103;
@@ -150,18 +151,18 @@ namespace UITiendaElectronica
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(241, 18);
+            this.label4.Location = new System.Drawing.Point(241, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 16);
+            this.label4.Size = new System.Drawing.Size(77, 16);
             this.label4.TabIndex = 100;
-            this.label4.Text = "Buscar ";
+            this.label4.Text = "Buscador ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(1008, 429);
+            this.label1.Location = new System.Drawing.Point(1008, 443);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 107;
@@ -172,7 +173,7 @@ namespace UITiendaElectronica
             this.lblTotalCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotalCarrito.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblTotalCarrito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTotalCarrito.Location = new System.Drawing.Point(1281, 423);
+            this.lblTotalCarrito.Location = new System.Drawing.Point(1281, 437);
             this.lblTotalCarrito.Name = "lblTotalCarrito";
             this.lblTotalCarrito.Size = new System.Drawing.Size(99, 26);
             this.lblTotalCarrito.TabIndex = 108;
@@ -185,7 +186,7 @@ namespace UITiendaElectronica
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(952, 41);
+            this.btnBuscar.Location = new System.Drawing.Point(952, 55);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(31, 27);
             this.btnBuscar.TabIndex = 110;
@@ -194,11 +195,11 @@ namespace UITiendaElectronica
             // 
             // txtBuscat
             // 
-            this.txtBuscat.Location = new System.Drawing.Point(242, 45);
+            this.txtBuscat.Location = new System.Drawing.Point(242, 59);
             this.txtBuscat.Name = "txtBuscat";
             this.txtBuscat.Size = new System.Drawing.Size(704, 23);
             this.txtBuscat.TabIndex = 109;
-            this.txtBuscat.Text = "Buscar";
+            this.txtBuscat.Text = "Buscador";
             this.txtBuscat.Click += new System.EventHandler(this.txtBuscat_Click);
             this.txtBuscat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscat_KeyPress);
             // 
@@ -221,7 +222,7 @@ namespace UITiendaElectronica
             this.dgvProductosTienda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductosTienda.EnableHeadersVisualStyles = false;
             this.dgvProductosTienda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
-            this.dgvProductosTienda.Location = new System.Drawing.Point(242, 86);
+            this.dgvProductosTienda.Location = new System.Drawing.Point(242, 100);
             this.dgvProductosTienda.Name = "dgvProductosTienda";
             this.dgvProductosTienda.ReadOnly = true;
             this.dgvProductosTienda.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -245,7 +246,7 @@ namespace UITiendaElectronica
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(242, 432);
+            this.label3.Location = new System.Drawing.Point(242, 446);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 16);
             this.label3.TabIndex = 108;
@@ -255,7 +256,7 @@ namespace UITiendaElectronica
             // 
             this.lblDescripcionProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDescripcionProducto.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblDescripcionProducto.Location = new System.Drawing.Point(242, 458);
+            this.lblDescripcionProducto.Location = new System.Drawing.Point(242, 472);
             this.lblDescripcionProducto.Name = "lblDescripcionProducto";
             this.lblDescripcionProducto.Size = new System.Drawing.Size(741, 150);
             this.lblDescripcionProducto.TabIndex = 109;
@@ -265,7 +266,7 @@ namespace UITiendaElectronica
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(34, 23);
+            this.label5.Location = new System.Drawing.Point(34, 37);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 16);
             this.label5.TabIndex = 112;
@@ -273,7 +274,7 @@ namespace UITiendaElectronica
             // 
             // btnLeds
             // 
-            this.btnLeds.Location = new System.Drawing.Point(35, 46);
+            this.btnLeds.Location = new System.Drawing.Point(35, 60);
             this.btnLeds.Name = "btnLeds";
             this.btnLeds.Size = new System.Drawing.Size(180, 24);
             this.btnLeds.TabIndex = 113;
@@ -283,7 +284,7 @@ namespace UITiendaElectronica
             // 
             // btnBobinas
             // 
-            this.btnBobinas.Location = new System.Drawing.Point(35, 84);
+            this.btnBobinas.Location = new System.Drawing.Point(35, 98);
             this.btnBobinas.Name = "btnBobinas";
             this.btnBobinas.Size = new System.Drawing.Size(180, 24);
             this.btnBobinas.TabIndex = 114;
@@ -293,7 +294,7 @@ namespace UITiendaElectronica
             // 
             // btnCapacitores
             // 
-            this.btnCapacitores.Location = new System.Drawing.Point(35, 124);
+            this.btnCapacitores.Location = new System.Drawing.Point(35, 138);
             this.btnCapacitores.Name = "btnCapacitores";
             this.btnCapacitores.Size = new System.Drawing.Size(180, 24);
             this.btnCapacitores.TabIndex = 115;
@@ -303,7 +304,7 @@ namespace UITiendaElectronica
             // 
             // btnConectores
             // 
-            this.btnConectores.Location = new System.Drawing.Point(34, 165);
+            this.btnConectores.Location = new System.Drawing.Point(34, 179);
             this.btnConectores.Name = "btnConectores";
             this.btnConectores.Size = new System.Drawing.Size(180, 24);
             this.btnConectores.TabIndex = 116;
@@ -313,7 +314,7 @@ namespace UITiendaElectronica
             // 
             // btnCircuitosIntegrados
             // 
-            this.btnCircuitosIntegrados.Location = new System.Drawing.Point(35, 209);
+            this.btnCircuitosIntegrados.Location = new System.Drawing.Point(35, 223);
             this.btnCircuitosIntegrados.Name = "btnCircuitosIntegrados";
             this.btnCircuitosIntegrados.Size = new System.Drawing.Size(180, 24);
             this.btnCircuitosIntegrados.TabIndex = 117;
@@ -323,7 +324,7 @@ namespace UITiendaElectronica
             // 
             // btnPlaquetas
             // 
-            this.btnPlaquetas.Location = new System.Drawing.Point(34, 249);
+            this.btnPlaquetas.Location = new System.Drawing.Point(34, 263);
             this.btnPlaquetas.Name = "btnPlaquetas";
             this.btnPlaquetas.Size = new System.Drawing.Size(180, 24);
             this.btnPlaquetas.TabIndex = 118;
@@ -346,7 +347,7 @@ namespace UITiendaElectronica
             this.grbFormaDePago.Controls.Add(this.lblCuotasAbonaCon);
             this.grbFormaDePago.Controls.Add(this.btnVerVuelto);
             this.grbFormaDePago.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.grbFormaDePago.Location = new System.Drawing.Point(1006, 454);
+            this.grbFormaDePago.Location = new System.Drawing.Point(1006, 468);
             this.grbFormaDePago.Name = "grbFormaDePago";
             this.grbFormaDePago.Size = new System.Drawing.Size(374, 125);
             this.grbFormaDePago.TabIndex = 121;
@@ -513,7 +514,7 @@ namespace UITiendaElectronica
             // 
             // btnVender
             // 
-            this.btnVender.Location = new System.Drawing.Point(1317, 585);
+            this.btnVender.Location = new System.Drawing.Point(1317, 599);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(92, 23);
             this.btnVender.TabIndex = 124;
@@ -523,7 +524,7 @@ namespace UITiendaElectronica
             // 
             // btnControlTermico
             // 
-            this.btnControlTermico.Location = new System.Drawing.Point(35, 293);
+            this.btnControlTermico.Location = new System.Drawing.Point(35, 307);
             this.btnControlTermico.Name = "btnControlTermico";
             this.btnControlTermico.Size = new System.Drawing.Size(180, 24);
             this.btnControlTermico.TabIndex = 126;
@@ -532,7 +533,7 @@ namespace UITiendaElectronica
             // 
             // btnLimpieza
             // 
-            this.btnLimpieza.Location = new System.Drawing.Point(35, 336);
+            this.btnLimpieza.Location = new System.Drawing.Point(35, 350);
             this.btnLimpieza.Name = "btnLimpieza";
             this.btnLimpieza.Size = new System.Drawing.Size(180, 24);
             this.btnLimpieza.TabIndex = 127;
@@ -542,7 +543,7 @@ namespace UITiendaElectronica
             // 
             // btnSoldado
             // 
-            this.btnSoldado.Location = new System.Drawing.Point(34, 384);
+            this.btnSoldado.Location = new System.Drawing.Point(34, 398);
             this.btnSoldado.Name = "btnSoldado";
             this.btnSoldado.Size = new System.Drawing.Size(180, 24);
             this.btnSoldado.TabIndex = 128;
@@ -552,7 +553,7 @@ namespace UITiendaElectronica
             // 
             // btnHerramientas
             // 
-            this.btnHerramientas.Location = new System.Drawing.Point(35, 429);
+            this.btnHerramientas.Location = new System.Drawing.Point(35, 443);
             this.btnHerramientas.Name = "btnHerramientas";
             this.btnHerramientas.Size = new System.Drawing.Size(180, 24);
             this.btnHerramientas.TabIndex = 129;
@@ -566,7 +567,7 @@ namespace UITiendaElectronica
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(22)))), ((int)(((byte)(60)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(1165, 360);
+            this.label6.Location = new System.Drawing.Point(1165, 374);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 15);
             this.label6.TabIndex = 130;
@@ -577,7 +578,7 @@ namespace UITiendaElectronica
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label10.Location = new System.Drawing.Point(1250, 425);
+            this.label10.Location = new System.Drawing.Point(1250, 439);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 26);
             this.label10.TabIndex = 131;
@@ -603,7 +604,7 @@ namespace UITiendaElectronica
             this.dgvCarritoCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCarritoCliente.EnableHeadersVisualStyles = false;
             this.dgvCarritoCliente.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
-            this.dgvCarritoCliente.Location = new System.Drawing.Point(1008, 46);
+            this.dgvCarritoCliente.Location = new System.Drawing.Point(1008, 60);
             this.dgvCarritoCliente.Name = "dgvCarritoCliente";
             this.dgvCarritoCliente.ReadOnly = true;
             this.dgvCarritoCliente.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -627,7 +628,7 @@ namespace UITiendaElectronica
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(485, 11);
+            this.dateTimePicker1.Location = new System.Drawing.Point(485, 25);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(236, 23);
             this.dateTimePicker1.TabIndex = 133;
@@ -642,12 +643,29 @@ namespace UITiendaElectronica
             this.pictureBox1.TabIndex = 134;
             this.pictureBox1.TabStop = false;
             // 
+            // llbVolver
+            // 
+            this.llbVolver.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.llbVolver.AutoSize = true;
+            this.llbVolver.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.llbVolver.Image = ((System.Drawing.Image)(resources.GetObject("llbVolver.Image")));
+            this.llbVolver.LinkColor = System.Drawing.Color.Transparent;
+            this.llbVolver.Location = new System.Drawing.Point(-7, 3);
+            this.llbVolver.Name = "llbVolver";
+            this.llbVolver.Size = new System.Drawing.Size(72, 28);
+            this.llbVolver.TabIndex = 135;
+            this.llbVolver.TabStop = true;
+            this.llbVolver.Text = "            ";
+            this.llbVolver.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbVolver.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbVolver_LinkClicked);
+            // 
             // Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(1428, 624);
+            this.ClientSize = new System.Drawing.Size(1428, 639);
+            this.Controls.Add(this.llbVolver);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label6);
@@ -744,5 +762,6 @@ namespace UITiendaElectronica
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblVentaCredito;
+        private System.Windows.Forms.LinkLabel llbVolver;
     }
 }

@@ -338,7 +338,7 @@ namespace UITiendaElectronica
             this.txtBuscarEnProveedor.Name = "txtBuscarEnProveedor";
             this.txtBuscarEnProveedor.Size = new System.Drawing.Size(702, 23);
             this.txtBuscarEnProveedor.TabIndex = 138;
-            this.txtBuscarEnProveedor.Text = "Buscar";
+            this.txtBuscarEnProveedor.Text = "Buscador";
             this.txtBuscarEnProveedor.Click += new System.EventHandler(this.txtBuscarEnProveedor_Click);
             this.txtBuscarEnProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarEnProveedor_KeyPress);
             // 
@@ -603,7 +603,7 @@ namespace UITiendaElectronica
             this.txtBuscarInventarioTienda.Name = "txtBuscarInventarioTienda";
             this.txtBuscarInventarioTienda.Size = new System.Drawing.Size(704, 23);
             this.txtBuscarInventarioTienda.TabIndex = 161;
-            this.txtBuscarInventarioTienda.Text = "Buscar";
+            this.txtBuscarInventarioTienda.Text = "Buscador";
             this.txtBuscarInventarioTienda.Click += new System.EventHandler(this.txtBuscarInventarioTienda_Click);
             this.txtBuscarInventarioTienda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarInventarioTienda_KeyPress);
             // 

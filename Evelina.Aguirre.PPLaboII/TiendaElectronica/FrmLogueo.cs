@@ -15,6 +15,7 @@ namespace UITiendaElectronica
     public partial class Inicio : Form
     {
         int m, mx, my;
+        public static int cargo = 0;
         public Inicio()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace UITiendaElectronica
             }
             else if (TiendaDeElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Dueño)
             {
+                cargo = 1;
                 Menú frmMenuPrincipal = new Menú();
                 frmMenuPrincipal.Show();
                this.Hide();

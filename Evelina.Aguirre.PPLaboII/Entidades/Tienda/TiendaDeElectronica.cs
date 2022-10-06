@@ -16,7 +16,7 @@ namespace Entidades
         {
             usuariosApp = new List<Persona>();
             TiendaDeElectronica.inventarioTienda = new Dictionary<int, Producto>();
-            TiendaDeElectronica.cuentaTienda = 5000000;
+            TiendaDeElectronica.cuentaTienda = 500000;
             CargarUsuariosRegistradosEnApp();
             CargarProductosEnStock();
         }
@@ -142,74 +142,6 @@ namespace Entidades
             }
             return EPersona.Desconocido;
         }
-
-        /// <summary>
-        /// Busca un producto por su nombre en el inventario de la tienda.
-        /// </summary>
-        /// <param name="aux">Palabra a buscar.</param>
-        /// <returns>Lista con los productos encontrados.</returns>
-        public static List<Producto> BuscarProducto(string aux)
-        {
-            List<Producto> auxLista = new List<Producto>();
-
-            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
-            {
-
-                if (item.Value.Categoria == Producto.ObtenerCategoria(aux) ||
-                    item.Value.ToString() == aux)
-                {
-                    auxLista.Add(item.Value);
-                }
-
-            }
-            return auxLista;
-
-        }
-
-
-        public static List<Producto> BuscarProducto(string aux, Dictionary<int,Producto> diccionario)
-        {
-            List<Producto> auxLista = new List<Producto>();
-
-            foreach (KeyValuePair<int, Producto> item in diccionario)
-            {
-
-                if (item.Value.ToString() == aux || item.Value.Categoria == Producto.ObtenerCategoria(aux))
-                {
-                    auxLista.Add(item.Value);
-                }
-
-
-            }
-            return auxLista;
-
-        }
-
-        /// <summary>
-        /// Busca un producto en el inveentario de la tienda por id.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>El producot de encontrarlo de lo contrario devuelve null.</returns>
-        public static Producto BuscarProducto(int id)
-        {
-            Producto auxProducto = null;
-
-            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
-            {
-
-                if (item.Value.Id == id)
-                {
-                    auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
-                        item.Value.Descripcion, item.Value.Categoria, item.Value.Cantidad);
-                }
-
-            }
-            return auxProducto;
-
-        }
-
-
-
 
 
 

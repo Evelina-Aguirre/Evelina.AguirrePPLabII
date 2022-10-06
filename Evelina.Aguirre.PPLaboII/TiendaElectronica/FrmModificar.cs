@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.Productos;
 using Entidades.Tienda;
 using System;
 using System.Collections.Generic;
@@ -89,7 +90,7 @@ namespace UITiendaElectronica
 
                 if (resultado == DialogResult.No)
                 {
-                    Producto auxProducto = TiendaDeElectronica.BuscarProducto(Convert.ToInt32(this.lblId.Text));
+                    Producto auxProducto = Buscador.BuscarProducto(Convert.ToInt32(this.lblId.Text),TiendaDeElectronica.InventarioTienda);
                     auxProducto.Precio = Convert.ToDouble(this.lblPrecio.Text);
                     auxProducto.Categoria = Producto.StringAECategoriaElectronico(this.lblCategoriaActual.Text);
                 }
@@ -135,12 +136,24 @@ namespace UITiendaElectronica
 
         private void cmbCategoria_KeyPress(object sender, KeyPressEventArgs e)
         {
-            btnAceptar.PerformClick();
+            if (e.KeyChar == 13)//13 es el ASCII para la tecla Enter
+            {
+                //le informo que el evento (hacer sonido por no poder dar un salto de linea en un textBox)
+                //ya fue manejado para que no lo reproduzca.
+                e.Handled = true;
+                this.btnAceptar.PerformClick();
+            }
         }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            btnAceptar.PerformClick();
+            if (e.KeyChar == 13)//13 es el ASCII para la tecla Enter
+            {
+                //le informo que el evento (hacer sonido por no poder dar un salto de linea en un textBox)
+                //ya fue manejado para que no lo reproduzca.
+                e.Handled = true;
+                this.btnAceptar.PerformClick();
+            }
         }
 
         private void Modificar_MouseMove(object sender, MouseEventArgs e)

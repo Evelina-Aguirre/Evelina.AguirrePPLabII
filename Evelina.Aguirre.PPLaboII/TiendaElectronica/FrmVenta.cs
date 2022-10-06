@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.Productos;
 using Entidades.TiendaElectronica;
 using System;
 using System.Collections.Generic;
@@ -93,7 +94,7 @@ namespace UITiendaElectronica
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            this.dgvProductosTienda.DataSource = TiendaDeElectronica.BuscarProducto(txtBuscat.Text.ToString().ToLower());
+            this.dgvProductosTienda.DataSource = Buscador.BuscarProducto(txtBuscat.Text.ToString().ToLower());
         }
 
         private void txtBuscat_Click(object sender, EventArgs e)
@@ -333,12 +334,12 @@ namespace UITiendaElectronica
                             int abonaCon;
                             bool esNumero = int.TryParse(this.txtAbonacon.Text, out abonaCon);
 
-                            if (this.txtAbonacon.Text != null && esNumero &&this.auxFactura.TotalCompra < Convert.ToInt32(this.txtAbonacon.Text))
+                            if (this.txtAbonacon.Text != null && esNumero && this.auxFactura.TotalCompra < Convert.ToInt32(this.txtAbonacon.Text))
                             {
                                 facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
                                 Convert.ToDouble(txtAbonacon.Text));
                                 MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
-
+                                TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
                                 //Resetea la lista de la factura de la venta ya concretada y limpia form.
                                 Factura.Carrito.Clear();
                                 auxFactura.TotalCompra = 0;
@@ -356,14 +357,16 @@ namespace UITiendaElectronica
                         }
                         else if (rdoCredito.Checked)
                         {
-                            
+
                             facturaFinal = new FacturaCredito(EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
                                  Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
-                            MessageBox.Show("Factura:\n\n"+ 
+                            MessageBox.Show("Factura:\n\n" +
                                 facturaFinal.ToString() +
                                 "\n Recuerde que se aplica\n" +
                                 " un 10 % de recargo a las\n" +
                                 " compras en crédito.");
+                            
+                            TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
 
                             //Resetea la lista de la factura de la venta concretada y limpia form.
                             Factura.Carrito.Clear();
@@ -375,7 +378,7 @@ namespace UITiendaElectronica
                         {
                             facturaFinal = new FacturaDebito(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
                             MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
-
+                            TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
                             Factura.Carrito.Clear();
                             this.lblTotalCarrito.Text = string.Empty;
                             this.dgvCarritoCliente.Rows.Clear();
@@ -406,6 +409,22 @@ namespace UITiendaElectronica
             m = 0;
         }
 
+        private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(Inicio.cargo == 1)
+            {
+            Menú frmMenu = new Menú();
+            this.Hide();
+            frmMenu.ShowDialog();
+
+            }
+            else
+            {
+                Prueba frmPruebaApp = new Prueba();
+                this.Hide();
+                frmPruebaApp.ShowDialog();
+            }
+        }
 
         private void Venta_MouseDown(object sender, MouseEventArgs e)
         {

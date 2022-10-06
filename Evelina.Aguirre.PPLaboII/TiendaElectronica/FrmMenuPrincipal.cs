@@ -26,7 +26,7 @@ namespace UITiendaElectronica
 
         private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -19,6 +19,7 @@ namespace UITiendaElectronica
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Inicio.cargo = 0;
             Venta frmVenta = new Venta();
             this.Close();
             frmVenta.Show();
@@ -26,6 +27,7 @@ namespace UITiendaElectronica
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Inicio.cargo = 1;
             Menú frmAdmin = new Menú();
             this.Close();
             frmAdmin.Show();

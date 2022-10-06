@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.Productos;
 using Entidades.Tienda;
 using Entidades.TiendaElectronica;
 using System;
@@ -65,7 +66,7 @@ namespace UITiendaElectronica
         {
             List<Producto> auxLista = new List<Producto>();
             auxLista = Producto.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
-            if (dgvCatalogoProveedor.Rows.Count>1)
+            if (dgvCatalogoProveedor.Rows.Count>0)
                 dgvCatalogoProveedor.Rows.Clear();
 
             if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null  || dgvCatalogoProveedor.Rows.Count==0)
@@ -266,7 +267,7 @@ namespace UITiendaElectronica
                     //Resto el total de la factura del saldo de la tienda.
                     TiendaDeElectronica.CuentaTienda -= facturaFinal.TotalCompra;
 
-                    ECategoriaElectronico categoria = Producto.ObtenerCategoria(dgvInventarioTienda.Rows[0].Cells[4].Value.ToString());
+                    ECategoriaElectronico categoria = Producto.ObtenerCategoria(dgvCatalogoProveedor.Rows[0].Cells[3].Value.ToString());
                     dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
                     //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
                     Factura.Carrito.Clear();
@@ -360,7 +361,6 @@ namespace UITiendaElectronica
             Menú frmMenu = new Menú();
             this.Hide();
             frmMenu.ShowDialog();
-
         }
 
         private void dgvInventarioTienda_DoubleClick(object sender, EventArgs e)
@@ -371,7 +371,7 @@ namespace UITiendaElectronica
         private void btnBuscarEnProveedor_Click(object sender, EventArgs e)
         {
             List<Producto> auxLista = new List<Producto>();
-            auxLista = TiendaDeElectronica.BuscarProducto(this.txtBuscarEnProveedor.Text.ToString().ToLower(), CatalogoProveedor.Catalogo);
+            auxLista = Buscador.BuscarProducto(this.txtBuscarEnProveedor.Text.ToString().ToLower(), CatalogoProveedor.Catalogo);
             if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null || dgvCatalogoProveedor is null)
             {
 
@@ -406,7 +406,7 @@ namespace UITiendaElectronica
 
         private void btnBuscarEnInventarioTienda_Click(object sender, EventArgs e)
         {
-           this.dgvCatalogoProveedor.DataSource = TiendaDeElectronica.BuscarProducto(this.txtBuscarInventarioTienda.Text.ToString().ToLower(), TiendaDeElectronica.InventarioTienda);
+           this.dgvInventarioTienda.DataSource = Buscador.BuscarProducto(this.txtBuscarInventarioTienda.Text.ToString().ToLower(), TiendaDeElectronica.InventarioTienda);
         }
 
         private void txtBuscarEnProveedor_KeyPress(object sender, KeyPressEventArgs e)
