@@ -1,7 +1,7 @@
 ﻿
 namespace UITiendaElectronica
 {
-    partial class FrmHarcodeoLogin
+    partial class Prueba
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace UITiendaElectronica
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHarcodeoLogin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prueba));
             this.lblOlvidoClave = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -150,7 +150,7 @@ namespace UITiendaElectronica
             this.pictureBox4.TabIndex = 111;
             this.pictureBox4.TabStop = false;
             // 
-            // FrmHarcodeoLogin
+            // Prueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,9 +166,9 @@ namespace UITiendaElectronica
             this.Controls.Add(this.pictureBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmHarcodeoLogin";
+            this.Name = "Prueba";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HarcodeoLogin";
+            this.Text = "Prueba App";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

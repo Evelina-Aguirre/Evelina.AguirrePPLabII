@@ -23,4 +23,4 @@ C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\Tien
 C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.Inicio.resources
 C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.Menú.resources
 C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.Venta.resources
-C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.FrmHarcodeoLogin.resources
+C:\Users\Usuario\Desktop\PP\Evelina.AguirrePPLabII\Evelina.Aguirre.PPLaboII\TiendaElectronica\obj\Debug\net5.0-windows\UITiendaElectronica.Prueba.resources

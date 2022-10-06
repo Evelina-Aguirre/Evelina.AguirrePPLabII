@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UITiendaElectronica
 {
-    public partial class FrmHarcodeoLogin : Form
+    public partial class Prueba : Form
     {
-        public FrmHarcodeoLogin()
+        public Prueba()
         {
             InitializeComponent();
         }
@@ -20,15 +20,15 @@ namespace UITiendaElectronica
         private void button1_Click(object sender, EventArgs e)
         {
             Venta frmVenta = new Venta();
-            WindowState = FormWindowState.Minimized;
-            frmVenta.ShowDialog();
+            this.Close();
+            frmVenta.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Menú frmAdmin = new Menú();
-            WindowState = FormWindowState.Minimized;
-            frmAdmin.ShowDialog();
+            this.Close();
+            frmAdmin.Show();
         }
 
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

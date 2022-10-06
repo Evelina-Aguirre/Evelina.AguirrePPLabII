@@ -667,7 +667,7 @@ namespace UITiendaElectronica
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Venta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmVenta";
+            this.Text = "Vender";
             this.Load += new System.EventHandler(this.Venta_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Venta_MouseMove);

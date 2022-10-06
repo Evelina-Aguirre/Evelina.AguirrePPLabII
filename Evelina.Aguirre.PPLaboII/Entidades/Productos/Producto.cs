@@ -36,7 +36,7 @@ namespace Entidades
         public int Cantidad { get => cantidad; set => cantidad = value;} 
         public double Precio { get => precio;}
         public string Descripcion { get => descripcion;}
-        public ECategoriaElectronico Categoria { get => categoria; /*set => categoria = value; */}
+        public ECategoriaElectronico Categoria { get => categoria; set => categoria = value; }
        public int Id { get => id; set => id = value; }
 
         

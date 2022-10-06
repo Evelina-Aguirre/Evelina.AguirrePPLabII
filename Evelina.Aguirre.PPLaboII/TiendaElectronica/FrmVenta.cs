@@ -138,6 +138,7 @@ namespace UITiendaElectronica
                 cantidad++;
                 this.dgvCarritoCliente.Rows[existe].Cells[3].Value = cantidad;
                 this.dgvCarritoCliente.Rows[existe].Cells[2].Value = Convert.ToInt32(this.dgvProductosTienda.CurrentRow.Cells[2].Value) * cantidad;
+                
             }
             else
             {
@@ -334,6 +335,7 @@ namespace UITiendaElectronica
                                 MessageBox.Show(facturaFinal.ToString());
 
                                 //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
+                                
                                 Factura.Carrito.Clear();
                                 auxFactura.TotalCompra = 0;
                                 this.lblTotalCarrito.Text = string.Empty;

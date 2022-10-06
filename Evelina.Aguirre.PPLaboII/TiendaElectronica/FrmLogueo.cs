@@ -83,7 +83,7 @@ namespace UITiendaElectronica
 
         private void lnklblOlvidasteClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FrmHarcodeoLogin frmHarcodeo = new FrmHarcodeoLogin();
+            Prueba frmHarcodeo = new Prueba();
             this.Hide();
             frmHarcodeo.Show();
         }

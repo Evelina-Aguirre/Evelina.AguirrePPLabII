@@ -334,6 +334,19 @@ namespace UITiendaElectronica
             timer1.Stop();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(this.dgvInventarioTienda.CurrentRow.Cells[5].Value);
+
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+            {
+                if(id = item.Value.Id)
+                {
+
+                }
+            }
+        }
+
         private void FrmAdmin_MouseUp(object sender, MouseEventArgs e)
         {
             m = 0;
