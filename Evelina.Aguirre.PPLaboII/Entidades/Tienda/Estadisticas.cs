@@ -41,14 +41,15 @@ namespace Entidades.Tienda
         public static bool operator +(Estadisticas estadistica, int id)
         {
             bool resultado = false;
+            
             if (Estadisticas.ListaProductosVendidos is not null)
             {
-                foreach (Producto item in Estadisticas.ListaProductosVendidos)
+                foreach (KeyValuePair<int,Producto> item in TiendaDeElectronica.InventarioTienda)
                 {
-                    if (item.Id == id)
+                    if (item.Value.Id == id)
                     {
-                        gananciaAcumulada += item.Precio;
-                        Estadisticas.listaProductosVendidos.Add(item);
+                        gananciaAcumulada += item.Value.Precio;
+                        Estadisticas.listaProductosVendidos.Add(item.Value);
                     }
 
                 }
@@ -121,7 +122,7 @@ namespace Entidades.Tienda
             double promedio=0;
             double acum = 0;
             productos = ProductosVendidosPorTag(categoria);
-            foreach (Producto item in productos)
+            foreach (Producto item in listaProductosVendidos)
             {
                 acum += item.Precio;
                 contador++;
