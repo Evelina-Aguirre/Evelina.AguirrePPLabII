@@ -76,15 +76,12 @@ namespace Entidades.TiendaElectronica
                 {
                     if (item.Id == id)
                     {
-                        factura.TotalCompra -= item.Precio;
-                        if (item.Cantidad == 1)
+                        if (item.Cantidad > 0)
                         {
-                            FacturaDebito.Carrito.Remove(item);
-                        }
-                        else
-                        {
+                            factura.TotalCompra -= item.Precio;
                             item.Cantidad--;
                         }
+                       
                         resultado = true;
                         break;
                     }

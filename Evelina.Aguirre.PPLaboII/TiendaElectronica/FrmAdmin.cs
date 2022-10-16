@@ -237,10 +237,12 @@ namespace UITiendaElectronica
                 Factura facturaFinal;
                 TiendaDeElectronica tienda = new TiendaDeElectronica();
 
+                string txtConComa = txtAbonacon.Text.Replace('.', ',');
+                txtAbonacon.Text = txtConComa;
                 int abonaCon;
                 bool esNumero = int.TryParse(txtAbonacon.Text, out abonaCon);
 
-                if (txtAbonacon.Text != null && esNumero && Convert.ToInt32(lblTotalCarrito.Text) < Convert.ToInt32(txtAbonacon.Text))
+                if (txtAbonacon.Text != null && esNumero && Convert.ToDouble(lblTotalCarrito.Text) < Convert.ToDouble(txtAbonacon.Text))
                 {
                     facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
                    Convert.ToDouble(txtAbonacon.Text));

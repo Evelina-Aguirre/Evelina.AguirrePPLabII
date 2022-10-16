@@ -91,12 +91,12 @@ namespace Entidades
                             resultado = true;
                             break;
                         }
-                        else
-                        {
-                            TiendaDeElectronica.InventarioTienda.Remove(item.Key);
-                            resultado = true;
-                            break;
-                        }
+                        //else
+                        //{
+                        //    TiendaDeElectronica.InventarioTienda.Remove(item.Key);
+                        //    resultado = true;
+                        //    break;
+                        //}
                     }
 
                 }

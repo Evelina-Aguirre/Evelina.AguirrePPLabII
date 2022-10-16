@@ -66,6 +66,7 @@ namespace Entidades.Tienda
         public static bool operator -(Estadisticas estadistica, int id)
         {
             bool resultado = false;
+            
             if (Estadisticas.ListaProductosVendidos is not null)
             {
                 foreach ( Producto item in Estadisticas.ListaProductosVendidos)
@@ -73,7 +74,16 @@ namespace Entidades.Tienda
                     if (item.Id == id)
                     {
                         gananciaAcumulada -= item.Precio;
-                        Estadisticas.listaProductosVendidos.Remove(item);
+                        if (item.Cantidad == 1)
+                        {
+                            Estadisticas.ListaProductosVendidos.Remove(item);
+                        }
+                        else
+                        {
+                            item.Cantidad--;
+                        }
+                        resultado = true;
+                        break;
                     }
 
                 }
@@ -84,7 +94,7 @@ namespace Entidades.Tienda
         public static List<Producto> ProductosVendidosPorTag(ECategoriaElectronico categoria)
         {
             List<Producto> auxListaProducto = new List<Producto>();
-            foreach (Producto item in listaProductosVendidos)
+            foreach (Producto item in Estadisticas.listaProductosVendidos)
             {
                 if(item.Categoria == categoria)
                 {
@@ -99,7 +109,6 @@ namespace Entidades.Tienda
         public static string ProductoMasVendido(ECategoriaElectronico categoria)
         {
             List<Producto> productos = new List<Producto>();
-            int cantidad=0;
             string nombre = "";
             int max = 1;
             productos = ProductosVendidosPorTag(categoria);
