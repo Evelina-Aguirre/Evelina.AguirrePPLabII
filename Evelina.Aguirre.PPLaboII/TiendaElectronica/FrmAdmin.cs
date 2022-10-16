@@ -275,6 +275,7 @@ namespace UITiendaElectronica
                     Factura.Carrito.Clear();
                     auxFactura.TotalCompra = 0;
                     lblSaldoTienda.Text = TiendaDeElectronica.CuentaTienda.ToString();
+                    txtAbonacon.Text = TiendaDeElectronica.CuentaTienda.ToString();
                     lblTotalCarrito.Text = string.Empty;
                     dgvCarrito.Rows.Clear();
                     rdoEfectivo.Checked = true;

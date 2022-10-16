@@ -91,6 +91,22 @@ namespace Entidades.TiendaElectronica
 
         }
 
+        public static void CancelarCompra(TiendaDeElectronica tienda)
+        {
+            if(FacturaDebito.Carrito is not null)
+            {
+                foreach (Producto item in FacturaCredito.Carrito)
+                {
+                    for (int i = 0; i < item.Cantidad; i++)
+                    {
+                        _ = tienda + item.Id;
+                    }
+                    
+                    
+                }
+            }
+        }
+
         /// <summary>
         /// Muestra los detalles de la factura.
         /// </summary>

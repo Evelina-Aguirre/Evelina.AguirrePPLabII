@@ -176,8 +176,8 @@ namespace UITiendaElectronica
 
             }
 
-                lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
-                //Muestra el total actual de la factura auxiliar con el producto agregado.
+            lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
+            //Muestra el total actual de la factura auxiliar con el producto agregado.
 
             //Muestra descrición del producto en el label de detalles.
             lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
@@ -211,7 +211,7 @@ namespace UITiendaElectronica
                 if (Convert.ToInt32(dgvCarritoCliente.CurrentRow.Cells[3].Value) == 1)
                 {
                     dgvCarritoCliente.Rows.RemoveAt(dgvCarritoCliente.CurrentRow.Index);
-                  //  _ = auxEstadistica - id;
+                    //  _ = auxEstadistica - id;
 
                 }
                 else
@@ -278,7 +278,7 @@ namespace UITiendaElectronica
             {
                 //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al al elegir el método de pago,
                 //Uso el método de esta clase (facturaEfectivo) para poder mostrarlo en el form de manera orientativa para el usuario.
-                lblCalculoVuelto.Text =Math.Round(FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, float.Parse(txtAbonacon.Text)),2).ToString();
+                lblCalculoVuelto.Text = Math.Round(FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, float.Parse(txtAbonacon.Text)), 2).ToString();
 
                 if (float.Parse(lblTotalCarrito.Text) > float.Parse(txtAbonacon.Text))
                 {
@@ -450,37 +450,43 @@ namespace UITiendaElectronica
 
         private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (Inicio.cargo == 1)
-            {
-                Menú frmMenu = new Menú();
-                Hide();
-                frmMenu.ShowDialog();
+            TiendaDeElectronica tienda = new TiendaDeElectronica();
+            FacturaDebito.CancelarCompra(tienda);
+            Factura.Carrito.Clear();
 
-            }
-            else
-            {
-                Prueba frmPruebaApp = new Prueba();
-                Hide();
-                frmPruebaApp.ShowDialog();
-            }
+
+                if (Inicio.cargo == 1)
+                {
+                    Menú frmMenu = new Menú();
+                    Hide();
+                    frmMenu.ShowDialog();
+
+                }
+                else
+                {
+                    Prueba frmPruebaApp = new Prueba();
+                    Hide();
+                    frmPruebaApp.ShowDialog();
+                }
+            
         }
 
-        private void Venta_MouseDown(object sender, MouseEventArgs e)
-        {
-            m = 1;
-            mx = e.X;
-            my = e.Y;
-        }
-
-        private void Venta_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (m == 1)
+            private void Venta_MouseDown(object sender, MouseEventArgs e)
             {
-                SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+                m = 1;
+                mx = e.X;
+                my = e.Y;
             }
+
+            private void Venta_MouseMove(object sender, MouseEventArgs e)
+            {
+                if (m == 1)
+                {
+                    SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+                }
+            }
+
+
+
         }
-
-
-
     }
-}
