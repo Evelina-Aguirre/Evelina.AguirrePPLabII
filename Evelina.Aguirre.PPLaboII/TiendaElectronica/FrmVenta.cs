@@ -96,7 +96,8 @@ namespace UITiendaElectronica
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dgvProductosTienda.DataSource = Buscador.BuscarProducto(txtBuscat.Text.ToString().ToLower());
+            dgvProductosTienda.DataSource = Buscador.BuscarProducto(txtBuscat.Text.ToString().ToLower(), TiendaDeElectronica.InventarioTienda);
+            
         }
 
         private void txtBuscat_Click(object sender, EventArgs e)
@@ -111,83 +112,99 @@ namespace UITiendaElectronica
 
         private void dgvProductosTienda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            TiendaDeElectronica tienda = new TiendaDeElectronica();
-
-            //Instancia un producto para poder agregarlo a la factura.
-            Producto auxProducto = new Producto(
-              dgvProductosTienda.CurrentRow.Cells[0].Value.ToString(), Convert.ToDouble(dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
-               (int)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value), "",
-               (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[4].Value, 1);
-
-
-            //Vista previa del producto agregador al dgv de los productos a vender.
-            int cantidad = 1;
-            int existe = -1;
-            int id = Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value);
 
             if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.Rows[0].Cells[0].Value is not null)
             {
-                foreach (DataGridViewRow row in dgvCarritoCliente.Rows)
+
+
+                TiendaDeElectronica tienda = new TiendaDeElectronica();
+
+
+                //Instancia un producto para poder agregarlo a la factura.
+                Producto auxProducto = new Producto(
+             dgvProductosTienda.CurrentRow.Cells[0].Value.ToString(), Convert.ToDouble(dgvProductosTienda.CurrentRow.Cells[2].Value.ToString()),
+              (int)Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value), "",
+              (ECategoriaElectronico)dgvProductosTienda.CurrentRow.Cells[4].Value, 1);
+
+
+                //Vista previa del producto agregador al dgv de los productos a vender.
+                int cantidad = 1;
+                int existe = -1;
+                int id = Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value);
+
+                if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.Rows[0].Cells[0].Value is not null)
                 {
-                    if (Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value) == Convert.ToInt32(row.Cells[0].Value))
+                    foreach (DataGridViewRow row in dgvCarritoCliente.Rows)
                     {
-                        existe = row.Index;
+                        if (Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[5].Value) == Convert.ToInt32(row.Cells[0].Value))
+                        {
+                            existe = row.Index;
+                        }
                     }
                 }
-            }
 
-            if (existe > -1 && Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[1].Value) > 0)
-            {
-                //Si existe toma el valor cantidad para incrementarlo
-                cantidad = Convert.ToInt32(dgvCarritoCliente.Rows[existe].Cells[3].Value);
-                cantidad++;
-                dgvCarritoCliente.Rows[existe].Cells[3].Value = cantidad;
-                dgvCarritoCliente.Rows[existe].Cells[2].Value = Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[2].Value) * cantidad;
-                //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
-                auxFactura += auxProducto;
-                //Lo sumo a la lista de productos para estadísticas
-                _ = auxEstadistica + id;
+                if (existe > -1 && Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[1].Value) > 0)
+                {
+                    //Si existe toma el valor cantidad para incrementarlo
+                    cantidad = Convert.ToInt32(dgvCarritoCliente.Rows[existe].Cells[3].Value);
+                    cantidad++;
+                    dgvCarritoCliente.Rows[existe].Cells[3].Value = cantidad;
+                    dgvCarritoCliente.Rows[existe].Cells[2].Value = Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[2].Value) * cantidad;
 
-                //resto el producto de la tienda
-                _ = tienda - id;
-                //Actualiza dgvProductos en tienda
-                ECategoriaElectronico categoria = Buscador.ObtenerCategoria(dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
-                dgvProductosTienda.DataSource = Buscador.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+                    //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
+                    auxFactura += auxProducto;
+
+                    //Lo sumo a la lista de productos para estadísticas
+                    _ = auxEstadistica + id;
+
+                    //resto el producto de la tienda
+                    _ = tienda - id;
+
+                    //Actualiza dgvProductos en tienda
+                    ECategoriaElectronico categoria = Buscador.ObtenerCategoria(dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
+                    dgvProductosTienda.DataSource = Buscador.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+
+                    //Muestra el total actual de la factura auxiliar con el producto agregado.
+                    lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
+
+                }
+                else if (Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[1].Value) > 0)
+                {
+                    //Si el id no existe en el carrito y hay cantidad de ese producto en el inventario de la tienda, lo agrega.
+                    dgvCarritoCliente.Rows.Add(dgvProductosTienda.CurrentRow.Cells[5].Value, dgvProductosTienda.CurrentRow.Cells[0].Value,
+                    dgvProductosTienda.CurrentRow.Cells[2].Value, cantidad);
+
+                    //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
+                    auxFactura += auxProducto;
+
+                    //Lo sumo a la lista de productos para estadísticas
+                    _ = auxEstadistica + id;
+
+                    //resto el producto de la tienda
+                    _ = tienda - id;
+
+                    //Actualiza dgvProductos en tienda
+                    ECategoriaElectronico categoria = Buscador.ObtenerCategoria(dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
+                    dgvProductosTienda.DataSource = Buscador.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+
+
+                }
 
                 //Muestra el total actual de la factura auxiliar con el producto agregado.
                 lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
 
+                //Muestra descripción del producto en el label de detalles.
+                lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
             }
-            else if (Convert.ToInt32(dgvProductosTienda.CurrentRow.Cells[1].Value) > 0)
-            {
-                //Si el id no existe en el carrito y hay cantidad de ese producto en el inventario de la tienda, lo agrega.
-                dgvCarritoCliente.Rows.Add(dgvProductosTienda.CurrentRow.Cells[5].Value, dgvProductosTienda.CurrentRow.Cells[0].Value,
-                dgvProductosTienda.CurrentRow.Cells[2].Value, cantidad);
-                //Agrega el producto a la lista de la factura y suma el precio del mismo al total.
-                auxFactura += auxProducto;
-                //Lo sumo a la lista de productos para estadísticas
-                _ = auxEstadistica + id;
-                //resto el producto de la tienda
-                _ = tienda - id;
-                //Actualiza dgvProductos en tienda
-                ECategoriaElectronico categoria = Buscador.ObtenerCategoria(dgvProductosTienda.CurrentRow.Cells[4].Value.ToString());
-                dgvProductosTienda.DataSource = Buscador.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
-
-
-            }
-
-            lblTotalCarrito.Text = auxFactura.TotalCompra.ToString();
-            //Muestra el total actual de la factura auxiliar con el producto agregado.
-
-            //Muestra descrición del producto en el label de detalles.
-            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
-
 
         }
 
         private void dgvProductosTienda_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
+            if (this.dgvProductosTienda.Rows[0].Cells[0].Value is not null)
+            {
+                lblDescripcionProducto.Text = dgvProductosTienda.CurrentRow.Cells[3].Value.ToString();
+            }
         }
 
 

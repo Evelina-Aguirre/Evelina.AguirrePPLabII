@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Entidades.Productos
@@ -100,7 +101,7 @@ namespace Entidades.Productos
         /// Busca en una colección Diccionario la categoría que se especifica por parámetro.
         /// </summary>
         /// <param name="categoria">categoría/tag que se busca</param>
-        /// <returns>Diccionario cargado con la categoría que se busca</returns>
+        /// <returns>Lista con los productos que hay en la categoría que se busca</returns>
         public static List<Producto> CargarProductosPorCategoria(ECategoriaElectronico categoria, Dictionary<int, Producto> diccionario)
         {
             List<Producto> auxListaProductos = new List<Producto>();
@@ -165,30 +166,7 @@ namespace Entidades.Productos
         }
 
         /// <summary>
-        /// Busca un producto por su nombre en el inventario de la tienda.
-        /// </summary>
-        /// <param name="aux">Palabra a buscar.</param>
-        /// <returns>Lista con los productos encontrados.</returns>
-        public static List<Producto> BuscarProducto(string aux)
-        {
-            List<Producto> auxLista = new List<Producto>();
-
-            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
-            {
-
-                if (item.Value.Categoria == Buscador.ObtenerCategoria(aux) ||
-                    item.Value.ToString() == aux)
-                {
-                    auxLista.Add(item.Value);
-                }
-
-            }
-            return auxLista;
-
-        }
-
-        /// <summary>
-        /// Busca coincidencias en una colección de tipo diccionario.
+        /// Busca coincidencias en nombre, id y características en una colección de tipo diccionario.
         /// </summary>
         /// <param name="aux"></param>
         /// <param name="diccionario"></param>
@@ -198,42 +176,71 @@ namespace Entidades.Productos
             List<Producto> auxLista = new List<Producto>();
             int auxAInt = 0;
             bool esNumero = int.TryParse(aux, out auxAInt);
+            string primerasTresLetasAux = ExtraerPrimerasLetrasPalabra(aux, 3);
 
             foreach (KeyValuePair<int, Producto> item in diccionario)
             {
-
-                if (item.Value.Categoria == Buscador.ObtenerCategoria(aux) || aux == item.Value.Nombre)
+                //Busca la palabra en la categoría, nombre o dentro de la descripción.
+                if (item.Value.Categoria == Buscador.ObtenerCategoria(aux)|| BuscarPorPalabraEnCadena(aux, item.Value.Nombre)||
+                    BuscarPorPalabraEnCadena(aux, item.Value.Descripcion))
                 {
                     auxLista.Add(item.Value);
                 }
                 else if (esNumero)
-                {
+                {//De no encontrarla la busca por id
                     auxLista.Add(BuscarProducto(auxAInt, diccionario));
                     break;
-                }
-                string[] array1 = item.Value.Descripcion.Split(' ');
-                string[] array2 = item.Value.Nombre.Split(' ');
-
-                for (int i = 0; i < array1.Length; i++)            
+                }//En última instancia busca solo las primeras cuatro letras de la palabra.
+                else if(BuscarPorPalabraEnCadena(ExtraerPrimerasLetrasPalabra(aux, 4), item.Value.Nombre) ||
+                        BuscarPorPalabraEnCadena(ExtraerPrimerasLetrasPalabra(aux, 4), item.Value.Descripcion)||
+                        BuscarPorPalabraEnCadena(ExtraerPrimerasLetrasPalabra(aux, 4), item.Value.Categoria.ToString()))
                 {
-                    if(aux.ToLower() == array1[i].ToLower())
-                    {
-                        auxLista.Add(item.Value);
-                    }
+                    auxLista.Add(item.Value);
                 }
-                for (int i = 0; i < array2.Length; i++)
-                {
-                    if (aux.ToLower() == array2[i].ToLower())
-                    {
-                        auxLista.Add(item.Value);
-                    }
-                }
-
-
-
+              
             }
             return auxLista;
 
+        }
+
+        /// <summary>
+        /// Divide una cadena por palabras y busca en esta coincidencias con la palabra buscada o las primeras tres letras de esta.
+        /// </summary>
+        /// <param name="palabraABuscar"></param>
+        /// <param name="stringDondeBuscar"></param>
+        /// <returns>true si la palabra fue encontrada</returns>
+        public static bool BuscarPorPalabraEnCadena(string palabraABuscar, string stringDondeBuscar)
+        {
+            bool seEncontro = false;
+            Regex reg = new Regex("[^a-zA-Z0-9 ]");
+            string stringDondeBuscarNormalizado = stringDondeBuscar.Normalize(NormalizationForm.FormD);
+            string stringDondeBuscarSinAcentos = reg.Replace(stringDondeBuscarNormalizado, "");
+            string palabraABuscarNormalizado = palabraABuscar.Normalize(NormalizationForm.FormD);
+            string palabraABuscarSinAcentos = reg.Replace(palabraABuscarNormalizado, "");
+            string[] array1 = stringDondeBuscarSinAcentos.Split(' ');
+
+            for (int i = 0; i < array1.Length; i++)
+            {
+                if (palabraABuscarSinAcentos.ToLower() == array1[i].ToLower())
+                {
+                    seEncontro = true;
+                }
+                else if(ExtraerPrimerasLetrasPalabra(array1[i].ToLower(), 3) == palabraABuscar)
+                {
+                    seEncontro = true;
+                }
+            }
+            return seEncontro;
+        }
+
+        public static string ExtraerPrimerasLetrasPalabra(string auxString, int cantidad)
+        {
+            if (string.IsNullOrEmpty(auxString) || auxString.Length < cantidad)
+            {
+                return auxString;
+            };
+
+            return auxString.Substring(0, cantidad);
         }
 
         /// <summary>
