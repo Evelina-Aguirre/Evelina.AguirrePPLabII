@@ -71,9 +71,6 @@ namespace Entidades
             return this.nombre;
         }
 
-       
-
-
         /// <summary>
         /// Muestra propiedades del producto.
         /// </summary>

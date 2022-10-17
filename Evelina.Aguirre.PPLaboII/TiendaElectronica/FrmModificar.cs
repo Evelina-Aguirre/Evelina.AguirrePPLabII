@@ -79,7 +79,7 @@ namespace UITiendaElectronica
                 {
                     if (Convert.ToInt32(this.lblId.Text) == item.Value.Id)
                     {
-                        item.Value.Categoria = Producto.StringAECategoriaElectronico(this.cmbCategoria.Text);
+                        item.Value.Categoria = Buscador.StringAECategoriaElectronico(this.cmbCategoria.Text);
                         break;
                     }
                 }
@@ -92,7 +92,7 @@ namespace UITiendaElectronica
                 {
                     Producto auxProducto = Buscador.BuscarProducto(Convert.ToInt32(this.lblId.Text),TiendaDeElectronica.InventarioTienda);
                     auxProducto.Precio = Convert.ToDouble(this.lblPrecio.Text);
-                    auxProducto.Categoria = Producto.StringAECategoriaElectronico(this.lblCategoriaActual.Text);
+                    auxProducto.Categoria = Buscador.StringAECategoriaElectronico(this.lblCategoriaActual.Text);
                 }
                 else
                 {
