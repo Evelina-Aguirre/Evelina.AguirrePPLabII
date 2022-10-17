@@ -180,7 +180,7 @@ namespace Entidades.Productos
 
             foreach (KeyValuePair<int, Producto> item in diccionario)
             {
-                //Busca la palabra en la categoría, nombre o dentro de la descripción.
+                //Busca la palabra en categoría, nombre o dentro de la descripción del producto.
                 if (item.Value.Categoria == Buscador.ObtenerCategoria(aux)|| BuscarPorPalabraEnCadena(aux, item.Value.Nombre)||
                     BuscarPorPalabraEnCadena(aux, item.Value.Descripcion))
                 {
@@ -204,7 +204,7 @@ namespace Entidades.Productos
         }
 
         /// <summary>
-        /// Divide una cadena por palabras y busca en esta coincidencias con la palabra buscada o las primeras tres letras de esta.
+        /// Divide una cadena por espacios y busca coincidencias con el conjunto de carácteres buscado o los primeros cuatro de este.
         /// </summary>
         /// <param name="palabraABuscar"></param>
         /// <param name="stringDondeBuscar"></param>
@@ -213,10 +213,14 @@ namespace Entidades.Productos
         {
             bool seEncontro = false;
             Regex reg = new Regex("[^a-zA-Z0-9 ]");
+
+            //Remueve acentos
             string stringDondeBuscarNormalizado = stringDondeBuscar.Normalize(NormalizationForm.FormD);
-            string stringDondeBuscarSinAcentos = reg.Replace(stringDondeBuscarNormalizado, "");
             string palabraABuscarNormalizado = palabraABuscar.Normalize(NormalizationForm.FormD);
+            //Los reemplaza solo con letras a-zA-z y num del 0-9 
+            string stringDondeBuscarSinAcentos = reg.Replace(stringDondeBuscarNormalizado, "");
             string palabraABuscarSinAcentos = reg.Replace(palabraABuscarNormalizado, "");
+            
             string[] array1 = stringDondeBuscarSinAcentos.Split(' ');
 
             for (int i = 0; i < array1.Length; i++)
@@ -225,7 +229,7 @@ namespace Entidades.Productos
                 {
                     seEncontro = true;
                 }
-                else if(ExtraerPrimerasLetrasPalabra(array1[i].ToLower(), 3) == palabraABuscar)
+                else if(ExtraerPrimerasLetrasPalabra(array1[i].ToLower(), 4) == palabraABuscar)
                 {
                     seEncontro = true;
                 }
@@ -233,6 +237,12 @@ namespace Entidades.Productos
             return seEncontro;
         }
 
+        /// <summary>
+        /// Obtiene los primeros carácteres de un string según cantidad indicada. 
+        /// </summary>
+        /// <param name="auxString"></param>
+        /// <param name="cantidad"></param>
+        /// <returns>Solo las primeras letras de las palabra según la cantidad indicada</returns>
         public static string ExtraerPrimerasLetrasPalabra(string auxString, int cantidad)
         {
             if (string.IsNullOrEmpty(auxString) || auxString.Length < cantidad)

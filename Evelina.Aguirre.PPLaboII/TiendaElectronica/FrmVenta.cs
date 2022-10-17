@@ -113,7 +113,7 @@ namespace UITiendaElectronica
         private void dgvProductosTienda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.Rows[0].Cells[0].Value is not null)
+            if (dgvProductosTienda.Rows.Count > 0&& dgvProductosTienda.Rows[0].Cells[0].Value is not null)
             {
 
 
