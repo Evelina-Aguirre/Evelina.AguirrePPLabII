@@ -232,17 +232,19 @@ namespace UITiendaElectronica
 
         private void btnVender_Click(object sender, EventArgs e)
         {
-            if (dgvCarrito.Rows.Count > 1 && dgvCarrito.CurrentRow.Cells[0].Value is not null)
+            if (dgvCarrito.Rows.Count > 1 && dgvCarrito.Rows[0].Cells[0].Value is not null)
             {
                 Factura facturaFinal;
                 TiendaDeElectronica tienda = new TiendaDeElectronica();
 
                 string txtConComa = txtAbonacon.Text.Replace('.', ',');
                 txtAbonacon.Text = txtConComa;
-                int abonaCon;
-                bool esNumero = int.TryParse(txtAbonacon.Text, out abonaCon);
 
-                if (txtAbonacon.Text != null && esNumero && Convert.ToDouble(lblTotalCarrito.Text) < Convert.ToDouble(txtAbonacon.Text))
+               
+                double abonaCon;
+                bool esNumero = double.TryParse(txtAbonacon.Text, out abonaCon);
+
+                if (txtAbonacon.Text != null && esNumero && auxFactura.TotalCompra < Convert.ToDouble(txtAbonacon.Text))
                 {
                     facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
                    Convert.ToDouble(txtAbonacon.Text));

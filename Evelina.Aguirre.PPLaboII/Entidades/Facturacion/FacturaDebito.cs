@@ -91,6 +91,10 @@ namespace Entidades.TiendaElectronica
 
         }
 
+        /// <summary>
+        /// Restituye todos los productos del carro de la factura a la tienda.
+        /// </summary>
+        /// <param name="tienda"></param>
         public static void CancelarCompra(TiendaDeElectronica tienda)
         {
             if(FacturaDebito.Carrito is not null)
@@ -101,8 +105,6 @@ namespace Entidades.TiendaElectronica
                     {
                         _ = tienda + item.Id;
                     }
-                    
-                    
                 }
             }
         }
