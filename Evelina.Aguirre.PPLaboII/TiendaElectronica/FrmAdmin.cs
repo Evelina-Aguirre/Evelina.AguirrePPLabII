@@ -65,7 +65,7 @@ namespace UITiendaElectronica
         private void ActualizarDGVCatalago(ECategoriaElectronico categoria)
         {
             List<Producto> auxLista = new List<Producto>();
-            auxLista = Producto.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
+            auxLista = Buscador.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
             if (dgvCatalogoProveedor.Rows.Count>0)
                 dgvCatalogoProveedor.Rows.Clear();
 
@@ -98,62 +98,62 @@ namespace UITiendaElectronica
         private void btnLeds_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Leds);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Leds, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Leds, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnBobinas_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Bobinas);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Bobinas, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Bobinas, TiendaDeElectronica.InventarioTienda);
 
         }
 
         private void btnCapacitores_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Capacitores);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Capacitores, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Capacitores, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnConectores_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Conectores);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Conectores, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Conectores, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnCircuitosIntegrados_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.CircuitosIntegrados);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.CircuitosIntegrados, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnPlaquetas_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Plaquetas);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Plaquetas, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnControlTermico_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.ControlTermico);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.ControlTermico, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.ControlTermico, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnLimpieza_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Limpieza);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Limpieza, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Limpieza, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnSoldado_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Soldado);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Soldado, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Soldado, TiendaDeElectronica.InventarioTienda);
         }
 
         private void btnHerramientas_Click(object sender, EventArgs e)
         {
             ActualizarDGVCatalago(ECategoriaElectronico.Herramientas);
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(ECategoriaElectronico.Herramientas, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Herramientas, TiendaDeElectronica.InventarioTienda);
         }
 
         private void dgvCatalogoProveedor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -219,9 +219,9 @@ namespace UITiendaElectronica
                     dgvCarrito.CurrentRow.Cells[3].Value = aux;
                 }
 
-                categoria = Producto.ObtenerCategoria(id);
+                categoria = Buscador.ObtenerCategoria(id);
             }
-            dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
 
         }
 
@@ -271,8 +271,8 @@ namespace UITiendaElectronica
                     //Resto el total de la factura del saldo de la tienda.
                     TiendaDeElectronica.CuentaTienda -= facturaFinal.TotalCompra;
 
-                    ECategoriaElectronico categoria = Producto.ObtenerCategoria(dgvCatalogoProveedor.Rows[0].Cells[3].Value.ToString());
-                    dgvInventarioTienda.DataSource = Producto.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
+                    ECategoriaElectronico categoria = Buscador.ObtenerCategoria(dgvCatalogoProveedor.Rows[0].Cells[3].Value.ToString());
+                    dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
                     //Resetea la lista de la factura de la venta ya concretada y limpia dgv y labels.
                     Factura.Carrito.Clear();
                     auxFactura.TotalCompra = 0;

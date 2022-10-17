@@ -91,14 +91,7 @@ namespace Entidades
                             resultado = true;
                             break;
                         }
-                        //else
-                        //{
-                        //    TiendaDeElectronica.InventarioTienda.Remove(item.Key);
-                        //    resultado = true;
-                        //    break;
-                        //}
                     }
-
                 }
             }
             return resultado;
@@ -154,7 +147,6 @@ namespace Entidades
             }
             return EPersona.Desconocido;
         }
-
 
 
     }

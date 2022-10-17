@@ -8,6 +8,93 @@ namespace Entidades.Productos
 {
     public static class Buscador
     {
+        /// <summary>
+        /// Busca una categoría (tag) a partir de un string con el nombre de esta.
+        /// </summary>
+        /// <param name="auxString">categoria en formato string que se va a buscar en el enumerado</param>
+        /// <returns>La categoría de encontrarla, caso contrario devolverá "Sincategoria" </returns>
+        public static ECategoriaElectronico ObtenerCategoria(string auxString)
+        {
+            ECategoriaElectronico categoria = ECategoriaElectronico.SinCategoria;
+
+            foreach (ECategoriaElectronico item in Enum.GetValues(typeof(ECategoriaElectronico)))
+            {
+                if (auxString.ToLower() == item.ToString().ToLower())
+                {
+                    categoria = item;
+                    break;
+                }
+
+            }
+            return categoria;
+        }
+
+        /// <summary>
+        /// Informa la categoría de un producto a partir de su ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Categoría buscada o "sin categoría de no encontrar el ID"</returns>
+        public static ECategoriaElectronico ObtenerCategoria(int id)
+        {
+            ECategoriaElectronico categoria = ECategoriaElectronico.SinCategoria;
+
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+            {
+                if (item.Value.Id == id)
+                {
+                    categoria = item.Value.Categoria;
+                    break;
+                }
+
+            }
+            return categoria;
+        }
+
+        /// <summary>
+        /// Busca una categoría comparándola con la palabra que se le brinda por parámetro.
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns>categoría del Enumerado ECategoriaElectronico</returns>
+        public static ECategoriaElectronico StringAECategoriaElectronico(string categoria)
+        {
+            ECategoriaElectronico resultadoCategoria = ECategoriaElectronico.SinCategoria;
+            switch (categoria)
+            {
+                case "Leds":
+                    resultadoCategoria = ECategoriaElectronico.Leds;
+                    break;
+                case "Bobinas":
+                    resultadoCategoria = ECategoriaElectronico.Bobinas;
+                    break;
+                case "Capacitores":
+                    resultadoCategoria = ECategoriaElectronico.Capacitores;
+                    break;
+                case "Conectores":
+                    resultadoCategoria = ECategoriaElectronico.Conectores;
+                    break;
+                case "CircuitosIntegrados":
+                    resultadoCategoria = ECategoriaElectronico.CircuitosIntegrados;
+                    break;
+                case "Plaquetas":
+                    resultadoCategoria = ECategoriaElectronico.Plaquetas;
+                    break;
+                case "Soldado":
+                    resultadoCategoria = ECategoriaElectronico.Soldado;
+                    break;
+                case "Limpieza":
+                    resultadoCategoria = ECategoriaElectronico.Limpieza;
+                    break;
+                case "Herramientas":
+                    resultadoCategoria = ECategoriaElectronico.Herramientas;
+                    break;
+                case "ControlTermico":
+                    resultadoCategoria = ECategoriaElectronico.ControlTermico;
+                    break;
+
+            }
+
+            return resultadoCategoria;
+        }
 
         /// <summary>
         /// Busca en una colección Diccionario la categoría que se especifica por parámetro.
@@ -89,7 +176,7 @@ namespace Entidades.Productos
             foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
             {
 
-                if (item.Value.Categoria == Producto.ObtenerCategoria(aux) ||
+                if (item.Value.Categoria == Buscador.ObtenerCategoria(aux) ||
                     item.Value.ToString() == aux)
                 {
                     auxLista.Add(item.Value);
@@ -115,7 +202,7 @@ namespace Entidades.Productos
             foreach (KeyValuePair<int, Producto> item in diccionario)
             {
 
-                if (item.Value.ToString() == aux || item.Value.Categoria == Producto.ObtenerCategoria(aux) || aux == item.Value.Nombre)
+                if (item.Value.ToString() == aux || item.Value.Categoria == Buscador.ObtenerCategoria(aux) || aux == item.Value.Nombre)
                 {
                     auxLista.Add(item.Value);
                 }
