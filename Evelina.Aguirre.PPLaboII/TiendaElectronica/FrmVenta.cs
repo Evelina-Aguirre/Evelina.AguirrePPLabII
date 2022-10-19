@@ -222,17 +222,18 @@ namespace UITiendaElectronica
                 //Sumo la cantidad del inventario de la tienda
                 _ = tienda + id;
 
-                //resta cantidad del actual y la restituye a la tienda
+                //resta cantidad del actual
                 int cantidadActual = Convert.ToInt32(dgvCarritoCliente.CurrentRow.Cells[3].Value);
 
                 if (Convert.ToInt32(dgvCarritoCliente.CurrentRow.Cells[3].Value) == 1)
                 {
+                     _ = auxEstadistica - id;
                     dgvCarritoCliente.Rows.RemoveAt(dgvCarritoCliente.CurrentRow.Index);
-                    //  _ = auxEstadistica - id;
 
                 }
                 else
                 {
+                    _ = auxEstadistica - id;
                     cantidadActual--;
                     dgvCarritoCliente.CurrentRow.Cells[3].Value = cantidadActual;
                 }

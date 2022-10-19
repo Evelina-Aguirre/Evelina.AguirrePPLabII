@@ -33,10 +33,6 @@ namespace UITiendaElectronica
 
         private void FrmModificar_Load(object sender, EventArgs e)
         {
-            //Producto auxProducto = TiendaDeElectronica.BuscarProducto(this.Id);
-
-            // this.lblProducto.Text=(auxProducto.Nombre.ToString());
-
             this.cmbCategoria.DataSource = System.Enum.GetValues(typeof(ECategoriaElectronico));
         }
 

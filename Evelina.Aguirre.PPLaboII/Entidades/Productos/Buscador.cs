@@ -166,6 +166,28 @@ namespace Entidades.Productos
         }
 
         /// <summary>
+        /// Busca un producto en el inventario de la tienda por id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>El producot de encontrarlo de lo contrario devuelve null.</returns>
+        public static Producto BuscarProducto(int id, Dictionary<int, Producto> diccionario)
+        {
+            Producto auxProducto = null;
+
+            foreach (KeyValuePair<int, Producto> item in diccionario)
+            {
+
+                if (item.Value.Id == id)
+                {
+                    auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
+                        item.Value.Descripcion, item.Value.Categoria, item.Value.Cantidad);
+                }
+
+            }
+            return auxProducto;
+
+        }
+        /// <summary>
         /// Busca coincidencias en nombre, id y características en una colección de tipo diccionario.
         /// </summary>
         /// <param name="aux"></param>
@@ -212,7 +234,7 @@ namespace Entidades.Productos
         public static bool BuscarPorPalabraEnCadena(string palabraABuscar, string stringDondeBuscar)
         {
             bool seEncontro = false;
-            Regex reg = new Regex("[^a-zA-Z0-9 ]");
+            Regex reg = new Regex("[^a-zA-Z0-9 ]");   
 
             //Remueve acentos
             string stringDondeBuscarNormalizado = stringDondeBuscar.Normalize(NormalizationForm.FormD);
@@ -253,27 +275,5 @@ namespace Entidades.Productos
             return auxString.Substring(0, cantidad);
         }
 
-        /// <summary>
-        /// Busca un producto en el inventario de la tienda por id.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>El producot de encontrarlo de lo contrario devuelve null.</returns>
-        public static Producto BuscarProducto(int id, Dictionary<int, Producto> diccionario)
-        {
-            Producto auxProducto = null;
-
-            foreach (KeyValuePair<int, Producto> item in diccionario)
-            {
-
-                if (item.Value.Id == id)
-                {
-                    auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
-                        item.Value.Descripcion, item.Value.Categoria, item.Value.Cantidad);
-                }
-
-            }
-            return auxProducto;
-
-        }
     }
 }

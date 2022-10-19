@@ -1,36 +1,44 @@
 ﻿using Entidades.TiendaElectronica;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades.Tienda
 {
     public class Estadisticas
     {
 
-
         private static List<FacturaDebito> listaFacturas;
         private static List<Producto> listaProductosVendidos;
         private static int cantidadVentas;
         private static double gananciaAcumulada;
 
-
-
         static Estadisticas()
         {
-            listaFacturas = new List<FacturaDebito>();
-            ListaProductosVendidos = new List<Producto>();
-            cantidadVentas = 0;
-            gananciaAcumulada = 0;
+            Estadisticas.listaFacturas = new List<FacturaDebito>();
+            Estadisticas.ListaProductosVendidos = new List<Producto>();
+            Estadisticas.InicializaListaProductosVendidos();
+            Estadisticas.cantidadVentas = 0;
+            Estadisticas.gananciaAcumulada = 0;
         }
+
+        private static void InicializaListaProductosVendidos()
+        {
+            Producto auxProducto = new Producto("", 0, 0, "", ECategoriaElectronico.SinCategoria);
+            Estadisticas.listaProductosVendidos.Add(auxProducto);
+        }
+
+        //public Estadisticas(List<FacturaDebito> listaFacturas, List<Producto> listaProductosVendidos, int cantidadVentas, double gananciaAcumulada)
+        //{
+        //    Estadisticas.listaFacturas = listaFacturas;
+        //    Estadisticas.listaProductosVendidos = listaProductosVendidos;
+        //    Estadisticas.cantidadVentas = cantidadVentas;
+        //    Estadisticas.gananciaAcumulada = gananciaAcumulada;
+        //}
 
 
         public static List<FacturaDebito> ListaFacturas { get => listaFacturas; set => listaFacturas = value; }
         public static int CantidadVentas { get => cantidadVentas; set => cantidadVentas = value; }
         public static List<Producto> ListaProductosVendidos { get => listaProductosVendidos; set => listaProductosVendidos = value; }
-
+        public static double GananciaAcumulada { get => gananciaAcumulada; }
 
         /// <summary>
         /// Agrega producto y precio de este a los atributos de la estadística.
@@ -41,24 +49,43 @@ namespace Entidades.Tienda
         public static bool operator +(Estadisticas estadistica, int id)
         {
             bool resultado = false;
-            
-            if (Estadisticas.ListaProductosVendidos is not null)
-            {
-                foreach (KeyValuePair<int,Producto> item in TiendaDeElectronica.InventarioTienda)
-                {
-                    if (item.Value.Id == id)
-                    {
-                        gananciaAcumulada += item.Value.Precio;
-                        Estadisticas.listaProductosVendidos.Add(item.Value);
-                    }
+            bool existe = true;
 
+            foreach (KeyValuePair<int, Producto> item in TiendaDeElectronica.InventarioTienda)
+            {
+                if (item.Value.Id == id)
+                {
+                    foreach (Producto aux in Estadisticas.ListaProductosVendidos)
+                    {
+                        if (aux.Id == id)
+                        {
+                            aux.Cantidad++;
+                            gananciaAcumulada += item.Value.Precio;
+                            resultado = true;
+                            break;
+                        }
+                        else
+                        {
+                            existe = false;
+                        }
+                    }
+                        
+                    if (!existe)
+                    {
+                        Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
+                            item.Value.Descripcion, item.Value.Categoria,1);
+                        Estadisticas.listaProductosVendidos.Add(auxProducto);
+                        gananciaAcumulada += item.Value.Precio;
+                        resultado = true;
+                    }
+                    break;
                 }
             }
             return resultado;
         }
 
         /// <summary>
-        /// Remueve un producto de la lista de Productos Vendidos en la tienda a partie del Id.
+        /// Remueve un producto de la lista de Productos vendidos en la tienda a partir del Id.
         /// </summary>
         /// <param name="estadistica"></param>
         /// <param name="id"></param>
@@ -66,22 +93,23 @@ namespace Entidades.Tienda
         public static bool operator -(Estadisticas estadistica, int id)
         {
             bool resultado = false;
-            
+
             if (Estadisticas.ListaProductosVendidos is not null)
             {
-                foreach ( Producto item in Estadisticas.ListaProductosVendidos)
+                foreach (Producto item in Estadisticas.ListaProductosVendidos)
                 {
                     if (item.Id == id)
                     {
                         gananciaAcumulada -= item.Precio;
-                        if (item.Cantidad == 1)
-                        {
-                            Estadisticas.ListaProductosVendidos.Remove(item);
-                        }
-                        else
+                        if (item.Cantidad < 1)
                         {
                             item.Cantidad--;
                         }
+                        else
+                        {
+                            Estadisticas.ListaProductosVendidos.Remove(item);
+                        }
+
                         resultado = true;
                         break;
                     }
@@ -96,14 +124,13 @@ namespace Entidades.Tienda
             List<Producto> auxListaProducto = new List<Producto>();
             foreach (Producto item in Estadisticas.listaProductosVendidos)
             {
-                if(item.Categoria == categoria)
+                if (item.Categoria == categoria)
                 {
                     auxListaProducto.Add(item);
                 }
 
             }
-                return auxListaProducto;
-
+            return auxListaProducto;
         }
 
         public static string ProductoMasVendido(ECategoriaElectronico categoria)
@@ -114,7 +141,7 @@ namespace Entidades.Tienda
             productos = ProductosVendidosPorTag(categoria);
             foreach (Producto item in productos)
             {
-                if(item.Cantidad > max )
+                if (max < item.Cantidad)
                 {
                     max = item.Cantidad;
                     nombre = item.Nombre;
@@ -128,7 +155,7 @@ namespace Entidades.Tienda
         {
             List<Producto> productos = new List<Producto>();
             int contador = 0;
-            double promedio=0;
+            double promedio = 0;
             double acum = 0;
             productos = ProductosVendidosPorTag(categoria);
             foreach (Producto item in listaProductosVendidos)
@@ -137,9 +164,8 @@ namespace Entidades.Tienda
                 contador++;
             }
             promedio = acum / contador;
-            
-            return promedio;
 
+            return promedio;
         }
 
 

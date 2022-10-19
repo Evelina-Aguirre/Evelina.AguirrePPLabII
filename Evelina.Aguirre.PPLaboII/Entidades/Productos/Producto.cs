@@ -12,7 +12,7 @@ namespace Entidades
         private string nombre;
         private int cantidad;
         private double precio;
-       private int id;
+        private int id;
         private string descripcion;
         private ECategoriaElectronico categoria;
 
@@ -63,7 +63,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Método toString sobreescrito, devuelve nombre del producto.
+        /// Devuelve el nombre del producto.
         /// </summary>
         /// <returns></returns>
         public override string ToString()

@@ -127,7 +127,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Busca en los usuarios previamente registrados en la aplicación e informa a que perfil pertenece. 
+        /// Busca en los usuarios previamente registrados en la aplicación e informa a qué perfil pertenece. 
         /// /// </summary>
         /// <param name="usuario"></param>
         /// <param name="clave"></param>
