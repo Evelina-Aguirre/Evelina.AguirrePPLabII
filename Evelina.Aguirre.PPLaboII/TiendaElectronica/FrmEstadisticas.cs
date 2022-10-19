@@ -21,15 +21,16 @@ namespace UITiendaElectronica
         private void FrmEstadisticas_Load(object sender, EventArgs e)
         {
             this.lblCantidadVentasRealizadas.Text = Estadisticas.CantidadVentas.ToString();
-            this.lblMasVendidoPorCategoria.Text = "No se ralizaron ventas en esta categoría";
-            this.lblPromedioGananciasCategoria.Text = "No se realizaron ventas en esta categoría";
+            this.lblMasVendidoPorCategoria.Text = "Elija una categoría";
+            this.lblPromedioGananciasCategoria.Text = "Elija una categoría";
+            this.lblGananciasTotal.Text = Estadisticas.GananciaAcumulada.ToString();
         }
 
         private void btnLeds_Click(object sender, EventArgs e)
         {
             this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Leds).ToString();
             this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Leds).ToString();
+            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Leds).ToString();
         }
 
         private void btnBobinas_Click(object sender, EventArgs e)
@@ -88,11 +89,15 @@ namespace UITiendaElectronica
             this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Herramientas).ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {this.lblPromedioGananciasCategoria.Text = "";
-            Prueba frmPruebaApp = new Prueba();
-            this.Hide();
-            frmPruebaApp.ShowDialog();
+
+        private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            {
+                this.lblPromedioGananciasCategoria.Text = "";
+                Prueba frmPruebaApp = new Prueba();
+                this.Hide();
+                frmPruebaApp.ShowDialog();
+            }
         }
     }
 }

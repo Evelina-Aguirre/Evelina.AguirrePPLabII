@@ -47,7 +47,7 @@ namespace UITiendaElectronica
             this.lblOlvidoClave.AutoSize = true;
             this.lblOlvidoClave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblOlvidoClave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblOlvidoClave.Location = new System.Drawing.Point(128, 41);
+            this.lblOlvidoClave.Location = new System.Drawing.Point(130, 26);
             this.lblOlvidoClave.Name = "lblOlvidoClave";
             this.lblOlvidoClave.Size = new System.Drawing.Size(308, 17);
             this.lblOlvidoClave.TabIndex = 0;
@@ -59,7 +59,7 @@ namespace UITiendaElectronica
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(43, 72);
+            this.button1.Location = new System.Drawing.Point(45, 72);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 120);
             this.button1.TabIndex = 1;
@@ -73,7 +73,7 @@ namespace UITiendaElectronica
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(228, 72);
+            this.button2.Location = new System.Drawing.Point(226, 72);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(136, 120);
             this.button2.TabIndex = 2;
@@ -88,7 +88,7 @@ namespace UITiendaElectronica
             this.llbCerrar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.llbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("llbCerrar.Image")));
             this.llbCerrar.LinkColor = System.Drawing.Color.Transparent;
-            this.llbCerrar.Location = new System.Drawing.Point(545, 0);
+            this.llbCerrar.Location = new System.Drawing.Point(546, -1);
             this.llbCerrar.Name = "llbCerrar";
             this.llbCerrar.Size = new System.Drawing.Size(42, 28);
             this.llbCerrar.TabIndex = 108;
@@ -104,7 +104,7 @@ namespace UITiendaElectronica
             this.llbMinimizar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.llbMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("llbMinimizar.Image")));
             this.llbMinimizar.LinkColor = System.Drawing.Color.Transparent;
-            this.llbMinimizar.Location = new System.Drawing.Point(515, -1);
+            this.llbMinimizar.Location = new System.Drawing.Point(516, -2);
             this.llbMinimizar.Name = "llbMinimizar";
             this.llbMinimizar.Size = new System.Drawing.Size(42, 28);
             this.llbMinimizar.TabIndex = 107;
@@ -119,7 +119,7 @@ namespace UITiendaElectronica
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel3.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Location = new System.Drawing.Point(521, 5);
+            this.linkLabel3.Location = new System.Drawing.Point(522, 4);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(26, 21);
             this.linkLabel3.TabIndex = 109;
@@ -133,7 +133,7 @@ namespace UITiendaElectronica
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel2.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(545, -2);
+            this.linkLabel2.Location = new System.Drawing.Point(546, -3);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(31, 30);
             this.linkLabel2.TabIndex = 110;
@@ -157,7 +157,7 @@ namespace UITiendaElectronica
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(404, 72);
+            this.button3.Location = new System.Drawing.Point(402, 72);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(136, 120);
             this.button3.TabIndex = 112;
@@ -170,7 +170,7 @@ namespace UITiendaElectronica
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.ClientSize = new System.Drawing.Size(589, 221);
+            this.ClientSize = new System.Drawing.Size(580, 228);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.llbCerrar);
             this.Controls.Add(this.llbMinimizar);

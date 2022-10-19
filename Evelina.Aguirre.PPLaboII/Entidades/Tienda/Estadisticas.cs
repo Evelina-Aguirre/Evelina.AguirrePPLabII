@@ -158,7 +158,7 @@ namespace Entidades.Tienda
             double promedio = 0;
             double acum = 0;
             productos = ProductosVendidosPorTag(categoria);
-            foreach (Producto item in listaProductosVendidos)
+            foreach (Producto item in productos)
             {
                 acum += item.Precio;
                 contador++;

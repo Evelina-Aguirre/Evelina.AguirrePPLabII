@@ -30,8 +30,6 @@ namespace UITiendaElectronica
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstadisticas));
-            this.btnVentasRealizadas = new System.Windows.Forms.Button();
-            this.lblMontoInsuficiente = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCantidadVentasRealizadas = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,61 +46,51 @@ namespace UITiendaElectronica
             this.lblMasVendidoPorCategoria = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblPromedioGananciasCategoria = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblGananciasTotal = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.llbMinimizar = new System.Windows.Forms.LinkLabel();
+            this.llbCerrar = new System.Windows.Forms.LinkLabel();
+            this.llbVolver = new System.Windows.Forms.LinkLabel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // btnVentasRealizadas
-            // 
-            this.btnVentasRealizadas.Location = new System.Drawing.Point(308, 12);
-            this.btnVentasRealizadas.Name = "btnVentasRealizadas";
-            this.btnVentasRealizadas.Size = new System.Drawing.Size(142, 23);
-            this.btnVentasRealizadas.TabIndex = 0;
-            this.btnVentasRealizadas.Text = "Detalle ventas";
-            this.btnVentasRealizadas.UseVisualStyleBackColor = true;
-            // 
-            // lblMontoInsuficiente
-            // 
-            this.lblMontoInsuficiente.BackColor = System.Drawing.Color.Transparent;
-            this.lblMontoInsuficiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.lblMontoInsuficiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.lblMontoInsuficiente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMontoInsuficiente.Location = new System.Drawing.Point(-66, 208);
-            this.lblMontoInsuficiente.Name = "lblMontoInsuficiente";
-            this.lblMontoInsuficiente.Size = new System.Drawing.Size(488, 104);
-            this.lblMontoInsuficiente.TabIndex = 134;
-            this.lblMontoInsuficiente.Text = "                  ";
-            this.lblMontoInsuficiente.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(306, 58);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(254, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 15);
+            this.label1.Size = new System.Drawing.Size(127, 17);
             this.label1.TabIndex = 135;
-            this.label1.Text = "Cantidad de Ventas Total";
+            this.label1.Text = "Cantidad de Ventas";
             // 
             // lblCantidadVentasRealizadas
             // 
             this.lblCantidadVentasRealizadas.AutoSize = true;
-            this.lblCantidadVentasRealizadas.Location = new System.Drawing.Point(459, 58);
+            this.lblCantidadVentasRealizadas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCantidadVentasRealizadas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblCantidadVentasRealizadas.Location = new System.Drawing.Point(422, 63);
             this.lblCantidadVentasRealizadas.Name = "lblCantidadVentasRealizadas";
-            this.lblCantidadVentasRealizadas.Size = new System.Drawing.Size(163, 15);
+            this.lblCantidadVentasRealizadas.Size = new System.Drawing.Size(192, 17);
             this.lblCantidadVentasRealizadas.TabIndex = 136;
             this.lblCantidadVentasRealizadas.Text = "Cantidad de Ventas realizadas";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(244, 107);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(233, 165);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(201, 15);
+            this.label2.Size = new System.Drawing.Size(148, 15);
             this.label2.TabIndex = 137;
-            this.label2.Text = "Producto Mas Vendido por categoría";
+            this.label2.Text = "Más vendido por categoría";
             // 
             // btnPlaquetas
             // 
-            this.btnPlaquetas.Location = new System.Drawing.Point(11, 252);
+            this.btnPlaquetas.Location = new System.Drawing.Point(21, 236);
             this.btnPlaquetas.Name = "btnPlaquetas";
             this.btnPlaquetas.Size = new System.Drawing.Size(180, 24);
             this.btnPlaquetas.TabIndex = 143;
@@ -112,7 +100,7 @@ namespace UITiendaElectronica
             // 
             // btnLeds
             // 
-            this.btnLeds.Location = new System.Drawing.Point(12, 49);
+            this.btnLeds.Location = new System.Drawing.Point(22, 33);
             this.btnLeds.Name = "btnLeds";
             this.btnLeds.Size = new System.Drawing.Size(180, 24);
             this.btnLeds.TabIndex = 138;
@@ -122,7 +110,7 @@ namespace UITiendaElectronica
             // 
             // btnBobinas
             // 
-            this.btnBobinas.Location = new System.Drawing.Point(12, 87);
+            this.btnBobinas.Location = new System.Drawing.Point(22, 71);
             this.btnBobinas.Name = "btnBobinas";
             this.btnBobinas.Size = new System.Drawing.Size(180, 24);
             this.btnBobinas.TabIndex = 139;
@@ -132,7 +120,7 @@ namespace UITiendaElectronica
             // 
             // btnCapacitores
             // 
-            this.btnCapacitores.Location = new System.Drawing.Point(12, 127);
+            this.btnCapacitores.Location = new System.Drawing.Point(22, 111);
             this.btnCapacitores.Name = "btnCapacitores";
             this.btnCapacitores.Size = new System.Drawing.Size(180, 24);
             this.btnCapacitores.TabIndex = 140;
@@ -141,7 +129,7 @@ namespace UITiendaElectronica
             // 
             // btnConectores
             // 
-            this.btnConectores.Location = new System.Drawing.Point(11, 168);
+            this.btnConectores.Location = new System.Drawing.Point(21, 152);
             this.btnConectores.Name = "btnConectores";
             this.btnConectores.Size = new System.Drawing.Size(180, 24);
             this.btnConectores.TabIndex = 141;
@@ -151,7 +139,7 @@ namespace UITiendaElectronica
             // 
             // btnCircuitosIntegrados
             // 
-            this.btnCircuitosIntegrados.Location = new System.Drawing.Point(12, 212);
+            this.btnCircuitosIntegrados.Location = new System.Drawing.Point(22, 196);
             this.btnCircuitosIntegrados.Name = "btnCircuitosIntegrados";
             this.btnCircuitosIntegrados.Size = new System.Drawing.Size(180, 24);
             this.btnCircuitosIntegrados.TabIndex = 142;
@@ -161,7 +149,7 @@ namespace UITiendaElectronica
             // 
             // btnHerramientas
             // 
-            this.btnHerramientas.Location = new System.Drawing.Point(12, 432);
+            this.btnHerramientas.Location = new System.Drawing.Point(22, 416);
             this.btnHerramientas.Name = "btnHerramientas";
             this.btnHerramientas.Size = new System.Drawing.Size(180, 24);
             this.btnHerramientas.TabIndex = 147;
@@ -171,7 +159,7 @@ namespace UITiendaElectronica
             // 
             // btnControlTermico
             // 
-            this.btnControlTermico.Location = new System.Drawing.Point(12, 296);
+            this.btnControlTermico.Location = new System.Drawing.Point(22, 280);
             this.btnControlTermico.Name = "btnControlTermico";
             this.btnControlTermico.Size = new System.Drawing.Size(180, 24);
             this.btnControlTermico.TabIndex = 144;
@@ -181,7 +169,7 @@ namespace UITiendaElectronica
             // 
             // btnLimpieza
             // 
-            this.btnLimpieza.Location = new System.Drawing.Point(12, 339);
+            this.btnLimpieza.Location = new System.Drawing.Point(22, 323);
             this.btnLimpieza.Name = "btnLimpieza";
             this.btnLimpieza.Size = new System.Drawing.Size(180, 24);
             this.btnLimpieza.TabIndex = 145;
@@ -191,7 +179,7 @@ namespace UITiendaElectronica
             // 
             // btnSoldado
             // 
-            this.btnSoldado.Location = new System.Drawing.Point(11, 387);
+            this.btnSoldado.Location = new System.Drawing.Point(21, 371);
             this.btnSoldado.Name = "btnSoldado";
             this.btnSoldado.Size = new System.Drawing.Size(180, 24);
             this.btnSoldado.TabIndex = 146;
@@ -202,46 +190,146 @@ namespace UITiendaElectronica
             // lblMasVendidoPorCategoria
             // 
             this.lblMasVendidoPorCategoria.AutoSize = true;
-            this.lblMasVendidoPorCategoria.Location = new System.Drawing.Point(459, 107);
+            this.lblMasVendidoPorCategoria.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblMasVendidoPorCategoria.Location = new System.Drawing.Point(428, 165);
             this.lblMasVendidoPorCategoria.Name = "lblMasVendidoPorCategoria";
-            this.lblMasVendidoPorCategoria.Size = new System.Drawing.Size(201, 15);
+            this.lblMasVendidoPorCategoria.Size = new System.Drawing.Size(103, 15);
             this.lblMasVendidoPorCategoria.TabIndex = 148;
-            this.lblMasVendidoPorCategoria.Text = "Producto Mas Vendido por categoría";
+            this.lblMasVendidoPorCategoria.Text = "Elija una categoría";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(275, 157);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(211, 195);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 15);
+            this.label3.Size = new System.Drawing.Size(170, 40);
             this.label3.TabIndex = 149;
-            this.label3.Text = "Promedio Ganancias Categoría";
+            this.label3.Text = "Promedio ganancias en esa categoría";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblPromedioGananciasCategoria
             // 
             this.lblPromedioGananciasCategoria.AutoSize = true;
-            this.lblPromedioGananciasCategoria.Location = new System.Drawing.Point(459, 157);
+            this.lblPromedioGananciasCategoria.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPromedioGananciasCategoria.Location = new System.Drawing.Point(428, 208);
             this.lblPromedioGananciasCategoria.Name = "lblPromedioGananciasCategoria";
-            this.lblPromedioGananciasCategoria.Size = new System.Drawing.Size(170, 15);
+            this.lblPromedioGananciasCategoria.Size = new System.Drawing.Size(103, 15);
             this.lblPromedioGananciasCategoria.TabIndex = 150;
-            this.lblPromedioGananciasCategoria.Text = "Promedio Ganancias Categoría";
+            this.lblPromedioGananciasCategoria.Text = "Elija una categoría";
             // 
-            // button1
+            // label4
             // 
-            this.button1.Location = new System.Drawing.Point(500, 422);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 24);
-            this.button1.TabIndex = 151;
-            this.button1.Text = "Volver";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(259, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 17);
+            this.label4.TabIndex = 152;
+            this.label4.Text = "Ganancias en total";
+            // 
+            // lblGananciasTotal
+            // 
+            this.lblGananciasTotal.AutoSize = true;
+            this.lblGananciasTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(58)))));
+            this.lblGananciasTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblGananciasTotal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblGananciasTotal.Location = new System.Drawing.Point(443, 92);
+            this.lblGananciasTotal.Name = "lblGananciasTotal";
+            this.lblGananciasTotal.Size = new System.Drawing.Size(76, 17);
+            this.lblGananciasTotal.TabIndex = 153;
+            this.lblGananciasTotal.Text = "                 ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(369, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 17);
+            this.label5.TabIndex = 156;
+            this.label5.Text = "Estadísticas";
+            // 
+            // llbMinimizar
+            // 
+            this.llbMinimizar.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.llbMinimizar.AutoSize = true;
+            this.llbMinimizar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.llbMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("llbMinimizar.Image")));
+            this.llbMinimizar.LinkColor = System.Drawing.Color.Transparent;
+            this.llbMinimizar.Location = new System.Drawing.Point(592, -2);
+            this.llbMinimizar.Name = "llbMinimizar";
+            this.llbMinimizar.Size = new System.Drawing.Size(27, 28);
+            this.llbMinimizar.TabIndex = 154;
+            this.llbMinimizar.TabStop = true;
+            this.llbMinimizar.Text = "   ";
+            this.llbMinimizar.VisitedLinkColor = System.Drawing.Color.Transparent;
+            // 
+            // llbCerrar
+            // 
+            this.llbCerrar.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.llbCerrar.AutoSize = true;
+            this.llbCerrar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.llbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("llbCerrar.Image")));
+            this.llbCerrar.LinkColor = System.Drawing.Color.Transparent;
+            this.llbCerrar.Location = new System.Drawing.Point(615, 0);
+            this.llbCerrar.Name = "llbCerrar";
+            this.llbCerrar.Size = new System.Drawing.Size(42, 28);
+            this.llbCerrar.TabIndex = 155;
+            this.llbCerrar.TabStop = true;
+            this.llbCerrar.Text = "      ";
+            this.llbCerrar.VisitedLinkColor = System.Drawing.Color.Transparent;
+            // 
+            // llbVolver
+            // 
+            this.llbVolver.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(25)))), ((int)(((byte)(74)))));
+            this.llbVolver.AutoSize = true;
+            this.llbVolver.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.llbVolver.Image = ((System.Drawing.Image)(resources.GetObject("llbVolver.Image")));
+            this.llbVolver.LinkColor = System.Drawing.Color.Transparent;
+            this.llbVolver.Location = new System.Drawing.Point(376, 399);
+            this.llbVolver.Name = "llbVolver";
+            this.llbVolver.Size = new System.Drawing.Size(72, 28);
+            this.llbVolver.TabIndex = 157;
+            this.llbVolver.TabStop = true;
+            this.llbVolver.Text = "            ";
+            this.llbVolver.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbVolver.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbVolver_LinkClicked);
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(58)))));
+            this.label6.Location = new System.Drawing.Point(218, 46);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(415, 81);
+            this.label6.TabIndex = 158;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(422, 92);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 17);
+            this.label7.TabIndex = 159;
+            this.label7.Text = "$";
             // 
             // FrmEstadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 488);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.ClientSize = new System.Drawing.Size(653, 466);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.llbVolver);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.llbMinimizar);
+            this.Controls.Add(this.llbCerrar);
+            this.Controls.Add(this.lblGananciasTotal);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblPromedioGananciasCategoria);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblMasVendidoPorCategoria);
@@ -258,10 +346,11 @@ namespace UITiendaElectronica
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblCantidadVentasRealizadas);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblMontoInsuficiente);
-            this.Controls.Add(this.btnVentasRealizadas);
+            this.Controls.Add(this.label6);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEstadisticas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstadisticas";
             this.Load += new System.EventHandler(this.FrmEstadisticas_Load);
             this.ResumeLayout(false);
@@ -270,9 +359,6 @@ namespace UITiendaElectronica
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnVentasRealizadas;
-        private System.Windows.Forms.Label lblMontoInsuficiente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCantidadVentasRealizadas;
         private System.Windows.Forms.Label label2;
@@ -289,6 +375,13 @@ namespace UITiendaElectronica
         private System.Windows.Forms.Label lblMasVendidoPorCategoria;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblPromedioGananciasCategoria;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblGananciasTotal;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.LinkLabel llbMinimizar;
+        private System.Windows.Forms.LinkLabel llbCerrar;
+        private System.Windows.Forms.LinkLabel llbVolver;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
