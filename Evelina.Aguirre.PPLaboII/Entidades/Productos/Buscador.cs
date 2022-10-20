@@ -166,7 +166,7 @@ namespace Entidades.Productos
         }
 
         /// <summary>
-        /// Busca un producto en el inventario de la tienda por id.
+        /// Busca un producto en una colección tipo diccionario por id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>El producot de encontrarlo de lo contrario devuelve null.</returns>
@@ -181,6 +181,28 @@ namespace Entidades.Productos
                 {
                     auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
                         item.Value.Descripcion, item.Value.Categoria, item.Value.Cantidad);
+                }
+
+            }
+            return auxProducto;
+
+        }
+        /// <summary>
+        /// Busca un producto en una colección tipo lista por id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>El producot de encontrarlo de lo contrario devuelve null.</returns>
+        public static Producto BuscarProducto(int id, List<Producto> listaProductos)
+        {
+            Producto auxProducto = null;
+
+            foreach (Producto item in listaProductos)
+            {
+
+                if (item.Id == id)
+                {
+                    auxProducto = new Producto(item.Nombre, item.Precio, item.Id,
+                        item.Descripcion, item.Categoria, item.Cantidad);
                 }
 
             }

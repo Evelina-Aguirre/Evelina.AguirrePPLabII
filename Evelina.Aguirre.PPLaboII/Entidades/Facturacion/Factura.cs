@@ -37,7 +37,6 @@ namespace Entidades
         {
             get
             {
-               
                 return totalCompra;
             }
             set

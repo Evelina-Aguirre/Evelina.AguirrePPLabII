@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.Productos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -70,21 +71,34 @@ namespace Entidades.TiendaElectronica
         public static bool operator -(FacturaDebito factura, int id)
         {
             bool resultado = false;
+            bool ultimoItem = false;
+            Producto auxProductoARemover= new Producto("",0,0,"",ECategoriaElectronico.SinCategoria,0);
             if (Factura.Carrito is not null)
             {
                 foreach (Producto item in FacturaDebito.Carrito)
                 {
                     if (item.Id == id)
                     {
-                        if (item.Cantidad > 0)
+                        if (item.Cantidad > 1)
                         {
                             factura.TotalCompra -= item.Precio;
                             item.Cantidad--;
+                            ultimoItem = false;
                         }
+                        else
+                        {
+                            ultimoItem = true;
+                            auxProductoARemover = item;
+                        }
+
                        
                         resultado = true;
                         break;
                     }
+                }
+                if(ultimoItem)
+                {
+                    Factura.Carrito.Remove(auxProductoARemover);
                 }
             }
             return resultado;
