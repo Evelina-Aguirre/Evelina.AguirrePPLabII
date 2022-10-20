@@ -119,9 +119,10 @@ namespace Entidades
             
             foreach (KeyValuePair<int, Producto> item in CatalogoProveedor.catalogo)
             {
+                nuevaKey++;
                 Producto auxProducto = new Producto(item.Value.Nombre,item.Value.Precio, item.Value.Id,
                     item.Value.Descripcion, item.Value.Categoria,10);
-                TiendaDeElectronica.inventarioTienda.Add(nuevaKey++, auxProducto);   
+                TiendaDeElectronica.inventarioTienda.Add(nuevaKey, auxProducto);   
             }
             
         }

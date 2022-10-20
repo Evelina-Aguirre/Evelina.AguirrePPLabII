@@ -99,5 +99,15 @@ namespace UITiendaElectronica
                 frmPruebaApp.ShowDialog();
             }
         }
+
+        private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -266,6 +266,7 @@ namespace UITiendaElectronica
             this.llbMinimizar.TabStop = true;
             this.llbMinimizar.Text = "   ";
             this.llbMinimizar.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbMinimizar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbMinimizar_LinkClicked);
             // 
             // llbCerrar
             // 
@@ -281,6 +282,7 @@ namespace UITiendaElectronica
             this.llbCerrar.TabStop = true;
             this.llbCerrar.Text = "      ";
             this.llbCerrar.VisitedLinkColor = System.Drawing.Color.Transparent;
+            this.llbCerrar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbCerrar_LinkClicked);
             // 
             // llbVolver
             // 

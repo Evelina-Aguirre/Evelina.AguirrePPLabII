@@ -61,6 +61,7 @@ namespace Entidades.Tienda
                         {
                             aux.Cantidad++;
                             gananciaAcumulada += item.Value.Precio;
+                            existe = true;
                             resultado = true;
                             break;
                         }
@@ -69,11 +70,11 @@ namespace Entidades.Tienda
                             existe = false;
                         }
                     }
-                        
+
                     if (!existe)
                     {
                         Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
-                            item.Value.Descripcion, item.Value.Categoria,1);
+                            item.Value.Descripcion, item.Value.Categoria, 1);
                         Estadisticas.listaProductosVendidos.Add(auxProducto);
                         gananciaAcumulada += item.Value.Precio;
                         resultado = true;
@@ -85,7 +86,8 @@ namespace Entidades.Tienda
         }
 
         /// <summary>
-        /// Remueve un producto de la lista de Productos vendidos en la tienda a partir del Id.
+        /// Remueve un producto de la lista de Productos vendidos en la tienda a partir del Id
+        /// y resta la el precio de este de las ganancias acumuladas.
         /// </summary>
         /// <param name="estadistica"></param>
         /// <param name="id"></param>
@@ -119,6 +121,11 @@ namespace Entidades.Tienda
             return resultado;
         }
 
+        /// <summary>
+        /// Agrupa los productos vendidos por categoría.
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
         public static List<Producto> ProductosVendidosPorTag(ECategoriaElectronico categoria)
         {
             List<Producto> auxListaProducto = new List<Producto>();
@@ -133,6 +140,11 @@ namespace Entidades.Tienda
             return auxListaProducto;
         }
 
+        /// <summary>
+        /// Informa el nombre del producto más vendido de una categoría determinada.
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
         public static string ProductoMasVendido(ECategoriaElectronico categoria)
         {
             List<Producto> productos = new List<Producto>();
@@ -151,6 +163,11 @@ namespace Entidades.Tienda
             return nombre;
         }
 
+        /// <summary>
+        /// Saca el promedio del precio de productos vendidos de una categoría.
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
         public static double PromedioVentasProducto(ECategoriaElectronico categoria)
         {
             List<Producto> productos = new List<Producto>();
@@ -158,13 +175,15 @@ namespace Entidades.Tienda
             double promedio = 0;
             double acum = 0;
             productos = ProductosVendidosPorTag(categoria);
-            foreach (Producto item in productos)
+            if (productos.Count > 0)
             {
-                acum += item.Precio;
-                contador++;
+                foreach (Producto item in productos)
+                {
+                    acum += item.Precio;
+                    contador++;
+                }
+                promedio = acum / contador;
             }
-            promedio = acum / contador;
-
             return promedio;
         }
 
