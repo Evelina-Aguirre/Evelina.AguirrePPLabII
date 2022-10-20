@@ -54,6 +54,9 @@ namespace UITiendaElectronica
             this.llbVolver = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblSaldot = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblSaldoTienda = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -191,7 +194,7 @@ namespace UITiendaElectronica
             // 
             this.lblMasVendidoPorCategoria.AutoSize = true;
             this.lblMasVendidoPorCategoria.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblMasVendidoPorCategoria.Location = new System.Drawing.Point(428, 165);
+            this.lblMasVendidoPorCategoria.Location = new System.Drawing.Point(406, 167);
             this.lblMasVendidoPorCategoria.Name = "lblMasVendidoPorCategoria";
             this.lblMasVendidoPorCategoria.Size = new System.Drawing.Size(103, 15);
             this.lblMasVendidoPorCategoria.TabIndex = 148;
@@ -211,7 +214,7 @@ namespace UITiendaElectronica
             // 
             this.lblPromedioGananciasCategoria.AutoSize = true;
             this.lblPromedioGananciasCategoria.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPromedioGananciasCategoria.Location = new System.Drawing.Point(428, 208);
+            this.lblPromedioGananciasCategoria.Location = new System.Drawing.Point(406, 210);
             this.lblPromedioGananciasCategoria.Name = "lblPromedioGananciasCategoria";
             this.lblPromedioGananciasCategoria.Size = new System.Drawing.Size(103, 15);
             this.lblPromedioGananciasCategoria.TabIndex = 150;
@@ -305,7 +308,7 @@ namespace UITiendaElectronica
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(58)))));
             this.label6.Location = new System.Drawing.Point(218, 46);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(415, 81);
+            this.label6.Size = new System.Drawing.Size(415, 105);
             this.label6.TabIndex = 158;
             // 
             // label7
@@ -319,12 +322,49 @@ namespace UITiendaElectronica
             this.label7.TabIndex = 159;
             this.label7.Text = "$";
             // 
+            // lblSaldot
+            // 
+            this.lblSaldot.AutoSize = true;
+            this.lblSaldot.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblSaldot.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblSaldot.Location = new System.Drawing.Point(254, 118);
+            this.lblSaldot.Name = "lblSaldot";
+            this.lblSaldot.Size = new System.Drawing.Size(88, 17);
+            this.lblSaldot.TabIndex = 160;
+            this.lblSaldot.Text = "Saldo Tienda";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label9.Location = new System.Drawing.Point(422, 118);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(15, 17);
+            this.label9.TabIndex = 161;
+            this.label9.Text = "$";
+            // 
+            // lblSaldoTienda
+            // 
+            this.lblSaldoTienda.AutoSize = true;
+            this.lblSaldoTienda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(58)))));
+            this.lblSaldoTienda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblSaldoTienda.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblSaldoTienda.Location = new System.Drawing.Point(443, 118);
+            this.lblSaldoTienda.Name = "lblSaldoTienda";
+            this.lblSaldoTienda.Size = new System.Drawing.Size(76, 17);
+            this.lblSaldoTienda.TabIndex = 162;
+            this.lblSaldoTienda.Text = "                 ";
+            // 
             // FrmEstadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.ClientSize = new System.Drawing.Size(653, 466);
+            this.Controls.Add(this.lblSaldoTienda);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblSaldot);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.llbVolver);
             this.Controls.Add(this.label5);
@@ -385,5 +425,8 @@ namespace UITiendaElectronica
         private System.Windows.Forms.LinkLabel llbVolver;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblSaldot;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblSaldoTienda;
     }
 }

@@ -1,12 +1,7 @@
-﻿using Entidades.Tienda;
+﻿using Entidades;
+using Entidades.ExcepcionesPropias;
+using Entidades.Tienda;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UITiendaElectronica
@@ -20,84 +15,149 @@ namespace UITiendaElectronica
 
         private void FrmEstadisticas_Load(object sender, EventArgs e)
         {
-            this.lblCantidadVentasRealizadas.Text = Estadisticas.CantidadVentas.ToString();
-            this.lblMasVendidoPorCategoria.Text = "Elija una categoría";
-            this.lblPromedioGananciasCategoria.Text = "Elija una categoría";
-            this.lblGananciasTotal.Text = Estadisticas.GananciaAcumulada.ToString();
+            lblCantidadVentasRealizadas.Text = Estadisticas.CantidadVentas.ToString();
+            lblMasVendidoPorCategoria.Text = "Elija una categoría";
+            lblPromedioGananciasCategoria.Text = "Elija una categoría";
+            lblGananciasTotal.Text = Estadisticas.GananciaAcumulada.ToString();
+            this.lblSaldoTienda.Text = TiendaDeElectronica.CuentaTienda.ToString();
         }
 
         private void btnLeds_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Leds).ToString();
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Leds).ToString();
+            try
+            {
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Leds).ToString();
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Leds).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
         }
 
         private void btnBobinas_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Bobinas).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Bobinas).ToString();
+            try
+            {
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Bobinas).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Bobinas).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
         }
 
         private void btnConectores_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Conectores).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Conectores).ToString();
+            try
+            {
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Conectores).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Conectores).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
         }
 
         private void btnCircuitosIntegrados_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.CircuitosIntegrados).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.CircuitosIntegrados).ToString();
+            try
+            {
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.CircuitosIntegrados).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.CircuitosIntegrados).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
         }
 
         private void btnPlaquetas_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Plaquetas).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Plaquetas).ToString();
+            try
+            {
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Plaquetas).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Plaquetas).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
         }
 
         private void btnControlTermico_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.ControlTermico).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.ControlTermico).ToString();
+            try
+            {
+
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.ControlTermico).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.ControlTermico).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+            }
         }
 
         private void btnLimpieza_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Limpieza).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Limpieza).ToString();
+            try
+            {
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Limpieza).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Limpieza).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
         }
 
         private void btnSoldado_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Soldado).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Soldado).ToString();
+            try
+            {
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Soldado).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Soldado).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
         }
 
         private void btnHerramientas_Click(object sender, EventArgs e)
         {
-            this.lblPromedioGananciasCategoria.Text = "";
-            this.lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Herramientas).ToString();
-            this.lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Herramientas).ToString();
+            try
+            {
+                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Herramientas).ToString();
+                lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Herramientas).ToString();
+            }
+            catch (ListaVaciaException ex)
+            {
+                lblPromedioGananciasCategoria.Text = ex.Message;
+                lblMasVendidoPorCategoria.Text = ex.Message;
+            }
+
         }
 
 
         private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            {
-                this.lblPromedioGananciasCategoria.Text = "";
-                Prueba frmPruebaApp = new Prueba();
-                this.Hide();
-                frmPruebaApp.ShowDialog();
-            }
+
+            lblPromedioGananciasCategoria.Text = "";
+            Prueba frmPruebaApp = new Prueba();
+            Hide();
+            frmPruebaApp.ShowDialog();
+
         }
 
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

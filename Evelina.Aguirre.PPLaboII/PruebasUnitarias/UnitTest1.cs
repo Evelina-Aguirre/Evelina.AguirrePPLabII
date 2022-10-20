@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entidades;
 using Entidades.Productos;
 using Entidades.ExcepcionesPropias;
+using Entidades.Tienda;
 
 namespace PruebasUnitarias
 {
@@ -78,16 +79,14 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        [ExpectedException(typeof(MontoInsuficienteException))]
-        public void Prueba_que_se_genere_excepcion_por_Monto_insuficiente()
+        [ExpectedException(typeof(ListaVaciaException))]
+        public void Prueba_que_se_genere_excepcion_por_No_Encontrar_productos_n_una_lista()
         {
             //Arrange
-            int monto = -100;
-            int esperado = 100;
             //Act
-         
+            double auxPromedio = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Leds);
             //Assert
-           
+
         }
 
 

@@ -1,4 +1,5 @@
-﻿using Entidades.TiendaElectronica;
+﻿using Entidades.ExcepcionesPropias;
+using Entidades.TiendaElectronica;
 using System.Collections.Generic;
 
 namespace Entidades.Tienda
@@ -25,15 +26,6 @@ namespace Entidades.Tienda
             Producto auxProducto = new Producto("", 0, 0, "", ECategoriaElectronico.SinCategoria);
             Estadisticas.listaProductosVendidos.Add(auxProducto);
         }
-
-        //public Estadisticas(List<FacturaDebito> listaFacturas, List<Producto> listaProductosVendidos, int cantidadVentas, double gananciaAcumulada)
-        //{
-        //    Estadisticas.listaFacturas = listaFacturas;
-        //    Estadisticas.listaProductosVendidos = listaProductosVendidos;
-        //    Estadisticas.cantidadVentas = cantidadVentas;
-        //    Estadisticas.gananciaAcumulada = gananciaAcumulada;
-        //}
-
 
         public static List<FacturaDebito> ListaFacturas { get => listaFacturas; set => listaFacturas = value; }
         public static int CantidadVentas { get => cantidadVentas; set => cantidadVentas = value; }
@@ -72,7 +64,7 @@ namespace Entidades.Tienda
                     }
 
                     if (!existe)
-                    {
+                    { 
                         Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
                             item.Value.Descripcion, item.Value.Categoria, 1);
                         Estadisticas.listaProductosVendidos.Add(auxProducto);
@@ -151,13 +143,20 @@ namespace Entidades.Tienda
             string nombre = "";
             int max = 1;
             productos = ProductosVendidosPorTag(categoria);
-            foreach (Producto item in productos)
+            if (productos.Count > 0)
             {
-                if (max < item.Cantidad)
+                foreach (Producto item in productos)
                 {
-                    max = item.Cantidad;
-                    nombre = item.Nombre;
+                    if (max < item.Cantidad)
+                    {
+                        max = item.Cantidad;
+                        nombre = item.Nombre;
+                    }
                 }
+            }
+            else
+            {
+                throw new ListaVaciaException("No se realizaron ventas");
             }
 
             return nombre;
@@ -183,6 +182,10 @@ namespace Entidades.Tienda
                     contador++;
                 }
                 promedio = acum / contador;
+            }
+            else
+            {
+                throw new ListaVaciaException("No se realizaron ventas");
             }
             return promedio;
         }
