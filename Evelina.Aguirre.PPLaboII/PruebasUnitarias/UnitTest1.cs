@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entidades;
 using Entidades.Productos;
+using Entidades.ExcepcionesPropias;
 
 namespace PruebasUnitarias
 {
@@ -13,7 +14,7 @@ namespace PruebasUnitarias
             //Arrange
             //Act
             //Assert
-            Assert.IsNotNull(TiendaDeElectronica.InventarioTienda);
+            Assert.IsNotNull(TiendaDeElectronica.InventarioTienda.Count>0);
         }
 
         [TestMethod]
@@ -54,16 +55,41 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        public void Prueba_extraer_Primeras_letras_de_una_palabra()
+        public void Prueba_extraer_Primeras_letras_de_una_cadena()
         {
             //Arrange
-            string auxString = "Las lunas de plutón 104";
+            string auxString = "Las lunas de plutón";
             //Act
             string resultado = Buscador.ExtraerPrimerasLetrasPalabra(auxString, 3);
             //Assert
             Assert.AreEqual("Las", resultado);
-        }     
-        
+        }
+
+        [TestMethod]
+        public void Prueba_sumar_un_Id_a_la_tienda()
+        {
+            //Arrange
+            TiendaDeElectronica tienda = new TiendaDeElectronica();
+            int id = 110;
+            //Act
+            bool resultado = tienda + id;
+            //Assert
+            Assert.IsTrue(resultado);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MontoInsuficienteException))]
+        public void Prueba_que_se_genere_excepcion_por_Monto_insuficiente()
+        {
+            //Arrange
+            int monto = -100;
+            int esperado = 100;
+            //Act
+         
+            //Assert
+           
+        }
+
 
     }
 }

@@ -41,7 +41,9 @@ namespace Entidades
             }
             set
             {
-                TiendaDeElectronica.cuentaTienda = value;
+               
+               TiendaDeElectronica.cuentaTienda = value;
+
             }
         }
 

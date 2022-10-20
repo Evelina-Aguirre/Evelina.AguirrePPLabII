@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.ExcepcionesPropias;
 using Entidades.Productos;
 using Entidades.Tienda;
 using Entidades.TiendaElectronica;
@@ -292,27 +293,45 @@ namespace UITiendaElectronica
             txtAbonacon.Text = txtConComa;
             bool esNumero = float.TryParse(txtAbonacon.Text, out abonaCon);
 
-            if (txtAbonacon.Text != null && esNumero)
+            try
             {
-                //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al al elegir el método de pago,
-                //Uso el método de esta clase (facturaEfectivo) para poder mostrarlo en el form de manera orientativa para el usuario.
-                lblCalculoVuelto.Text = Math.Round(FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, float.Parse(txtAbonacon.Text)), 2).ToString();
-
-                if (float.Parse(lblTotalCarrito.Text) > float.Parse(txtAbonacon.Text))
+                if (txtAbonacon.Text != null && esNumero)
                 {
-                    lblMontoInsuficiente.Text = "Monto insuficiente";
-                    timer1.Interval = 3000;
-                    timer1.Start();
+
+                    //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al al elegir el método de pago,
+                    //Uso el método de esta clase (facturaEfectivo) para poder mostrarlo en el form de manera orientativa para el usuario.
+                    lblCalculoVuelto.Text = Math.Round(FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, float.Parse(txtAbonacon.Text)), 2).ToString();
+
+                    if (float.Parse(lblTotalCarrito.Text) > float.Parse(txtAbonacon.Text))
+                    {
+                        throw new MontoInsuficienteException("Monto insuficiente");
+                        
+                    }
+                }
+                else if (txtAbonacon.Text == null || !esNumero)
+                {
+                    throw new MontoInvalidoException("Debe ingresar un valor numérico");
                 }
             }
-            else if (txtAbonacon.Text == null || !esNumero)
+            catch(MontoInvalidoException ex)
             {
                 lblCalculoVuelto.Text = "-";
-                lblMontoInsuficiente.Text = "Debe ingresar un valor numérico";
+                lblMontoInsuficiente.Text = ex.Message;
                 timer1.Interval = 3000;
                 timer1.Start();
             }
-
+            catch(MontoInsuficienteException ex)
+            {
+                lblMontoInsuficiente.Text = ex.Message;
+                timer1.Interval = 3000;
+                timer1.Start();
+            }
+            catch(Exception ex)
+            {
+                lblMontoInsuficiente.Text = ex.Message;
+                timer1.Interval = 3000;
+                timer1.Start();
+            }
 
         }
 
