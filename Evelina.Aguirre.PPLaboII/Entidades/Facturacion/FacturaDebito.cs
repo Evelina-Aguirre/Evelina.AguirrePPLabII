@@ -91,13 +91,13 @@ namespace Entidades.TiendaElectronica
                             auxProductoARemover = item;
                         }
 
-                       
                         resultado = true;
                         break;
                     }
                 }
                 if(ultimoItem)
                 {
+                    factura.TotalCompra -= auxProductoARemover.Precio;
                     Factura.Carrito.Remove(auxProductoARemover);
                 }
             }
@@ -130,7 +130,6 @@ namespace Entidades.TiendaElectronica
         public override string MostrarCompra()
         {
             StringBuilder sb = new StringBuilder();
-
             foreach (Producto item in Factura.Carrito)
             {
                 sb.AppendLine(item.MostrarProducto());
@@ -140,10 +139,10 @@ namespace Entidades.TiendaElectronica
 
             return sb.ToString();
         }
-        public override string ToString()
-        {
-            return this.MostrarCompra();
-        }
+        //public override string ToString()
+        //{
+        //    return this.MostrarCompra();
+        //}
 
     }
 }

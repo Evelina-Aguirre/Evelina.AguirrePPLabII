@@ -9,24 +9,29 @@ namespace Entidades.TiendaElectronica
         public FacturaCredito(EMetodosDePago metodoDePago, double totalCompra, int cantCuotas)
             : base(metodoDePago, totalCompra)
         {
+            this.totalCompra += (this.totalCompra * 10) / 100;
             this.cantCuotas = cantCuotas;
         }
 
-        public override double TotalCompra 
-        {
-            get
-            {
-                if (base.MetodoDePago is EMetodosDePago.Credito)
-                {
-                    base.TotalCompra += (base.TotalCompra * 10) / 100;
-                }
-                return base.TotalCompra;
-            }
-            set
-            {
-                base.TotalCompra = value;
-            }
-        }
+        //public override double TotalCompra
+        //{
+        //    get
+        //    {
+        //        return base.totalCompra;
+        //    }
+        //    set
+        //    {
+        //        if (this.MetodoDePago is EMetodosDePago.Credito)
+        //        {
+        //            double resultado = 0;
+        //            resultado += (value * 10) / 100;
+        //            value = resultado;
+        //        }
+        //        this.totalCompra = value;
+        //    }
+        //}
+
+
         /// <summary>
         /// Toma los valores de la factura general y le agraga el concepto de cuotas.
         /// </summary>

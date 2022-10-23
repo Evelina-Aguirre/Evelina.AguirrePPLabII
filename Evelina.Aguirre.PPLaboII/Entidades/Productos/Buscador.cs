@@ -187,28 +187,7 @@ namespace Entidades.Productos
             return auxProducto;
 
         }
-        /// <summary>
-        /// Busca un producto en una colección tipo lista por id.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>El producot de encontrarlo de lo contrario devuelve null.</returns>
-        public static Producto BuscarProducto(int id, List<Producto> listaProductos)
-        {
-            Producto auxProducto = null;
-
-            foreach (Producto item in listaProductos)
-            {
-
-                if (item.Id == id)
-                {
-                    auxProducto = new Producto(item.Nombre, item.Precio, item.Id,
-                        item.Descripcion, item.Categoria, item.Cantidad);
-                }
-
-            }
-            return auxProducto;
-
-        }
+       
         /// <summary>
         /// Busca coincidencias en nombre, id y características en una colección de tipo diccionario.
         /// </summary>

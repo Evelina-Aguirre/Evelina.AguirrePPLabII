@@ -7,7 +7,7 @@ namespace Entidades
     {
         private static List<Producto> carrito;
         private EMetodosDePago metodoDePago;
-        private double totalCompra;
+        internal double totalCompra;
 
         static Factura()
         {
@@ -33,15 +33,15 @@ namespace Entidades
             }
         }
 
-        public virtual double TotalCompra
+        public double TotalCompra
         {
             get
             {
-                return totalCompra;
+                return this.totalCompra;
             }
             set
             {
-                totalCompra = value;
+                this.totalCompra = value;
             }
         }
 
@@ -49,6 +49,7 @@ namespace Entidades
 
 
         public abstract string MostrarCompra();
+      
 
 
 

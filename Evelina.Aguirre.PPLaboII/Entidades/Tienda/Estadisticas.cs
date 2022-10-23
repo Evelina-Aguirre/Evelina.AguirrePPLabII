@@ -30,7 +30,7 @@ namespace Entidades.Tienda
         public static List<FacturaDebito> ListaFacturas { get => listaFacturas; set => listaFacturas = value; }
         public static int CantidadVentas { get => cantidadVentas; set => cantidadVentas = value; }
         public static List<Producto> ListaProductosVendidos { get => listaProductosVendidos; set => listaProductosVendidos = value; }
-        public static double GananciaAcumulada { get => gananciaAcumulada; }
+        public static double GananciaAcumulada { get => gananciaAcumulada; set => gananciaAcumulada = value; }
 
         /// <summary>
         /// Agrega producto y precio de este a los atributos de la estadística.
@@ -52,7 +52,7 @@ namespace Entidades.Tienda
                         if (aux.Id == id)
                         {
                             aux.Cantidad++;
-                            gananciaAcumulada += item.Value.Precio;
+                           // gananciaAcumulada += item.Value.Precio;
                             existe = true;
                             resultado = true;
                             break;
@@ -68,7 +68,7 @@ namespace Entidades.Tienda
                         Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
                             item.Value.Descripcion, item.Value.Categoria, 1);
                         Estadisticas.listaProductosVendidos.Add(auxProducto);
-                        gananciaAcumulada += item.Value.Precio;
+                        //gananciaAcumulada += item.Value.Precio;
                         resultado = true;
                     }
                     break;
@@ -94,7 +94,7 @@ namespace Entidades.Tienda
                 {
                     if (item.Id == id)
                     {
-                        gananciaAcumulada -= item.Precio;
+                       // gananciaAcumulada -= item.Precio;
                         if (item.Cantidad < 1)
                         {
                             item.Cantidad--;

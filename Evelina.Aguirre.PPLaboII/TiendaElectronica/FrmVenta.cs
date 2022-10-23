@@ -298,7 +298,7 @@ namespace UITiendaElectronica
                 if (txtAbonacon.Text != null && esNumero)
                 {
 
-                    //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al al elegir el método de pago,
+                    //La propiedad "Vuelto" la tiene la facturaEfectivo, que se instanciará recién al |elegir el método de pago,
                     //Uso el método de esta clase (facturaEfectivo) para poder mostrarlo en el form de manera orientativa para el usuario.
                     lblCalculoVuelto.Text = Math.Round(FacturaEfectivo.CalculoVuelto(auxFactura.TotalCompra, float.Parse(txtAbonacon.Text)), 2).ToString();
 
@@ -402,6 +402,7 @@ namespace UITiendaElectronica
 
                                 //Se agrega la venta a las estadísticas de la tienda
                                 Estadisticas.ListaFacturas.Add(facturaFinal);
+                                Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
                                 Estadisticas.CantidadVentas++;
 
                                 MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
@@ -435,9 +436,11 @@ namespace UITiendaElectronica
 
                             //Se agrega la venta a las estadísticas de la tienda
                             Estadisticas.ListaFacturas.Add(facturaFinal);
+                            Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
                             Estadisticas.CantidadVentas++;
 
                             //Resetea la lista de la factura de la venta concretada y limpia form.
+                            
                             Factura.Carrito.Clear();
                             auxFactura.TotalCompra = 0;
                             lblTotalCarrito.Text = string.Empty;
@@ -452,6 +455,7 @@ namespace UITiendaElectronica
 
                             //Se agrega la venta a las estadísticas de la tienda
                             Estadisticas.ListaFacturas.Add(facturaFinal);
+                            Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
                             Estadisticas.CantidadVentas++;
 
                             Factura.Carrito.Clear();
