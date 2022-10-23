@@ -52,7 +52,6 @@ namespace Entidades.Tienda
                         if (aux.Id == id)
                         {
                             aux.Cantidad++;
-                           // gananciaAcumulada += item.Value.Precio;
                             existe = true;
                             resultado = true;
                             break;
@@ -68,7 +67,6 @@ namespace Entidades.Tienda
                         Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
                             item.Value.Descripcion, item.Value.Categoria, 1);
                         Estadisticas.listaProductosVendidos.Add(auxProducto);
-                        //gananciaAcumulada += item.Value.Precio;
                         resultado = true;
                     }
                     break;
@@ -94,7 +92,6 @@ namespace Entidades.Tienda
                 {
                     if (item.Id == id)
                     {
-                       // gananciaAcumulada -= item.Precio;
                         if (item.Cantidad < 1)
                         {
                             item.Cantidad--;
@@ -141,7 +138,7 @@ namespace Entidades.Tienda
         {
             List<Producto> productos = new List<Producto>();
             string nombre = "";
-            int max = 1;
+            int max = 0;
             productos = ProductosVendidosPorTag(categoria);
             if (productos.Count > 0)
             {

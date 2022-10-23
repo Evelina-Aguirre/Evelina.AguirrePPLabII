@@ -139,10 +139,10 @@ namespace Entidades.TiendaElectronica
 
             return sb.ToString();
         }
-        //public override string ToString()
-        //{
-        //    return this.MostrarCompra();
-        //}
+        public override string ToString()
+        {
+            return this.MostrarCompra();
+        }
 
     }
 }

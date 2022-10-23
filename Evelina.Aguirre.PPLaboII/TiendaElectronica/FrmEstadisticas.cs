@@ -27,7 +27,7 @@ namespace UITiendaElectronica
             try
             {
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Leds).ToString();
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Leds).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Leds), 2).ToString();
             }
             catch (ListaVaciaException ex)
             {
@@ -40,7 +40,7 @@ namespace UITiendaElectronica
         {
             try
             {
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Bobinas).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Bobinas),2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Bobinas).ToString();
             }
             catch (ListaVaciaException ex)
@@ -54,7 +54,7 @@ namespace UITiendaElectronica
         {
             try
             {
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Conectores).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Conectores),2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Conectores).ToString();
             }
             catch (ListaVaciaException ex)
@@ -68,7 +68,7 @@ namespace UITiendaElectronica
         {
             try
             {
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.CircuitosIntegrados).ToString();
+                lblPromedioGananciasCategoria.Text =Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.CircuitosIntegrados),2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.CircuitosIntegrados).ToString();
             }
             catch (ListaVaciaException ex)
@@ -82,7 +82,7 @@ namespace UITiendaElectronica
         {
             try
             {
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Plaquetas).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Plaquetas), 2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Plaquetas).ToString();
             }
             catch (ListaVaciaException ex)
@@ -97,7 +97,7 @@ namespace UITiendaElectronica
             try
             {
 
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.ControlTermico).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.ControlTermico), 2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.ControlTermico).ToString();
             }
             catch (ListaVaciaException ex)
@@ -110,7 +110,7 @@ namespace UITiendaElectronica
         {
             try
             {
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Limpieza).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Limpieza),2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Limpieza).ToString();
             }
             catch (ListaVaciaException ex)
@@ -124,7 +124,7 @@ namespace UITiendaElectronica
         {
             try
             {
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Soldado).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Soldado),2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Soldado).ToString();
             }
             catch (ListaVaciaException ex)
@@ -138,7 +138,7 @@ namespace UITiendaElectronica
         {
             try
             {
-                lblPromedioGananciasCategoria.Text = Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Herramientas).ToString();
+                lblPromedioGananciasCategoria.Text = Math.Round(Estadisticas.PromedioVentasProducto(ECategoriaElectronico.Herramientas),2).ToString();
                 lblMasVendidoPorCategoria.Text = Estadisticas.ProductoMasVendido(ECategoriaElectronico.Herramientas).ToString();
             }
             catch (ListaVaciaException ex)
