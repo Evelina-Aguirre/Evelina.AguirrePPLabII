@@ -81,7 +81,7 @@ namespace Entidades
 
             sb.AppendLine($"Tag: {this.Categoria} ");
             sb.AppendLine($"{this.Nombre} - Cant.: {this.cantidad}");
-            sb.AppendLine($"Precio: {this.Precio}");
+            sb.AppendLine($"Precio: $ {this.Precio}");
 
             return sb.ToString();
         }

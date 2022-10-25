@@ -24,7 +24,6 @@ namespace PruebasUnitarias
             //Arrange
             Producto p1 = new Producto("p1", 100, 101, "", ECategoriaElectronico.Leds);
             Producto p2 = new Producto("p2", 100, 101, "", ECategoriaElectronico.Leds,5);
-
             //Act
             bool resultado = p1 == p2;
             //Assert
@@ -36,7 +35,6 @@ namespace PruebasUnitarias
         {
             //Arrange
             string auxString = "Las lunas de plutón";
-
             //Act
             bool resultado = Buscador.BuscarPorPalabraEnCadena("plutón", auxString);
             //Assert
@@ -48,7 +46,6 @@ namespace PruebasUnitarias
         {
             //Arrange
             string auxString = "Las lunas de plutón";
-
             //Act
             bool resultado = Buscador.BuscarPorPalabraEnCadena("plut", auxString);
             //Assert

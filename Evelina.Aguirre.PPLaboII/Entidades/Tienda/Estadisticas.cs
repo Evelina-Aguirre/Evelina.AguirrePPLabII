@@ -1,6 +1,7 @@
 ﻿using Entidades.ExcepcionesPropias;
 using Entidades.TiendaElectronica;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Entidades.Tienda
 {
@@ -11,7 +12,7 @@ namespace Entidades.Tienda
         private static List<Producto> listaProductosVendidos;
         private static int cantidadVentas;
         private static double gananciaAcumulada;
-
+        private static int cantidadProdMasVendido;
         static Estadisticas()
         {
             Estadisticas.listaFacturas = new List<FacturaDebito>();
@@ -19,6 +20,7 @@ namespace Entidades.Tienda
             Estadisticas.InicializaListaProductosVendidos();
             Estadisticas.cantidadVentas = 0;
             Estadisticas.gananciaAcumulada = 0;
+            Estadisticas.cantidadProdMasVendido = 0;
         }
 
         private static void InicializaListaProductosVendidos()
@@ -31,6 +33,7 @@ namespace Entidades.Tienda
         public static int CantidadVentas { get => cantidadVentas; set => cantidadVentas = value; }
         public static List<Producto> ListaProductosVendidos { get => listaProductosVendidos; set => listaProductosVendidos = value; }
         public static double GananciaAcumulada { get => gananciaAcumulada; set => gananciaAcumulada = value; }
+        public static double CantidadProdMasVendido { get => cantidadProdMasVendido;}
 
         /// <summary>
         /// Agrega producto y precio de este a los atributos de la estadística.
@@ -63,7 +66,7 @@ namespace Entidades.Tienda
                     }
 
                     if (!existe)
-                    { 
+                    {
                         Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
                             item.Value.Descripcion, item.Value.Categoria, 1);
                         Estadisticas.listaProductosVendidos.Add(auxProducto);
@@ -150,6 +153,7 @@ namespace Entidades.Tienda
                         nombre = item.Nombre;
                     }
                 }
+                Estadisticas.cantidadProdMasVendido = max;
             }
             else
             {
@@ -160,7 +164,7 @@ namespace Entidades.Tienda
         }
 
         /// <summary>
-        /// Saca el promedio del precio de productos vendidos de una categoría.
+        /// Calcula el promedio del precio de productos vendidos de una categoría.
         /// </summary>
         /// <param name="categoria"></param>
         /// <returns></returns>
@@ -187,7 +191,25 @@ namespace Entidades.Tienda
             return promedio;
         }
 
+        public static string Mostrar(ECategoriaElectronico categoria)
+        {
+            StringBuilder sb = new StringBuilder();
+            List<Producto> auxLista = ProductosVendidosPorTag(categoria);
 
+            if (auxLista.Count > 0)
+            {
+
+                foreach (Producto item in auxLista)
+                {
+                    sb.AppendLine(item.MostrarProducto());
+                }
+            }
+            else
+            {
+                throw new ListaVaciaException("No se realizaron ventas");
+            }
+            return sb.ToString();
+        }
 
     }
 }

@@ -19,7 +19,7 @@ namespace Entidades.TiendaElectronica
         /// <summary>
         /// Agregar un producto a la lista de ítems de la factura y suma el precio del mismo al total.
         /// </summary>
-        /// <param name="factura">Factura a modificarcarrito</param>
+        /// <param name="factura">Factura a modificar del carrito</param>
         /// <param name="p">Producto a agregar</param>
         /// <returns>Factura con el producto agregado y el precio de este sumado al total.</returns>
         public static FacturaDebito operator +(FacturaDebito factura, Producto p)
@@ -63,7 +63,7 @@ namespace Entidades.TiendaElectronica
         }
 
         /// <summary>
-        /// Sobrecarga de operador -, resta un producto del carro de la factura.
+        /// Resta un producto del carro de la factura.
         /// </summary>
         /// <param name="c">cliente</param>
         /// <param name="p">producto</param>
