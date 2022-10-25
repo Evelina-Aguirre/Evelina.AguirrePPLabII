@@ -13,25 +13,6 @@ namespace Entidades.TiendaElectronica
             this.cantCuotas = cantCuotas;
         }
 
-        //public override double TotalCompra
-        //{
-        //    get
-        //    {
-        //        return base.totalCompra;
-        //    }
-        //    set
-        //    {
-        //        if (this.MetodoDePago is EMetodosDePago.Credito)
-        //        {
-        //            double resultado = 0;
-        //            resultado += (value * 10) / 100;
-        //            value = resultado;
-        //        }
-        //        this.totalCompra = value;
-        //    }
-        //}
-
-
         /// <summary>
         /// Toma los valores de la factura general y le agraga el concepto de cuotas.
         /// </summary>

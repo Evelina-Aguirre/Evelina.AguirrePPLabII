@@ -134,7 +134,7 @@ namespace Entidades.TiendaElectronica
             {
                 sb.AppendLine(item.MostrarProducto());
             }
-            sb.AppendLine($"\nTotal: {base.TotalCompra}");
+            sb.AppendLine($"\nTotal: ${base.TotalCompra}");
             sb.AppendLine($"Metodo de Pago: {base.MetodoDePago}");
 
             return sb.ToString();

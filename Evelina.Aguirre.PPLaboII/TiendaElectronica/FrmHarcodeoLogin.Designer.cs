@@ -185,6 +185,10 @@ namespace UITiendaElectronica
             this.Name = "Prueba";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prueba App";
+            this.Load += new System.EventHandler(this.Prueba_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Prueba_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Prueba_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Prueba_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -12,6 +12,7 @@ namespace UITiendaElectronica
 {
     public partial class Prueba : Form
     {
+        int m, mx, my;
         public Prueba()
         {
             InitializeComponent();
@@ -49,6 +50,32 @@ namespace UITiendaElectronica
             FrmEstadisticas frmEst = new FrmEstadisticas();
             this.Close();
             frmEst.Show();
+        }
+
+        private void Prueba_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Prueba_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
+
+        }
+
+        private void Prueba_MouseUp(object sender, MouseEventArgs e)
+        {
+            m = 0;
+        }
+
+        private void Prueba_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
         }
     }
 }

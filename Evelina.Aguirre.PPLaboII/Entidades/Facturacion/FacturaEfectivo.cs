@@ -66,8 +66,8 @@ namespace Entidades.TiendaElectronica
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.MostrarCompra());
-            sb.AppendLine($"Abona con: {this.abonaCon}");
-            sb.AppendLine($"Vuelto: {Math.Round(this.vuelto,2)}");
+            sb.AppendLine($"Abona con: ${this.abonaCon}");
+            sb.AppendLine($"Vuelto: $ {Math.Round(this.vuelto,2)}");
 
             return sb.ToString();
         }

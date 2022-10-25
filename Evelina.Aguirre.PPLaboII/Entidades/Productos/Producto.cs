@@ -79,9 +79,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Tag: {this.Categoria} ");
+            sb.AppendLine($"{this.Categoria} ");
             sb.AppendLine($"{this.Nombre} - Cant.: {this.cantidad}");
-            sb.AppendLine($"Precio: $ {this.Precio}");
+            sb.AppendLine($"Precio u.: $ {this.Precio}");
+            sb.AppendLine($"Precio x {this.Cantidad}: $ {this.Precio * this.Cantidad}");
 
             return sb.ToString();
         }
