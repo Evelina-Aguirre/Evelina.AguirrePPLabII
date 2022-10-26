@@ -397,7 +397,7 @@ namespace UITiendaElectronica
 
                             if (txtAbonacon.Text != null && esNumero && auxFactura.TotalCompra < Convert.ToDouble(txtAbonacon.Text))
                             {
-                                facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
+                                facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra,
                                 Convert.ToDouble(txtAbonacon.Text));
 
                                 //Se agrega la venta a las estadísticas de la tienda
@@ -405,7 +405,7 @@ namespace UITiendaElectronica
                                 Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
                                 Estadisticas.CantidadVentas++;
 
-                                MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
+                                MessageBox.Show("\n" + facturaFinal.ToString());
                                 TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
                                 //Resetea la lista de la factura de la venta ya concretada y limpia form.
                                 Factura.Carrito.Clear();
@@ -426,11 +426,8 @@ namespace UITiendaElectronica
                         {
                             facturaFinal = new FacturaCredito(EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
                                  Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
-                            MessageBox.Show("Factura:\n\n" +
-                                facturaFinal.ToString() +
-                                "\n Recuerde que se aplica\n" +
-                                " un 10 % de recargo a las\n" +
-                                " compras en crédito.");
+                            MessageBox.Show("\n" +
+                                facturaFinal.ToString());
 
                             TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
 
@@ -450,7 +447,7 @@ namespace UITiendaElectronica
                         else if (rdoDebiro.Checked)
                         {
                             facturaFinal = new FacturaDebito(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
-                            MessageBox.Show("Factura:\n\n" + facturaFinal.ToString());
+                            MessageBox.Show("\n" + facturaFinal.ToString());
                             TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
 
                             //Se agrega la venta a las estadísticas de la tienda

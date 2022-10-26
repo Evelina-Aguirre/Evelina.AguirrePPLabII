@@ -7,7 +7,6 @@ namespace Entidades.Tienda
 {
     public class Estadisticas
     {
-
         private static List<FacturaDebito> listaFacturas;
         private static List<Producto> listaProductosVendidos;
         private static int cantidadVentas;

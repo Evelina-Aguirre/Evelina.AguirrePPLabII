@@ -80,7 +80,7 @@ namespace UITiendaElectronica
             this.lblCantidadVentasRealizadas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(58)))));
             this.lblCantidadVentasRealizadas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCantidadVentasRealizadas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblCantidadVentasRealizadas.Location = new System.Drawing.Point(422, 63);
+            this.lblCantidadVentasRealizadas.Location = new System.Drawing.Point(414, 64);
             this.lblCantidadVentasRealizadas.Name = "lblCantidadVentasRealizadas";
             this.lblCantidadVentasRealizadas.Size = new System.Drawing.Size(68, 17);
             this.lblCantidadVentasRealizadas.TabIndex = 136;
@@ -223,7 +223,7 @@ namespace UITiendaElectronica
             // 
             this.lblPromedioGananciasCategoria.AutoSize = true;
             this.lblPromedioGananciasCategoria.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPromedioGananciasCategoria.Location = new System.Drawing.Point(406, 238);
+            this.lblPromedioGananciasCategoria.Location = new System.Drawing.Point(405, 238);
             this.lblPromedioGananciasCategoria.Name = "lblPromedioGananciasCategoria";
             this.lblPromedioGananciasCategoria.Size = new System.Drawing.Size(103, 15);
             this.lblPromedioGananciasCategoria.TabIndex = 150;
@@ -258,7 +258,7 @@ namespace UITiendaElectronica
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(233, 7);
+            this.label5.Location = new System.Drawing.Point(239, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 17);
             this.label5.TabIndex = 156;
@@ -369,7 +369,7 @@ namespace UITiendaElectronica
             // 
             this.lblCantidadVendida.AutoSize = true;
             this.lblCantidadVendida.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblCantidadVendida.Location = new System.Drawing.Point(407, 203);
+            this.lblCantidadVendida.Location = new System.Drawing.Point(405, 203);
             this.lblCantidadVendida.Name = "lblCantidadVendida";
             this.lblCantidadVendida.Size = new System.Drawing.Size(103, 15);
             this.lblCantidadVendida.TabIndex = 164;

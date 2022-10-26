@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Entidades
@@ -47,16 +48,22 @@ namespace Entidades
 
         public EMetodosDePago MetodoDePago { get => metodoDePago; set => metodoDePago = value; }
 
+        protected virtual string MostrarCompra()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Factura:");
+            sb.AppendLine("TIENDA DE ELECTRÓNICA");
+            sb.AppendLine(DateTime.Now.ToString()+"\n");
+            foreach (Producto item in Factura.Carrito)
+            {
+                sb.AppendLine(item.MostrarProducto());
+            }
+            sb.AppendLine($"\nTotal: $ {this.TotalCompra}");
+            sb.AppendLine($"Método de Pago: {this.MetodoDePago}");
+            return sb.ToString();
 
-        public abstract string MostrarCompra();
+        }
       
-
-
-
-
-
-
-
 
     }
 }

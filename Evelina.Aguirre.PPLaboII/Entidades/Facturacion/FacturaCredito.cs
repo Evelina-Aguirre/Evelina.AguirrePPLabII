@@ -17,20 +17,15 @@ namespace Entidades.TiendaElectronica
         /// Toma los valores de la factura general y le agraga el concepto de cuotas.
         /// </summary>
         /// <returns></returns>
-        public override string MostrarCompra()
+        protected override string MostrarCompra()
         {
             StringBuilder sb = new StringBuilder();
             
             sb.Append(base.MostrarCompra());
-           
-            if (cantCuotas == 0)
-            {
-                sb.AppendLine($"Cuotas: --");
-            }
-            else
-            {
-                sb.AppendLine($"Cuotas: {this.cantCuotas}");
-            }
+            sb.AppendLine($"Cuotas: {this.cantCuotas}");
+            sb.AppendLine("\n Recuerde que se aplica\n" +
+                          " un 10 % de recargo a las\n" +
+                          " compras en crédito.");
 
             return sb.ToString();
         }

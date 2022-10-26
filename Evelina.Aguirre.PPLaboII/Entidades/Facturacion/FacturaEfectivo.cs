@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Entidades.TiendaElectronica
 {
-    public class FacturaEfectivo : FacturaCredito
+    public class FacturaEfectivo : FacturaDebito
     {
         private double abonaCon;
         private double vuelto;
 
-        public FacturaEfectivo( EMetodosDePago metodoDePago, double totalCompra, int cantCuotas,double abonaCon) 
-            : base(metodoDePago, totalCompra, cantCuotas)
+        public FacturaEfectivo( EMetodosDePago metodoDePago, double totalCompra,double abonaCon) 
+            : base(metodoDePago, totalCompra)
         {
             this.abonaCon = abonaCon;
             this.vuelto = this.Vuelto;
@@ -62,11 +62,11 @@ namespace Entidades.TiendaElectronica
         /// y el monto que se debe devolver en concepto de vuelto.
         /// </summary>
         /// <returns></returns>
-        public override string MostrarCompra()
+        protected override string MostrarCompra()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.MostrarCompra());
-            sb.AppendLine($"Abona con: ${this.abonaCon}");
+            sb.AppendLine($"Abona con: $ {this.abonaCon}");
             sb.AppendLine($"Vuelto: $ {Math.Round(this.vuelto,2)}");
 
             return sb.ToString();

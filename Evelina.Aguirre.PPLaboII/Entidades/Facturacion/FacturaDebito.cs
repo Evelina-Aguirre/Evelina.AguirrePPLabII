@@ -127,16 +127,10 @@ namespace Entidades.TiendaElectronica
         /// Muestra los detalles de la factura.
         /// </summary>
         /// <returns></returns>
-        public override string MostrarCompra()
+        protected override string MostrarCompra()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (Producto item in Factura.Carrito)
-            {
-                sb.AppendLine(item.MostrarProducto());
-            }
-            sb.AppendLine($"\nTotal: ${base.TotalCompra}");
-            sb.AppendLine($"Metodo de Pago: {base.MetodoDePago}");
-
+            sb.AppendLine(base.MostrarCompra());
             return sb.ToString();
         }
         public override string ToString()

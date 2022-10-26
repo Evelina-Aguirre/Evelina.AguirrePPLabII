@@ -89,18 +89,16 @@ namespace UITiendaElectronica
                 lblPromedioGananciasCategoria.Text = ex.Message;
                 lblMasVendidoPorCategoria.Text = ex.Message;
                 this.lblCantidadVendida.Text = ex.Message;
-                this.rhtDetalle.Text = ex.Message; 
+                this.rhtDetalle.Text = ex.Message + " en esta categoría .-"; 
             }
         }
 
         private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
             lblPromedioGananciasCategoria.Text = "";
             Prueba frmPruebaApp = new Prueba();
             Hide();
             frmPruebaApp.ShowDialog();
-
         }
 
         private void llbMinimizar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

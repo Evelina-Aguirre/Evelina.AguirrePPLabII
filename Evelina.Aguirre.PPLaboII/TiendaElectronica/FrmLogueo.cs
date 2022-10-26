@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace UITiendaElectronica
 {
-   
     public partial class Inicio : Form
     {
         int m, mx, my;
@@ -25,6 +24,7 @@ namespace UITiendaElectronica
         {
             if(TiendaDeElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Vendedor)
             {
+                cargo = 0;
                 Venta frmVenta = new Venta();
                 frmVenta.Show();
                 this.Hide();
@@ -36,11 +36,24 @@ namespace UITiendaElectronica
                 frmMenuPrincipal.Show();
                this.Hide();
             }
+            else if(TiendaDeElectronica.Logueo(this.txtUsuario.Text, this.txtClave.Text) is EPersona.Contador)
+            {
+                cargo = 2;
+                FrmEstadisticas frmEstadisticas = new FrmEstadisticas();
+                frmEstadisticas.Show();
+                this.Hide();
+            }
             else
             {
                 MessageBox.Show("Usuario y contraseña incorrectos.");
             }
 
+        }
+        private void lnklblOlvidasteClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Prueba frmHarcodeo = new Prueba();
+            frmHarcodeo.Show();
+            this.Hide();
         }
 
         private void llbCerrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -83,12 +96,6 @@ namespace UITiendaElectronica
             }
         }
 
-        private void lnklblOlvidasteClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Prueba frmHarcodeo = new Prueba();
-            frmHarcodeo.Show();
-            this.Hide();
-        }
 
         private void Inicio_MouseMove(object sender, MouseEventArgs e)
         {

@@ -246,7 +246,7 @@ namespace UITiendaElectronica
 
                 if (txtAbonacon.Text != null && esNumero && auxFactura.TotalCompra < Convert.ToDouble(txtAbonacon.Text))
                 {
-                    facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra, 0,
+                    facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra,
                    Convert.ToDouble(txtAbonacon.Text));
                     MessageBox.Show(facturaFinal.ToString());
                     foreach (DataGridViewRow row in dgvCarrito.Rows)
