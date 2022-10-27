@@ -383,87 +383,109 @@ namespace UITiendaElectronica
             TiendaDeElectronica tienda = new TiendaDeElectronica();
             if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.Rows[0].Cells[0].Value is not null)
             {
-                Entidades.TiendaElectronica.Factura facturaFinal;
-                foreach (Control item in grbFormaDePago.Controls)
+                try
                 {
-                    if (item is RadioButton)
+                    Entidades.TiendaElectronica.Factura facturaFinal;
+                    foreach (Control item in grbFormaDePago.Controls)
                     {
-                        if (rdoEfectivo.Checked)
+                        if (item is RadioButton)
                         {
-                            string txtConComa = txtAbonacon.Text.Replace('.', ',');
-                            txtAbonacon.Text = txtConComa;
-                            double abonaCon;
-                            bool esNumero = double.TryParse(txtAbonacon.Text, out abonaCon);
-
-                            if (txtAbonacon.Text != null && esNumero && auxFactura.TotalCompra < Convert.ToDouble(txtAbonacon.Text))
+                            if (rdoEfectivo.Checked)
                             {
-                                facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra,
-                                Convert.ToDouble(txtAbonacon.Text));
+                                string txtConComa = txtAbonacon.Text.Replace('.', ',');
+                                txtAbonacon.Text = txtConComa;
+                                double abonaCon;
+                                bool esNumero = double.TryParse(txtAbonacon.Text, out abonaCon);
+
+                                if (txtAbonacon.Text != null && esNumero && auxFactura.TotalCompra < Convert.ToDouble(txtAbonacon.Text))
+                                {
+                                    facturaFinal = new FacturaEfectivo(EMetodosDePago.efectivo, auxFactura.TotalCompra,
+                                    Convert.ToDouble(txtAbonacon.Text));
+
+                                    //Se agrega la venta a las estadísticas de la tienda
+                                    Estadisticas.ListaFacturas.Add(facturaFinal);
+                                    Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
+                                    Estadisticas.CantidadVentas++;
+
+                                    MessageBox.Show("\n" + facturaFinal.ToString());
+                                    TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
+                                    //Resetea la lista de la factura de la venta ya concretada y limpia form.
+                                    Entidades.TiendaElectronica.Factura.Carrito.Clear();
+                                    auxFactura.TotalCompra = 0;
+                                    lblTotalCarrito.Text = string.Empty;
+                                    dgvCarritoCliente.Rows.Clear();
+                                    rdoEfectivo.Checked = true;
+                                }
+                                else
+                                {   //El Botón ver vuelto ya setea qué acciones tomar en caso de que el monto sea insuficiente o inválido.
+                                    btnVerVuelto.PerformClick();
+                                }
+
+
+                            }
+                            else if (rdoCredito.Checked)
+                            {
+                                facturaFinal = new FacturaCredito(EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
+                                     Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
+                                MessageBox.Show("\n" +
+                                    facturaFinal.ToString());
+
+                                TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
 
                                 //Se agrega la venta a las estadísticas de la tienda
                                 Estadisticas.ListaFacturas.Add(facturaFinal);
                                 Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
                                 Estadisticas.CantidadVentas++;
 
-                                MessageBox.Show("\n" + facturaFinal.ToString());
-                                TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
-                                //Resetea la lista de la factura de la venta ya concretada y limpia form.
+                                //Resetea la lista de la factura de la venta concretada y limpia form.
+
                                 Entidades.TiendaElectronica.Factura.Carrito.Clear();
                                 auxFactura.TotalCompra = 0;
                                 lblTotalCarrito.Text = string.Empty;
                                 dgvCarritoCliente.Rows.Clear();
                                 rdoEfectivo.Checked = true;
                             }
-                            else
-                            {   //El Botón ver vuelto ya setea qué acciones tomar en caso de que el monto sea insuficiente o inválido.
-                                btnVerVuelto.PerformClick();
+                            else if (rdoDebiro.Checked)
+                            {
+                                facturaFinal = new Entidades.TiendaElectronica.Factura(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
+                                MessageBox.Show("\n" + facturaFinal.ToString());
+                                TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
+
+                                //Se agrega la venta a las estadísticas de la tienda
+                                Estadisticas.ListaFacturas.Add(facturaFinal);
+                                Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
+                                Estadisticas.CantidadVentas++;
+
+                                Entidades.TiendaElectronica.Factura.Carrito.Clear();
+                                auxFactura.TotalCompra = 0;
+                                lblTotalCarrito.Text = string.Empty;
+                                dgvCarritoCliente.Rows.Clear();
+                                rdoEfectivo.Checked = true;
                             }
-
+                            break;
 
                         }
-                        else if (rdoCredito.Checked)
-                        {
-                            facturaFinal = new FacturaCredito(EMetodosDePago.Credito, Convert.ToDouble(lblTotalCarrito.Text),
-                                 Convert.ToInt32(cmbCuotas.SelectedItem.ToString()));
-                            MessageBox.Show("\n" +
-                                facturaFinal.ToString());
-
-                            TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
-
-                            //Se agrega la venta a las estadísticas de la tienda
-                            Estadisticas.ListaFacturas.Add(facturaFinal);
-                            Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
-                            Estadisticas.CantidadVentas++;
-
-                            //Resetea la lista de la factura de la venta concretada y limpia form.
-
-                            Entidades.TiendaElectronica.Factura.Carrito.Clear();
-                            auxFactura.TotalCompra = 0;
-                            lblTotalCarrito.Text = string.Empty;
-                            dgvCarritoCliente.Rows.Clear();
-                            rdoEfectivo.Checked = true;
-                        }
-                        else if (rdoDebiro.Checked)
-                        {
-                            facturaFinal = new Entidades.TiendaElectronica.Factura(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
-                            MessageBox.Show("\n" + facturaFinal.ToString());
-                            TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
-
-                            //Se agrega la venta a las estadísticas de la tienda
-                            Estadisticas.ListaFacturas.Add(facturaFinal);
-                            Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
-                            Estadisticas.CantidadVentas++;
-
-                            Entidades.TiendaElectronica.Factura.Carrito.Clear();
-                            auxFactura.TotalCompra = 0;
-                            lblTotalCarrito.Text = string.Empty;
-                            dgvCarritoCliente.Rows.Clear();
-                            rdoEfectivo.Checked = true;
-                        }
-                        break;
 
                     }
-
+                }
+                catch (NumeroFueraDeRangoException ex)
+                {
+                    lblCalculoVuelto.Text = "-";
+                    lblMontoInsuficiente.Text = ex.Message;
+                    timer1.Interval = 3000;
+                    timer1.Start();
+                }
+                catch (MontoInsuficienteException ex)
+                {
+                    lblMontoInsuficiente.Text = ex.Message;
+                    timer1.Interval = 3000;
+                    timer1.Start();
+                }
+                catch (Exception ex)
+                {
+                    lblMontoInsuficiente.Text = ex.Message;
+                    timer1.Interval = 3000;
+                    timer1.Start();
                 }
             }
 

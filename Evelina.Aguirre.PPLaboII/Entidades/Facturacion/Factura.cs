@@ -147,7 +147,7 @@ namespace Entidades.TiendaElectronica
         {
             if (Factura.Carrito is not null)
             {
-                foreach (Producto item in FacturaCredito.Carrito)
+                foreach (Producto item in Factura.Carrito)
                 {
                     for (int i = 0; i < item.Cantidad; i++)
                     {
@@ -156,7 +156,10 @@ namespace Entidades.TiendaElectronica
                 }
             }
         }
-
+        /// <summary>
+        /// Muestra los detalles de la factura.
+        /// </summary>
+        /// <returns></returns>
         protected virtual string MostrarCompra()
         {
             StringBuilder sb = new StringBuilder();

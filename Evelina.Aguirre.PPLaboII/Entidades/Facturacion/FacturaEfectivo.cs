@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.ExcepcionesPropias;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,14 @@ namespace Entidades.TiendaElectronica
             }
             set
             {
-                this.abonaCon = value;
+                if (value >=0 && value < double.MaxValue)
+                {
+                    this.abonaCon = value;
+                }
+                else
+                {
+                    throw new NumeroFueraDeRangoException("Monto inválido");
+                }
             }
         }
 
