@@ -1,4 +1,5 @@
-﻿using Entidades.Tienda;
+﻿using Entidades.ExcepcionesPropias;
+using Entidades.Tienda;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -41,9 +42,14 @@ namespace Entidades
             }
             set
             {
-               
-               TiendaDeElectronica.cuentaTienda = value;
-
+                if (value >= 0 && value < double.MaxValue)
+                {
+                    TiendaDeElectronica.cuentaTienda = value;
+                }
+                else
+                {
+                    throw new NumeroFueraDeRangoException("Valor fuera de rango.");
+                }
             }
         }
 
@@ -69,7 +75,6 @@ namespace Entidades
                 }
             }
             return resultado;
-
         }
 
         /// <summary>
@@ -137,6 +142,8 @@ namespace Entidades
         /// <returns>si la persona que se loguea está registrado como dueño, administrados o desconocido</returns>
         public static EPersona Logueo(string usuario, string clave)
         {
+            EPersona cargo = EPersona.Desconocido;
+
             if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(clave))
             {
                 foreach (Persona auxPersona in usuariosApp)
@@ -144,13 +151,11 @@ namespace Entidades
                     if (auxPersona.Usuario.Trim().ToLower() == usuario.Trim().ToLower() &&
                          auxPersona.Clave.Trim().ToLower() == clave.Trim().ToLower())
                     {
-                        return auxPersona.Cargo;
+                        cargo = auxPersona.Cargo;
                     }
                 }
             }
-            return EPersona.Desconocido;
+            return cargo;
         }
-
-
     }
 }

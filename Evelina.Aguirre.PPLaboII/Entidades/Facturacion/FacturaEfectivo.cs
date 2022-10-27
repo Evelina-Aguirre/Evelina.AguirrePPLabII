@@ -16,7 +16,6 @@ namespace Entidades.TiendaElectronica
         {
             this.abonaCon = abonaCon;
             this.vuelto = this.Vuelto;
-           
         }
 
         public double AbonaCon

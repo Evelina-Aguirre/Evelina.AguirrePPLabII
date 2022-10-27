@@ -8,7 +8,7 @@ namespace Entidades
     {
         private static List<Producto> carrito;
         private EMetodosDePago metodoDePago;
-        internal double totalCompra;
+        private double totalCompra;
 
         static Factura()
         {
@@ -21,31 +21,8 @@ namespace Entidades
             this.totalCompra = totalCompra;
         }
 
-
-        public  static List<Producto> Carrito
-        {
-            get
-            {
-                return carrito;
-            }
-            set
-            {
-                Factura.carrito = value;
-            }
-        }
-
-        public double TotalCompra
-        {
-            get
-            {
-                return this.totalCompra;
-            }
-            set
-            {
-                this.totalCompra = value;
-            }
-        }
-
+        public  static List<Producto> Carrito { get => carrito; set => carrito = value; }
+        public double TotalCompra { get => totalCompra; set => totalCompra = value; }   
         public EMetodosDePago MetodoDePago { get => metodoDePago; set => metodoDePago = value; }
 
         protected virtual string MostrarCompra()

@@ -15,7 +15,6 @@ namespace Entidades
             this.cargo=cargo;
         }
         
-
         public string Usuario
         {
             get

@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.ExcepcionesPropias;
 using Entidades.Productos;
 using Entidades.Tienda;
 using Entidades.TiendaElectronica;
@@ -40,8 +41,8 @@ namespace UITiendaElectronica
             rdoEfectivo.Checked = true;
             txtAbonacon.Text = TiendaDeElectronica.CuentaTienda.ToString();
             lblSaldoTienda.Text = TiendaDeElectronica.CuentaTienda.ToString();
-            this.txtAbonacon.Text = TiendaDeElectronica.CuentaTienda.ToString();
-            this.txtAbonacon.Enabled = false;
+            txtAbonacon.Text = TiendaDeElectronica.CuentaTienda.ToString();
+            txtAbonacon.Enabled = false;
         }
 
 
@@ -66,10 +67,10 @@ namespace UITiendaElectronica
         {
             List<Producto> auxLista = new List<Producto>();
             auxLista = Buscador.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
-            if (dgvCatalogoProveedor.Rows.Count>0)
+            if (dgvCatalogoProveedor.Rows.Count > 0)
                 dgvCatalogoProveedor.Rows.Clear();
 
-            if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null  || dgvCatalogoProveedor.Rows.Count==0)
+            if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null || dgvCatalogoProveedor.Rows.Count == 0)
             {
 
                 dgvCatalogoProveedor.ColumnCount = 5;
@@ -240,7 +241,7 @@ namespace UITiendaElectronica
                 string txtConComa = txtAbonacon.Text.Replace('.', ',');
                 txtAbonacon.Text = txtConComa;
 
-               
+
                 double abonaCon;
                 bool esNumero = double.TryParse(txtAbonacon.Text, out abonaCon);
 
@@ -267,9 +268,15 @@ namespace UITiendaElectronica
                             }
                         }
                     }
-
-                    //Resto el total de la factura del saldo de la tienda.
-                    TiendaDeElectronica.CuentaTienda -= facturaFinal.TotalCompra;
+                    try
+                    {
+                        //Resto el total de la factura del saldo de la tienda.
+                        TiendaDeElectronica.CuentaTienda -= facturaFinal.TotalCompra;
+                    }
+                    catch (NumeroFueraDeRangoException ex)
+                    {
+                        lblMontoInsuficiente.Text = ex.Message;
+                    }
 
                     ECategoriaElectronico categoria = Buscador.ObtenerCategoria(dgvCatalogoProveedor.Rows[0].Cells[3].Value.ToString());
                     dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(categoria, TiendaDeElectronica.InventarioTienda);
@@ -346,7 +353,7 @@ namespace UITiendaElectronica
         private void button3_Click(object sender, EventArgs e)
         {
             int id = 0;
-                string nombre = "";
+            string nombre = "";
             string categoria = "";
             double precio = 0;
             if (dgvInventarioTienda.Rows.Count > 0)
@@ -364,19 +371,19 @@ namespace UITiendaElectronica
         private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Menú frmMenu = new Menú();
-            this.Hide();
+            Hide();
             frmMenu.ShowDialog();
         }
 
         private void dgvInventarioTienda_DoubleClick(object sender, EventArgs e)
         {
-            this.btnModificar.PerformClick();
+            btnModificar.PerformClick();
         }
 
         private void btnBuscarEnProveedor_Click(object sender, EventArgs e)
         {
             List<Producto> auxLista = new List<Producto>();
-            auxLista = Buscador.BuscarProducto(this.txtBuscarEnProveedor.Text.ToString().ToLower(), CatalogoProveedor.Catalogo);
+            auxLista = Buscador.BuscarProducto(txtBuscarEnProveedor.Text.ToString().ToLower(), CatalogoProveedor.Catalogo);
             if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null || dgvCatalogoProveedor is null)
             {
 
@@ -394,7 +401,7 @@ namespace UITiendaElectronica
             }
             else
             {
-                this.dgvCatalogoProveedor.Rows.Clear();
+                dgvCatalogoProveedor.Rows.Clear();
                 dgvCatalogoProveedor.ColumnCount = 5;
                 dgvCatalogoProveedor.Columns[0].Name = "Nombre";
                 dgvCatalogoProveedor.Columns[1].Name = "Descripción";
@@ -411,7 +418,7 @@ namespace UITiendaElectronica
 
         private void btnBuscarEnInventarioTienda_Click(object sender, EventArgs e)
         {
-           this.dgvInventarioTienda.DataSource = Buscador.BuscarProducto(this.txtBuscarInventarioTienda.Text.ToString().ToLower(), TiendaDeElectronica.InventarioTienda);
+            dgvInventarioTienda.DataSource = Buscador.BuscarProducto(txtBuscarInventarioTienda.Text.ToString().ToLower(), TiendaDeElectronica.InventarioTienda);
         }
 
         private void txtBuscarEnProveedor_KeyPress(object sender, KeyPressEventArgs e)
@@ -421,7 +428,7 @@ namespace UITiendaElectronica
                 //le informo que el evento (hacer sonido por no poder dar un salto de linea en un textBox)
                 //ya fue manejado para que no lo reproduzca.
                 e.Handled = true;
-                this.btnBuscarEnProveedor.PerformClick();
+                btnBuscarEnProveedor.PerformClick();
             }
         }
 
@@ -430,19 +437,19 @@ namespace UITiendaElectronica
             if (e.KeyChar == 13)
             {
                 e.Handled = true;
-                this.btnBuscarEnInventarioTienda.PerformClick();
+                btnBuscarEnInventarioTienda.PerformClick();
             }
 
         }
 
         private void txtBuscarEnProveedor_Click(object sender, EventArgs e)
         {
-            this.txtBuscarEnProveedor.Text = string.Empty;
+            txtBuscarEnProveedor.Text = string.Empty;
         }
 
         private void txtBuscarInventarioTienda_Click(object sender, EventArgs e)
         {
-            this.txtBuscarInventarioTienda.Text = string.Empty;
+            txtBuscarInventarioTienda.Text = string.Empty;
         }
 
         private void FrmAdmin_MouseUp(object sender, MouseEventArgs e)

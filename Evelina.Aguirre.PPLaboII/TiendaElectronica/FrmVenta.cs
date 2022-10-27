@@ -413,7 +413,6 @@ namespace UITiendaElectronica
                                 lblTotalCarrito.Text = string.Empty;
                                 dgvCarritoCliente.Rows.Clear();
                                 rdoEfectivo.Checked = true;
-
                             }
                             else
                             {   //El Botón ver vuelto ya setea qué acciones tomar en caso de que el monto sea insuficiente o inválido.

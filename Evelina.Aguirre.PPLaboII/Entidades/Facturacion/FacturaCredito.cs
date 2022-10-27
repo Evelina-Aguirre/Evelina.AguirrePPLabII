@@ -9,7 +9,7 @@ namespace Entidades.TiendaElectronica
         public FacturaCredito(EMetodosDePago metodoDePago, double totalCompra, int cantCuotas)
             : base(metodoDePago, totalCompra)
         {
-            this.totalCompra += (this.totalCompra * 10) / 100;
+            this.TotalCompra += (this.TotalCompra * 10) / 100;
             this.cantCuotas = cantCuotas;
         }
 

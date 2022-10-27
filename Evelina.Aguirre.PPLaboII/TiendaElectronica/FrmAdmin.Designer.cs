@@ -422,9 +422,9 @@ namespace UITiendaElectronica
             this.grbFormaDePago.Controls.Add(this.rdoEfectivo);
             this.grbFormaDePago.Controls.Add(this.lblMontoInsuficiente);
             this.grbFormaDePago.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.grbFormaDePago.Location = new System.Drawing.Point(997, 454);
+            this.grbFormaDePago.Location = new System.Drawing.Point(997, 466);
             this.grbFormaDePago.Name = "grbFormaDePago";
-            this.grbFormaDePago.Size = new System.Drawing.Size(374, 147);
+            this.grbFormaDePago.Size = new System.Drawing.Size(374, 127);
             this.grbFormaDePago.TabIndex = 157;
             this.grbFormaDePago.TabStop = false;
             this.grbFormaDePago.Text = "Forma de pago:";
@@ -434,7 +434,7 @@ namespace UITiendaElectronica
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(70, 27);
+            this.label7.Location = new System.Drawing.Point(68, 29);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 16);
             this.label7.TabIndex = 166;
@@ -445,9 +445,9 @@ namespace UITiendaElectronica
             this.lblSaldoTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblSaldoTienda.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblSaldoTienda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblSaldoTienda.Location = new System.Drawing.Point(229, 27);
+            this.lblSaldoTienda.Location = new System.Drawing.Point(219, 27);
             this.lblSaldoTienda.Name = "lblSaldoTienda";
-            this.lblSaldoTienda.Size = new System.Drawing.Size(132, 21);
+            this.lblSaldoTienda.Size = new System.Drawing.Size(142, 21);
             this.lblSaldoTienda.TabIndex = 168;
             this.lblSaldoTienda.Text = "                  ";
             this.lblSaldoTienda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -471,9 +471,9 @@ namespace UITiendaElectronica
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label8.Location = new System.Drawing.Point(193, 27);
+            this.label8.Location = new System.Drawing.Point(176, 27);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 26);
+            this.label8.Size = new System.Drawing.Size(45, 34);
             this.label8.TabIndex = 169;
             this.label8.Text = "  $            ";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -502,7 +502,7 @@ namespace UITiendaElectronica
             // rdoEfectivo
             // 
             this.rdoEfectivo.AutoSize = true;
-            this.rdoEfectivo.Location = new System.Drawing.Point(27, 75);
+            this.rdoEfectivo.Location = new System.Drawing.Point(34, 75);
             this.rdoEfectivo.Name = "rdoEfectivo";
             this.rdoEfectivo.Size = new System.Drawing.Size(63, 19);
             this.rdoEfectivo.TabIndex = 0;

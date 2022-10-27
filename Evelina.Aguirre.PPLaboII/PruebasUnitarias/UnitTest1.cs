@@ -86,6 +86,17 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(NumeroFueraDeRangoException))]
+        public void Prueba_que_se_genere_excepcion_por_Intentar_asignar_un_numero_negativo_al_saldo_de_la_tienda()
+        {
+            //Arrange
+            double auxNum = -100;
+            //Act
+            TiendaDeElectronica.CuentaTienda = auxNum;
+            //Assert
+        }
+
 
     }
 }
