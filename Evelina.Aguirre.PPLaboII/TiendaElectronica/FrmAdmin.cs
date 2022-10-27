@@ -66,7 +66,7 @@ namespace UITiendaElectronica
         private void ActualizarDGVCatalago(ECategoriaElectronico categoria)
         {
             List<Producto> auxLista = new List<Producto>();
-            auxLista = Buscador.CargarProductosPorCategoria(categoria, CatalogoProveedor.Catalogo);
+            auxLista = Buscador.CargarProductosPorCategoria(categoria, CatalagoProveedor.Catalogo);
             if (dgvCatalogoProveedor.Rows.Count > 0)
                 dgvCatalogoProveedor.Rows.Clear();
 
@@ -98,8 +98,11 @@ namespace UITiendaElectronica
 
         private void btnLeds_Click(object sender, EventArgs e)
         {
-            ActualizarDGVCatalago(ECategoriaElectronico.Leds);
+            
+                ActualizarDGVCatalago(ECategoriaElectronico.Leds);
+            
             dgvInventarioTienda.DataSource = Buscador.CargarProductosPorCategoria(ECategoriaElectronico.Leds, TiendaDeElectronica.InventarioTienda);
+            
         }
 
         private void btnBobinas_Click(object sender, EventArgs e)
@@ -383,7 +386,7 @@ namespace UITiendaElectronica
         private void btnBuscarEnProveedor_Click(object sender, EventArgs e)
         {
             List<Producto> auxLista = new List<Producto>();
-            auxLista = Buscador.BuscarProducto(txtBuscarEnProveedor.Text.ToString().ToLower(), CatalogoProveedor.Catalogo);
+            auxLista = Buscador.BuscarProducto(txtBuscarEnProveedor.Text.ToString().ToLower(), CatalagoProveedor.Catalogo);
             if (dgvCatalogoProveedor.Rows[0].Cells[0].Value is null || dgvCatalogoProveedor is null)
             {
 
@@ -450,6 +453,12 @@ namespace UITiendaElectronica
         private void txtBuscarInventarioTienda_Click(object sender, EventArgs e)
         {
             txtBuscarInventarioTienda.Text = string.Empty;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmElegirProveedor frmElegirP = new FrmElegirProveedor();
+            frmElegirP.Show();
         }
 
         private void FrmAdmin_MouseUp(object sender, MouseEventArgs e)

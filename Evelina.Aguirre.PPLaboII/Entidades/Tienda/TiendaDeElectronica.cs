@@ -1,4 +1,5 @@
 ﻿using Entidades.ExcepcionesPropias;
+using Entidades.Productos;
 using Entidades.Tienda;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,20 @@ namespace Entidades
 {
     public class TiendaDeElectronica
     {
-        private static string razonSocial;
-        private static string cuit;
         private static List<Persona> usuariosApp;
         private static Dictionary<int, Producto> inventarioTienda;
         private static double cuentaTienda;
+        private static List<CatalagoProveedor> listaProveedores;
 
         static TiendaDeElectronica()
         {
             TiendaDeElectronica.usuariosApp = new List<Persona>();
             TiendaDeElectronica.inventarioTienda = new Dictionary<int, Producto>();
+            listaProveedores = new List<CatalagoProveedor>();
             TiendaDeElectronica.cuentaTienda = 500000;
             CargarUsuariosRegistradosEnApp();
-            CargarProductosEnStock();
+            CargarProductosEnStockProv1();
+            CargarProveedores();
         }
 
 
@@ -32,6 +34,18 @@ namespace Entidades
             set
             {
                 TiendaDeElectronica.inventarioTienda = value;
+            }
+        }
+
+        public static List<CatalagoProveedor> ListaProveedores
+        {
+            get
+            {
+                return TiendaDeElectronica.listaProveedores;
+            }
+            set
+            {
+                TiendaDeElectronica.listaProveedores = value;
             }
         }
 
@@ -118,14 +132,23 @@ namespace Entidades
             usuariosApp.Add(contador);
         }
 
+        public static void CargarProveedores()
+        {
+            CatalagoProveedor prov1 = new CatalagoProveedor("Electrónica buen precio", "20-2132164-2");
+            CatalagoProveedor prov2 = new CatalagoProveedor("Electrónica buena calidad", "30-54651325-5");
+            listaProveedores.Add(prov1);
+            listaProveedores.Add(prov1);
+        }
+
         /// <summary>
         /// Carga la lista de inventario desde el catálogo del proveedor.
         /// </summary>
-        public static void CargarProductosEnStock()
+        public static void CargarProductosEnStockProv1()
         {
-            int nuevaKey = 2000;
+            int nuevaKey = 3000;
             
-            foreach (KeyValuePair<int, Producto> item in CatalogoProveedor.catalogo)
+            
+            foreach (KeyValuePair<int, Producto> item in CatalagoProveedor.catalogo)
             {
                 nuevaKey++;
                 Producto auxProducto = new Producto(item.Value.Nombre,item.Value.Precio, item.Value.Id,
@@ -133,6 +156,23 @@ namespace Entidades
                 TiendaDeElectronica.inventarioTienda.Add(nuevaKey, auxProducto);   
             }
             
+        }
+
+        /// <summary>
+        /// Carga la lista de inventario desde el catálogo del proveedor.
+        /// </summary>
+        public static void CargarProductosEnStockProv2()
+        {
+            int nuevaKey = 2000;
+
+            foreach (KeyValuePair<int, Producto> item in CatalagoProveedor.catalogo)
+            {
+                nuevaKey++;
+                Producto auxProducto = new Producto(item.Value.Nombre, item.Value.Precio, item.Value.Id,
+                    item.Value.Descripcion, item.Value.Categoria, 10);
+                TiendaDeElectronica.inventarioTienda.Add(nuevaKey, auxProducto);
+            }
+
         }
 
         /// <summary>
