@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.TiendaElectronica
 {
-    public class FacturaEfectivo : FacturaDebito
+    public class FacturaEfectivo : Factura
     {
         private double abonaCon;
         private double vuelto;
@@ -67,7 +67,6 @@ namespace Entidades.TiendaElectronica
             sb.Append(base.MostrarCompra());
             sb.AppendLine($"Abona con: $ {this.abonaCon}");
             sb.AppendLine($"Vuelto: $ {Math.Round(this.vuelto,2)}");
-
             return sb.ToString();
         }
 

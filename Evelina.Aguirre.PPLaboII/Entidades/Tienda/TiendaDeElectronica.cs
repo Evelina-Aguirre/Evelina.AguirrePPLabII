@@ -7,14 +7,15 @@ namespace Entidades
 {
     public class TiendaDeElectronica
     {
-
+        private static string razonSocial;
+        private static string cuit;
         private static List<Persona> usuariosApp;
         private static Dictionary<int, Producto> inventarioTienda;
         private static double cuentaTienda;
 
         static TiendaDeElectronica()
         {
-            usuariosApp = new List<Persona>();
+            TiendaDeElectronica.usuariosApp = new List<Persona>();
             TiendaDeElectronica.inventarioTienda = new Dictionary<int, Producto>();
             TiendaDeElectronica.cuentaTienda = 500000;
             CargarUsuariosRegistradosEnApp();
@@ -157,5 +158,6 @@ namespace Entidades
             }
             return cargo;
         }
+
     }
 }

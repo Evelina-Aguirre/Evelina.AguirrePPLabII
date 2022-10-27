@@ -7,14 +7,14 @@ namespace Entidades.Tienda
 {
     public class Estadisticas
     {
-        private static List<FacturaDebito> listaFacturas;
+        private static List<TiendaElectronica.Factura> listaFacturas;
         private static List<Producto> listaProductosVendidos;
         private static int cantidadVentas;
         private static double gananciaAcumulada;
         private static int cantidadProdMasVendido;
         static Estadisticas()
         {
-            Estadisticas.listaFacturas = new List<FacturaDebito>();
+            Estadisticas.listaFacturas = new List<TiendaElectronica.Factura>();
             Estadisticas.ListaProductosVendidos = new List<Producto>();
             Estadisticas.InicializaListaProductosVendidos();
             Estadisticas.cantidadVentas = 0;
@@ -28,7 +28,7 @@ namespace Entidades.Tienda
             Estadisticas.listaProductosVendidos.Add(auxProducto);
         }
 
-        public static List<FacturaDebito> ListaFacturas { get => listaFacturas; set => listaFacturas = value; }
+        public static List<TiendaElectronica.Factura> ListaFacturas { get => listaFacturas; set => listaFacturas = value; }
         public static int CantidadVentas { get => cantidadVentas; set => cantidadVentas = value; }
         public static List<Producto> ListaProductosVendidos { get => listaProductosVendidos; set => listaProductosVendidos = value; }
         public static double GananciaAcumulada { get => gananciaAcumulada; set => gananciaAcumulada = value; }

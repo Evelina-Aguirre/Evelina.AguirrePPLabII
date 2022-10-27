@@ -77,7 +77,7 @@ namespace PruebasUnitarias
 
         [TestMethod]
         [ExpectedException(typeof(ListaVaciaException))]
-        public void Prueba_que_se_genere_excepcion_por_No_Encontrar_productos_n_una_lista()
+        public void Prueba_que_se_genere_excepcion_por_No_Encontrar_productos_en_una_lista()
         {
             //Arrange
             //Act

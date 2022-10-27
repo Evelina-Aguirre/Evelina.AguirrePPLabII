@@ -14,7 +14,7 @@ namespace UITiendaElectronica
     {
         int m, mx, my;
         //Factura auxiliar a partir de la cual se instanciará una Factura-Efectivo/Debito/Crédito una vez elegido el método de pago.
-        private FacturaDebito auxFactura = new FacturaDebito(EMetodosDePago.efectivo, 0);
+        private Entidades.TiendaElectronica.Factura auxFactura = new Entidades.TiendaElectronica.Factura(EMetodosDePago.efectivo, 0);
         public FrmAdmin()
         {
             InitializeComponent();
@@ -235,7 +235,7 @@ namespace UITiendaElectronica
         {
             if (dgvCarrito.Rows.Count > 1 && dgvCarrito.Rows[0].Cells[0].Value is not null)
             {
-                Factura facturaFinal;
+                Entidades.TiendaElectronica.Factura facturaFinal;
                 TiendaDeElectronica tienda = new TiendaDeElectronica();
 
                 string txtConComa = txtAbonacon.Text.Replace('.', ',');

@@ -16,7 +16,7 @@ namespace UITiendaElectronica
         int m, mx, my;
 
         //Factura auxiliar a partir de la cual se instanciará una Factura-Efectivo/Debito/Crédito una vez elegido el método de pago.
-        private FacturaDebito auxFactura = new FacturaDebito(EMetodosDePago.efectivo, 0);
+        private Entidades.TiendaElectronica.Factura auxFactura = new Entidades.TiendaElectronica.Factura(EMetodosDePago.efectivo, 0);
         private Estadisticas auxEstadistica = new Estadisticas();
 
         public Venta()
@@ -313,7 +313,7 @@ namespace UITiendaElectronica
                     throw new MontoInvalidoException("Debe ingresar un valor numérico");
                 }
             }
-            catch(MontoInvalidoException ex)
+            catch (MontoInvalidoException ex)
             {
                 lblCalculoVuelto.Text = "-";
                 lblMontoInsuficiente.Text = ex.Message;
@@ -383,7 +383,7 @@ namespace UITiendaElectronica
             TiendaDeElectronica tienda = new TiendaDeElectronica();
             if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.Rows[0].Cells[0].Value is not null)
             {
-                FacturaDebito facturaFinal;
+                Entidades.TiendaElectronica.Factura facturaFinal;
                 foreach (Control item in grbFormaDePago.Controls)
                 {
                     if (item is RadioButton)
@@ -408,7 +408,7 @@ namespace UITiendaElectronica
                                 MessageBox.Show("\n" + facturaFinal.ToString());
                                 TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
                                 //Resetea la lista de la factura de la venta ya concretada y limpia form.
-                                Factura.Carrito.Clear();
+                                Entidades.TiendaElectronica.Factura.Carrito.Clear();
                                 auxFactura.TotalCompra = 0;
                                 lblTotalCarrito.Text = string.Empty;
                                 dgvCarritoCliente.Rows.Clear();
@@ -436,8 +436,8 @@ namespace UITiendaElectronica
                             Estadisticas.CantidadVentas++;
 
                             //Resetea la lista de la factura de la venta concretada y limpia form.
-                            
-                            Factura.Carrito.Clear();
+
+                            Entidades.TiendaElectronica.Factura.Carrito.Clear();
                             auxFactura.TotalCompra = 0;
                             lblTotalCarrito.Text = string.Empty;
                             dgvCarritoCliente.Rows.Clear();
@@ -445,7 +445,7 @@ namespace UITiendaElectronica
                         }
                         else if (rdoDebiro.Checked)
                         {
-                            facturaFinal = new FacturaDebito(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
+                            facturaFinal = new Entidades.TiendaElectronica.Factura(EMetodosDePago.Debito, Convert.ToDouble(lblTotalCarrito.Text));
                             MessageBox.Show("\n" + facturaFinal.ToString());
                             TiendaDeElectronica.CuentaTienda += facturaFinal.TotalCompra;
 
@@ -454,7 +454,7 @@ namespace UITiendaElectronica
                             Estadisticas.GananciaAcumulada += facturaFinal.TotalCompra;
                             Estadisticas.CantidadVentas++;
 
-                            Factura.Carrito.Clear();
+                            Entidades.TiendaElectronica.Factura.Carrito.Clear();
                             auxFactura.TotalCompra = 0;
                             lblTotalCarrito.Text = string.Empty;
                             dgvCarritoCliente.Rows.Clear();
@@ -468,7 +468,6 @@ namespace UITiendaElectronica
             }
 
         }
-
 
         private void txtAbonacon_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -488,8 +487,8 @@ namespace UITiendaElectronica
         private void llbVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TiendaDeElectronica tienda = new TiendaDeElectronica();
-            FacturaDebito.CancelarCompra(tienda);
-            Factura.Carrito.Clear();
+            Entidades.TiendaElectronica.Factura.CancelarCompra(tienda);
+            Entidades.TiendaElectronica.Factura.Carrito.Clear();
 
 
                 if (Inicio.cargo == 1)

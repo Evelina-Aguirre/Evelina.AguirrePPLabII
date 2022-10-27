@@ -2,9 +2,9 @@
 
 namespace Entidades.TiendaElectronica
 {
-    public class FacturaCredito : FacturaDebito
+    public class FacturaCredito : Factura
     {
-        private int cantCuotas;
+        private int cantCuotas; 
 
         public FacturaCredito(EMetodosDePago metodoDePago, double totalCompra, int cantCuotas)
             : base(metodoDePago, totalCompra)
